@@ -24,6 +24,15 @@ $hayvideo = "";
     h1{
         background-color: whitesmoke;
     }
+    img{
+        border-radius: 10px;
+    }
+    #img-principal{
+        box-shadow: black, 10, 10, 10;
+    }
+    #img{
+        margin-top: 10px;
+    }
 </style>
 
 <head>
@@ -34,7 +43,9 @@ $hayvideo = "";
 <body id="back" onload="color()" style="text-align: center;">
 
     <h1><?php echo $titulo ?></h1>
+    <div style="display: flex;">
     <div>
+    <h1>Anterior:</h1>
         <?php
         $sql = "SELECT * FROM musica WHERE reproducida = 1 ORDER BY id desc LIMIT 1";
         $do = mysqli_query($link, $sql);
@@ -42,14 +53,15 @@ $hayvideo = "";
             $video_id = explode("?v=", $video_query["urlspoti"]);
             $video_id = $video_id[1];
             $thumbnail = "temp/" . $video_query["miniatura"] . ".png";
-            echo '<img id="img" onload="color()" src="' . $thumbnail . '" height="auto" width="20%" alt="" />';
+            echo '<img id="img" onload="color()" src="' . $thumbnail . '" height="auto" width="100%" alt="" />';
         }
         ?>
     </div>
-    <img id="img-principal" onloadeddata="color()" src="<?php echo $miniatura ?>" height="auto" width="60%" alt="" />
+    <img id="img-principal" onloadeddata="color()" src="<?php echo $miniatura ?>" height="auto" width="100%" alt="" />
     <div>
+    <h1>Siguientes:</h1>
         <?php
-        $sql = "SELECT * FROM musica WHERE reproducida = 0 LIMIT 5";
+        $sql = "SELECT * FROM musica WHERE reproducida = 0 LIMIT 4";
         $do = mysqli_query($link, $sql);
         $video = 0;
         while ($video_query = mysqli_fetch_assoc($do)) {
@@ -58,11 +70,12 @@ $hayvideo = "";
                 $video_id = $video_id[1];
                 $hayvideo .= ";".$video_query["id"];
                 $thumbnail = "http://img.youtube.com/vi/" . $video_id . "/mqdefault.jpg";
-                echo '<img id="img" onload="color()" src="' . $thumbnail . '" height="auto" width="20%" alt="" />';
+                echo '<img id="img" onload="color()" src="' . $thumbnail . '" height="auto" width="100%" alt="" /><br>';
             }
             $video++;
         }
         ?>
+    </div>
     </div>
 </body>
 
