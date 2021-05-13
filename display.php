@@ -323,7 +323,6 @@ var updatetime = window.setInterval(function() {
     hours.innerHTML = h + ":";
     minutes.innerHTML = m + ":";
     seconds.innerHTML = s;
-    phase.innerHTML = am;
 }
 
 var interval = setInterval(clock, 500);
