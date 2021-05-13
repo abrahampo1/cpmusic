@@ -206,6 +206,8 @@ $motd = $motd["value"];
 
     .scroll-slow {
         overflow: hidden;
+        justify-content: center;
+        align-items: center;
     }
 
     .scroll-slow p {
