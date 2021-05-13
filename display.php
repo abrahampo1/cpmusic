@@ -125,6 +125,7 @@ $motd = $motd["value"];
         border-radius: 15px;
         background-color: whitesmoke;
         padding: 5px;
+        justify-content: center;
     }
 
     .hora {
