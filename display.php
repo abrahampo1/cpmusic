@@ -18,7 +18,6 @@ if ($do->num_rows > 0) {
     $tiempo = $video["tiempo"] + 1;
     $tiempo_total = $video["total_tiempo"];
     $ig_minita = str_replace("@", "", $ig_minita);
-    
 } else {
     $titulo = "No hay canciones ahora mismo.";
     $miniatura = "404.png";
@@ -40,26 +39,30 @@ $hayvideo = "";
 
     img {
         border-radius: 10px;
-        
+
     }
-    .ies{
+
+    .ies {
         width: 80%;
         height: auto;
         max-height: 90%;
     }
-    .ies-div{
+
+    .ies-div {
         text-align: center;
         width: 100%;
         height: auto;
         max-height: 90%;
     }
-    .video-div{
+
+    .video-div {
         text-align: center;
         background-color: transparent;
         background: none;
         width: 70%;
         max-width: 140vh !important;
     }
+
     #img-principal {
         box-shadow: black, 10, 10, 10;
     }
@@ -111,7 +114,7 @@ $hayvideo = "";
         -moz-box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
         box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
         max-height: 70vh;
-        
+
     }
 
     .instagram {
@@ -119,56 +122,62 @@ $hayvideo = "";
         background-color: whitesmoke;
         padding: 5px;
     }
+
     .hora {
         border-radius: 15px;
         font-size: 40px;
         background-color: whitesmoke;
         padding: 5px;
     }
+
     #myProgress {
-  width: 93%;
-  padding-left: 20px;
-  padding-right: 10px;
-  padding-top: -40px;
-}
-
-#myBar {
-  width: 1%;
-  border-radius: 7px;
-  height: 15px;
-  background-color: #04AA6D;
-}
-
-body {
-    animation: fadeInAnimation ease 1s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-}
-  .anterior{
-    animation: fadeInAnimation ease 2s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-  }
-  .siguiente{
-    width: 100%;
-    animation: fadeInAnimation ease 2s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-  }
-  .siguiente_text{
-    animation: fadeInAnimation ease 1s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-  }
-@keyframes fadeInAnimation {
-    0% {
-        opacity: 0;
+        width: 93%;
+        padding-left: 20px;
+        padding-right: 10px;
+        padding-top: -40px;
     }
-    100% {
-        opacity: 1;
-     }
-}
 
+    #myBar {
+        width: 1%;
+        border-radius: 7px;
+        height: 15px;
+        background-color: #04AA6D;
+    }
+
+    body {
+        animation: fadeInAnimation ease 1s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+
+    .anterior {
+        animation: fadeInAnimation ease 2s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+
+    .siguiente {
+        width: 100%;
+        animation: fadeInAnimation ease 2s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+
+    .siguiente_text {
+        animation: fadeInAnimation ease 1s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes fadeInAnimation {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
 </style>
 
 <head>
@@ -181,11 +190,11 @@ body {
     <h1><?php echo $titulo ?></h1>
     <div style="display: flex; width:100%; background-color: none">
         <div class="anterior" style="width: 15%;">
-            
+
             <?php
             $sql = "SELECT * FROM musica WHERE reproducida = 1 ORDER BY id desc LIMIT 1";
             $do = mysqli_query($link, $sql);
-            if($do->num_rows > 0){
+            if ($do->num_rows > 0) {
                 echo '<h1>Anterior:</h1>';
             }
             while ($video_query = mysqli_fetch_assoc($do)) {
@@ -202,7 +211,7 @@ body {
         if ($contenido == false) {
             echo '<div class="ies-div"><img class="ies" onerror="location.reload()" onloadeddata="color()" src="' . $miniatura . '" height="auto" width="100%" alt=""></div>';
         } else {
-            echo '<div class="video-div"><input type="hidden" id="video_tiempo" value="'.$tiempo.'"><input type="hidden" id="video_total" value="'.$tiempo_total.'"><video src="' . $videourl . '#t=' . $tiempo . '" id="videoclip" autoplay width="100%" height="auto"></video><div id="myProgress">
+            echo '<div class="video-div"><input type="hidden" id="video_tiempo" value="' . $tiempo . '"><input type="hidden" id="video_total" value="' . $tiempo_total . '"><video src="' . $videourl . '#t=' . $tiempo . '" id="videoclip" autoplay width="100%" height="auto"></video><div id="myProgress">
             <div id="myBar"></div>
           </div></div>';
         }
@@ -231,9 +240,9 @@ body {
     }
     ?>
     <div class="hora" style="position: fixed; right: 0; bottom: 0; display: flex">
-            <p id="hora"></p>
-            <p id="minuto"></p>
-        </div>
+        <p id="hora"></p>
+        <p id="minuto"></p>
+    </div>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -254,14 +263,23 @@ body {
     }
 </script>
 <script>
-var updatetime = window.setInterval(function() {
-    var elem = document.getElementById("myBar");
-    var tiempototal = document.getElementById("video_total").value;
-    var video = document.getElementById("videoclip");
-    var tiempo = video.currentTime;
-    var width = (tiempo/tiempototal)*100;
-    elem.style.width = width + "%";
-}, 500);
+    var updatetime = window.setInterval(function() {
+        var elem = document.getElementById("myBar");
+        var video = document.getElementById("videoclip");
+        if (video.complete) {
+            var tiempototal = document.getElementById("video_total").value;
+            var tiempo = video.currentTime;
+            var width = (tiempo / tiempototal) * 100;
+            elem.style.width = width + "%";
+        } else {
+            video.addEventListener('load', function() {
+                var tiempototal = document.getElementById("video_total").value;
+                var tiempo = video.currentTime;
+                var width = (tiempo / tiempototal) * 100;
+                elem.style.width = width + "%";
+            });
+        }
+    }, 500);
 </script>
 <script>
     var updatetime = window.setInterval(function() {
@@ -323,7 +341,7 @@ var updatetime = window.setInterval(function() {
                 if (response != document.getElementById("siguientes").innerHTML) {
                     document.getElementById("siguientes").style.width = "15%";
                     document.getElementById("siguientes").innerHTML = response;
-                }else if(response == ""){
+                } else if (response == "") {
                     document.getElementById("siguientes").style.width = "";
                 };
             },
@@ -335,36 +353,36 @@ var updatetime = window.setInterval(function() {
 
 <script>
     function clock() {
-    var hours = document.getElementById("hora");
-    var minutes = document.getElementById("minuto");
-    var seconds = document.getElementById("segundos");
+        var hours = document.getElementById("hora");
+        var minutes = document.getElementById("minuto");
+        var seconds = document.getElementById("segundos");
 
-    var h = new Date().getHours();
-    var m = new Date().getMinutes();
-    h = h < 10 ? "0" + h : h;
-    m = m < 10 ? "0" + m : m;
+        var h = new Date().getHours();
+        var m = new Date().getMinutes();
+        h = h < 10 ? "0" + h : h;
+        m = m < 10 ? "0" + m : m;
 
-    hours.innerHTML = h + ":";
-    minutes.innerHTML = m ;
-}
+        hours.innerHTML = h + ":";
+        minutes.innerHTML = m;
+    }
 
-var interval = setInterval(clock, 500);
+    var interval = setInterval(clock, 500);
 </script>
 
 <script>
-// this function must be defined in the global scope
-$(document).ready(function() {
-    $(".fadeIn").each(function() {
-        var src = $(this).data("src");
-        if (src) {
-            var img = new Image();
-            img.style.display = "none";
-            img.onload = function() {
-                $(this).fadeIn(1000);
-            };
-            $(this).append(img);            
-            img.src = src;
-        }
+    // this function must be defined in the global scope
+    $(document).ready(function() {
+        $(".fadeIn").each(function() {
+            var src = $(this).data("src");
+            if (src) {
+                var img = new Image();
+                img.style.display = "none";
+                img.onload = function() {
+                    $(this).fadeIn(1000);
+                };
+                $(this).append(img);
+                img.src = src;
+            }
+        });
     });
-});
 </script>
