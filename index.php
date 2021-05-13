@@ -219,15 +219,17 @@ if (isset($_POST['submit'])) {
                 $data = json_decode($response);
                 $value = json_decode(json_encode($data), true);
 
-                if($value["error"]["code"] == 403){
-                    
-                    $i++;
-                    var_dump($value);
-                    if($i == count($apis)){
-                        echo "Error con las APIS de google";
-                        exit;
+                if(isset($value["error"]["code"])){
+                    if($value["error"]["code"] == 403){
+                        $i++;
+                        var_dump($value);
+                        if($i == count($apis)){
+                            echo "Error con las APIS de google";
+                            exit;
+                        }
+                        cargarapi($i,$apikey,$keyword);
                     }
-                    cargarapi($i,$apikey,$keyword);
+                   
                 }
             }
             cargarapi($i,$apikey,$keyword);
