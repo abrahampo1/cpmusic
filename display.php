@@ -7,6 +7,7 @@ $id_video = "";
 $ig_minita = "franciscoasorey";
 $tiempo = 0;
 $tiempo_total = 0;
+$motd = "";
 if ($do->num_rows > 0) {
     $video = mysqli_fetch_assoc($do);
     $id_video = $video["id"];
@@ -24,7 +25,10 @@ if ($do->num_rows > 0) {
     $contenido = false;
 }
 $hayvideo = "";
-
+$sql = "SELECT * FROM ajustes WHERE nombre = 'motd'";
+$do = mysqli_query($link, $sql);
+$motd = mysqli_fetch_assoc($do);
+$motd = $motd["value"];
 
 ?>
 
@@ -256,7 +260,7 @@ $hayvideo = "";
         ?>
         <div style="width: 100%;">
         <div class="motd" style="position: fixed; right: 10%; bottom: 0; display: flex; width: 70%">
-            <p>Esto es un ejemplo de mensaje del dia</p>
+            <p><?php echo $motd?></p>
         </div>
         </div>
         <div class="hora" style="position: fixed; right: 0; bottom: 0; width: 10%; margin-left: 15px; margin-right: 15px; text-align: right">
