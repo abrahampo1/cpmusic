@@ -142,7 +142,7 @@ $motd = $motd["value"];
         background-color: whitesmoke;
         padding: 5px;
         height: 75px;
-        line-height: 0px;
+        line-height: 0;
     }
 
     #myProgress {
