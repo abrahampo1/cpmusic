@@ -110,6 +110,8 @@ $hayvideo = "";
         margin: 15px;
         background-color: transparent;
         background: none;
+        width: 100% !important;
+        height: auto !important;
     }
 
     .instagram {
