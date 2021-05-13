@@ -4,7 +4,7 @@ include("database.php");
 $sql = "SELECT * FROM musica WHERE reproducida = 0 LIMIT 1";
 $do = mysqli_query($link, $sql);
 $id_video = "";
-$ig_minita = "";
+$ig_minita = "franciscoasorey";
 $tiempo = 0;
 $tiempo_total = 0;
 if ($do->num_rows > 0) {
