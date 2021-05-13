@@ -107,7 +107,6 @@ $hayvideo = "";
         -webkit-box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
         -moz-box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
         box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
-        max-height: 90%;
         margin: 15px;
     }
 
