@@ -203,20 +203,22 @@ $motd = $motd["value"];
     .hora_text {
         text-align: right;
     }
+
     .scroll-slow {
- overflow: hidden;
-}
+        overflow: hidden;
+    }
+
     .scroll-slow p {
+        position: absolute;
         width: 100%;
-        z-index: 2;
         height: 100%;
         margin: 0;
-        line-height: 37px;
+        line-height: 50px;
         text-align: center;
         /* Starting position */
-        -moz-transform: translateX(90%);
-        -webkit-transform: translateX(90%);
-        transform: translateX(90%);
+        -moz-transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
         /* Apply animation to this element */
         -moz-animation: scroll-slow 25s linear infinite;
         -webkit-animation: scroll-slow 25s linear infinite;
@@ -226,39 +228,39 @@ $motd = $motd["value"];
     /* Move it (define the animation) */
     @-moz-keyframes scroll-slow {
         0% {
-            -moz-transform: translateX(90%);
+            -moz-transform: translateX(100%);
         }
 
         100% {
-            -moz-transform: translateX(-70%);
+            -moz-transform: translateX(-100%);
         }
     }
 
     @-webkit-keyframes scroll-slow {
         0% {
-            -webkit-transform: translateX(90%);
+            -webkit-transform: translateX(100%);
         }
 
         100% {
-            -webkit-transform: translateX(-70%);
+            -webkit-transform: translateX(-100%);
         }
     }
 
     @keyframes scroll-slow {
         0% {
-            -moz-transform: translateX(90%);
+            -moz-transform: translateX(100%);
             /* Browser bug fix */
-            -webkit-transform: translateX(90%);
+            -webkit-transform: translateX(100%);
             /* Browser bug fix */
-            transform: translateX(90%);
+            transform: translateX(100%);
         }
 
         100% {
-            -moz-transform: translateX(-70%);
+            -moz-transform: translateX(-100%);
             /* Browser bug fix */
-            -webkit-transform: translateX(-70%);
+            -webkit-transform: translateX(-100%);
             /* Browser bug fix */
-            transform: translateX(-70%);
+            transform: translateX(-100%);
         }
     }
 </style>
