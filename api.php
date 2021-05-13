@@ -28,7 +28,8 @@ if (isset($_POST["api"])) {
             if (isset($_POST["tiempo"])) {
                 $tiempo = $_POST["tiempo"];
                 $url = $_POST["url"];
-                $sql = "UPDATE `musica` SET `tiempo` = '$tiempo' WHERE `musica`.`urlspoti` = '$url';";
+                $total_tiempo = $_POST["total"];
+                $sql = "UPDATE `musica` SET `tiempo` = '$tiempo', `total_tiempo` = '$total_tiempo' WHERE `musica`.`urlspoti` = '$url';";
                 if ($do = mysqli_query($link, $sql)) {
                     echo 'WEB: Gracias por los datos bot-chan. >///<';
                 }

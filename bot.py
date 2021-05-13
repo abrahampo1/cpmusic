@@ -39,7 +39,8 @@ while True:
             myobj = {
                 'api': '123',
                 'url': url,
-                'tiempo': i
+                'tiempo': i,
+                'total': video.length
             }
             x = requests.post(url_api, data=myobj)
             time.sleep(1)
