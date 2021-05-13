@@ -165,7 +165,7 @@ $hayvideo = "";
         if ($contenido == false) {
             echo '<div class="ies-div"><img class="ies" onerror="location.reload()" onloadeddata="color()" src="' . $miniatura . '" height="auto" width="100%" alt=""></div>';
         } else {
-            echo '<div class="video-div"><input type="hidden" id="video_tiempo" value="'.$tiempo.'"><input type="hidden" id="video_total" value="'.$tiempo_total.'"><video src="' . $videourl . '#t=' . $tiempo . '" id="videoclip" autoplay muted width="100%" height="auto"></video><div id="myProgress">
+            echo '<div class="video-div"><input type="hidden" id="video_tiempo" value="'.$tiempo.'"><input type="hidden" id="video_total" value="'.$tiempo_total.'"><video src="' . $videourl . '#t=' . $tiempo . '" id="videoclip" autoplay width="100%" height="auto"></video><div id="myProgress">
             <div id="myBar"></div>
           </div></div>';
         }
