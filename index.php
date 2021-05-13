@@ -224,7 +224,7 @@ if (isset($_POST['submit'])) {
                     cargarapi();
                 }
             }
-            if($value == ""){
+            if(!isset($value)){
                 echo "Se ha excedido el uso del api de google";
                 exit;
             }
