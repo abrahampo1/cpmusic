@@ -224,7 +224,7 @@ if (isset($_POST['submit'])) {
                             echo "Error con las APIS de google";
                             exit;
                         }
-                    cargarapi($i,$apikey,$keyword);
+                    $value = cargarapi($i,$apikey,$keyword);
                    
                 }
                 print_r($value);
