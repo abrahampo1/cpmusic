@@ -118,6 +118,12 @@ $hayvideo = "";
         background-color: whitesmoke;
         padding: 5px;
     }
+    .hora {
+        border-radius: 15px;
+        font-size: 40px;
+        background-color: whitesmoke;
+        padding: 5px;
+    }
     #myProgress {
   width: 93%;
   padding-left: 20px;
@@ -195,6 +201,11 @@ $hayvideo = "";
         </div>';
     }
     ?>
+    <div class="hora" style="position: fixed; right: 0; bottom: 0; display: flex">
+            <p id="hora"></p>
+            <p id="minuto"></p>
+            <p id="segundos"></p>
+        </div>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -289,4 +300,30 @@ var updatetime = window.setInterval(function() {
         });
 
     }, 1000);
+</script>
+
+<script>
+    function clock() {
+    var hours = document.getElementById("hora");
+    var minutes = document.getElementById("minuto");
+    var seconds = document.getElementById("segundos");
+
+    var h = new Date().getHours();
+    var m = new Date().getMinutes();
+    var s = new Date().getSeconds();
+
+    if (h > 12) {
+    }
+
+    h = h < 10 ? "0" + h : h;
+    m = m < 10 ? "0" + m : m;
+    s = s < 10 ? "0" + s : s;
+
+    hours.innerHTML = h + ":";
+    minutes.innerHTML = m + ":";
+    seconds.innerHTML = s;
+    phase.innerHTML = am;
+}
+
+var interval = setInterval(clock, 500);
 </script>
