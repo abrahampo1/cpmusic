@@ -219,11 +219,8 @@ var updatetime = window.setInterval(function() {
     var video = document.getElementById("videoclip");
     var tiempo = video.duration % 60;
     var width = (tiempo/tiempototal)*100;
-    var id = setInterval(frame, 500);
-    function frame() {
-        elem.style.width = width + "%";
-    }
-}, 1000);
+    elem.style.width = width + "%";
+}, 500);
 </script>
 <script>
     var updatetime = window.setInterval(function() {
