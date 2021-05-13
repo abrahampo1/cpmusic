@@ -57,7 +57,7 @@ $hayvideo = "";
         text-align: center;
         background-color: transparent;
         background: none;
-        width: 100%;
+        width: 80%;
         max-width: 140vh !important;
     }
     #img-principal {
@@ -150,7 +150,7 @@ body {
     animation-fill-mode: forwards;
   }
   .siguiente{
-    width: 25%;
+    width: 100%;
     animation: fadeInAnimation ease 2s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
@@ -180,7 +180,7 @@ body {
 
     <h1><?php echo $titulo ?></h1>
     <div style="display: flex; height:90%; background-color: none">
-        <div class="anterior">
+        <div class="anterior" style="width: 10%;">
             
             <?php
             $sql = "SELECT * FROM musica WHERE reproducida = 1 ORDER BY id desc LIMIT 1";
@@ -211,7 +211,7 @@ body {
 
         <img style="display: none;" onerror="location.reload()" id="img-principal" onloadeddata="color()" src="<?php echo $miniatura ?>" height="auto" width="100%" alt="" />
 
-        <div id="siguientes" >
+        <div id="siguientes" style="width: 10%;">
 
         </div>
     </div>
