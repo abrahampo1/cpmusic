@@ -127,7 +127,7 @@ $hayvideo = "";
 <body id="back" onload="color()" style="text-align: center;">
 
     <h1><?php echo $titulo ?></h1>
-    <div style="display: flex; height:'100%'">
+    <div style="display: flex; height:90%; background-color: none">
         <div>
             
             <?php
