@@ -129,7 +129,7 @@ $hayvideo = "";
         background-color: whitesmoke;
         padding: 5px;
         padding-top: 0px;
-        height: 60px;
+        height: 65px;
         line-height: 0px;
     }
 
