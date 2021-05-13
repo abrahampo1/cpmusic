@@ -189,6 +189,9 @@ $hayvideo = "";
             opacity: 1;
         }
     }
+    p{
+        text-align: right;
+    }
 </style>
 
 <head>
