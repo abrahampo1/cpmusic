@@ -54,8 +54,8 @@ $hayvideo = "";
         text-align: center;
         background-color: transparent;
         background: none;
-        width: auto;
-        height: 100% !important;
+        width: 100%;
+        max-width: 120vh !important;
     }
     #img-principal {
         box-shadow: black, 10, 10, 10;
@@ -150,7 +150,7 @@ $hayvideo = "";
         if ($contenido == false) {
             echo '<div class="ies-div"><img class="ies" onerror="location.reload()" onloadeddata="color()" src="' . $miniatura . '" height="auto" width="100%" alt=""></div>';
         } else {
-            echo '<div class="video-div"><video src="' . $videourl . '#t=' . $tiempo . '" autoplay muted width="100%" height="auto"></video><div>';
+            echo '<div class="video-div"><video src="' . $videourl . '#t=' . $tiempo . '" autoplay muted width="70%" height="auto"></video></div>';
         }
 
         ?>
