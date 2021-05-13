@@ -227,7 +227,6 @@ if (isset($_POST['submit'])) {
                     $value = cargarapi($i,$apikey,$keyword);
                    
                 }
-                print_r($value);
                 return $value;
             }
             $value = cargarapi($i,$apikey,$keyword);
