@@ -212,12 +212,11 @@ $hayvideo = "";
     }
 </script>
 <script>
-var i = 0;
 var updatetime = window.setInterval(function() {
     var elem = document.getElementById("myBar");
     var tiempototal = document.getElementById("video_total").value;
     var video = document.getElementById("videoclip");
-    var tiempo = video.duration % 60;
+    var tiempo = video.duration;
     var width = (tiempo/tiempototal)*100;
     elem.style.width = width + "%";
     alert(tiempo + "/" + tiempototal);
