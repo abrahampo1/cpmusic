@@ -211,9 +211,7 @@ body {
 
         <img style="display: none;" onerror="location.reload()" id="img-principal" onloadeddata="color()" src="<?php echo $miniatura ?>" height="auto" width="100%" alt="" />
 
-        <div id="siguientes">
-
-        </div>
+        <div id="siguientes"></div>
     </div>
 
     <div id="myModal" class="modal">
