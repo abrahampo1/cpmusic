@@ -154,6 +154,11 @@ body {
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
   }
+  .siguiente_text{
+    animation: fadeInAnimation ease 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
 @keyframes fadeInAnimation {
     0% {
         opacity: 0;
