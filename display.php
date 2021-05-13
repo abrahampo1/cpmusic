@@ -52,10 +52,10 @@ $hayvideo = "";
     }
     .video-div{
         text-align: center;
+        background-color: transparent;
+        background: none;
         width: 100%;
-        height: auto;
-        padding: 20px;
-        max-height: 80vh;
+        height: auto !important;
     }
     #img-principal {
         box-shadow: black, 10, 10, 10;
@@ -108,10 +108,7 @@ $hayvideo = "";
         -moz-box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
         box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
         margin: 15px;
-        background-color: transparent;
-        background: none;
-        width: 100% !important;
-        height: auto !important;
+        
     }
 
     .instagram {
@@ -143,7 +140,7 @@ $hayvideo = "";
                 $video_id = explode("?v=", $video_query["urlspoti"]);
                 $video_id = $video_id[1];
                 $thumbnail = "temp/" . $video_query["miniatura"] . ".png";
-                echo '<img id="img" onload="color()" src="' . $thumbnail . '" height="auto" width="100%" alt="" />';
+                echo '<img id="img" onload="color()" src="' . $thumbnail . '" alt="" />';
             }
             ?>
         </div>
@@ -153,7 +150,7 @@ $hayvideo = "";
         if ($contenido == false) {
             echo '<div class="ies-div"><img class="ies" onerror="location.reload()" onloadeddata="color()" src="' . $miniatura . '" height="auto" width="100%" alt=""></div>';
         } else {
-            echo '<video src="' . $videourl . '#t=' . $tiempo . '" autoplay muted width="100%" height="auto"></video>';
+            echo '<div class="video-div"><video src="' . $videourl . '#t=' . $tiempo . '" autoplay muted width="100%" height="auto"></video><div>';
         }
 
         ?>
