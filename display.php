@@ -50,6 +50,12 @@ $hayvideo = "";
         height: auto;
         max-height: 90%;
     }
+    .video-div{
+        text-align: center;
+        width: 100%;
+        height: auto;
+        max-height: 90vh;
+    }
     #img-principal {
         box-shadow: black, 10, 10, 10;
     }
@@ -144,7 +150,7 @@ $hayvideo = "";
         if ($contenido == false) {
             echo '<div class="ies-div"><img class="ies" onerror="location.reload()" onloadeddata="color()" src="' . $miniatura . '" height="auto" width="100%" alt=""></div>';
         } else {
-            echo '<div class="ies-div"><video src="' . $videourl . '#t=' . $tiempo . '" autoplay muted width="100%" height="auto"></video></div>';
+            echo '<div class="video-div"><video src="' . $videourl . '#t=' . $tiempo . '" autoplay muted width="100%" height="auto"></video></div>';
         }
 
         ?>
