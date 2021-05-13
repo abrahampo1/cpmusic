@@ -54,7 +54,8 @@ $hayvideo = "";
         text-align: center;
         width: 100%;
         height: auto;
-        max-height: 70vh;
+        padding: 20px;
+        max-height: 80vh;
     }
     #img-principal {
         box-shadow: black, 10, 10, 10;
