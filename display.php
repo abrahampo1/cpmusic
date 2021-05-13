@@ -150,6 +150,7 @@ body {
     animation-fill-mode: forwards;
   }
   .siguiente{
+    width: 25%;
     animation: fadeInAnimation ease 2s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
