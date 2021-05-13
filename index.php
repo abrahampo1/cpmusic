@@ -230,9 +230,11 @@ if (isset($_POST['submit'])) {
                         cargarapi($i,$apikey,$keyword);
                     }
                    
+                }else{
+                    return $value;
                 }
             }
-            cargarapi($i,$apikey,$keyword);
+            $value = cargarapi($i,$apikey,$keyword);
             if(!isset($value)){
                 echo "Se ha excedido el uso del api de google";
                 exit;
