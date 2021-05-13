@@ -242,7 +242,7 @@ $hayvideo = "";
         </div>
 
     </div>
-    <div style="display: flex;">
+    <div style="display: flex; width:100%">
         <?php
         if ($ig_minita != "") {
             echo '<div class="instagram" style="position: fixed; left: 0; bottom: 0; display: flex; width: 20%">
