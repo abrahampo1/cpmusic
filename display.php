@@ -326,6 +326,8 @@ var updatetime = window.setInterval(function() {
                 if (response != document.getElementById("siguientes").innerHTML) {
                     document.getElementById("siguientes").style.width = "10%";
                     document.getElementById("siguientes").innerHTML = response;
+                }else if(response == ""){
+                    document.getElementById("siguientes").style.width = "";
                 };
             },
             error: function() {}
