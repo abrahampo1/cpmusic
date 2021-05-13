@@ -1,260 +1,244 @@
 <?php
-
 include("database.php");
-$sql = "SELECT * FROM musica WHERE reproducida = 0 LIMIT 1";
-$do = mysqli_query($link, $sql);
-$id_video = "";
-$ig_minita = "";
-$tiempo = 0;
-if ($do->num_rows > 0) {
-    $video = mysqli_fetch_assoc($do);
-    $id_video = $video["id"];
-    $miniatura = "temp/" . $video["miniatura"] . ".png";
-    $titulo = $video["titulo"];
-    $videourl = $video["video"];
-    $contenido = true;
-    $ig_minita = $video["insta"];
-    $tiempo = $video["tiempo"] + 1;
-    $ig_minita = str_replace("@", "", $ig_minita);
-} else {
-    $titulo = "No hay canciones ahora mismo.";
-    $miniatura = "404.png";
-    $contenido = false;
+define("MAX_RESULTS", 5);
+
+if (isset($_POST['submit'])) {
+    $keyword = $_POST['keyword'];
+
+    if (empty($keyword)) {
+        $response = array(
+            "type" => "error",
+            "message" => "El campo de busqueda no puede estar vacio."
+        );
+    }
 }
-$hayvideo = "";
+
 
 
 ?>
-
-<style>
-    * {
-        font-family: 'Montserrat', sans-serif;
-    }
-
-    h1 {
-        background-color: whitesmoke;
-    }
-
-    img {
-        border-radius: 10px;
-        
-    }
-    .ies{
-        width: 80%;
-        height: auto;
-        max-height: 90%;
-    }
-    .ies-div{
-        text-align: center;
-        width: 100%;
-        height: auto;
-        max-height: 90%;
-    }
-    #img-principal {
-        box-shadow: black, 10, 10, 10;
-    }
-
-    #img {
-        margin-top: 10px;
-    }
-
-    /* The Modal (background) */
-    .modal {
-        display: none;
-        /* Hidden by default */
-        position: fixed;
-        /* Stay in place */
-        z-index: 1;
-        /* Sit on top */
-        padding-top: 100px;
-        /* Location of the box */
-        left: 0;
-        top: 0;
-        width: 100%;
-        /* Full width */
-        height: 100%;
-        /* Full height */
-        overflow: auto;
-        /* Enable scroll if needed */
-        background-color: rgb(0, 0, 0);
-        /* Fallback color */
-        background-color: rgba(0, 0, 0, 0.4);
-        /* Black w/ opacity */
-    }
-
-    div {
-        height: auto;
-    }
-
-    /* Modal Content */
-    .modal-content {
-        background-color: #fefefe;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-    }
-
-    video {
-        border-radius: 25px;
-        -webkit-box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
-        box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
-        max-width: 75%;
-        min-height: 75%;
-        margin: 15px;
-    }
-
-    .instagram {
-        border-radius: 15px;
-        background-color: whitesmoke;
-        padding: 5px;
-    }
-
-</style>
+<!doctype html>
+<html>
 
 <head>
+    <title>Musica</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        button{
+            background: none;
+            color: inherit;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;
+        }
+
+        body {
+            width: 99%;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .search-form-container {
+            background: #F0F0F0;
+            border: #e0dfdf 1px solid;
+            padding: 20px;
+            border-radius: 2px;
+        }
+
+        .input-row {
+            margin-bottom: 20px;
+        }
+
+        .input-field {
+            width: 100%;
+            border-radius: 30px;
+            padding: 10px;
+            text-align: center;
+            font-size: 20px;
+            border: #e0dfdf 1px solid;
+        }
+
+        .btn-submit {
+            background: #333;
+            border: #1d1d1d 1px solid;
+            color: #f0f0f0;
+            font-size: 0.9em;
+            width: 100px;
+            height: 50px;
+            border-radius: 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .videos-data-container {
+            padding: 20px;
+            border-radius: 2px;
+        }
+
+        .response {
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 2px;
+        }
+
+        .error {
+            background: #fdcdcd;
+            border: #ecc0c1 1px solid;
+        }
+
+        .success {
+            background: #c5f3c3;
+            border: #bbe6ba 1px solid;
+        }
+
+        .result-heading {
+            margin: 20px 0px;
+            padding: 20px 10px 5px 0px;
+            border-bottom: #e0dfdf 1px solid;
+        }
+
+        iframe {
+            border: 0px;
+        }
+
+        .video-tile {
+            display: inline-block;
+            margin: 10px 10px 20px 10px;
+        }
+
+        .videoDiv {
+            width: 250px;
+            height: 150px;
+            display: inline-block;
+        }
+
+        .videoTitle {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .videoDesc {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .videoInfo {
+            width: 250px;
+        }
+    </style>
+
 </head>
 
-<body id="back" onload="color()" style="text-align: center;">
-
-    <h1><?php echo $titulo ?></h1>
-    <div style="display: flex; height:'auto'">
-        <div>
-            
-            <?php
-            $sql = "SELECT * FROM musica WHERE reproducida = 1 ORDER BY id desc LIMIT 1";
-            $do = mysqli_query($link, $sql);
-            if($do->num_rows > 0){
-                echo '<h1>Anterior:</h1>';
-            }
-            while ($video_query = mysqli_fetch_assoc($do)) {
-                $video_id = explode("?v=", $video_query["urlspoti"]);
-                $video_id = $video_id[1];
-                $thumbnail = "temp/" . $video_query["miniatura"] . ".png";
-                echo '<img id="img" onload="color()" src="' . $thumbnail . '" height="auto" width="100%" alt="" />';
-            }
-            ?>
-        </div>
-
-        <?php
-
-        if ($contenido == false) {
-            echo '<div class="ies-div"><img class="ies" onerror="location.reload()" onloadeddata="color()" src="' . $miniatura . '" height="auto" width="100%" alt=""></div>';
-        } else {
-            echo '<video src="' . $videourl . '#t=' . $tiempo . '" autoplay muted width="100%" height="auto"></video>';
-        }
-
-        ?>
-
-        <img style="display: none;" onerror="location.reload()" id="img-principal" onloadeddata="color()" src="<?php echo $miniatura ?>" height="auto" width="100%" alt="" />
-
-        <div id="siguientes">
-
-        </div>
-    </div>
-
-    <div id="myModal" class="modal">
-
-        <!-- Modal content -->
-        <div class="modal-content">
-            <p id="noticia">Some text in the Modal..</p>
-        </div>
-
-    </div>
+<body>
     <?php
-    if ($ig_minita != "") {
-        echo '<div class="instagram" style="position: fixed; left: 0; bottom: 0; display: flex">
-        <img style="padding-top:5px; margin-left:5px" width="50px" height="50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/768px-Instagram_logo_2016.svg.png">
-        <h3 style="margin-left: 10px">@' . $ig_minita . '<h3>
-        </div>';
+    if(isset($_POST["video_id"])){
+        $video_id = $_POST["video_id"];
+        $insta = "";
+        if(isset($_POST["insta"])){
+            $insta = $_POST["insta"];
+        }
+        $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`) VALUES (NULL, 'https://www.youtube.com/watch?v=$video_id', '', '', '0', '', '$insta', 0);";
+        if(mysqli_query($link, $sql)){
+            echo '<h2>El video se ha puesto a la cola.</h2><br><br><a class="btn-submit" style="text-decoration:none" type="submit" name="submit" href="videos.php" value="Inicio">Inicio</a>';
+            exit;
+        }
+    }
+    if(isset($_POST["videoid"])){
+        $videoid = $_POST["videoid"];
+        $title = $_POST["title"];
+        echo '<h2>Has seleccionado '.$title.'</h2><br><br>';
+        echo '<img style="border-radius:20px" src="http://img.youtube.com/vi/'.$videoid.'/mqdefault.jpg" height="auto" width="40%">';
+        echo '<br><br><p style="font-size:25px">Opcional<p><hr>';
+        echo '<form method="post"><div class="input-row"><input name="insta" class="input-field" type="text" placeholder="Escribe tu @ de insta"></div><input type="hidden" name="video_id" value="'.$videoid.'">';
+        echo '<input class="btn-submit" type="submit" value="→"></form>';
+        exit;
     }
     ?>
+    <h2>Pon tu canción favorita en el hilo</h2>
+    <div class="">
+        <form id="keywordForm" method="post" action="">
+            <div class="input-row">
+                <input class="input-field" type="search" id="keyword" name="keyword" placeholder="Buscar">
+            </div>
+
+            <input class="btn-submit" type="submit" name="submit" value="→">
+        </form>
+    </div>
+
+    <?php if (!empty($response)) { ?>
+        <div class="response <?php echo $response["type"]; ?>"> <?php echo $response["message"]; ?> </div>
+    <?php } ?>
+    <?php
+    if (isset($_POST['submit'])) {
+
+        if (!empty($keyword)) {
+            $sql = "SELECT * FROM ajustes WHERE nombre = 'googleapi'";
+            $do = mysqli_query($link, $sql);
+            $apikey = mysqli_fetch_assoc($do);
+            $apikey = $apikey["value"];
+            $keyword = urlencode($keyword);
+            $googleApiUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=' . $keyword . '&maxResults=' . MAX_RESULTS . '&key=' . $apikey;
+
+            $ch = curl_init();
+
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_URL, $googleApiUrl);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+            curl_setopt($ch, CURLOPT_VERBOSE, 0);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            $response = curl_exec($ch);
+
+            curl_close($ch);
+            $data = json_decode($response);
+            $value = json_decode(json_encode($data), true);
+    ?>
+
+            <div class="result-heading">Sobre <?php echo MAX_RESULTS; ?> Resultados</div>
+            <div class="videos-data-container" id="SearchResultsDiv">
+
+                <?php
+                for ($i = 0; $i < MAX_RESULTS; $i++) {
+                    if (isset($value['items'][$i]['id']['videoId'])) {
+                        $videoId = $value['items'][$i]['id']['videoId'];
+                        $title = $value['items'][$i]['snippet']['title'];
+                        $description = $value['items'][$i]['snippet']['channelTitle'];
+                ?>
+
+                        <div class="video-tile">
+                            <div class="videoDiv">
+                                <form action="" method="post">
+                                    <input type="hidden" name="videoid" value="<?php echo $videoId ?>">
+                                    <input type="hidden" name="title" value="<?php echo $title ?>">
+                                <button type="submit" style="text-decoration: none;"><img style="border-radius: 15px;" src="http://img.youtube.com/vi/<?php echo $videoId ?>/mqdefault.jpg" height="auto" width="100%" alt=""></button>
+                                </form>
+                            </div>
+                            <div class="videoInfo">
+                                <div class="videoTitle"><b><?php echo $title; ?></b></div>
+                                <div class="videoDesc"><?php echo $description; ?></div>
+                            </div>
+                        </div>
+        <?php
+                    }
+                }
+            }
+        }
+        ?>
+
+            </div>
+
+
 </body>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
-
-<script>
-    // Make sure image is finished loading
-    function color() {
-        const img = document.getElementById('img-principal');
-        const colorThief = new ColorThief();
-        if (img.complete) {
-            document.body.style.backgroundColor = "rgb(" + colorThief.getColor(img) + ")";
-        } else {
-            img.addEventListener('load', function() {
-                document.body.style.backgroundColor = "rgb(" + colorThief.getColor(img) + ")";
-            });
-        }
-    }
-</script>
-
-<script>
-    var updatetime = window.setInterval(function() {
-        var apid = '<?php echo $id_video; ?>';
-        var nuevo = '<?php echo $hayvideo; ?>';
-        $.ajax({
-            type: 'post',
-            url: 'ajax.php',
-            data: {
-                next: apid,
-                nuevo: nuevo,
-            },
-            success: function(response) {
-                if (response == "terminada" || response == "nuevo") {
-                    setTimeout(function() {
-                        location.reload();
-                    }, 5000);
-                };
-            },
-            error: function() {}
-        });
-
-    }, 1000);
-</script>
-
-<script>
-    var anuncios = window.setInterval(function() {
-        $.ajax({
-            type: 'post',
-            url: 'ajax.php',
-            data: {
-                anuncio: 'active',
-            },
-            success: function(response) {
-                if (response.includes("anuncio")) {
-                    var noticia = response.split(":");
-                    document.getElementById("noticia").innerHTML = noticia[1];
-                    document.getElementById("myModal").style.display = "block";
-
-                } else {
-                    document.getElementById("myModal").style.display = "none";
-                };
-            },
-            error: function() {}
-        });
-
-    }, 1000);
-</script>
-
-<script>
-    var siguientes = window.setInterval(function() {
-        $.ajax({
-            type: 'post',
-            url: 'ajax.php',
-            data: {
-                nuevo: 'paquete',
-            },
-            success: function(response) {
-                if (response != document.getElementById("siguientes").innerHTML) {
-                    document.getElementById("siguientes").innerHTML = response;
-                };
-            },
-            error: function() {}
-        });
-
-    }, 1000);
-</script>
+</html>
