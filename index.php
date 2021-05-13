@@ -201,9 +201,8 @@ if (isset($_POST['submit'])) {
             $apikey = $apikey["value"];
             $apis = explode(";", $apikey);
             $keyword = urlencode($keyword);
-            $i = 1;
             
-            function cargarapi(){
+            function cargarapi($i,$apis,$keyword){
                 $googleApiUrl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q='.$apis[$i].'&safeSearch=strict&type=video&videoCategoryId=10&videoDuration=short&key='.$apikey;
 
                 $ch = curl_init();
@@ -222,10 +221,10 @@ if (isset($_POST['submit'])) {
 
                 if($data["error"]["code"] == 403){
                     $i++;
-                    cargarapi();
+                    cargarapi($i,$apis,$keyword);
                 }
             }
-            cargarapi();
+            cargarapi($i,$apis,$keyword);
             if(!isset($value)){
                 echo "Se ha excedido el uso del api de google";
                 exit;
