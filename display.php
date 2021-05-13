@@ -354,7 +354,18 @@ var interval = setInterval(clock, 500);
 
 <script>
 // this function must be defined in the global scope
-window.fadeIn = function(obj) {
-    $(obj).fadeIn(1000);
-}
+$(document).ready(function() {
+    $(".fadeIn").each(function() {
+        var src = $(this).data("src");
+        if (src) {
+            var img = new Image();
+            img.style.display = "none";
+            img.onload = function() {
+                $(this).fadeIn(1000);
+            };
+            $(this).append(img);            
+            img.src = src;
+        }
+    });
+});
 </script>
