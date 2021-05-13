@@ -58,7 +58,7 @@ $hayvideo = "";
         background-color: transparent;
         background: none;
         width: 100%;
-        max-width: 120vh !important;
+        max-width: 140vh !important;
     }
     #img-principal {
         box-shadow: black, 10, 10, 10;
