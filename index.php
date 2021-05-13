@@ -219,7 +219,7 @@ if (isset($_POST['submit'])) {
                 $data = json_decode($response);
                 $value = json_decode(json_encode($data), true);
 
-                if($data["error"]["code"] == 403){
+                if($value["error"]["code"] == 403){
                     $i++;
                     cargarapi($i,$apis,$keyword);
                 }
