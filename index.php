@@ -136,6 +136,9 @@ if (isset($_POST['submit'])) {
         .videoInfo {
             width: 250px;
         }
+        .inicio{
+            padding: 10px;
+        }
     </style>
 
 </head>
@@ -150,7 +153,7 @@ if (isset($_POST['submit'])) {
         }
         $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`) VALUES (NULL, 'https://www.youtube.com/watch?v=$video_id', '', '', '0', '', '$insta', 0);";
         if(mysqli_query($link, $sql)){
-            echo '<h2>El video se ha puesto a la cola.</h2><br><br><a class="btn-submit" style="text-decoration:none" type="submit" name="submit" href="videos.php" value="Inicio">Inicio</a>';
+            echo '<h2>El video se ha puesto a la cola.</h2><br><br><a class="btn-submit inicio" style="text-decoration:none" type="submit" name="submit" href="/" value="Inicio">Inicio</a>';
             exit;
         }
     }
@@ -242,3 +245,9 @@ if (isset($_POST['submit'])) {
 </body>
 
 </html>
+
+<script>
+    if (window.history.replaceState) { // verificamos disponibilidad
+    window.history.replaceState(null, null, window.location.href);
+}
+</script>
