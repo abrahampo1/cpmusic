@@ -206,6 +206,7 @@ $motd = $motd["value"];
         width: 100%;
         height: 100%;
         margin: 0;
+        z-index: -1;
         line-height: 37px;
         text-align: center;
         /* Starting position */
