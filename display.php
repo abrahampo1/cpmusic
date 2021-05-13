@@ -279,7 +279,7 @@ var updatetime = window.setInterval(function() {
                 if (response == "terminada" || response == "nuevo") {
                     setTimeout(function() {
                         location.reload();
-                    }, 5000);
+                    }, 100);
                 };
             },
             error: function() {}
