@@ -266,19 +266,12 @@ $hayvideo = "";
     var updatetime = window.setInterval(function() {
         var elem = document.getElementById("myBar");
         var video = document.getElementById("videoclip");
-        if (video.complete) {
-            var tiempototal = document.getElementById("video_total").value;
-            var tiempo = video.currentTime;
-            var width = (tiempo / tiempototal) * 100;
-            elem.style.width = width + "%";
-        } else {
             video.addEventListener('load', function() {
                 var tiempototal = document.getElementById("video_total").value;
                 var tiempo = video.currentTime;
                 var width = (tiempo / tiempototal) * 100;
                 elem.style.width = width + "%";
             });
-        }
     }, 500);
 </script>
 <script>
