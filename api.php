@@ -63,7 +63,7 @@ if (isset($_POST["api"])) {
             }
             if (isset($_POST["terminado"])) {
                 $url = $_POST["terminado"];
-                $sql = "SELECT * FROM musica WHERE urlspoti = '$url' LIMIT 1;";
+                $sql = "SELECT * FROM musica WHERE urlspoti = '$url' and reproducida = 0 LIMIT 1;";
                 $do = mysqli_query($link, $sql);
                 $result = mysqli_fetch_assoc($do);
                 $video_id = $result["id"];
