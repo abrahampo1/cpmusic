@@ -128,7 +128,7 @@ $hayvideo = "";
 
     <h1><?php echo $titulo ?></h1>
     <div style="display: flex; height:90%; background-color: none">
-        <div>
+        <div style="width: 100%;">
             
             <?php
             $sql = "SELECT * FROM musica WHERE reproducida = 1 ORDER BY id desc LIMIT 1";
