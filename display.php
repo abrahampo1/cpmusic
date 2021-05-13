@@ -18,6 +18,7 @@ if ($do->num_rows > 0) {
     $tiempo = $video["tiempo"] + 1;
     $tiempo_total = $video["total_tiempo"];
     $ig_minita = str_replace("@", "", $ig_minita);
+    
 } else {
     $titulo = "No hay canciones ahora mismo.";
     $miniatura = "404.png";
