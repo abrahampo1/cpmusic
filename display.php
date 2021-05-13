@@ -285,7 +285,7 @@ var updatetime = window.setInterval(function() {
             error: function() {}
         });
 
-    }, 1000);
+    }, 100);
 </script>
 
 <script>
