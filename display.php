@@ -216,7 +216,7 @@ var updatetime = window.setInterval(function() {
     var elem = document.getElementById("myBar");
     var tiempototal = document.getElementById("video_total").value;
     var video = document.getElementById("videoclip");
-    var tiempo = video.duration;
+    var tiempo = video.currentTime;
     var width = (tiempo/tiempototal)*100;
     elem.style.width = width + "%";
     alert(tiempo + "/" + tiempototal);
