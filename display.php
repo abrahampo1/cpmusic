@@ -252,7 +252,7 @@ $hayvideo = "";
         }
         ?>
         <div style="width: 100%;">
-        <div class="motd" style="position: fixed; right: 10%; bottom: 0; display: flex; width: 100%">
+        <div class="motd" style="position: fixed; right: 10%; bottom: 0; display: flex; width: 70%">
             <p>Esto es un ejemplo de mensaje del dia</p>
         </div>
         </div>
