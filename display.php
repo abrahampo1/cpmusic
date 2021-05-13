@@ -241,21 +241,24 @@ $hayvideo = "";
         </div>
 
     </div>
+    <div style="display: flex;">
     <?php
     if ($ig_minita != "") {
-        echo '<div class="instagram" style="position: fixed; left: 0; bottom: 0; display: flex">
+        echo '<div class="instagram" style="position: fixed; left: 0; bottom: 0; display: flex; width: 20%">
         <img style="padding-top:5px; margin-left:5px" width="50px" height="50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/768px-Instagram_logo_2016.svg.png">
         <h3 style="margin-left: 10px">@' . $ig_minita . '<h3>
         </div>';
     }
     ?>
-    <div class="hora" style="position: fixed; right: 0; bottom: 0; display: flex">
+    <div class="hora" style="position: fixed; right: 0; bottom: 0; display: flex; width: 10%">
         <p id="hora"></p>
         <p id="minuto"></p>
     </div>
-    <div class="motd" style="position: fixed; right: 120px; bottom: 0; display: flex; width: 90%">
+    <div class="motd" style="position: fixed; right: 120px; bottom: 0; display: flex; width: 70%">
         <p>Esto es un ejemplo de mensaje del dia</p>
     </div>
+    </div>
+    
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
