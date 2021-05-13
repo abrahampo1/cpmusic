@@ -205,9 +205,6 @@ $motd = $motd["value"];
     }
     .scroll-slow {
  overflow: hidden;
- background: yellow;
- color: orange;
- border: 1px solid orange;
 }
     .scroll-slow p {
         width: 100%;
