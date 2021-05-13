@@ -128,7 +128,14 @@ $hayvideo = "";
         font-size: 40px;
         background-color: whitesmoke;
         padding: 5px;
-        padding-top: 0px;
+        height: 65px;
+        line-height: 0px;
+    }
+    .motd {
+        border-radius: 15px;
+        font-size: 40px;
+        background-color: whitesmoke;
+        padding: 5px;
         height: 65px;
         line-height: 0px;
     }
@@ -245,6 +252,9 @@ $hayvideo = "";
     <div class="hora" style="position: fixed; right: 0; bottom: 0; display: flex">
         <p id="hora"></p>
         <p id="minuto"></p>
+    </div>
+    <div class="motd" style="position: fixed; right: 120px; bottom: 0; display: flex">
+        <p>Esto es un ejemplo de mensaje del dia</p>
     </div>
 </body>
 
