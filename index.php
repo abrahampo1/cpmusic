@@ -199,7 +199,7 @@ if (isset($_POST['submit'])) {
             $apikey = mysqli_fetch_assoc($do);
             $apikey = $apikey["value"];
             $keyword = urlencode($keyword);
-            $googleApiUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=' . $keyword . '&maxResults=' . MAX_RESULTS . '&key=' . $apikey;
+            $googleApiUrl = 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=' . $keyword . '&safeSearch=strict&type=video&videoCategoryId=10&videoDuration=short&maxResults=' . MAX_RESULTS . '&key=' . $apikey;
 
             $ch = curl_init();
 
