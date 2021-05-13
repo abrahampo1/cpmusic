@@ -44,7 +44,7 @@ while True:
             x = requests.post(url_api, data=myobj)
             time.sleep(1)
             i += 1
-            print(str(i) +"/"+ str(video.length))
+            print(str(i) +"/"+ str(video.length),end='\r')
 
         print("Terminado rey.")
         video = False
@@ -53,6 +53,7 @@ while True:
             'terminado': url
         }
         x = requests.post(url_api, data=myobj)
+        print(x.text)
     else:
         time.sleep(3)
         print("Esperando URL...")
