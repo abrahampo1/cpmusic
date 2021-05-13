@@ -202,6 +202,7 @@ if (isset($_POST['submit'])) {
             $apis = explode(";", $apikey);
             $keyword = urlencode($keyword);
             $i = 1;
+            cargarapi();
             function cargarapi(){
                 $googleApiUrl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q='.$apis[$i].'&safeSearch=strict&type=video&videoCategoryId=10&videoDuration=short&key='.$apikey;
 
