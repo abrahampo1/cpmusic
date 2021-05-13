@@ -218,7 +218,6 @@ if (isset($_POST['submit'])) {
                 curl_close($ch);
                 $data = json_decode($response);
                 $value = json_decode(json_encode($data), true);
-
                 if(isset($value["error"]["code"])){
                     $i++;
                         if($i == count($apis)){
@@ -228,7 +227,7 @@ if (isset($_POST['submit'])) {
                     cargarapi($i,$apikey,$keyword);
                    
                 }
-                var_dump($value);
+                print_r($value);
                 return $value;
             }
             $value = cargarapi($i,$apikey,$keyword);
