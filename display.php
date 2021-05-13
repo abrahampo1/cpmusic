@@ -301,7 +301,6 @@ $hayvideo = "";
             },
             error: function() {}
         });
-
     }, 100);
 </script>
 

@@ -7,15 +7,19 @@ if (isset($_POST["next"])) {
         $do = mysqli_query($link, $sql);
         $result = mysqli_fetch_assoc($do);
         if ($result["reproducida"] == 1) {
-            echo "terminada";
+            $sql = "SELECT * FROM musica WHERE reproducida = 0 and datos = 1";
+            $do = mysqli_query($link, $sql);
+            if ($do->num_rows > 0) {
+                echo 'terminada';
+            }
             exit;
         } else {
         }
-    }else{
-        $sql = "SELECT * FROM musica WHERE reproducida = 0";
+    } else {
+        $sql = "SELECT * FROM musica WHERE reproducida = 0 and datos = 1";
         $do = mysqli_query($link, $sql);
-        if($do->num_rows > 0){
-            echo'terminada';
+        if ($do->num_rows > 0) {
+            echo 'terminada';
         }
     }
 }
@@ -23,7 +27,7 @@ if (isset($_POST["nuevo"])) {
     $sql = "SELECT * FROM musica WHERE reproducida = 0 LIMIT 4";
     $do = mysqli_query($link, $sql);
     $video = 0;
-    if($do->num_rows > 1){
+    if ($do->num_rows > 1) {
         echo '<h1 style="width:100%" class="siguiente_text">Siguientes:</h1>';
     }
     while ($video_query = mysqli_fetch_assoc($do)) {

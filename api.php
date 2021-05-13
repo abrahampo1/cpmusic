@@ -54,7 +54,11 @@ if (isset($_POST["api"])) {
                 $output = "temp/" . $random . ".png";
                 file_put_contents($output, file_get_contents($miniatura));
                 $titulo = str_replace("'", " ", $titulo);
-                $sql = "UPDATE `musica` SET `miniatura` = '$random', `titulo` = '$titulo', `video` = '$videourl'  WHERE `musica`.`urlspoti` = '$url';";
+                $sql = "SELECT * FROM musica WHERE urlspoti = '$url' and reproducida = 0 LIMIT 1;";
+                $do = mysqli_query($link, $sql);
+                $result = mysqli_fetch_assoc($do);
+                $video_id = $result["id"];
+                $sql = "UPDATE `musica` SET `miniatura` = '$random', `titulo` = '$titulo', `video` = '$videourl', `datos` = 1  WHERE `musica`.`id` = '$video_id';";
                 if ($do = mysqli_query($link, $sql)) {
                     echo 'WEB: Gracias por los datos bot-chan. >///<';
                 } else {
