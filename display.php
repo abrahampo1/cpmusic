@@ -189,7 +189,7 @@ $hayvideo = "";
             opacity: 1;
         }
     }
-    p{
+    .hora_text{
         text-align: right;
     }
 </style>
@@ -260,8 +260,8 @@ $hayvideo = "";
         </div>
         </div>
         <div class="hora" style="position: fixed; right: 0; bottom: 0; display: flex; width: 10%; margin-left: 15px; margin-right: 15px; text-align: right">
-            <p id="hora"></p>
-            <p id="minuto"></p>
+            <p class="hora_text" id="hora"></p>
+            <p class="hora_text" id="minuto"></p>
         </div>
 
     </div>
