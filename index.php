@@ -155,6 +155,11 @@ if (isset($_POST['submit'])) {
         if(isset($_POST["insta"])){
             $insta = $_POST["insta"];
         }
+        $insta = str_replace("<", "", $insta);
+        $insta = str_replace(">", "", $insta);
+        if(strlen($insta) > 20){
+            $insta = "";
+        }
         $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`) VALUES (NULL, 'https://www.youtube.com/watch?v=$video_id', '', '', '0', '', '$insta', 0);";
         if(mysqli_query($link, $sql)){
             header("location: /?e=1");
@@ -166,7 +171,7 @@ if (isset($_POST['submit'])) {
         echo '<h2>Has seleccionado '.$title.'</h2><br><br>';
         echo '<img style="border-radius:20px" src="http://img.youtube.com/vi/'.$videoid.'/mqdefault.jpg" height="auto" width="40%">';
         echo '<br><br><p style="font-size:25px">Opcional<p><hr>';
-        echo '<form method="post"><div class="input-row"><input name="insta" class="input-field" type="text" placeholder="Escribe tu @ de insta"></div><input type="hidden" name="video_id" value="'.$videoid.'">';
+        echo '<form method="post"><div class="input-row"><input id="ig-minita" name="insta" class="input-field" type="text" placeholder="Escribe tu @ de insta"></div><input type="hidden" name="video_id" value="'.$videoid.'">';
         echo '<input class="btn-submit" type="submit" value="→"></form>';
         exit;
     }
@@ -253,4 +258,13 @@ if (isset($_POST['submit'])) {
     if (window.history.replaceState) { // verificamos disponibilidad
     window.history.replaceState(null, null, window.location.href);
 }
+</script>
+
+<script>
+    function igminita(){
+        var iglargo = document.getElementById("ig-minita").value;
+        if(iglargo.length >= 20){
+            iglargo = "";
+        }
+    }
 </script>
