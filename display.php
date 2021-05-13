@@ -220,6 +220,7 @@ var updatetime = window.setInterval(function() {
     var tiempo = video.duration % 60;
     var width = (tiempo/tiempototal)*100;
     elem.style.width = width + "%";
+    alert(tiempo + "/" + tiempototal);
 }, 500);
 </script>
 <script>
