@@ -57,7 +57,7 @@ $hayvideo = "";
         text-align: center;
         background-color: transparent;
         background: none;
-        width: 80%;
+        width: 70%;
         max-width: 140vh !important;
     }
     #img-principal {
@@ -180,7 +180,7 @@ body {
 
     <h1><?php echo $titulo ?></h1>
     <div style="display: flex; width:100%; background-color: none">
-        <div class="anterior" style="width: 10%;">
+        <div class="anterior" style="width: 15%;">
             
             <?php
             $sql = "SELECT * FROM musica WHERE reproducida = 1 ORDER BY id desc LIMIT 1";
@@ -324,7 +324,7 @@ var updatetime = window.setInterval(function() {
             },
             success: function(response) {
                 if (response != document.getElementById("siguientes").innerHTML) {
-                    document.getElementById("siguientes").style.width = "10%";
+                    document.getElementById("siguientes").style.width = "15%";
                     document.getElementById("siguientes").innerHTML = response;
                 }else if(response == ""){
                     document.getElementById("siguientes").style.width = "";
