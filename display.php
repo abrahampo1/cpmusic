@@ -211,7 +211,7 @@ body {
 
         <img style="display: none;" onerror="location.reload()" id="img-principal" onloadeddata="color()" src="<?php echo $miniatura ?>" height="auto" width="100%" alt="" />
 
-        <div id="siguientes" style="width: 10%;">
+        <div id="siguientes">
 
         </div>
     </div>
@@ -324,6 +324,7 @@ var updatetime = window.setInterval(function() {
             },
             success: function(response) {
                 if (response != document.getElementById("siguientes").innerHTML) {
+                    document.getElementById("siguientes").style.width = "10%";
                     document.getElementById("siguientes").innerHTML = response;
                 };
             },
