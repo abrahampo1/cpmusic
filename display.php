@@ -146,7 +146,7 @@ $motd = $motd["value"];
         padding: 5px;
         height: 75px;
         line-height: 0;
-        z-index: -1;
+        z-index: 2;
         align-items: center;
     }
 
@@ -205,9 +205,9 @@ $motd = $motd["value"];
 
     .scroll-slow p {
         width: 100%;
+        z-index: 2;
         height: 100%;
         margin: 0;
-        z-index: -2;
         line-height: 37px;
         text-align: center;
         /* Starting position */
