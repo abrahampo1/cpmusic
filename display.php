@@ -221,39 +221,39 @@ $motd = $motd["value"];
     /* Move it (define the animation) */
     @-moz-keyframes scroll-slow {
         0% {
-            -moz-transform: translateX(100%);
+            -moz-transform: translateX(90%);
         }
 
         100% {
-            -moz-transform: translateX(-100%);
+            -moz-transform: translateX(-70%);
         }
     }
 
     @-webkit-keyframes scroll-slow {
         0% {
-            -webkit-transform: translateX(100%);
+            -webkit-transform: translateX(90%);
         }
 
         100% {
-            -webkit-transform: translateX(-100%);
+            -webkit-transform: translateX(-70%);
         }
     }
 
     @keyframes scroll-slow {
         0% {
-            -moz-transform: translateX(100%);
+            -moz-transform: translateX(90%);
             /* Browser bug fix */
-            -webkit-transform: translateX(100%);
+            -webkit-transform: translateX(90%);
             /* Browser bug fix */
-            transform: translateX(100%);
+            transform: translateX(90%);
         }
 
         100% {
-            -moz-transform: translateX(-100%);
+            -moz-transform: translateX(-70%);
             /* Browser bug fix */
-            -webkit-transform: translateX(-100%);
+            -webkit-transform: translateX(-70%);
             /* Browser bug fix */
-            transform: translateX(-100%);
+            transform: translateX(-70%);
         }
     }
 </style>
