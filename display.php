@@ -120,7 +120,7 @@ $hayvideo = "";
     }
     #myProgress {
   width: 93%;
-  padding-left: 40px;
+  padding-left: 20px;
   padding-right: 10px;
   padding-top: -40px;
 }
