@@ -3,7 +3,7 @@ import vlc
 import ssl
 import time
 import requests
-url_api = "http://localhost/cpmusic/api.php"
+url_api = "https://musica.asorey.net/api.php"
 video = False
 ssl._create_default_https_context = ssl._create_unverified_context
 while True:

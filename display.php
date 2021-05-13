@@ -144,7 +144,7 @@ $hayvideo = "";
         if ($contenido == false) {
             echo '<div class="ies-div"><img class="ies" onerror="location.reload()" onloadeddata="color()" src="' . $miniatura . '" height="auto" width="100%" alt=""></div>';
         } else {
-            echo '<video src="' . $videourl . '#t=' . $tiempo . '" autoplay muted width="100%" height="auto"></video>';
+            echo '<div class="ies-div"><video src="' . $videourl . '#t=' . $tiempo . '" autoplay muted width="100%" height="auto"></video></div>';
         }
 
         ?>
