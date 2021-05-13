@@ -221,11 +221,12 @@ if (isset($_POST['submit'])) {
 
                 if($value["error"]["code"] == 403){
                     
+                    $i++;
+                    var_dump($value);
                     if($i == count($apis)){
                         echo "Error con las APIS de google";
                         exit;
                     }
-                    $i++;
                     cargarapi($i,$apikey,$keyword);
                 }
             }
