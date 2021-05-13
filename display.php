@@ -107,8 +107,7 @@ $hayvideo = "";
         -webkit-box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
         -moz-box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
         box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
-        max-width: 75vh;
-        min-height: 60vh ;
+        max-height: 90%;
         margin: 15px;
     }
 
@@ -128,7 +127,7 @@ $hayvideo = "";
 <body id="back" onload="color()" style="text-align: center;">
 
     <h1><?php echo $titulo ?></h1>
-    <div style="display: flex; height:'auto'">
+    <div style="display: flex; height:'100%'">
         <div>
             
             <?php
