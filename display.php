@@ -136,6 +136,7 @@ $motd = $motd["value"];
         padding: 5px;
         height: 75px;
         line-height: 0px;
+        align-items: center;
     }
 
     .motd {
@@ -145,6 +146,7 @@ $motd = $motd["value"];
         padding: 5px;
         height: 75px;
         line-height: 0;
+        align-items: center;
     }
 
     #myProgress {
