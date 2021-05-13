@@ -35,6 +35,7 @@ $motd = $motd["value"];
 <style>
     * {
         font-family: 'Montserrat', sans-serif;
+        z-index: 100;
     }
 
     h1 {
