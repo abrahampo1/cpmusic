@@ -233,7 +233,6 @@ body {
     <div class="hora" style="position: fixed; right: 0; bottom: 0; display: flex">
             <p id="hora"></p>
             <p id="minuto"></p>
-            <p id="segundos"></p>
         </div>
 </body>
 
@@ -342,7 +341,6 @@ var updatetime = window.setInterval(function() {
 
     var h = new Date().getHours();
     var m = new Date().getMinutes();
-    var s = new Date().getSeconds();
 
     if (h > 12) {
     }
@@ -352,8 +350,7 @@ var updatetime = window.setInterval(function() {
     s = s < 10 ? "0" + s : s;
 
     hours.innerHTML = h + ":";
-    minutes.innerHTML = m + ":";
-    seconds.innerHTML = s;
+    minutes.innerHTML = m ;
 }
 
 var interval = setInterval(clock, 500);

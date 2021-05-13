@@ -3,10 +3,11 @@ import vlc
 import ssl
 import time
 import requests
-url_api = "https://musica.asorey.net/api.php"
-video = False
+
 ssl._create_default_https_context = ssl._create_unverified_context
 def run_forever():
+    url_api = "https://musica.asorey.net/api.php"
+    video = False
     try:
         while True:
             if video == True:
@@ -70,9 +71,9 @@ def run_forever():
                     video = True
                     url = texto
                     print("Encontré la canción :)")
-    except:
+    except Exception:
         print("Me he crasheado :(, me reinicio al toque.")
+        print(Exception.args)
         run_forever()
-
 run_forever()
             
