@@ -31,7 +31,7 @@ if (isset($_POST["nuevo"])) {
             $video_id = explode("?v=", $video_query["urlspoti"]);
             $video_id = $video_id[1];
             $thumbnail = "http://img.youtube.com/vi/" . $video_id . "/mqdefault.jpg";
-            echo '<img id="img" src="' . $thumbnail . '" height="auto" width="100%" alt="" /><br>';
+            echo '<img id="img" src="' . $thumbnail . '" height="auto" width="100%" alt=""><br>';
         }
         $video++;
     }

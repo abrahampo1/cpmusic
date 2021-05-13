@@ -14,7 +14,7 @@ if ($do->num_rows > 0) {
     $videourl = $video["video"];
     $contenido = true;
     $ig_minita = $video["insta"];
-    $tiempo = $video["tiempo"]+1;
+    $tiempo = $video["tiempo"] + 1;
     $ig_minita = str_replace("@", "", $ig_minita);
 } else {
     $titulo = "No hay canciones ahora mismo.";
@@ -37,8 +37,19 @@ $hayvideo = "";
 
     img {
         border-radius: 10px;
+        
     }
-
+    .ies{
+        width: 80%;
+        height: auto;
+        max-height: 90%;
+    }
+    .ies-div{
+        text-align: center;
+        width: 100%;
+        height: auto;
+        max-height: 90%;
+    }
     #img-principal {
         box-shadow: black, 10, 10, 10;
     }
@@ -71,6 +82,10 @@ $hayvideo = "";
         /* Black w/ opacity */
     }
 
+    div {
+        height: auto;
+    }
+
     /* Modal Content */
     .modal-content {
         background-color: #fefefe;
@@ -86,12 +101,16 @@ $hayvideo = "";
         -moz-box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
         box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
         max-width: 75%;
+        min-height: 75%;
+        margin: 15px;
     }
-    .instagram{
+
+    .instagram {
         border-radius: 15px;
         background-color: whitesmoke;
         padding: 5px;
     }
+
 </style>
 
 <head>
@@ -102,12 +121,15 @@ $hayvideo = "";
 <body id="back" onload="color()" style="text-align: center;">
 
     <h1><?php echo $titulo ?></h1>
-    <div style="display: flex;">
+    <div style="display: flex; height:'auto'">
         <div>
-            <h1>Anterior:</h1>
+            
             <?php
             $sql = "SELECT * FROM musica WHERE reproducida = 1 ORDER BY id desc LIMIT 1";
             $do = mysqli_query($link, $sql);
+            if($do->num_rows > 0){
+                echo '<h1>Anterior:</h1>';
+            }
             while ($video_query = mysqli_fetch_assoc($do)) {
                 $video_id = explode("?v=", $video_query["urlspoti"]);
                 $video_id = $video_id[1];
@@ -120,9 +142,9 @@ $hayvideo = "";
         <?php
 
         if ($contenido == false) {
-            echo '<img onerror="location.reload()" onloadeddata="color()" src="' . $miniatura . '" height="auto" width="100%" alt="" />';
+            echo '<div class="ies-div"><img class="ies" onerror="location.reload()" onloadeddata="color()" src="' . $miniatura . '" height="auto" width="100%" alt=""></div>';
         } else {
-            echo '<video src="' . $videourl . '#t='.$tiempo.'" autoplay muted width="100%" height="auto"></video>';
+            echo '<video src="' . $videourl . '#t=' . $tiempo . '" autoplay muted width="100%" height="auto"></video>';
         }
 
         ?>
