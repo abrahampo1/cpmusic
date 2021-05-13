@@ -11,8 +11,10 @@ while True:
         video = pafy.new(url)
         best = video.getbestaudio()
         playurl = best.url
+        bestvideo = video.getbest()
+        videourl = bestvideo.url
         print(video.length)
-        if video.length > 420:
+        if video.length > 520:
             print("No amigo, las prefiero pequeñas")
             exit()
         else:
@@ -27,10 +29,23 @@ while True:
             'api': '123',
             'miniatura': video.bigthumb,
             'url': url,
-            'titulo': video.title
+            'titulo': video.title,
+            'video': videourl
         }
         x = requests.post(url_api, data=myobj)
-        time.sleep(video.length)
+        print(x.text)
+        i = 0
+        while i != video.length:
+            myobj = {
+                'api': '123',
+                'url': url,
+                'tiempo': i
+            }
+            x = requests.post(url_api, data=myobj)
+            time.sleep(1)
+            i += 1
+            print(str(i) +"/"+ str(video.length))
+
         print("Terminado rey.")
         video = False
         myobj = {
@@ -43,6 +58,7 @@ while True:
         print("Esperando URL...")
         myobj = {
             'api': '123',
+            'necesito': 'url',
         }
         x = requests.post(url_api, data=myobj)
         texto = x.text

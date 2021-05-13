@@ -15,10 +15,29 @@ if (isset($_POST["api"])) {
     $sql = "SELECT * FROM api WHERE BINARY token = '$token'";
     if ($do = mysqli_query($link, $sql)) {
         if ($do->num_rows > 0) {
+            if (isset($_POST["necesito"])) {
+                $sql = "SELECT * FROM musica WHERE reproducida = 0 LIMIT 1";
+                $do = mysqli_query($link, $sql);
+                if (!$do->num_rows == 0) {
+                    $result = mysqli_fetch_assoc($do);
+                    echo $result["urlspoti"];
+                } else {
+                    echo "";
+                }
+            }
+            if (isset($_POST["tiempo"])) {
+                $tiempo = $_POST["tiempo"];
+                $url = $_POST["url"];
+                $sql = "UPDATE `musica` SET `tiempo` = '$tiempo' WHERE `musica`.`urlspoti` = '$url';";
+                if ($do = mysqli_query($link, $sql)) {
+                    echo 'WEB: Gracias por los datos bot-chan. >///<';
+                }
+            }
             if (isset($_POST["miniatura"])) {
                 $miniatura = $_POST["miniatura"];
                 $url = $_POST["url"];
                 $titulo = $_POST["titulo"];
+                $videourl = $_POST["video"];
                 $random = generateRandomString();
                 $con = true;
                 while ($con == true) {
@@ -31,26 +50,23 @@ if (isset($_POST["api"])) {
                         $con = false;
                     }
                 }
-                $output = "temp/".$random.".png";
+                $output = "temp/" . $random . ".png";
                 file_put_contents($output, file_get_contents($miniatura));
-                $sql = "UPDATE `musica` SET `miniatura` = '$random', `titulo` = '$titulo'  WHERE `musica`.`urlspoti` = '$url';";
-                $do = mysqli_query($link, $sql);
-            } else if (isset($_POST["terminado"])) {
+                $titulo = str_replace("'", " ", $titulo);
+                $sql = "UPDATE `musica` SET `miniatura` = '$random', `titulo` = '$titulo', `video` = '$videourl'  WHERE `musica`.`urlspoti` = '$url';";
+                if ($do = mysqli_query($link, $sql)) {
+                    echo 'WEB: Gracias por los datos bot-chan. >///<';
+                } else {
+                    echo mysqli_error($link);
+                }
+            }
+            if (isset($_POST["terminado"])) {
                 $url = $_POST["terminado"];
                 $sql = "UPDATE `musica` SET `reproducida` = '1' WHERE `musica`.`urlspoti` = '$url';";
                 $do = mysqli_query($link, $sql);
-            } else {
-                $sql = "SELECT * FROM musica WHERE reproducida = 0 LIMIT 1";
-                $do = mysqli_query($link, $sql);
-                if (!$do->num_rows == 0) {
-                    $result = mysqli_fetch_assoc($do);
-                    echo $result["urlspoti"];
-                } else {
-                    echo "";
-                }
             }
-        } else {
-            echo "";
         }
+    } else {
+        echo "";
     }
 }

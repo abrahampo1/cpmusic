@@ -11,35 +11,32 @@ if (isset($_POST["next"])) {
             exit;
         } else {
         }
+    }else{
+        $sql = "SELECT * FROM musica WHERE reproducida = 0";
+        $do = mysqli_query($link, $sql);
+        if($do->num_rows > 0){
+            echo'terminada';
+        }
     }
 }
 if (isset($_POST["nuevo"])) {
-    $nuevo = $_POST["nuevo"];
-    $cache = explode(";", $nuevo);
     $sql = "SELECT * FROM musica WHERE reproducida = 0 LIMIT 4";
     $do = mysqli_query($link, $sql);
-    if ($do->num_rows > 0) {
-        
-        $video = 0;
-        while ($resultado = mysqli_fetch_assoc($do)) {
-            $yaesta = false;
-            if ($nuevo != "") {
-                if ($video > 0) {
-                    for ($i = 0; $i < count($cache); $i++) {
-                        if ($cache[$i] == $resultado["id"]) {
-                            $yaesta = true;
-                        }
-                    }
-                    if ($yaesta == false) {
-                        echo 'nuevo';
-                        exit;
-                    }
-                } 
-            } else if ($video > 0) {
-                echo 'nuevo';
-                exit;
-            }
-            $video++;
-        }
+    $video = 0;
+    if($do->num_rows > 1){
+        echo '<h1 style="width:100%">Siguientes:</h1>';
     }
+    while ($video_query = mysqli_fetch_assoc($do)) {
+        if ($video != 0) {
+            $video_id = explode("?v=", $video_query["urlspoti"]);
+            $video_id = $video_id[1];
+            $thumbnail = "http://img.youtube.com/vi/" . $video_id . "/mqdefault.jpg";
+            echo '<img id="img" src="' . $thumbnail . '" height="auto" width="100%" alt="" /><br>';
+        }
+        $video++;
+    }
+}
+if (isset($_POST["anuncio"])) {
+    //echo "anuncio:<h1>Suspensos todos</h1>";
+    exit;
 }
