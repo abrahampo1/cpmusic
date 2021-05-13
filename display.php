@@ -146,6 +146,7 @@ $motd = $motd["value"];
         padding: 5px;
         height: 75px;
         line-height: 0;
+        z-index: -1;
         align-items: center;
     }
 
@@ -206,7 +207,7 @@ $motd = $motd["value"];
         width: 100%;
         height: 100%;
         margin: 0;
-        z-index: -1;
+        z-index: -2;
         line-height: 37px;
         text-align: center;
         /* Starting position */
