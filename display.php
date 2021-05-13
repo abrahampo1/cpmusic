@@ -259,9 +259,8 @@ $hayvideo = "";
             <p>Esto es un ejemplo de mensaje del dia</p>
         </div>
         </div>
-        <div class="hora" style="position: fixed; right: 0; bottom: 0; display: flex; width: 10%; margin-left: 15px; margin-right: 15px; text-align: right">
+        <div class="hora" style="position: fixed; right: 0; bottom: 0; width: 10%; margin-left: 15px; margin-right: 15px; text-align: right">
             <p class="hora_text" id="hora"></p>
-            <p class="hora_text" id="minuto"></p>
         </div>
 
     </div>
@@ -367,16 +366,13 @@ $hayvideo = "";
 <script>
     function clock() {
         var hours = document.getElementById("hora");
-        var minutes = document.getElementById("minuto");
-        var seconds = document.getElementById("segundos");
 
         var h = new Date().getHours();
         var m = new Date().getMinutes();
         h = h < 10 ? "0" + h : h;
         m = m < 10 ? "0" + m : m;
 
-        hours.innerHTML = h + ":";
-        minutes.innerHTML = m;
+        hours.innerHTML = h + ":" + m;
     }
 
     var interval = setInterval(clock, 500);
