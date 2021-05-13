@@ -179,7 +179,7 @@ body {
 <body id="back" onload="color()" style="text-align: center;">
 
     <h1><?php echo $titulo ?></h1>
-    <div style="display: flex; height:90%; background-color: none">
+    <div style="display: flex; height:100%; background-color: none">
         <div class="anterior" style="width: 10%;">
             
             <?php
