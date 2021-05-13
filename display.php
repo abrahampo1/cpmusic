@@ -116,6 +116,16 @@ $hayvideo = "";
         background-color: whitesmoke;
         padding: 5px;
     }
+    #myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: #04AA6D;
+}
 
 </style>
 
@@ -150,7 +160,9 @@ $hayvideo = "";
         if ($contenido == false) {
             echo '<div class="ies-div"><img class="ies" onerror="location.reload()" onloadeddata="color()" src="' . $miniatura . '" height="auto" width="100%" alt=""></div>';
         } else {
-            echo '<div class="video-div"><video src="' . $videourl . '#t=' . $tiempo . '" autoplay muted width="100%" height="auto"></video></div>';
+            echo '<div class="video-div"><video src="' . $videourl . '#t=' . $tiempo . '" autoplay muted width="100%" height="auto"></video><div id="myProgress">
+            <div id="myBar"></div>
+          </div></div>';
         }
 
         ?>
@@ -197,7 +209,26 @@ $hayvideo = "";
         }
     }
 </script>
-
+<script>
+var i = 0;
+var updatetime = window.setInterval(function() {
+  if (i == 0) {
+    i = 1;
+    var elem = document.getElementById("myBar");
+    var width = 1;
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+        i = 0;
+      } else {
+        width++;
+        elem.style.width = width + "%";
+      }
+    }
+  }
+}, 1000);
+</script>
 <script>
     var updatetime = window.setInterval(function() {
         var apid = '<?php echo $id_video; ?>';
