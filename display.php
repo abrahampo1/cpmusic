@@ -128,6 +128,7 @@ $hayvideo = "";
         font-size: 40px;
         background-color: whitesmoke;
         padding: 5px;
+        height: 50px;
     }
 
     #myProgress {
