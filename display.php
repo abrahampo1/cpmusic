@@ -6,6 +6,7 @@ $do = mysqli_query($link, $sql);
 $id_video = "";
 $ig_minita = "";
 $tiempo = 0;
+$tiempo_total = 0;
 if ($do->num_rows > 0) {
     $video = mysqli_fetch_assoc($do);
     $id_video = $video["id"];
@@ -15,6 +16,7 @@ if ($do->num_rows > 0) {
     $contenido = true;
     $ig_minita = $video["insta"];
     $tiempo = $video["tiempo"] + 1;
+    $tiempo_total = $video["tiempo_total"];
     $ig_minita = str_replace("@", "", $ig_minita);
 } else {
     $titulo = "No hay canciones ahora mismo.";
@@ -160,7 +162,7 @@ $hayvideo = "";
         if ($contenido == false) {
             echo '<div class="ies-div"><img class="ies" onerror="location.reload()" onloadeddata="color()" src="' . $miniatura . '" height="auto" width="100%" alt=""></div>';
         } else {
-            echo '<div class="video-div"><input type="hidden" id="video_tiempo" value="'.$tiempo.'"><video src="' . $videourl . '#t=' . $tiempo . '" autoplay muted width="100%" height="auto"></video><div id="myProgress">
+            echo '<div class="video-div"><input type="hidden" id="video_tiempo" value="'.$tiempo.'"><input type="hidden" id="video_total" value="'.$tiempo_total.'"><video src="' . $videourl . '#t=' . $tiempo . '" autoplay muted width="100%" height="auto"></video><div id="myProgress">
             <div id="myBar"></div>
           </div></div>';
         }
