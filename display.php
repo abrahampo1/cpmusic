@@ -139,6 +139,30 @@ $hayvideo = "";
   background-color: #04AA6D;
 }
 
+body {
+    animation: fadeInAnimation ease 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+  .anterior{
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+  .siguiente{
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
+}
+
 </style>
 
 <head>
@@ -150,7 +174,7 @@ $hayvideo = "";
 
     <h1><?php echo $titulo ?></h1>
     <div style="display: flex; height:90%; background-color: none">
-        <div>
+        <div class="anterior">
             
             <?php
             $sql = "SELECT * FROM musica WHERE reproducida = 1 ORDER BY id desc LIMIT 1";
@@ -181,7 +205,7 @@ $hayvideo = "";
 
         <img style="display: none;" onerror="location.reload()" id="img-principal" onloadeddata="color()" src="<?php echo $miniatura ?>" height="auto" width="100%" alt="" />
 
-        <div id="siguientes">
+        <div id="siguientes" class="siguiente">
 
         </div>
     </div>
