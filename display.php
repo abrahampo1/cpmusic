@@ -203,7 +203,14 @@ $motd = $motd["value"];
     .hora_text {
         text-align: right;
     }
-
+    .scroll-slow {
+ height: 50px;	
+ overflow: hidden;
+ position: relative;
+ background: yellow;
+ color: orange;
+ border: 1px solid orange;
+}
     .scroll-slow p {
         width: 100%;
         z-index: 2;
