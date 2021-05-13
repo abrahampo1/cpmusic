@@ -192,7 +192,7 @@ body {
                 $video_id = explode("?v=", $video_query["urlspoti"]);
                 $video_id = $video_id[1];
                 $thumbnail = "temp/" . $video_query["miniatura"] . ".png";
-                echo '<img id="img" onload="color()" src="' . $thumbnail . '" alt="" />';
+                echo '<img id="img" width="100%" onload="color()" src="' . $thumbnail . '" alt="" />';
             }
             ?>
         </div>
