@@ -209,9 +209,9 @@ $motd = $motd["value"];
         line-height: 37px;
         text-align: center;
         /* Starting position */
-        -moz-transform: translateX(100%);
-        -webkit-transform: translateX(100%);
-        transform: translateX(100%);
+        -moz-transform: translateX(90%);
+        -webkit-transform: translateX(90%);
+        transform: translateX(90%);
         /* Apply animation to this element */
         -moz-animation: scroll-slow 25s linear infinite;
         -webkit-animation: scroll-slow 25s linear infinite;
