@@ -108,6 +108,7 @@ $hayvideo = "";
         -moz-box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
         box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
         margin: 15px;
+        background-color: transparent;
     }
 
     .instagram {
