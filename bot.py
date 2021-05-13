@@ -46,7 +46,7 @@ def run_forever():
                         'total': video.length
                     }
                     x = requests.post(url_api, data=myobj)
-                    time.sleep(1)
+                    time.sleep(0.9)
                     i += 1
                     print(str(i) +"/"+ str(video.length),end='\r')
 
@@ -73,7 +73,6 @@ def run_forever():
                     print("Encontré la canción :)")
     except Exception:
         print("Me he crasheado :(, me reinicio al toque.")
-        print(Exception.args)
         run_forever()
 run_forever()
             
