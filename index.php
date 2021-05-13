@@ -222,7 +222,6 @@ if (isset($_POST['submit'])) {
                 if(isset($value["error"]["code"])){
                     if($value["error"]["code"] == 403){
                         $i++;
-                        var_dump($value);
                         if($i == count($apis)){
                             echo "Error con las APIS de google";
                             exit;
