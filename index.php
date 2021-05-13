@@ -220,16 +220,15 @@ if (isset($_POST['submit'])) {
                 $value = json_decode(json_encode($data), true);
 
                 if(isset($value["error"]["code"])){
-                    if($value["error"]["code"] == 403){
-                        $i++;
+                    $i++;
                         if($i == count($apis)){
                             echo "Error con las APIS de google";
                             exit;
                         }
-                        cargarapi($i,$apikey,$keyword);
-                    }
+                    cargarapi($i,$apikey,$keyword);
                    
                 }
+                var_dump($value);
                 return $value;
             }
             $value = cargarapi($i,$apikey,$keyword);
