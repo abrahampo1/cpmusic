@@ -248,7 +248,7 @@ $hayvideo = "";
     <div style="display: flex; width:100%">
         <?php
         if ($ig_minita != "") {
-            echo '<div class="instagram" style="position: fixed; left: 0; bottom: 0; display: flex; width: 20%">
+            echo '<div class="instagram" style="position: fixed; left: 0; bottom: 0; display: flex; width: 18%">
         <img style="padding-top:5px; margin-left:5px" width="50px" height="50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/768px-Instagram_logo_2016.svg.png">
         <h3 style="margin-left: 10px">@' . $ig_minita . '<h3>
         </div>';
