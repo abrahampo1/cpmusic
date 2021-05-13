@@ -264,7 +264,8 @@ $motd = $motd["value"];
         ?>
         <div style="width: 100%;">
         <div class="motd" style="position: fixed; right: 10%; bottom: 0; display: flex; width: 70%">
-            <p><?php echo $motd?></p>
+        <marquee behavior="scroll" direction="left"><?php echo $motd?></marquee>
+
         </div>
         </div>
         <div class="hora" style="position: fixed; right: 0; bottom: 0; width: 10%; margin-left: 15px; margin-right: 15px; text-align: right">
