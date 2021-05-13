@@ -215,7 +215,7 @@ $motd = $motd["value"];
         width: 100%;
         height: 100%;
         margin: 0;
-        line-height: 50px;
+        line-height: 75px;
         text-align: center;
         /* Starting position */
         -moz-transform: translateX(100%);
