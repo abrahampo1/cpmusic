@@ -62,7 +62,11 @@ if (isset($_POST["api"])) {
             }
             if (isset($_POST["terminado"])) {
                 $url = $_POST["terminado"];
-                $sql = "UPDATE `musica` SET `reproducida` = '1' WHERE `musica`.`urlspoti` = '$url';";
+                $sql = "SELECT * FROM musica WHERE url = '$url' LIMIT 1;";
+                $do = mysqli_query($link, $sql);
+                $result = mysqli_fetch_assoc($do);
+                $video_id = $result["id"];
+                $sql = "UPDATE `musica` SET `reproducida` = '1' WHERE `musica`.`id` = '$video_id';";
                 $do = mysqli_query($link, $sql);
             }
         }
