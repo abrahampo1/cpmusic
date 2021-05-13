@@ -120,7 +120,7 @@ $hayvideo = "";
     }
     #myProgress {
   width: 100%;
-  background-color: #ddd;
+  padding-left: 10px;
 }
 
 #myBar {
