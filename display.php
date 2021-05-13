@@ -351,3 +351,10 @@ var updatetime = window.setInterval(function() {
 
 var interval = setInterval(clock, 500);
 </script>
+
+<script>
+// this function must be defined in the global scope
+window.fadeIn = function(obj) {
+    $(obj).fadeIn(1000);
+}
+</script>
