@@ -197,8 +197,65 @@ $motd = $motd["value"];
             opacity: 1;
         }
     }
-    .hora_text{
+
+    .hora_text {
         text-align: right;
+    }
+
+    .scroll-slow p {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        line-height: 50px;
+        text-align: center;
+        /* Starting position */
+        -moz-transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        transform: translateX(100%);
+        /* Apply animation to this element */
+        -moz-animation: scroll-slow 25s linear infinite;
+        -webkit-animation: scroll-slow 25s linear infinite;
+        animation: scroll-slow 25s linear infinite;
+    }
+
+    /* Move it (define the animation) */
+    @-moz-keyframes scroll-slow {
+        0% {
+            -moz-transform: translateX(100%);
+        }
+
+        100% {
+            -moz-transform: translateX(-100%);
+        }
+    }
+
+    @-webkit-keyframes scroll-slow {
+        0% {
+            -webkit-transform: translateX(100%);
+        }
+
+        100% {
+            -webkit-transform: translateX(-100%);
+        }
+    }
+
+    @keyframes scroll-slow {
+        0% {
+            -moz-transform: translateX(100%);
+            /* Browser bug fix */
+            -webkit-transform: translateX(100%);
+            /* Browser bug fix */
+            transform: translateX(100%);
+        }
+
+        100% {
+            -moz-transform: translateX(-100%);
+            /* Browser bug fix */
+            -webkit-transform: translateX(-100%);
+            /* Browser bug fix */
+            transform: translateX(-100%);
+        }
     }
 </style>
 
@@ -263,10 +320,10 @@ $motd = $motd["value"];
         }
         ?>
         <div style="width: 100%;">
-        <div class="motd" style="position: fixed; right: 10%; bottom: 0; display: flex; width: 70%">
-        <marquee behavior="scroll" direction="left"><?php echo $motd?></marquee>
+            <div class="motd scroll-slow" style="position: fixed; right: 10%; bottom: 0; display: flex; width: 70%">
+                <p><?php echo $motd ?></p>
 
-        </div>
+            </div>
         </div>
         <div class="hora" style="position: fixed; right: 0; bottom: 0; width: 10%; margin-left: 15px; margin-right: 15px; text-align: right">
             <p class="hora_text" id="hora"></p>
