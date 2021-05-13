@@ -162,7 +162,7 @@ $hayvideo = "";
         if ($contenido == false) {
             echo '<div class="ies-div"><img class="ies" onerror="location.reload()" onloadeddata="color()" src="' . $miniatura . '" height="auto" width="100%" alt=""></div>';
         } else {
-            echo '<div class="video-div"><input type="hidden" id="video_tiempo" value="'.$tiempo.'"><input type="hidden" id="video_total" value="'.$tiempo_total.'"><video src="' . $videourl . '#t=' . $tiempo . '" autoplay muted width="100%" height="auto"></video><div id="myProgress">
+            echo '<div class="video-div"><input type="hidden" id="video_tiempo" value="'.$tiempo.'"><input type="hidden" id="video_total" value="'.$tiempo_total.'"><video src="' . $videourl . '#t=' . $tiempo . '" id="videoclip" autoplay muted width="100%" height="auto"></video><div id="myProgress">
             <div id="myBar"></div>
           </div></div>';
         }
@@ -215,7 +215,10 @@ $hayvideo = "";
 var i = 0;
 var updatetime = window.setInterval(function() {
     var elem = document.getElementById("myBar");
-    var width = (document.getElementById("video_tiempo").value / document.getElementById["video_total"].value)*100;
+    var tiempototal = document.getElementById("video_total").value;
+    var video = document.getElementById("videoclip");
+    var tiempo = video.duration % 60;
+    var width = (tiempo/tiempototal)*100;
     var id = setInterval(frame, 500);
     function frame() {
         elem.style.width = width + "%";
