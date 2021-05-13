@@ -253,7 +253,7 @@ $hayvideo = "";
         <p id="hora"></p>
         <p id="minuto"></p>
     </div>
-    <div class="motd" style="position: fixed; right: 120px; bottom: 0; display: flex">
+    <div class="motd" style="position: fixed; right: 120px; bottom: 0; display: flex; width: 90%">
         <p>Esto es un ejemplo de mensaje del dia</p>
     </div>
 </body>
