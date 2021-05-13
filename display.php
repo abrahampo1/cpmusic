@@ -127,7 +127,8 @@ $hayvideo = "";
 
 #myBar {
   width: 1%;
-  height: 30px;
+  border-radius: 7px;
+  height: 15px;
   background-color: #04AA6D;
 }
 
