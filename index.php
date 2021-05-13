@@ -157,6 +157,7 @@ if (isset($_POST['submit'])) {
         }
         $insta = str_replace("<", "", $insta);
         $insta = str_replace(">", "", $insta);
+        $insta = str_replace('"', "", $insta);
         if(strlen($insta) > 20){
             $insta = "";
         }
