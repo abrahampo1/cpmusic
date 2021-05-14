@@ -304,7 +304,7 @@ if (isset($_POST['submit'])) {
                 <h2>Cargando...</h2>
             </div>
 </body>
-
+<p id="debug"></p>
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
@@ -335,7 +335,9 @@ if (isset($_POST['submit'])) {
             success: function(response) {
                 if (response != document.getElementById("anteriores").innerHTML) {
                     alert(response);
-                    alert(document.getElementById("anteriores").innerHTML);
+                    document.getElementById("debug").innerHTML = getElementById("anteriores").innerHTML;
+                    document.getElementById("debug").innerHTML += "<hr>";
+                    document.getElementById("debug").innerHTML = response;
                     document.getElementById("anteriores").innerHTML = response;
                 };
             },
