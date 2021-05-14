@@ -130,7 +130,7 @@ if ($ig_minita == "") {
 
     .instagram {
         border-radius: 15px;
-        background-color: rgba(255,255,255,0.7);
+        background-color: rgba(255,255,255,0.7) !important;
         padding: 5px;
         justify-content: center;
         align-items: center;
