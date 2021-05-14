@@ -342,5 +342,5 @@ if (isset($_POST['submit'])) {
             error: function() {}
         });
 
-    }, 100000);
+    }, 10000);
 </script>
