@@ -55,6 +55,7 @@ if (isset($_POST["anuncio"])) {
 if(isset($_POST["anteriores"])){
 $sql = "SELECT * FROM musica WHERE reproducida = 1 ORDER BY id DESC LIMIT 15";
 $do = mysqli_query($link, $sql);
+echo "<h2>15 Anteriores<h2>";
 while($video = mysqli_fetch_assoc($do)){
         $videoId = explode("?v=", $video["urlspoti"]);
         $videoId = $videoId[1];
