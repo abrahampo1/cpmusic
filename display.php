@@ -1,7 +1,7 @@
 <?php
 
 include("database.php");
-$sql = "SELECT * FROM musica WHERE reproducida = 0 LIMIT 1";
+$sql = "SELECT * FROM musica WHERE reproducida = 0 and datos = 1 LIMIT 1";
 $do = mysqli_query($link, $sql);
 $id_video = "";
 $ig_minita = "";
