@@ -17,11 +17,11 @@ def run_forever():
                 bestvideo = video.getbest()
                 videourl = bestvideo.url
                 print(video.length)
-                if video.length > 520:
+                if video.length > 600:
                     print("No amigo, las prefiero pequeñas")
                     exit()
                 else:
-                    print("Menos de 7? buen track bro")
+                    print("Menos de 10? buen track bro")
                 myobj = {
                     'api': '123',
                     'miniatura': video.bigthumb,
