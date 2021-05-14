@@ -46,7 +46,7 @@ if (isset($_POST["nuevo"])) {
             $do = mysqli_query($link, $sql);
             $video_ahora = mysqli_fetch_assoc($do);
             $restante = $video_ahora["total_tiempo"] - $video_ahora["tiempo"];
-            $ultima_html = '<div class="centered"><h2 id="siguiente_texto"></h2></div>';
+            $ultima_html = '<div class="centered"><h1 id="siguiente_texto"></h1></div>';
         } else {
             $ultima_html = "";
         }
