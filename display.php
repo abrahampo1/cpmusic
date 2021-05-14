@@ -42,7 +42,7 @@ if ($ig_minita == "") {
     }
 
     h1 {
-        background-color: whitesmoke;
+        text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
     }
 
     img {
