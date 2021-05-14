@@ -408,7 +408,7 @@ if ($ig_minita == "") {
         var tiempototal = document.getElementById("video_total").value;
         var tiempo = video.currentTime;
         var restante = tiempo - tiempototal;
-        siguiente.innerHTML = "En " + restante;
+        siguiente.innerHTML = "En " + restante.toFixed(0);
     }, 500);
 </script>
 <script>
