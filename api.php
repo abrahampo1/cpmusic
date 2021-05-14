@@ -75,7 +75,6 @@ if (isset($_POST["api"])) {
                 if($do = mysqli_query($link, $sql)){
                     echo 'WEB: Terminado recibido correctamente.';
                 }
-                
             }
         }
     } else {
