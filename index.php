@@ -292,7 +292,7 @@ $sql = "SELECT * FROM musica WHERE reproducida = 1 LIMIT 15";
 $do = mysqli_query($link, $sql);
 while($video = mysqli_fetch_assoc($do)){
         $videoId = explode("?v=", $video["urlspoti"]);
-        $videoId = $video_id[1];
+        $videoId = $videoId[1];
         $title = $video["titulo"];
         $description = $video["insta"];
 ?>
