@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
     if (empty($keyword) || strlen($keyword) < 3) {
         $response = array(
             "type" => "error",
-            "message" => "El campo de busqueda no puede estar vacio."
+            "message" => "El campo de busqueda no puede estar vacio o tener menos de 3 digitos."
         );
         
     }
@@ -237,7 +237,9 @@ if (isset($_POST['submit'])) {
                 }
                 return $value;
             }
-            $value = cargarapi($i, $apikey, $keyword);
+            if(!isset($_COOKIE["delay"])){
+                $value = cargarapi($i, $apikey, $keyword);
+            }
 
 
     ?>
