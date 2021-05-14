@@ -411,7 +411,9 @@ if ($ig_minita == "") {
         var tiempototal = document.getElementById("video_total").value;
         var tiempo = video.currentTime;
         var restante = tiempototal - tiempo;
-        siguiente.innerHTML = "En " + restante.toFixed(0);
+        if (restante < 31) {
+            siguiente.innerHTML = "En " + restante.toFixed(0) + "...";
+        }
     }, 500);
 </script>
 <script>
