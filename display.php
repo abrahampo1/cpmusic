@@ -293,7 +293,7 @@ if ($ig_minita == "") {
 
     .centered {
         position: relative;
-        top: 50%;
+        top: 0%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
