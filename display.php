@@ -131,6 +131,10 @@ if($ig_minita == ""){
         padding: 5px;
         justify-content: center;
         align-items: center;
+        -webkit-box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
+        margin: 15px;
     }
 
     .hora {
@@ -152,6 +156,7 @@ if($ig_minita == ""){
         line-height: 0;
         z-index: 2;
         align-items: center;
+        margin-bottom: 15px;
     }
 
     #myProgress {
