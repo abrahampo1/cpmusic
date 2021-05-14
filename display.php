@@ -183,6 +183,8 @@ if($ig_minita == ""){
         animation: fadeInAnimation ease 3s;
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
+        justify-content: center;
+        align-items: center;
     }
 
     .siguiente {
@@ -290,7 +292,7 @@ if($ig_minita == ""){
             $sql = "SELECT * FROM musica WHERE reproducida = 1 ORDER BY id desc LIMIT 1";
             $do = mysqli_query($link, $sql);
             if ($do->num_rows > 0) {
-                echo '<h1>Anterior:</h1>';
+                //echo '<h1>Anterior:</h1>';
             }
             while ($video_query = mysqli_fetch_assoc($do)) {
                 $video_id = explode("?v=", $video_query["urlspoti"]);
