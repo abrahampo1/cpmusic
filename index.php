@@ -4,18 +4,18 @@ define("MAX_RESULTS", 5);
 
 if (isset($_POST['submit'])) {
     $keyword = $_POST['keyword'];
-
+    if (isset($_COOKIE["delay"])) {
+        $response = array(
+            "type" => "error",
+            "message" => "No puedes spamear el botón."
+        );
+    }
     if (empty($keyword)) {
         $response = array(
             "type" => "error",
             "message" => "El campo de busqueda no puede estar vacio."
         );
-        if (isset($_COOKIE["delay"])) {
-            $response = array(
-                "type" => "error",
-                "message" => "No puedes spamear el botón."
-            );
-        }
+        
     }
 }
 
@@ -209,7 +209,6 @@ if (isset($_POST['submit'])) {
             $apikey = $apikey["value"];
             $keyword = urlencode($keyword);
             $i = 1;
-
             setcookie("delay", "si", time() + 15);
             function cargarapi($i, $apikey, $keyword)
             {
