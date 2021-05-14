@@ -43,6 +43,7 @@ if ($ig_minita == "") {
 
     h1 {
         text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+        font-weight: bold;
     }
 
     img {
