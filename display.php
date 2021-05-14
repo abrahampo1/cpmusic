@@ -74,7 +74,9 @@ if($ig_minita == ""){
     #img-principal {
         box-shadow: black, 10, 10, 10;
     }
-
+    .img{
+        vertical-align: middle;
+    }
     #img {
         margin-top: 10px;
     }
