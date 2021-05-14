@@ -4,12 +4,18 @@ define("MAX_RESULTS", 5);
 
 if (isset($_POST['submit'])) {
     $keyword = $_POST['keyword'];
-    
+
     if (empty($keyword)) {
         $response = array(
             "type" => "error",
             "message" => "El campo de busqueda no puede estar vacio."
         );
+        if (isset($_COOKIE["delay"])) {
+            $response = array(
+                "type" => "error",
+                "message" => "No puedes spamear el botón."
+            );
+        }
     }
 }
 
@@ -31,7 +37,7 @@ if (isset($_POST['submit'])) {
             font-family: 'Montserrat', sans-serif;
         }
 
-        button{
+        button {
             background: none;
             color: inherit;
             border: none;
@@ -136,7 +142,8 @@ if (isset($_POST['submit'])) {
         .videoInfo {
             width: 250px;
         }
-        .inicio{
+
+        .inicio {
             padding: 10px;
         }
     </style>
@@ -145,34 +152,34 @@ if (isset($_POST['submit'])) {
 
 <body>
     <?php
-    if(isset($_GET["e"])){
+    if (isset($_GET["e"])) {
         echo '<h2>El video se ha puesto a la cola.</h2><br><br><a class="btn-submit inicio" style="text-decoration:none" type="submit" name="submit" href="/" value="Inicio">Inicio</a>';
         exit;
     }
-    if(isset($_POST["video_id"])){
+    if (isset($_POST["video_id"])) {
         $video_id = $_POST["video_id"];
         $insta = "";
-        if(isset($_POST["insta"])){
+        if (isset($_POST["insta"])) {
             $insta = $_POST["insta"];
         }
         $insta = str_replace("<", "", $insta);
         $insta = str_replace(">", "", $insta);
         $insta = str_replace('"', "", $insta);
-        if(strlen($insta) > 20){
+        if (strlen($insta) > 20) {
             $insta = "";
         }
         $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`) VALUES (NULL, 'https://www.youtube.com/watch?v=$video_id', '', '', '0', '', '$insta', 0);";
-        if(mysqli_query($link, $sql)){
+        if (mysqli_query($link, $sql)) {
             header("location: /?e=1");
         }
     }
-    if(isset($_POST["videoid"])){
+    if (isset($_POST["videoid"])) {
         $videoid = $_POST["videoid"];
         $title = $_POST["title"];
-        echo '<h2>Has seleccionado '.$title.'</h2><br><br>';
-        echo '<img style="border-radius:20px" src="http://img.youtube.com/vi/'.$videoid.'/mqdefault.jpg" height="auto" width="40%">';
+        echo '<h2>Has seleccionado ' . $title . '</h2><br><br>';
+        echo '<img style="border-radius:20px" src="http://img.youtube.com/vi/' . $videoid . '/mqdefault.jpg" height="auto" width="40%">';
         echo '<br><br><p style="font-size:25px">Opcional<p><hr>';
-        echo '<form method="post"><div class="input-row"><input id="ig-minita" name="insta" class="input-field" type="text" placeholder="Escribe tu @ de insta"></div><input type="hidden" name="video_id" value="'.$videoid.'">';
+        echo '<form method="post"><div class="input-row"><input id="ig-minita" name="insta" class="input-field" type="text" placeholder="Escribe tu @ de insta"></div><input type="hidden" name="video_id" value="' . $videoid . '">';
         echo '<input class="btn-submit" type="submit" value="→"></form>';
         exit;
     }
@@ -190,7 +197,8 @@ if (isset($_POST['submit'])) {
 
     <?php if (!empty($response)) { ?>
         <div class="response <?php echo $response["type"]; ?>"> <?php echo $response["message"]; ?> </div>
-    <?php } ?>
+    <?php
+            exit; } ?>
     <?php
     if (isset($_POST['submit'])) {
 
@@ -201,18 +209,13 @@ if (isset($_POST['submit'])) {
             $apikey = $apikey["value"];
             $keyword = urlencode($keyword);
             $i = 1;
-            if(isset($_COOKIE["delay"])){
-                $response = array(
-                    "type" => "error",
-                    "message" => "No puedes spamear el botón."
-                );
-                exit;
-            }
-            setcookie("delay", "si", time()+15);
-            function cargarapi($i,$apikey,$keyword){
-                
+
+            setcookie("delay", "si", time() + 15);
+            function cargarapi($i, $apikey, $keyword)
+            {
+
                 $apis = explode(";", $apikey);
-                $googleApiUrl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q='.$keyword.'&safeSearch=strict&type=video&videoCategoryId=10&key='.$apis[$i];
+                $googleApiUrl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=' . $keyword . '&safeSearch=strict&type=video&videoCategoryId=10&key=' . $apis[$i];
 
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -225,20 +228,19 @@ if (isset($_POST['submit'])) {
                 curl_close($ch);
                 $data = json_decode($response);
                 $value = json_decode(json_encode($data), true);
-                if(isset($value["error"]["code"])){
+                if (isset($value["error"]["code"])) {
                     $i++;
-                        if($i == count($apis)){
-                            echo "Error con las APIS de google";
-                            exit;
-                        }
-                    $value = cargarapi($i,$apikey,$keyword);
-                   
+                    if ($i == count($apis)) {
+                        echo "Error con las APIS de google";
+                        exit;
+                    }
+                    $value = cargarapi($i, $apikey, $keyword);
                 }
                 return $value;
             }
-            $value = cargarapi($i,$apikey,$keyword);
-            
-            
+            $value = cargarapi($i, $apikey, $keyword);
+
+
     ?>
 
             <div class="result-heading">Sobre <?php echo MAX_RESULTS; ?> Resultados</div>
@@ -257,7 +259,7 @@ if (isset($_POST['submit'])) {
                                 <form action="" method="post">
                                     <input type="hidden" name="videoid" value="<?php echo $videoId ?>">
                                     <input type="hidden" name="title" value="<?php echo $title ?>">
-                                <button type="submit" style="text-decoration: none;"><img style="border-radius: 15px;" src="http://img.youtube.com/vi/<?php echo $videoId ?>/mqdefault.jpg" height="auto" width="100%" alt=""></button>
+                                    <button type="submit" style="text-decoration: none;"><img style="border-radius: 15px;" src="http://img.youtube.com/vi/<?php echo $videoId ?>/mqdefault.jpg" height="auto" width="100%" alt=""></button>
                                 </form>
                             </div>
                             <div class="videoInfo">
@@ -281,14 +283,14 @@ if (isset($_POST['submit'])) {
 
 <script>
     if (window.history.replaceState) { // verificamos disponibilidad
-    window.history.replaceState(null, null, window.location.href);
-}
+        window.history.replaceState(null, null, window.location.href);
+    }
 </script>
 
 <script>
-    function igminita(){
+    function igminita() {
         var iglargo = document.getElementById("ig-minita").value;
-        if(iglargo.length >= 20){
+        if (iglargo.length >= 20) {
             iglargo = "";
         }
     }
