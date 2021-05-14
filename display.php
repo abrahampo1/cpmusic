@@ -160,7 +160,7 @@ if ($ig_minita == "") {
         line-height: 0;
         z-index: 2;
         align-items: center;
-        margin-bottom: 15px;
+        margin-bottom: 15px 15px 0px 0px;
     }
 
     #myProgress {
