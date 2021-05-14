@@ -28,7 +28,7 @@ if (isset($_POST["nuevo"])) {
     $do = mysqli_query($link, $sql);
     $video = 0;
     if ($do->num_rows > 1) {
-        echo '<h1 style="width:100%" class="siguiente_text">Siguientes:</h1>';
+        echo '<h1 style="width:100%" class="siguiente_text">Siguiente:</h1>';
     }
     while ($video_query = mysqli_fetch_assoc($do)) {
         if ($video != 0) {
