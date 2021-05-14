@@ -434,12 +434,12 @@ if ($ig_minita == "") {
                 if (response == "terminada" || response == "nuevo") {
                     setTimeout(function() {
                         location.reload();
-                    }, 1000);
+                    }, 100);
                 };
             },
             error: function() {}
         });
-    }, 100);
+    }, 1000);
 </script>
 
 <script>
