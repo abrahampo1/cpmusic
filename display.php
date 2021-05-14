@@ -402,8 +402,8 @@ if ($ig_minita == "") {
     }, 500);
 </script>
 <script>
-    var siguiente = document.getElementById("siguiente_texto");
     var updatetime = window.setInterval(function() {
+        var siguiente = document.getElementById("siguiente_texto");
         var video = document.getElementById("videoclip");
         var tiempototal = document.getElementById("video_total").value;
         var tiempo = video.currentTime;
