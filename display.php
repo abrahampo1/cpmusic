@@ -145,6 +145,7 @@ if($ig_minita == ""){
         height: 75px;
         line-height: 0px;
         align-items: center;
+        margin-bottom: 15px;
     }
 
     .motd {
