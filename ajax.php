@@ -45,8 +45,8 @@ if (isset($_POST["nuevo"])) {
             $sql = "SELECT * FROM musica WHERE reproducida = 0 and datos = 1";
             $do = mysqli_query($link, $sql);
             $video_ahora = mysqli_fetch_assoc($do);
-            $restante = $video_ahora["tiempo"] - $video_ahora["total_tiempo"];
-            $ultima_html = '<div class="centered"><h2 id="siguiente_texto">' . $restante . '</h2></div>';
+            $restante = $video_ahora["total_tiempo"] - $video_ahora["tiempo"];
+            $ultima_html = '<div class="centered"><h2 id="siguiente_texto">En ' . $restante . '</h2></div>';
         } else {
             $ultima_html = "";
         }
