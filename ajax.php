@@ -12,6 +12,11 @@ if (isset($_POST["next"])) {
             if ($do->num_rows > 0) {
                 echo 'terminada';
             }
+            $sql = "SELECT * FROM musica WHERE reproducida = 0 and datos = 0";
+            $do = mysqli_query($link, $sql);
+            if ($do->num_rows == 0) {
+                echo 'terminada';
+            }
             exit;
         } else {
         }

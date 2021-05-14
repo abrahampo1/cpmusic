@@ -16,12 +16,6 @@ def run_forever():
                 playurl = best.url
                 bestvideo = video.getbest()
                 videourl = bestvideo.url
-                print(video.length)
-                if video.length > 600:
-                    print("No amigo, las prefiero pequeñas")
-                    exit()
-                else:
-                    print("Menos de 10? buen track bro")
                 myobj = {
                     'api': '123',
                     'miniatura': video.bigthumb,
@@ -30,6 +24,19 @@ def run_forever():
                     'video': videourl
                 }
                 x = requests.post(url_api, data=myobj)
+                if video.length > 600:
+                    print("No amigo, las prefiero pequeñas")
+                    print("Terminado rey.")
+                    video = False
+                    myobj = {
+                        'api': '123',
+                        'terminado': url
+                    }
+                    x = requests.post(url_api, data=myobj)
+                    print(x.text)
+                    run_forever()
+                else:
+                    print("Menos de 10? buen track bro")
                 print(x.text)
                 Instance = vlc.Instance()
                 player = Instance.media_player_new()
