@@ -177,6 +177,7 @@ if (isset($_POST['submit'])) {
         text-decoration: none;
         background-color: whitesmoke;
         border-radius: 100%;
+        padding: 5px;
     }
     </style>
 
