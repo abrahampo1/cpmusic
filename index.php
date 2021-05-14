@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
             "message" => "No puedes spamear el botón."
         );
     }
-    if (empty($keyword)) {
+    if (empty($keyword) || strlen($keyword) < 3) {
         $response = array(
             "type" => "error",
             "message" => "El campo de busqueda no puede estar vacio."
