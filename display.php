@@ -137,7 +137,6 @@ if ($ig_minita == "") {
         -webkit-box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
         -moz-box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
         box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
-        margin: 15px;
     }
 
     .hora {
@@ -338,7 +337,7 @@ if ($ig_minita == "") {
         </div>
 
     </div>
-    <div style="display: flex; width:100%; margin-left: 15px">
+    <div style="display: flex; width:100%; padding-left: 15px; padding-right: 15px">
         <?php
         if ($ig_minita != "") {
             echo '<div class="instagram" style="position: fixed; left: 0; bottom: 0; height: 75px; display: flex; max-width: 19%">
