@@ -219,7 +219,7 @@ if ($ig_minita == "") {
     }
 
     .hora_text {
-        text-align: right;
+        text-align: center;
     }
 
     .scroll-slow {
