@@ -11,6 +11,8 @@ if (isset($_POST["next"])) {
             $do = mysqli_query($link, $sql);
             if ($do->num_rows > 0) {
                 echo 'terminada';
+            }else{
+                echo 'terminada';
             }
             exit;
         } else {
