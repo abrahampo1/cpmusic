@@ -338,7 +338,7 @@ if ($ig_minita == "") {
         </div>
 
     </div>
-    <div style="display: flex; width:100%">
+    <div style="display: flex; width:100%; margin-left: 15px">
         <?php
         if ($ig_minita != "") {
             echo '<div class="instagram" style="position: fixed; left: 0; bottom: 0; height: 75px; display: flex; max-width: 19%">
@@ -353,7 +353,7 @@ if ($ig_minita == "") {
 
             </div>
         </div>
-        <div class="hora" style="position: fixed; right: 0; bottom: 0; width: 10%; margin-left: 15px; margin-right: 15px; text-align: right">
+        <div class="hora" style="position: fixed; right: 0; bottom: 0; width: 10%; margin-right: 15px; text-align: right">
             <p class="hora_text" id="hora"></p>
         </div>
 
