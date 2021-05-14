@@ -285,6 +285,37 @@ if (isset($_POST['submit'])) {
 
             </div>
 
+            <div class="videos-data-container" id="SearchResultsDiv">
+
+<?php
+$sql = "SELECT * FROM musica WHERE reproducida = 1 LIMIT 15";
+$do = mysqli_query($link, $sql);
+while($video = mysqli_fetch_assoc($do)){
+        $videoId = explode("?v=", $video["urlspoti"]);
+        $videoId = $video_id[1];
+        $title = $video["titulo"];
+        $description = $video["insta"];
+?>
+
+        <div class="video-tile">
+            <div class="videoDiv">
+                <form action="" method="post">
+                    <input type="hidden" name="videoid" value="<?php echo $videoId ?>">
+                    <input type="hidden" name="title" value="<?php echo $title ?>">
+                    <button type="submit" style="text-decoration: none;"><img style="border-radius: 15px;" src="http://img.youtube.com/vi/<?php echo $videoId ?>/mqdefault.jpg" height="auto" width="100%" alt=""></button>
+                </form>
+            </div>
+            <div class="videoInfo">
+                <div class="videoTitle"><b><?php echo $title; ?></b></div>
+                <div class="videoDesc"><?php echo $description; ?></div>
+            </div>
+        </div>
+<?php
+    }
+?>
+
+</div>
+
 
 </body>
 
