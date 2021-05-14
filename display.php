@@ -175,7 +175,7 @@ if($ig_minita == ""){
     }
 
     .anterior {
-        animation: fadeInAnimation ease 2s;
+        animation: fadeInAnimation ease 4s;
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
     }
