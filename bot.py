@@ -46,7 +46,7 @@ def run_forever():
                         'total': video.length
                     }
                     x = requests.post(url_api, data=myobj)
-                    time.sleep(1.1)
+                    time.sleep(1.3)
                     i += 1
                     print(str(i) +"/"+ str(video.length),end='\r')
 
