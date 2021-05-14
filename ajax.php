@@ -74,7 +74,8 @@ if (isset($_POST["anteriores"])) {
             $description = "franciscoasorey";
         }
 
-        echo '<div class="video-tile">
+        echo '
+        <div class="video-tile">
             <div class="videoDiv">
                 <form action="" method="post">
                     <input type="hidden" name="videoid" value="' . $videoId . '">
