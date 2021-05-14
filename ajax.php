@@ -77,7 +77,7 @@ if (isset($_POST["anteriores"])) {
                 <form action="" method="post">
                     <input type="hidden" name="videoid" value="' . $videoId . '">
                     <input type="hidden" name="title" value="' . $title . '">
-                    <button type="submit" style="text-decoration: none;"><div class="container"><img style="border-radius: 15px;" src="https://img.youtube.com/vi/' . $videoId . '/mqdefault.jpg" height="auto" width="100%" alt=""><div class="centered"><button style="border-radius: 25px">Fav</button></div></div></button>
+                    <button type="submit" style="text-decoration: none;"><div class="container"><img style="border-radius: 15px;" src="https://img.youtube.com/vi/' . $videoId . '/mqdefault.jpg" height="auto" width="100%" alt=""></div></button>
                 </form>
             </div>
             <div class="videoInfo">
