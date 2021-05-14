@@ -40,7 +40,7 @@ if (isset($_POST["nuevo"])) {
     while ($video_query = mysqli_fetch_assoc($do)) {
         $video_id = explode("?v=", $video_query["urlspoti"]);
         $video_id = $video_id[1];
-        $thumbnail = "http://img.youtube.com/vi/" . $video_id . "/mqdefault.jpg";
+        $thumbnail = "https://img.youtube.com/vi/" . $video_id . "/mqdefault.jpg";
         if ($video == 1) {
             $sql = "SELECT * FROM musica WHERE reproducida = 0 and datos = 1";
             $do = mysqli_query($link, $sql);
