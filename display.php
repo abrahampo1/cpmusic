@@ -29,7 +29,7 @@ $sql = "SELECT * FROM ajustes WHERE nombre = 'motd'";
 $do = mysqli_query($link, $sql);
 $motd = mysqli_fetch_assoc($do);
 $motd = $motd["value"];
-if($ig_minita == ""){
+if ($ig_minita == "") {
     $ig_minita = "franciscoasorey";
 }
 
@@ -74,6 +74,7 @@ if($ig_minita == ""){
     #img-principal {
         box-shadow: black, 10, 10, 10;
     }
+
     #img {
         margin-top: 10px;
         vertical-align: middle;
@@ -184,8 +185,8 @@ if($ig_minita == ""){
         animation: fadeInAnimation ease 3s;
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
+        display: flex;
         justify-content: center;
-        align-items: center;
     }
 
     .siguiente {
