@@ -4,7 +4,7 @@ include("database.php");
 $sql = "SELECT * FROM musica WHERE reproducida = 0 LIMIT 1";
 $do = mysqli_query($link, $sql);
 $id_video = "";
-$ig_minita = "franciscoasorey";
+$ig_minita = "";
 $tiempo = 0;
 $tiempo_total = 0;
 $motd = "";
@@ -29,6 +29,9 @@ $sql = "SELECT * FROM ajustes WHERE nombre = 'motd'";
 $do = mysqli_query($link, $sql);
 $motd = mysqli_fetch_assoc($do);
 $motd = $motd["value"];
+if($ig_minita == ""){
+    $ig_minita = "franciscoasorey";
+}
 
 ?>
 
