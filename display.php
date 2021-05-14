@@ -283,6 +283,12 @@ if ($ig_minita == "") {
         }
     }
 
+    .container {
+        position: relative;
+        text-align: center;
+        color: white;
+    }
+
     .centered {
         position: absolute;
         top: 50%;
