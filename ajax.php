@@ -68,6 +68,8 @@ if (isset($_POST["anteriores"])) {
         $videoId = explode("?v=", $video["urlspoti"]);
         $videoId = $videoId[1];
         $title = $video["titulo"];
+        $title = str_replace('"', "", $title);
+        $title = str_replace("&", "&amp;", $title);
         $description = $video["insta"];
         $description = str_replace("@", "", $description);
         if ($description == "") {
