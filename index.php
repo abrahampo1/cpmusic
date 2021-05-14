@@ -173,6 +173,11 @@ if (isset($_POST['submit'])) {
         left: 80%;
         transform: translate(-50%, -50%);
     }
+    .fav{
+        text-decoration: none;
+        background-color: whitesmoke;
+        border-radius: 100%;
+    }
     </style>
 
 </head>
