@@ -286,6 +286,8 @@ if ($ig_minita == "") {
     .container {
         position: relative;
         text-align: center;
+        justify-content: center;
+        align-items: center;
         color: white;
     }
 
