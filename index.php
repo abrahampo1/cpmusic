@@ -334,7 +334,7 @@ if (isset($_POST['submit'])) {
             },
             success: function(response) {
                 if (response != document.getElementById("anteriores").innerHTML) {
-                    document.getElementById("debug").innerHTML = getElementById("anteriores").innerHTML;
+                    document.getElementById("debug").innerHTML = document.getElementById("anteriores").innerHTML;
                     document.getElementById("debug").innerHTML += "<hr>";
                     document.getElementById("debug").innerHTML = response;
                     document.getElementById("anteriores").innerHTML = response;
