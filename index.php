@@ -4,7 +4,12 @@ define("MAX_RESULTS", 5);
 
 if (isset($_POST['submit'])) {
     $keyword = $_POST['keyword'];
-
+    if(isset($_COOKIE["delay"])){
+        $response = array(
+            "type" => "error",
+            "message" => "No puedes spamear el botón."
+        );
+    }
     if (empty($keyword)) {
         $response = array(
             "type" => "error",
@@ -229,6 +234,7 @@ if (isset($_POST['submit'])) {
                 return $value;
             }
             $value = cargarapi($i,$apikey,$keyword);
+            setcookie("delay", $value, time()+15);
             
     ?>
 
