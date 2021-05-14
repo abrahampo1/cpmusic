@@ -44,6 +44,7 @@ if ($ig_minita == "") {
     h1 {
         text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white im !important;
         font-family: 'Hind Siliguri', sans-serif !important;
+        color: black !important;
     }
 
     img {
