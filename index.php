@@ -206,6 +206,7 @@ if (isset($_POST['submit'])) {
             $apikey = $apikey["value"];
             $keyword = urlencode($keyword);
             $i = 1;
+            setcookie("delay", "si", time()+15);
             function cargarapi($i,$apikey,$keyword){
                 
                 $apis = explode(";", $apikey);
@@ -234,7 +235,7 @@ if (isset($_POST['submit'])) {
                 return $value;
             }
             $value = cargarapi($i,$apikey,$keyword);
-            setcookie("delay", "si", time()+15);
+            
             
     ?>
 
