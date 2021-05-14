@@ -63,7 +63,7 @@ while($video = mysqli_fetch_assoc($do)){
         $description = $video["insta"];
         $description = str_replace("@", "", $description);
         if($description == ""){
-            $description = "@franciscoasorey";
+            $description = "franciscoasorey";
         }
 
      echo'   <div class="video-tile">
@@ -76,7 +76,7 @@ while($video = mysqli_fetch_assoc($do)){
             </div>
             <div class="videoInfo">
                 <div class="videoTitle"><b>'.$title.'</b></div>
-                <div class="videoDesc">'.$description.'</div>
+                <div class="videoDesc">@'.$description.'</div>
             </div>
         </div>';
 
