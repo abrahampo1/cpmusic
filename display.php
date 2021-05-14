@@ -186,7 +186,6 @@ if ($ig_minita == "") {
         animation: fadeInAnimation ease 3s;
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
-        display: flex;
         justify-content: center;
     }
 
