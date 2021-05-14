@@ -334,6 +334,8 @@ if (isset($_POST['submit'])) {
             },
             success: function(response) {
                 if (response != document.getElementById("anteriores").innerHTML) {
+                    alert(response);
+                    alert(document.getElementById("anteriores").innerHTML);
                     document.getElementById("anteriores").innerHTML = response;
                 };
             },
