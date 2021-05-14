@@ -38,17 +38,21 @@ if (isset($_POST["nuevo"])) {
     }
     $video = 1;
     while ($video_query = mysqli_fetch_assoc($do)) {
-            $video_id = explode("?v=", $video_query["urlspoti"]);
-            $video_id = $video_id[1];
-            $thumbnail = "http://img.youtube.com/vi/" . $video_id . "/mqdefault.jpg";
-            if($video == 1){
-                $ultima_html = '<div class="centered"><h2 id="siguiente_texto"></h2></div>';
-            }else{
-                $ultima_html = "";
-            }
-            
-            echo '<div class="container"><img class="fadeIn siguiente" id="img" src="' . $thumbnail . '" height="auto" width="100%" alt="">'.$ultima_html.'</div><br>';
-            $video++;
+        $video_id = explode("?v=", $video_query["urlspoti"]);
+        $video_id = $video_id[1];
+        $thumbnail = "http://img.youtube.com/vi/" . $video_id . "/mqdefault.jpg";
+        if ($video == 1) {
+            $sql = "SELECT * FROM musica WHERE reproducida = 0 and datos = 1";
+            $do = mysqli_query($link, $sql);
+            $video_ahora = mysqli_fetch_assoc($do);
+            $restante = $video_ahora["tiempo"] - $video_ahora["total_tiempo"];
+            $ultima_html = '<div class="centered"><h2 id="siguiente_texto">' . $restante . '</h2></div>';
+        } else {
+            $ultima_html = "";
+        }
+
+        echo '<div class="container"><img class="fadeIn siguiente" id="img" src="' . $thumbnail . '" height="auto" width="100%" alt="">' . $ultima_html . '</div><br>';
+        $video++;
     }
 }
 if (isset($_POST["anuncio"])) {
@@ -56,33 +60,32 @@ if (isset($_POST["anuncio"])) {
     exit;
 }
 
-if(isset($_POST["anteriores"])){
-$sql = "SELECT * FROM musica WHERE reproducida = 1 ORDER BY id DESC LIMIT 15";
-$do = mysqli_query($link, $sql);
-echo "<h2>15 Anteriores</h2>";
-while($video = mysqli_fetch_assoc($do)){
+if (isset($_POST["anteriores"])) {
+    $sql = "SELECT * FROM musica WHERE reproducida = 1 ORDER BY id DESC LIMIT 15";
+    $do = mysqli_query($link, $sql);
+    echo "<h2>15 Anteriores</h2>";
+    while ($video = mysqli_fetch_assoc($do)) {
         $videoId = explode("?v=", $video["urlspoti"]);
         $videoId = $videoId[1];
         $title = $video["titulo"];
         $description = $video["insta"];
         $description = str_replace("@", "", $description);
-        if($description == ""){
+        if ($description == "") {
             $description = "franciscoasorey";
         }
 
-     echo'   <div class="video-tile">
+        echo '<div class="video-tile">
             <div class="videoDiv">
                 <form action="" method="post">
-                    <input type="hidden" name="videoid" value="'.$videoId.'">
-                    <input type="hidden" name="title" value="'.$title.'">
-                    <button type="submit" style="text-decoration: none;"><img style="border-radius: 15px;" src="http://img.youtube.com/vi/'.$videoId.'/mqdefault.jpg" height="auto" width="100%" alt=""></button>
+                    <input type="hidden" name="videoid" value="' . $videoId . '">
+                    <input type="hidden" name="title" value="' . $title . '">
+                    <button type="submit" style="text-decoration: none;"><img style="border-radius: 15px;" src="http://img.youtube.com/vi/' . $videoId . '/mqdefault.jpg" height="auto" width="100%" alt=""></button>
                 </form>
             </div>
             <div class="videoInfo">
-                <div class="videoTitle"><b>'.$title.'</b></div>
-                <div class="videoDesc">@'.$description.'</div>
+                <div class="videoTitle"><b>' . $title . '</b></div>
+                <div class="videoDesc">@' . $description . '</div>
             </div>
         </div>';
-
     }
 }
