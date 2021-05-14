@@ -402,18 +402,19 @@ if ($ig_minita == "") {
     }, 500);
 </script>
 <script>
-    var siguiente = document.getElementById("siguiente_texto");
-    if(siguiente){
+    window.onload = function() {
         var siguiente = document.getElementById("siguiente_texto");
-        var updatetime = window.setInterval(function() {
-        var video = document.getElementById("videoclip");
-        var tiempototal = document.getElementById("video_total").value;
-        var tiempo = video.currentTime;
-        var restante = tiempo - tiempototal;
-        siguiente.innerHTML = "En "+restante;
-    }, 500);
+        if (siguiente) {
+            var siguiente = document.getElementById("siguiente_texto");
+            var updatetime = window.setInterval(function() {
+                var video = document.getElementById("videoclip");
+                var tiempototal = document.getElementById("video_total").value;
+                var tiempo = video.currentTime;
+                var restante = tiempo - tiempototal;
+                siguiente.innerHTML = "En " + restante;
+            }, 500);
+        }
     }
-    
 </script>
 <script>
     var updatetime = window.setInterval(function() {
