@@ -441,7 +441,7 @@ if ($ig_minita == "") {
             },
             success: function(response) {
                 if (response != document.getElementById("siguientes").innerHTML) {
-                    document.getElementById("siguientes").style.width = "15%";
+                    document.getElementById("siguientes").style.width = "100%";
                     document.getElementById("siguientes").innerHTML = response;
                 } else if (response == "") {
                     document.getElementById("siguientes").style.width = "";
