@@ -130,7 +130,7 @@ if ($ig_minita == "") {
 
     .instagram {
         border-radius: 15px;
-        background-color: rgba(255,255,255,0.7) !important;
+        background-color: rgba(255, 255, 255, 0.7) !important;
         padding: 5px;
         justify-content: center;
         align-items: center;
@@ -143,7 +143,7 @@ if ($ig_minita == "") {
     .hora {
         border-radius: 0px 15px 15px 0px;
         font-size: 40px;
-        background-color: rgba(255,255,255,0.7);
+        background-color: rgba(255, 255, 255, 0.7);
         padding: 5px;
         height: 75px;
         line-height: 0px;
@@ -154,7 +154,7 @@ if ($ig_minita == "") {
     .motd {
         border-radius: 15px 0px 0px 15px;
         font-size: 40px;
-        background-color: rgba(255,255,255,0.7);
+        background-color: rgba(255, 255, 255, 0.7);
         padding: 5px;
         height: 75px;
         line-height: 0;
@@ -281,6 +281,13 @@ if ($ig_minita == "") {
             /* Browser bug fix */
             transform: translateX(-100%);
         }
+    }
+
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 </style>
 
