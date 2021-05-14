@@ -288,7 +288,7 @@ if (isset($_POST['submit'])) {
             <div class="videos-data-container" id="SearchResultsDiv">
 
 <?php
-$sql = "SELECT * FROM musica WHERE reproducida = 1 LIMIT 15 ORDER BY id desc";
+$sql = "SELECT * FROM musica WHERE reproducida = 1 ORDER BY id DESC LIMIT 15";
 $do = mysqli_query($link, $sql);
 while($video = mysqli_fetch_assoc($do)){
         $videoId = explode("?v=", $video["urlspoti"]);
