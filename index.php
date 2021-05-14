@@ -15,7 +15,6 @@ if (isset($_POST['submit'])) {
             "type" => "error",
             "message" => "El campo de busqueda no puede estar vacio o tener menos de 3 digitos."
         );
-        
     }
 }
 
@@ -146,6 +145,22 @@ if (isset($_POST['submit'])) {
         .inicio {
             padding: 10px;
         }
+
+        .video-tile {
+            animation: fadeInAnimation ease 1s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
     </style>
 
 </head>
@@ -198,7 +213,8 @@ if (isset($_POST['submit'])) {
     <?php if (!empty($response)) { ?>
         <div class="response <?php echo $response["type"]; ?>"> <?php echo $response["message"]; ?> </div>
     <?php
-            exit; } ?>
+        exit;
+    } ?>
     <?php
     if (isset($_POST['submit'])) {
 
@@ -214,7 +230,7 @@ if (isset($_POST['submit'])) {
             {
 
                 $apis = explode(";", $apikey);
-                if($i >= count($apis)){
+                if ($i >= count($apis)) {
                     exit;
                 }
                 $googleApiUrl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=' . $keyword . '&safeSearch=strict&type=video&videoCategoryId=10&key=' . $apis[$i];
@@ -231,7 +247,7 @@ if (isset($_POST['submit'])) {
                 $data = json_decode($response);
                 $value = json_decode(json_encode($data), true);
                 if (isset($value["error"]["code"])) {
-                    
+
                     if ($i == count($apis)) {
                         echo "Error con las APIS de google";
                         exit;
@@ -239,13 +255,13 @@ if (isset($_POST['submit'])) {
                     //echo $apis[$i];
                     //print_r($value);
                     //echo "<br>";
-                    
+
                     $i++;
                     $value = cargarapi($i, $apikey, $keyword);
                 }
                 return $value;
             }
-            if(!isset($_COOKIE["delay"])){
+            if (!isset($_COOKIE["delay"])) {
                 $value = cargarapi($i, $apikey, $keyword);
             }
 
@@ -287,9 +303,9 @@ if (isset($_POST['submit'])) {
 
             <div class="videos-data-container" id="anteriores">
 
-            <h2>Cargando...</h2>
+                <h2>Cargando...</h2>
 
-</div>
+            </div>
 
 
 </body>
