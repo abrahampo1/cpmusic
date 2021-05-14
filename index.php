@@ -295,6 +295,10 @@ while($video = mysqli_fetch_assoc($do)){
         $videoId = $videoId[1];
         $title = $video["titulo"];
         $description = $video["insta"];
+        $description = str_replace("@", "", $description);
+        if($description == ""){
+            $description = "@franciscoasorey";
+        }
 ?>
 
         <div class="video-tile">
