@@ -214,6 +214,9 @@ if (isset($_POST['submit'])) {
             {
 
                 $apis = explode(";", $apikey);
+                if($i >= count($apis)){
+                    exit;
+                }
                 $googleApiUrl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=' . $keyword . '&safeSearch=strict&type=video&videoCategoryId=10&key=' . $apis[$i];
 
                 $ch = curl_init();
