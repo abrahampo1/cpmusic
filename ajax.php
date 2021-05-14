@@ -43,8 +43,8 @@ if (isset($_POST["nuevo"])) {
         $thumbnail = "https://img.youtube.com/vi/" . $video_id . "/mqdefault.jpg";
         if ($video == 1) {
             $sql = "SELECT * FROM musica WHERE reproducida = 0 and datos = 1";
-            $do = mysqli_query($link, $sql);
-            $video_ahora = mysqli_fetch_assoc($do);
+            $do2 = mysqli_query($link, $sql);
+            $video_ahora = mysqli_fetch_assoc($do2);
             $restante = $video_ahora["total_tiempo"] - $video_ahora["tiempo"];
             $ultima_html = '<div class="centered"><h1 id="siguiente_texto"></h1></div>';
         } else {
