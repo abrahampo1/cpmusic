@@ -204,7 +204,7 @@ if (isset($_POST['submit'])) {
             function cargarapi($i,$apikey,$keyword){
                 
                 $apis = explode(";", $apikey);
-                $googleApiUrl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q='.$keyword.'&safeSearch=strict&type=video&videoCategoryId=10&videoDuration=short&key='.$apis[$i];
+                $googleApiUrl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q='.$keyword.'&safeSearch=strict&type=video&videoCategoryId=10&videoDuration=normal&key='.$apis[$i];
 
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_HEADER, 0);
