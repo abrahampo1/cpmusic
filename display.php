@@ -192,7 +192,6 @@ if ($ig_minita == "") {
     }
 
     .siguiente {
-        width: 100%;
         animation: fadeInAnimation ease 2s;
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
