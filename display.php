@@ -43,7 +43,7 @@ if ($ig_minita == "") {
 
     h1 {
         text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-        font-weight: 900;
+        font-family: 'Hind Siliguri', sans-serif;
     }
 
     img {
@@ -287,6 +287,7 @@ if ($ig_minita == "") {
 <head>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@700&display=swap" rel="stylesheet">
 </head>
 
 <body id="back" onload="color()" style="text-align: center;">
@@ -324,7 +325,9 @@ if ($ig_minita == "") {
 
         <img style="display: none;" onerror="location.reload()" id="img-principal" onloadeddata="color()" src="<?php echo $miniatura ?>" height="auto" width="100%" alt="" />
 
-        <div class="siguiente" style="width: 15%;"><div id="siguientes" style="width: 100%"></div></div>
+        <div class="siguiente" style="width: 15%;">
+            <div id="siguientes" style="width: 100%"></div>
+        </div>
     </div>
 
     <div id="myModal" class="modal">
