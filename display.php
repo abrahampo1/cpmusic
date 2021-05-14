@@ -337,7 +337,7 @@ if ($ig_minita == "") {
         </div>
 
     </div>
-    <div style="display: flex; width:100%; padding-left: 15px; padding-right: 15px">
+    <div style="display: flex; width:100%;">
         <?php
         if ($ig_minita != "") {
             echo '<div class="instagram" style="position: fixed; left: 0; bottom: 0; height: 75px; display: flex; max-width: 19%">
