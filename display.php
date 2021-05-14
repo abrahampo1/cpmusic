@@ -367,7 +367,7 @@ if ($ig_minita == "") {
 
             </div>
         </div>
-        <div class="hora" style="position: fixed; right: 0; bottom: 0; width: 6%; margin-right: 15px; text-align: right">
+        <div class="hora" style="position: fixed; right: 0; bottom: 0; width: 6%; margin-right: 15px; text-align: center">
             <p class="hora_text" id="hora"></p>
         </div>
 
