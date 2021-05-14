@@ -141,7 +141,7 @@ if ($ig_minita == "") {
     }
 
     .hora {
-        border-radius: 15px;
+        border-radius: 15px 0px 15px 0px;
         font-size: 40px;
         background-color: rgba(255,255,255,0.7);
         padding: 5px;
@@ -152,7 +152,7 @@ if ($ig_minita == "") {
     }
 
     .motd {
-        border-radius: 15px 15px 0px 0px;
+        border-radius: 15px 0px 15px 0px;
         font-size: 40px;
         background-color: rgba(255,255,255,0.7);
         padding: 5px;
