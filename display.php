@@ -130,7 +130,7 @@ if ($ig_minita == "") {
 
     .instagram {
         border-radius: 15px;
-        background-color: whitesmoke;
+        background-color: rgba(255,255,255,0.7);
         padding: 5px;
         justify-content: center;
         align-items: center;
@@ -143,7 +143,7 @@ if ($ig_minita == "") {
     .hora {
         border-radius: 15px;
         font-size: 40px;
-        background-color: whitesmoke;
+        background-color: rgba(255,255,255,0.7);
         padding: 5px;
         height: 75px;
         line-height: 0px;
@@ -154,7 +154,7 @@ if ($ig_minita == "") {
     .motd {
         border-radius: 15px;
         font-size: 40px;
-        background-color: whitesmoke;
+        background-color: rgba(255,255,255,0.7);
         padding: 5px;
         height: 75px;
         line-height: 0;
