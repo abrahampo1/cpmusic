@@ -73,11 +73,11 @@ if (isset($_POST["anteriores"])) {
         }
 
         echo '<div class="video-tile">
-            <div class="videoDiv">
+            <div class="videoDiv container">
                 <form action="" method="post">
                     <input type="hidden" name="videoid" value="' . $videoId . '">
                     <input type="hidden" name="title" value="' . $title . '">
-                    <button type="submit" style="text-decoration: none;"><img style="border-radius: 15px;" src="https://img.youtube.com/vi/' . $videoId . '/mqdefault.jpg" height="auto" width="100%" alt="">Fav</button>
+                    <button type="submit" style="text-decoration: none;"><img style="border-radius: 15px;" src="https://img.youtube.com/vi/' . $videoId . '/mqdefault.jpg" height="auto" width="100%" alt=""><div class="centered"><h1 id="siguiente_texto">XD</h1></div></button>
                 </form>
             </div>
             <div class="videoInfo">
