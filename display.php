@@ -286,13 +286,11 @@ if ($ig_minita == "") {
     .container {
         position: relative;
         text-align: center;
-        justify-content: center;
-        align-items: center;
         color: white;
     }
 
     .centered {
-        position: relative;
+        position: absolute;
         top: 0%;
         left: 50%;
         transform: translate(-50%, -50%);
