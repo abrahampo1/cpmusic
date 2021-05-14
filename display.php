@@ -362,12 +362,12 @@ if ($ig_minita == "") {
         }
         ?>
         <div style="width: 100%;">
-            <div class="motd scroll-slow" style="position: fixed; right: calc(10% + 25px); bottom: 0; display: flex; width: 70%">
+            <div class="motd scroll-slow" style="position: fixed; right: calc(6% + 25px); bottom: 0; display: flex; width: 70%">
                 <p><?php echo $motd ?></p>
 
             </div>
         </div>
-        <div class="hora" style="position: fixed; right: 0; bottom: 0; width: 10%; margin-right: 15px; text-align: right">
+        <div class="hora" style="position: fixed; right: 0; bottom: 0; width: 6%; margin-right: 15px; text-align: right">
             <p class="hora_text" id="hora"></p>
         </div>
 
