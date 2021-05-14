@@ -77,7 +77,8 @@ if ($ig_minita == "") {
 
     #img {
         margin-top: 10px;
-        height: 10%;
+        height: auto;
+        width: 100%;
     }
 
     /* The Modal (background) */
