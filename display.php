@@ -373,7 +373,9 @@ if ($ig_minita == "") {
     </div>
 
 </body>
+<div id="siguiente_holder" style="display: none;">
 
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
 
@@ -467,9 +469,10 @@ if ($ig_minita == "") {
                 nuevo: 'paquete',
             },
             success: function(response) {
-                if (response != document.getElementById("siguientes").innerHTML) {
+                if (response != document.getElementById("siguiente_holder").innerHTML) {
                     document.getElementById("siguientes").style.width = "100%";
                     document.getElementById("siguientes").innerHTML = response;
+                    document.getElementById("siguiente_holder").innerHTML = response;
                 } else if (response == "") {
                     document.getElementById("siguientes").style.width = "";
                 };
