@@ -186,6 +186,7 @@ if($ig_minita == ""){
         animation-fill-mode: forwards;
         justify-content: center;
         align-items: center;
+        height: 100%;
     }
 
     .siguiente {
