@@ -73,7 +73,7 @@ if (isset($_POST["anteriores"])) {
         }
 
         echo '<div class="video-tile">
-            <div class="videoDiv container">
+            <div class="videoDiv">
                 <form action="" method="post">
                     <input type="hidden" name="videoid" value="' . $videoId . '">
                     <input type="hidden" name="title" value="' . $title . '">
