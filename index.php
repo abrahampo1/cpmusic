@@ -234,7 +234,7 @@ if (isset($_POST['submit'])) {
                 return $value;
             }
             $value = cargarapi($i,$apikey,$keyword);
-            setcookie("delay", $value, time()+15);
+            setcookie("delay", "si", time()+15);
             
     ?>
 
