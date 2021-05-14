@@ -169,8 +169,8 @@ if (isset($_POST['submit'])) {
 
     .centered {
         position: absolute;
-        top: 50%;
-        left: 50%;
+        top: 80%;
+        left: 80%;
         transform: translate(-50%, -50%);
     }
     </style>
