@@ -329,7 +329,10 @@ if (isset($_POST['submit'])) {
             },
             success: function(response) {
                 if (response != document.getElementById("anteriores").innerHTML) {
+                    console.log(response);
+                    console.log(document.getElementById("anteriores").innerHTML);
                     document.getElementById("anteriores").innerHTML = response;
+                    
                 };
             },
             error: function() {}
