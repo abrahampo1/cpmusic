@@ -287,7 +287,7 @@ if (isset($_POST['submit'])) {
 
             <div class="videos-data-container" id="anteriores">
 
-
+            <h2>Cargando...</h2>
 
 </div>
 
