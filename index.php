@@ -228,7 +228,7 @@ if (isset($_POST['submit'])) {
                 $data = json_decode($response);
                 $value = json_decode(json_encode($data), true);
                 if (isset($value["error"]["code"])) {
-                    $i++;
+                    
                     if ($i == count($apis)) {
                         echo "Error con las APIS de google";
                         exit;
@@ -236,6 +236,8 @@ if (isset($_POST['submit'])) {
                     echo $apis[$i];
                     print_r($value);
                     echo "<br>";
+                    
+                    $i++;
                     $value = cargarapi($i, $apikey, $keyword);
                 }
                 return $value;
