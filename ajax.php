@@ -36,12 +36,19 @@ if (isset($_POST["nuevo"])) {
     if ($do->num_rows > 0) {
         //echo '<h1 style="width:100%" class="siguiente_text">Siguiente:</h1>';
     }
+    $video = 1;
     while ($video_query = mysqli_fetch_assoc($do)) {
             $video_id = explode("?v=", $video_query["urlspoti"]);
             $video_id = $video_id[1];
             $thumbnail = "http://img.youtube.com/vi/" . $video_id . "/mqdefault.jpg";
-            echo '<div class="container"><img class="fadeIn siguiente" id="img" src="' . $thumbnail . '" height="auto" width="100%" alt=""><div class="centered">Hola</div></div><br>';
-        
+            if($video == 1){
+                $ultima_html = '<div class="centered"><h2 id="siguiente_texto"></h2></div>';
+            }else{
+                $ultima_html = "";
+            }
+            
+            echo '<div class="container"><img class="fadeIn siguiente" id="img" src="' . $thumbnail . '" height="auto" width="100%" alt="">'.$ultima_html.'</div><br>';
+            $video++;
     }
 }
 if (isset($_POST["anuncio"])) {
