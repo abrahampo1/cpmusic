@@ -24,7 +24,7 @@ if (isset($_POST["api"])) {
                 } else {
                     $sql = "SELECT * FROM favoritas ORDER BY RAND() LIMIT 1";
                     if($do = mysqli_query($link, $sql)){
-                        if($do->num_rows > 1){
+                        if($do->num_rows >= 1){
                             while($randvideo = mysqli_fetch_assoc($do)){
                                 $randvideo = $randvideo["yid"];
                                 $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`) VALUES (NULL, '$randvideo', '', '', '0', '', '', 0);";
