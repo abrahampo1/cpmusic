@@ -318,7 +318,7 @@ if (isset($_POST['submit'])) {
                                     <input type="hidden" name="title" value="<?php echo $title ?>">
                                     <button type="submit" style="text-decoration: none;"><img style="border-radius: 15px;" src="http://img.youtube.com/vi/<?php echo $videoId ?>/mqdefault.jpg" height="auto" width="100%" alt=""></button>
                                     <div class="centered">
-                                        <a class="fav" href="#" onclick="addfav('<?php echo $videoId ?>')">
+                                        <a class="fav" href="#" onclick="addytfav('<?php echo $videoId ?>', this)">
                                             <i class="<?php echo $estrella ?>"></i>
                                         </a>
                                     </div>
@@ -386,7 +386,23 @@ if (isset($_POST['submit'])) {
             data: {
                 favorita: url,
             },
-            success: function(response) {},
+            success: function(response) {
+
+            },
+            error: function() {}
+        });
+    }
+    function addytfav(url, star) {
+        $.ajax({
+
+            type: 'post',
+            url: 'ajax.php',
+            data: {
+                favorita: url,
+            },
+            success: function(response) {
+                
+            },
             error: function() {}
         });
     }

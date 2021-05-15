@@ -44,18 +44,16 @@ def run_forever():
                 player.set_media(Media)
                 player.play()
                 print("Reproduciendo...")
-                i = 0
-                while i != video.length:
+                while round(player.get_time()/1000) != video.length:
                     myobj = {
                         'api': '123',
                         'url': url,
-                        'tiempo': i,
+                        'tiempo': round(player.get_time()/1000),
                         'total': video.length
                     }
                     x = requests.post(url_api, data=myobj)
-                    time.sleep(0.88)
-                    i += 1
-                    print(str(i) +"/"+ str(video.length),end='\r')
+                    time.sleep(0.1)
+                    print(str(round(player.get_time()/1000)) +"/"+ str(video.length),end='\r')
 
                 print("Terminado rey.")
                 video = False
