@@ -358,3 +358,21 @@ if (isset($_POST['submit'])) {
         });
     }, 1000);
 </script>
+<script>
+    function addfav(url,star){
+        star.innerHTML = '<i class="far fa-star"></i>"';
+        $.ajax({
+            
+            type: 'post',
+            url: 'ajax.php',
+            data: {
+                favorita: url,
+            },
+            success: function(response) {
+                if (response == "ok") {
+                };
+            },
+            error: function() {}
+        });
+    }
+</script>
