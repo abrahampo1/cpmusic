@@ -22,15 +22,17 @@ if (isset($_POST["api"])) {
                     $result = mysqli_fetch_assoc($do);
                     echo $result["urlspoti"];
                 } else {
-                    $sql = "SELECT * FROM favoritas ORDER BY RAND() LIMIT 1";
+                    $sql = "SELECT * FROM favoritas ORDER BY RAND() LIMIT 2";
                     if($do = mysqli_query($link, $sql)){
                         if($do->num_rows ==1){
-                            $randvideo = mysqli_fetch_assoc($do);
-                            $randvideo = $randvideo["yid"];
-                            $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`) VALUES (NULL, '$randvideo', '', '', '0', '', '', 0);";
-                            if (mysqli_query($link, $sql)) {
-                                echo $randvideo;
+                            while($randvideo = mysqli_fetch_assoc($do)){
+                                $randvideo = $randvideo["yid"];
+                                $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`) VALUES (NULL, '$randvideo', '', '', '0', '', '', 0);";
+                                if (mysqli_query($link, $sql)) {
+                                    
+                                }
                             }
+                            
                         }
                     }
                     
