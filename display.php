@@ -283,10 +283,12 @@ if ($ig_minita == "") {
             transform: translateX(-100%);
         }
     }
-    .anterior-img{
+
+    .anterior-img {
         border-radius: 10px 0px 0px 10px;
     }
-    .siguiente-img{
+
+    .siguiente-img {
         border-radius: 0px 10px 10px 0px !important;
     }
 
@@ -336,7 +338,7 @@ if ($ig_minita == "") {
         if ($contenido == false) {
             echo '<div class="ies-div"><img class="ies" onerror="location.reload()" onloadeddata="color()" src="' . $miniatura . '" height="auto" width="100%" alt=""></div>';
         } else {
-            echo '<div class="video-div"><input type="hidden" id="video_tiempo" value="' . $tiempo . '"><input type="hidden" id="video_total" value="' . $tiempo_total . '"><video src="' . $videourl . '#t=' . $tiempo . '" id="videoclip" autoplay width="100%" height="auto"></video><div id="myProgress">
+            echo '<div class="video-div"><input type="hidden" id="video_tiempo" value="' . $tiempo . '"><input type="hidden" id="video_total" value="' . $tiempo_total . '"><video src="' . $videourl . '#t=' . $tiempo . '" id="videoclip" onload="barra()" autoplay width="100%" height="auto"></video><div id="myProgress">
             <div id="myBar"></div>
           </div></div>';
         }
@@ -403,14 +405,17 @@ if ($ig_minita == "") {
 </script>
 <script>
     var updatetime = window.setInterval(function() {
-        var elem = document.getElementById("myBar");
-        var video = document.getElementById("videoclip");
-        if (video && elem) {
-            var tiempototal = document.getElementById("video_total").value;
-            var tiempo = video.currentTime;
-            var width = (tiempo / tiempototal) * 100;
-            elem.style.width = width + "%";
+        function barra() {
+            var elem = document.getElementById("myBar");
+            var video = document.getElementById("videoclip");
+            if (video && elem) {
+                var tiempototal = document.getElementById("video_total").value;
+                var tiempo = video.currentTime;
+                var width = (tiempo / tiempototal) * 100;
+                elem.style.width = width + "%";
+            }
         }
+        barra();
     }, 500);
 </script>
 <script>
