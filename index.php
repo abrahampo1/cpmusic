@@ -161,25 +161,27 @@ if (isset($_POST['submit'])) {
                 opacity: 1;
             }
         }
-        .container {
-        position: relative;
-        text-align: center;
-        color: white;
-    }
 
-    .centered {
-        position: absolute;
-        top: 80%;
-        left: 90%;
-        transform: translate(-50%, -50%);
-    }
-    .fav{
-        text-decoration: none;
-        background-color: whitesmoke;
-        border-radius: 100%;
-        padding: 5px;
-        color: #222222;
-    }
+        .container {
+            position: relative;
+            text-align: center;
+            color: white;
+        }
+
+        .centered {
+            position: absolute;
+            top: 80%;
+            left: 90%;
+            transform: translate(-50%, -50%);
+        }
+
+        .fav {
+            text-decoration: none;
+            background-color: whitesmoke;
+            border-radius: 100%;
+            padding: 5px;
+            color: #222222;
+        }
     </style>
 
 </head>
@@ -291,11 +293,20 @@ if (isset($_POST['submit'])) {
             <div class="videos-data-container" id="SearchResultsDiv">
 
                 <?php
+
                 for ($i = 0; $i < MAX_RESULTS; $i++) {
                     if (isset($value['items'][$i]['id']['videoId'])) {
                         $videoId = $value['items'][$i]['id']['videoId'];
                         $title = $value['items'][$i]['snippet']['title'];
                         $description = $value['items'][$i]['snippet']['channelTitle'];
+                        $url = "https://www.youtube.com/watch?v=" . $videoId;
+                        $sql = "SELECT * FROM favoritas WHERE yid = '$url'";
+                        $do3 = mysqli_query($link, $sql);
+                        if ($do3->num_rows > 0) {
+                            $estrella = "fas fa-star";
+                        } else {
+                            $estrella = "far fa-star";
+                        }
                 ?>
 
                         <div class="video-tile">
@@ -304,6 +315,11 @@ if (isset($_POST['submit'])) {
                                     <input type="hidden" name="videoid" value="<?php echo $videoId ?>">
                                     <input type="hidden" name="title" value="<?php echo $title ?>">
                                     <button type="submit" style="text-decoration: none;"><img style="border-radius: 15px;" src="http://img.youtube.com/vi/<?php echo $videoId ?>/mqdefault.jpg" height="auto" width="100%" alt=""></button>
+                                    <div class="centered">
+                                        <a class="fav" href="#" onclick="addfav('<?php echo $videoId ?>')">
+                                            <i class="<?php echo $estrella ?>"></i>
+                                        </a>
+                                    </div>
                                 </form>
                             </div>
                             <div class="videoInfo">
@@ -324,6 +340,7 @@ if (isset($_POST['submit'])) {
             </div>
 </body>
 <p id="debug"></p>
+
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
@@ -351,7 +368,7 @@ if (isset($_POST['submit'])) {
                     console.log(response);
                     console.log(document.getElementById("anteriores").innerHTML);
                     document.getElementById("anteriores").innerHTML = response;
-                    
+
                 };
             },
             error: function() {}
@@ -359,16 +376,15 @@ if (isset($_POST['submit'])) {
     }, 1000);
 </script>
 <script>
-    function addfav(url){
+    function addfav(url) {
         $.ajax({
-            
+
             type: 'post',
             url: 'ajax.php',
             data: {
                 favorita: url,
             },
-            success: function(response) {
-            },
+            success: function(response) {},
             error: function() {}
         });
     }
