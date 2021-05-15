@@ -74,11 +74,6 @@ if (isset($_POST["anteriores"])) {
         $url = "https://www.youtube.com/watch?v=" . $videoId;
         $sql = "SELECT * FROM favoritas WHERE yid = '$url'";
         $do3 = mysqli_query($link, $sql);
-        if ($do3->num_rows > 0) {
-            $estrella = 'fas fa-star';
-        }else{
-            $estrella = 'far fa-star';
-        }
         echo '<div class="video-tile">
             <div class="videoDiv container">
                 <form action="" method="post">
@@ -87,7 +82,8 @@ if (isset($_POST["anteriores"])) {
                     <button type="submit" style="text-decoration: none;"><img style="border-radius: 15px;" src="https://img.youtube.com/vi/' . $videoId . '/mqdefault.jpg" height="auto" width="100%" alt=""></button><div class="centered"><a class="fav" href="#" ';
         echo 'onclick="addfav(';
         echo "'$videoId')";
-        echo '><i class="' . $estrella . '"></i></a></div>
+        if ($do3->num_rows > 0) {
+            echo '><i class="fas fa-star"></i></a></div>
                 </form>
             </div>
             <div class="videoInfo">
@@ -95,6 +91,18 @@ if (isset($_POST["anteriores"])) {
                 <div class="videoDesc">@' . $description . '</div>
             </div>
         </div>';
+        }else{
+            echo '><i class="far fa-star"></i></a></div>
+                </form>
+            </div>
+            <div class="videoInfo">
+                <div class="videoTitle"><b>' . $title . '</b></div>
+                <div class="videoDesc">@' . $description . '</div>
+            </div>
+        </div>';
+        }
+        
+        
     }
 }
 
