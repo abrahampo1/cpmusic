@@ -3,6 +3,9 @@ include("database.php");
 define("MAX_RESULTS", 5);
 
 if (isset($_POST['submit'])) {
+    if(!isset($_COOKIE["delay"])){
+        setcookie("delay", "si", time() + 15);
+    }
     $keyword = $_POST['keyword'];
     if (isset($_COOKIE["delay"])) {
         $response = array(
@@ -246,9 +249,6 @@ if (isset($_POST['submit'])) {
             $apikey = $apikey["value"];
             $keyword = urlencode($keyword);
             $i = 1;
-            if(!isset($_COOKIE["delay"])){
-                setcookie("delay", "si", time() + 15);
-            }
             function cargarapi($i, $apikey, $keyword)
             {
 
