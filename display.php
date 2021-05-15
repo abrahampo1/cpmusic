@@ -454,8 +454,11 @@ if ($ig_minita == "") {
             success: function(response) {
                 if (response.includes("anuncio")) {
                     var noticia = response.split("::");
-                    document.getElementById("noticia").innerHTML = noticia[1];
-                    document.getElementById("myModal").style.display = "block";
+                    if(document.getElementById("noticia").innerHTML != noticia[1]){
+                        document.getElementById("noticia").innerHTML = noticia[1];
+                        document.getElementById("myModal").style.display = "block";
+                    }
+                    
 
                 } else {
                     document.getElementById("myModal").style.display = "none";
