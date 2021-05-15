@@ -83,25 +83,17 @@ if (isset($_POST["anteriores"])) {
         echo 'onclick="addfav(';
         echo "'$videoId')";
         if ($do3->num_rows > 0) {
-            echo '><i class="fas fa-star"></i></a></div>
-                </form>
-            </div>
-            <div class="videoInfo">
-                <div class="videoTitle"><b>' . $title . '</b></div>
-                <div class="videoDesc">@' . $description . '</div>
-            </div>
-        </div>';
+            echo "><i class='fas fa-star'></i></a></div>";
         }else{
-            echo '><i class="far fa-star"></i></a></div>
-                </form>
-            </div>
-            <div class="videoInfo">
-                <div class="videoTitle"><b>' . $title . '</b></div>
-                <div class="videoDesc">@' . $description . '</div>
-            </div>
-        </div>';
+            echo "><i class='far fa-star'></i></a></div>";
         }
-        
+        echo '</form>
+        </div>
+        <div class="videoInfo">
+            <div class="videoTitle"><b>' . $title . '</b></div>
+            <div class="videoDesc">@' . $description . '</div>
+        </div>
+    </div>';
         
     }
 }
