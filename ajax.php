@@ -75,9 +75,9 @@ if (isset($_POST["anteriores"])) {
         $sql = "SELECT * FROM favoritas WHERE yid = '$url'";
         $do3 = mysqli_query($link, $sql);
         if ($do3->num_rows > 0) {
-            $estrella = "fas fa-star";
+            $estrella = 'fas fa-star';
         }else{
-            $estrella = "far fa-star";
+            $estrella = 'far fa-star';
         }
         echo '<div class="video-tile">
             <div class="videoDiv container">
