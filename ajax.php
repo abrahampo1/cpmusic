@@ -127,7 +127,7 @@ if (isset($_POST["playlist"])) {
         $videourl = $video["yid"];
         $sql = "SELECT * FROM musica WHERE urlspoti = '$videourl' LIMIT 1";
         $music = mysqli_query($link, $sql);
-        $title = "";
+        $title = "Aún no se ha reproducido.";
         $description = "";
         if ($music->num_rows > 0) {
             $musicdata = mysqli_fetch_assoc($music);
@@ -155,11 +155,6 @@ if (isset($_POST["playlist"])) {
                     <input type="hidden" name="videoid" value="<?php echo $videoId ?>">
                     <input type="hidden" name="title" value="<?php echo $title ?>">
                     <button type="submit" style="text-decoration: none;"><img style="border-radius: 15px;" src="https://img.youtube.com/vi/<?php echo $videoId ?>/mqdefault.jpg" height="auto" width="100%" alt=""></button>
-                    <div class="centered">
-                        <a class="fav" href="#" onclick="addfav('<?php echo $videoId ?>')">
-                            <i class="<?php echo $estrella ?>"></i>
-                        </a>
-                    </div>
                 </form>
             </div>
             <div class="videoInfo">
