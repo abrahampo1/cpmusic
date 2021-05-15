@@ -75,9 +75,9 @@ if (isset($_POST["anteriores"])) {
         $sql = "SELECT * FROM favoritas WHERE yid = '$url'";
         $do3 = mysqli_query($link, $sql);
         if ($do3->num_rows > 0) {
-            $estrella = "far fa-star";
-        } else {
             $estrella = "fas fa-star";
+        } else {
+            $estrella = "far fa-star";
         }
 ?>
         <div class="video-tile">
@@ -94,8 +94,8 @@ if (isset($_POST["anteriores"])) {
                 </form>
             </div>
             <div class="videoInfo">
-                <div class="videoTitle"><b>' . $title . '</b></div>
-                <div class="videoDesc">@' . $description . '</div>
+                <div class="videoTitle"><b><?php echo $title ?></b></div>
+                <div class="videoDesc">@<?php echo $description ?></div>
             </div>
         </div>
 <?php
