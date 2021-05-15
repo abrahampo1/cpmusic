@@ -146,7 +146,7 @@ if (isset($_POST["playlist"])) {
             $description = "franciscoasorey";
         }
         if($title == ""){
-            $title = "Aún no se ha reproducido.";
+            $title = "<p style='color: red'>Aún no se ha reproducido.</p>";
         }
         $url = "https://www.youtube.com/watch?v=" . $videoId;
         $sql = "SELECT * FROM favoritas WHERE yid = '$url'";
