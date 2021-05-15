@@ -283,6 +283,12 @@ if ($ig_minita == "") {
             transform: translateX(-100%);
         }
     }
+    .anterior-img{
+        border-radius: 10px 0px 0px 10px;
+    }
+    .sigiuiente-img{
+        border-radius: 0px 10px 10px 0px;
+    }
 
     .container {
         position: relative;
@@ -320,7 +326,7 @@ if ($ig_minita == "") {
                 $video_id = explode("?v=", $video_query["urlspoti"]);
                 $video_id = $video_id[1];
                 $thumbnail = "temp/" . $video_query["miniatura"] . ".png";
-                echo '<img id="img" width="100%" onload="color()" src="' . $thumbnail . '" alt="" />';
+                echo '<img id="img" width="100%" class="anterior-img" onload="" src="' . $thumbnail . '" alt="" />';
             }
             ?>
         </div>
