@@ -423,15 +423,18 @@ if ($ig_minita == "") {
         var siguiente = document.getElementById("siguiente_texto");
         var video = document.getElementById("videoclip");
         if (video && siguiente) {
-            var tiempototal = document.getElementById("video_total").value;
-            var tiempo = video.currentTime;
-            var restante = tiempototal - tiempo;
-            if (restante < 31 && restante != 0 && restante != -0) {
-                siguiente.innerHTML = "En " + restante.toFixed(0) + "...";
-            }
-            if (restante <= 0) {
-                siguiente.innerHTML = "Cargando...";
-            }
+            video.addEventListener('loadeddata', function() {
+                var tiempototal = document.getElementById("video_total").value;
+                var tiempo = video.currentTime;
+                var restante = tiempototal - tiempo;
+                if (restante < 31 && restante != 0 && restante != -0) {
+                    siguiente.innerHTML = "En " + restante.toFixed(0) + "...";
+                }
+                if (restante <= 0) {
+                    siguiente.innerHTML = "Cargando...";
+                }
+            }, false);
+
         }
 
     }, 500);
