@@ -22,7 +22,7 @@ if (isset($_POST["api"])) {
                     $result = mysqli_fetch_assoc($do);
                     echo $result["urlspoti"];
                 } else {
-                    $sql = "SELECT * FROM favoritas ORDER BY RAND() LIMIT 2";
+                    $sql = "SELECT * FROM favoritas ORDER BY RAND() LIMIT 1";
                     if($do = mysqli_query($link, $sql)){
                         if($do->num_rows > 1){
                             while($randvideo = mysqli_fetch_assoc($do)){
