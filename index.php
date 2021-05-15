@@ -401,7 +401,11 @@ if (isset($_POST['submit'])) {
                 favorita: url,
             },
             success: function(response) {
-                
+                if(star.innerHTML == '<i class="fas fa-star"></i>'){
+                    star.innerHTML = '<i class="far fa-star"></i>';
+                }else{
+                    star.innerHTML = '<i class="fas fa-star"></i>';
+                }
             },
             error: function() {}
         });
