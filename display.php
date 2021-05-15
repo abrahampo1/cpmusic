@@ -453,6 +453,8 @@ if ($ig_minita == "") {
             },
             success: function(response) {
                     if(response != "" && response != document.getElementById("noticia").innerHTML){
+                        console.log(response);
+                        console.log(document.getElementById("noticia").innerHTML);
                         document.getElementById("noticia").innerHTML = response;
                         document.getElementById("myModal").style.display = "block";
                 } else {
