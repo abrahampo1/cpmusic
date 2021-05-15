@@ -34,7 +34,7 @@ if (isset($_POST["nuevo"])) {
     $sql = "SELECT * FROM musica WHERE reproducida = 0 and datos = 0 LIMIT 3";
     $do = mysqli_query($link, $sql);
     if ($do->num_rows > 0) {
-        echo '<h1 style="width:100%" class="siguiente_text">Troleado papa</h1><img src="https://i.pinimg.com/originals/bb/90/0c/bb900cfc6d9d71d976f9f5d409412aa1.jpg"><audio autoplay><source src="https://www.myinstants.com/media/sounds/broma-gemidos-epica.mp3" type="audio/mpeg"></audio>';
+        //echo '<h1 style="width:100%" class="siguiente_text"></h1>';
     }
     $video = 1;
     while ($video_query = mysqli_fetch_assoc($do)) {
@@ -52,7 +52,7 @@ if (isset($_POST["nuevo"])) {
     }
 }
 if (isset($_POST["anuncio"])) {
-    //echo "anuncio:<h1>Suspensos todos</h1>";
+    echo "anuncio:<h1>Troleado papa</h1><img src="https://i.pinimg.com/originals/bb/90/0c/bb900cfc6d9d71d976f9f5d409412aa1.jpg"><audio autoplay><source src="https://www.myinstants.com/media/sounds/broma-gemidos-epica.mp3" type="audio/mpeg"></audio>";
     exit;
 }
 
