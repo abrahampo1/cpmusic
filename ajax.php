@@ -132,7 +132,7 @@ if (isset($_POST["playlist"])) {
         $videourl = $video["yid"];
         $sql = "SELECT * FROM musica WHERE urlspoti = '$videourl' LIMIT 1";
         $music = mysqli_query($link, $sql);
-        $title = "Aún no se ha reproducido.";
+        $title = "";
         $description = "";
         if ($music->num_rows > 0) {
             $musicdata = mysqli_fetch_assoc($music);
@@ -144,6 +144,9 @@ if (isset($_POST["playlist"])) {
         $description = str_replace("@", "", $description);
         if ($description == "") {
             $description = "franciscoasorey";
+        }
+        if($title == ""){
+            $title = "Aún no se ha reproducido.";
         }
         $url = "https://www.youtube.com/watch?v=" . $videoId;
         $sql = "SELECT * FROM favoritas WHERE yid = '$url'";
