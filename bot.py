@@ -44,6 +44,7 @@ def run_forever():
                 player.set_media(Media)
                 player.play()
                 print("Reproduciendo...")
+                print (player.get_state())
                 currenttime = round(player.get_time()/1000)
                 while currenttime  < video.length-7:
                     currenttime = round(player.get_time()/1000)
@@ -55,7 +56,7 @@ def run_forever():
                     }
                     x = requests.post(url_api, data=myobj)
                     time.sleep(0.1)
-                    
+                    print (player.get_state(), end="\r")
                     print(str(currenttime) +"/"+ str(round(player.get_length()/1000)-7),end='\r')
 
                 print("Terminado rey.")
