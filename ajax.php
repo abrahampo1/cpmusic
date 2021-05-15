@@ -77,7 +77,7 @@ if (isset($_POST["anteriores"])) {
         if ($do->num_rows > 0) {
             $estrella = "fas fa-star";
         }else{
-            $estrella = "far fa-star"
+            $estrella = "far fa-star";
         }
         echo '<div class="video-tile">
             <div class="videoDiv container">
