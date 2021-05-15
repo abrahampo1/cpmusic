@@ -73,8 +73,8 @@ if (isset($_POST["anteriores"])) {
         }
         $url = "https://www.youtube.com/watch?v=".$_POST["favorita"];
     $sql = "SELECT * FROM favoritas WHERE yid = '$url'";
-    $do = mysqli_query($link, $sql);
-    if($do->num_rows > 0){
+    $do3 = mysqli_query($link, $sql);
+    if($do3->num_rows > 0){
         $estrella = "far fa-star";
     }else{
         $estrella = "fas fa-star";
