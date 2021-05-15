@@ -44,7 +44,7 @@ def run_forever():
                 player.set_media(Media)
                 player.play()
                 print("Reproduciendo...")
-                print(round(player.get_length()/1000))
+                print(round(player.get_length(self)))
                 while round(player.get_time()/1000) != round(player.get_length()/1000):
                     myobj = {
                         'api': '123',
