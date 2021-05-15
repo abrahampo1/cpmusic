@@ -71,7 +71,7 @@ if (isset($_POST["anteriores"])) {
         if ($description == "") {
             $description = "franciscoasorey";
         }
-        $url = "https://www.youtube.com/watch?v=".$_POST["favorita"];
+        $url = "https://www.youtube.com/watch?v=".$videoId;
     $sql = "SELECT * FROM favoritas WHERE yid = '$url'";
     $do3 = mysqli_query($link, $sql);
     if($do3->num_rows > 0){
