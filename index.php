@@ -312,7 +312,7 @@ if (isset($_POST['submit'])) {
                 ?>
 
                         <div class="video-tile">
-                            <div class="videoDiv">
+                            <div class="videoDiv container">
                                 <form action="" method="post">
                                     <input type="hidden" name="videoid" value="<?php echo $videoId ?>">
                                     <input type="hidden" name="title" value="<?php echo $title ?>">
