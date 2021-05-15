@@ -119,6 +119,11 @@ if (isset($_POST["favorita"])) {
 
 if (isset($_POST["playlist"])) {
     $playlist = $_POST["playlist"];
+    $sql = "SELECT * FROM playlist WHERE id = '$playlist'";
+    $do = mysqli_query($link, $sql);
+    $playlist_name = mysqli_fetch_assoc($do);
+    $playlist_name = $playlist_name["nombre"];
+    echo "<h1>".$playlist_name."</h1>";
     $sql = "SELECT * FROM favoritas WHERE playlist = '$playlist'";
     $do = mysqli_query($link, $sql);
     while ($video = mysqli_fetch_assoc($do)) {
