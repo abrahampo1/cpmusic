@@ -37,9 +37,13 @@ if (isset($_POST["api"])) {
                                         }
                                     }
                                     if($match == false){
+                                        break;
+                                    }
+                                    if($match == true){
                                         $sql = "SELECT * FROM favoritas ORDER BY RAND() LIMIT 1";
                                         $nuevo = mysqli_query($link, $sql);
                                         $randvideo = mysqli_fetch_assoc($nuevo);
+                                        $match = false;
                                     }
                                 }
                                 
