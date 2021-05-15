@@ -360,7 +360,7 @@ if (isset($_POST['submit'])) {
 </script>
 <script>
     function addfav(url,star){
-        star.innerHTML = '<i class="far fa-star"></i>"';
+        star.innerHTML = '<i class="fas fa-star"></i>"';
         $.ajax({
             
             type: 'post',
