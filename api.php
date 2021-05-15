@@ -26,7 +26,23 @@ if (isset($_POST["api"])) {
                     if($do = mysqli_query($link, $sql)){
                         if($do->num_rows >= 1){
                             while($randvideo = mysqli_fetch_assoc($do)){
-                                $randvideo = $randvideo["yid"];
+                                $match = false;
+                                while($match == false){
+                                    $randvideo = $randvideo["yid"];
+                                    $sql = "SELECT * FROM musica ORDER BY id DESC LIMIT 5";
+                                    $busqueda =  mysqli_query($link, $sql);
+                                    while($videomatch = mysqli_fetch_assoc($busqueda)){
+                                        if($videomatch["urlspoti"] == $randvideo){
+                                            $match = true;
+                                        }
+                                    }
+                                    if($match == false){
+                                        $sql = "SELECT * FROM favoritas ORDER BY RAND() LIMIT 1";
+                                        $nuevo = mysqli_query($link, $sql);
+                                        $randvideo = mysqli_fetch_assoc($nuevo);
+                                    }
+                                }
+                                
                                 $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`) VALUES (NULL, '$randvideo', '', '', '0', '', '', 0);";
                                 if (mysqli_query($link, $sql)) {
                                     
