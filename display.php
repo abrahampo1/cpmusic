@@ -286,8 +286,8 @@ if ($ig_minita == "") {
     .anterior-img{
         border-radius: 10px 0px 0px 10px;
     }
-    .sigiuiente-img{
-        border-radius: 0px 10px 10px 0px;
+    .siguiente-img{
+        border-radius: 0px 10px 10px 0px !important;
     }
 
     .container {
