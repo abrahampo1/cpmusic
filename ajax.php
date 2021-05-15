@@ -71,13 +71,23 @@ if (isset($_POST["anteriores"])) {
         if ($description == "") {
             $description = "franciscoasorey";
         }
-
+        $url = "https://www.youtube.com/watch?v=" . $videoId;
+        $sql = "SELECT * FROM favoritas WHERE yid = '$url'";
+        $do = mysqli_query($link, $sql);
+        if ($do->num_rows > 0) {
+            $estrella = "fas fa-star";
+        }else{
+            $estrella = "far fa-star"
+        }
         echo '<div class="video-tile">
             <div class="videoDiv container">
                 <form action="" method="post">
                     <input type="hidden" name="videoid" value="' . $videoId . '">
                     <input type="hidden" name="title" value="' . $title . '">
-                    <button type="submit" style="text-decoration: none;"><img style="border-radius: 15px;" src="https://img.youtube.com/vi/' . $videoId . '/mqdefault.jpg" height="auto" width="100%" alt=""></button><div class="centered"><a class="fav" href="#" '; echo'onclick="addfav('; echo "'$videoId'"; echo',this)"'; echo'><i class="far fa-star"></i></a></div>
+                    <button type="submit" style="text-decoration: none;"><img style="border-radius: 15px;" src="https://img.youtube.com/vi/' . $videoId . '/mqdefault.jpg" height="auto" width="100%" alt=""></button><div class="centered"><a class="fav" href="#" ';
+        echo 'onclick="addfav(';
+        echo "'$videoId')";
+        echo '><i class="' . $estrella . '"></i></a></div>
                 </form>
             </div>
             <div class="videoInfo">
@@ -86,4 +96,17 @@ if (isset($_POST["anteriores"])) {
             </div>
         </div>';
     }
+}
+
+if (isset($_POST["favorita"])) {
+    $url = "https://www.youtube.com/watch?v=" . $_POST["favorita"];
+    $sql = "SELECT * FROM favoritas WHERE yid = '$url'";
+    $do = mysqli_query($link, $sql);
+    if ($do->num_rows > 0) {
+        $sql = "DELETE FROM `favoritas` WHERE `favoritas`.`yid` = '$url'";
+    } else {
+        $sql = "INSERT INTO `favoritas` (`id`, `yid`, `playlist`) VALUES (NULL, '$url', '1');";
+    }
+    $do = mysqli_query($link, $sql);
+    echo "ok";
 }

@@ -359,8 +359,7 @@ if (isset($_POST['submit'])) {
     }, 1000);
 </script>
 <script>
-    function addfav(url,star){
-        star.innerHTML = '<i class="fas fa-star"></i>"';
+    function addfav(url){
         $.ajax({
             
             type: 'post',
@@ -369,8 +368,6 @@ if (isset($_POST['submit'])) {
                 favorita: url,
             },
             success: function(response) {
-                if (response == "ok") {
-                };
             },
             error: function() {}
         });
