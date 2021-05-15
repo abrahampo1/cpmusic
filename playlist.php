@@ -201,7 +201,7 @@ if(isset($_GET["p"])){
             type: 'post',
             url: 'ajax.php',
             data: {
-                playlist: '',
+                playlist: <?php echo "'".$playlist."'" ?>,
             },
             success: function(response) {
                 if (response != document.getElementById("playlist").innerHTML) {
