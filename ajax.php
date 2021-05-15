@@ -71,40 +71,37 @@ if (isset($_POST["anteriores"])) {
         if ($description == "") {
             $description = "franciscoasorey";
         }
-        $url = "https://www.youtube.com/watch?v=" . $videoId;
-        $sql = "SELECT * FROM favoritas WHERE yid = '$url'";
-        $do3 = mysqli_query($link, $sql);
+        $url = "https://www.youtube.com/watch?v=".$_POST["favorita"];
+    $sql = "SELECT * FROM favoritas WHERE yid = '$url'";
+    $do = mysqli_query($link, $sql);
+    if($do->num_rows > 0){
+        $estrella = "far fa-star";
+    }else{
+        $estrella = "fas fa-star";
+    }
         echo '<div class="video-tile">
             <div class="videoDiv container">
                 <form action="" method="post">
                     <input type="hidden" name="videoid" value="' . $videoId . '">
                     <input type="hidden" name="title" value="' . $title . '">
-                    <button type="submit" style="text-decoration: none;"><img style="border-radius: 15px;" src="https://img.youtube.com/vi/' . $videoId . '/mqdefault.jpg" height="auto" width="100%" alt=""></button><div class="centered"><a class="fav" href="#" ';
-        echo 'onclick="addfav(';
-        echo "'$videoId')";
-        if ($do3->num_rows > 0) {
-            echo "><i class='fas fa-star'></i></a></div>";
-        }else{
-            echo "><i class='far fa-star'></i></a></div>";
-        }
-        echo '</form>
-        </div>
-        <div class="videoInfo">
-            <div class="videoTitle"><b>' . $title . '</b></div>
-            <div class="videoDesc">@' . $description . '</div>
-        </div>
-    </div>';
-        
+                    <button type="submit" style="text-decoration: none;"><img style="border-radius: 15px;" src="https://img.youtube.com/vi/' . $videoId . '/mqdefault.jpg" height="auto" width="100%" alt=""></button><div class="centered"><a class="fav" href="#" '; echo'onclick="addfav('; echo "'$videoId')"; echo'><i class='; echo"'$estrella'"; echo'></i></a></div>
+                </form>
+            </div>
+            <div class="videoInfo">
+                <div class="videoTitle"><b>' . $title . '</b></div>
+                <div class="videoDesc">@' . $description . '</div>
+            </div>
+        </div>';
     }
 }
 
-if (isset($_POST["favorita"])) {
-    $url = "https://www.youtube.com/watch?v=" . $_POST["favorita"];
+if(isset($_POST["favorita"])){
+    $url = "https://www.youtube.com/watch?v=".$_POST["favorita"];
     $sql = "SELECT * FROM favoritas WHERE yid = '$url'";
     $do = mysqli_query($link, $sql);
-    if ($do->num_rows > 0) {
+    if($do->num_rows > 0){
         $sql = "DELETE FROM `favoritas` WHERE `favoritas`.`yid` = '$url'";
-    } else {
+    }else{
         $sql = "INSERT INTO `favoritas` (`id`, `yid`, `playlist`) VALUES (NULL, '$url', '1');";
     }
     $do = mysqli_query($link, $sql);
