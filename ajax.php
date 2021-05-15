@@ -124,7 +124,7 @@ if (isset($_POST["playlist"])) {
     $playlist_name = mysqli_fetch_assoc($do);
     $playlist_name = $playlist_name["nombre"];
     echo "<h1>".$playlist_name."</h1>";
-    $sql = "SELECT * FROM favoritas WHERE playlist = '$playlist'";
+    $sql = "SELECT * FROM favoritas WHERE playlist = '$playlist' ORDER BY id DESC";
     $do = mysqli_query($link, $sql);
     while ($video = mysqli_fetch_assoc($do)) {
         $videoId = explode("?v=", $video["yid"]);
