@@ -453,9 +453,7 @@ if ($ig_minita == "") {
             },
             success: function(response) {
                     if(response != "" && response != document.getElementById("noticia").innerHTML){
-                        console.log(noticia[1]);
-                        console.log(document.getElementById("noticia").innerHTML);
-                        document.getElementById("noticia").innerHTML = noticia[1];
+                        document.getElementById("noticia").innerHTML = response;
                         document.getElementById("myModal").style.display = "block";
                 } else {
                     document.getElementById("myModal").style.display = "none";
