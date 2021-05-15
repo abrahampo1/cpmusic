@@ -116,3 +116,58 @@ if (isset($_POST["favorita"])) {
     $do = mysqli_query($link, $sql);
     echo "ok";
 }
+
+if (isset($_POST["playlist"])) {
+    $playlist = $_POST["playlist"];
+    $sql = "SELECT * FROM favoritas WHERE playlist = '$playlist'";
+    $do = mysqli_query($link, $sql);
+    while ($video = mysqli_fetch_assoc($do)) {
+        $videoId = explode("?v=", $video["yid"]);
+        $videoId = $videoId[1];
+        $videourl = $video["yid"];
+        $sql = "SELECT * FROM musica WHERE urlspoti = '$videourl' LIMIT 1";
+        $music = mysqli_query($link, $sql);
+        $title = "";
+        $description = "";
+        if ($music->num_rows > 0) {
+            $musicdata = mysqli_fetch_assoc($music);
+            $title = $musicdata["titulo"];
+            $title = str_replace('"', "", $title);
+            $title = str_replace("&", "&amp;", $title);
+            $description = $musicdata["insta"];
+        }
+        $description = str_replace("@", "", $description);
+        if ($description == "") {
+            $description = "franciscoasorey";
+        }
+        $url = "https://www.youtube.com/watch?v=" . $videoId;
+        $sql = "SELECT * FROM favoritas WHERE yid = '$url'";
+        $do3 = mysqli_query($link, $sql);
+        if ($do3->num_rows > 0) {
+            $estrella = "fas fa-star";
+        } else {
+            $estrella = "far fa-star";
+        }
+?>
+        <div class="video-tile">
+            <div class="videoDiv container">
+                <form action="/" method="post">
+                    <input type="hidden" name="videoid" value="<?php echo $videoId ?>">
+                    <input type="hidden" name="title" value="<?php echo $title ?>">
+                    <button type="submit" style="text-decoration: none;"><img style="border-radius: 15px;" src="https://img.youtube.com/vi/<?php echo $videoId ?>/mqdefault.jpg" height="auto" width="100%" alt=""></button>
+                    <div class="centered">
+                        <a class="fav" href="#" onclick="addfav('<?php echo $videoId ?>')">
+                            <i class="<?php echo $estrella ?>"></i>
+                        </a>
+                    </div>
+                </form>
+            </div>
+            <div class="videoInfo">
+                <div class="videoTitle"><b><?php echo $title ?></b></div>
+                <div class="videoDesc">@<?php echo $description ?></div>
+            </div>
+        </div>
+<?php
+    }
+}
+?>
