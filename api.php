@@ -47,7 +47,7 @@ if (isset($_POST["api"])) {
                                     }
                                 }
                                 
-                                $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`) VALUES (NULL, '$randvideo', '', '', '0', '', '', 0);";
+                                $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`, `auto`) VALUES (NULL, '$randvideo', '', '', '0', '', '', 0, 1);";
                                 if (mysqli_query($link, $sql)) {
                                     
                                 }

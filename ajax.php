@@ -130,7 +130,7 @@ if (isset($_POST["playlist"])) {
         $videoId = explode("?v=", $video["yid"]);
         $videoId = $videoId[1];
         $videourl = $video["yid"];
-        $sql = "SELECT * FROM musica WHERE urlspoti = '$videourl' ORDER BY id DESC LIMIT 1";
+        $sql = "SELECT * FROM musica WHERE urlspoti = '$videourl' AND auto = 0 ORDER BY id DESC LIMIT 1";
         $music = mysqli_query($link, $sql);
         $title = "";
         $description = "";
