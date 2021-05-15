@@ -52,7 +52,7 @@ if (isset($_POST["nuevo"])) {
     }
 }
 if (isset($_POST["anuncio"])) {
-    echo 'anuncio:<h1>Troleado papa</h1><img src="https://i.pinimg.com/originals/bb/90/0c/bb900cfc6d9d71d976f9f5d409412aa1.jpg"><audio autoplay><source src="https://www.myinstants.com/media/sounds/broma-gemidos-epica.mp3" type="audio/mpeg"></audio>';
+    echo 'anuncio::<h1>Troleado papa</h1><img src="https://i.pinimg.com/originals/bb/90/0c/bb900cfc6d9d71d976f9f5d409412aa1.jpg"><audio autoplay><source src="https://www.myinstants.com/media/sounds/broma-gemidos-epica.mp3" type="audio/mpeg"></audio>';
     exit;
 }
 

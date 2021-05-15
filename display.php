@@ -452,7 +452,7 @@ if ($ig_minita == "") {
             },
             success: function(response) {
                 if (response.includes("anuncio")) {
-                    var noticia = response.split(":");
+                    var noticia = response.split("::");
                     document.getElementById("noticia").innerHTML = noticia[1];
                     document.getElementById("myModal").style.display = "block";
 
