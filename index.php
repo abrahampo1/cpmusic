@@ -225,6 +225,7 @@ if (isset($_POST['submit'])) {
     ?>
     <h2>Pon tu canción favorita en el hilo</h2>
     <a href="playlist?p=1" class="btn-submit inicio" style="text-decoration: none;">Playlist de Favoritas →</a>
+    <br>
     <div class="">
         <form id="keywordForm" method="post" action="">
             <div class="input-row">
