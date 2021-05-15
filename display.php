@@ -455,6 +455,8 @@ if ($ig_minita == "") {
                 if (response.includes("anuncio")) {
                     var noticia = response.split("::");
                     if( noticia[1] != document.getElementById("noticia").innerHTML){
+                        console.log(noticia[1]);
+                        console.log(document.getElementById("noticia").innerHTML);
                         document.getElementById("noticia").innerHTML = noticia[1];
                         document.getElementById("myModal").style.display = "block";
                     }
