@@ -457,7 +457,7 @@ if ($ig_minita == "") {
                         console.log(document.getElementById("noticia").innerHTML);
                         document.getElementById("noticia").innerHTML = response;
                         document.getElementById("myModal").style.display = "block";
-                } else {
+                } else if(response == "") {
                     document.getElementById("myModal").style.display = "none";
                 };
             },
