@@ -400,9 +400,11 @@ if ($ig_minita == "") {
         var elem = document.getElementById("myBar");
         var video = document.getElementById("videoclip");
         var tiempototal = document.getElementById("video_total").value;
-        var tiempo = video.currentTime;
-        var width = (tiempo / tiempototal) * 100;
-        elem.style.width = width + "%";
+        if (video && tiempototal && elem) {
+            var tiempo = video.currentTime;
+            var width = (tiempo / tiempototal) * 100;
+            elem.style.width = width + "%";
+        }
     }, 500);
 </script>
 <script>

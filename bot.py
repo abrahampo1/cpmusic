@@ -46,7 +46,7 @@ def run_forever():
                 print("Reproduciendo...")
                 print (player.get_state())
                 currenttime = round(player.get_time()/1000)
-                while currenttime  < video.length-7:
+                while currenttime  < video.length:
                     currenttime = round(player.get_time()/1000)
                     myobj = {
                         'api': '123',
@@ -56,8 +56,11 @@ def run_forever():
                     }
                     x = requests.post(url_api, data=myobj)
                     time.sleep(0.1)
-                    print (player.get_state(), end="\r")
-                    print(str(currenttime) +"/"+ str(round(player.get_length()/1000)-7),end='\r')
+                    Ended = 6
+                    if player.get_state() == Ended:
+                        print("He detectado que no hay más canción, forzando la siguiente...")
+                        break
+                    print(str(currenttime) +"/"+ str(round(player.get_length()/1000)-7) + " Estado: "+str(player.get_state()),end='\r')
 
                 print("Terminado rey.")
                 video = False
