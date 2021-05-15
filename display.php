@@ -399,8 +399,8 @@ if ($ig_minita == "") {
     var updatetime = window.setInterval(function() {
         var elem = document.getElementById("myBar");
         var video = document.getElementById("videoclip");
-        var tiempototal = document.getElementById("video_total").value;
-        if (video && tiempototal && elem) {
+        if (video && elem) {
+            var tiempototal = document.getElementById("video_total").value;
             var tiempo = video.currentTime;
             var width = (tiempo / tiempototal) * 100;
             elem.style.width = width + "%";
