@@ -1,6 +1,10 @@
 <?php
 include("database.php");
-
+if(isset($_GET["p"])){
+    $playlist = $_GET["p"];
+}else{
+    header("location: /");
+}
 
 ?>
 <!doctype html>
@@ -171,7 +175,7 @@ include("database.php");
 <body>
 
     </div>
-    <div class="videos-data-container" id="anteriores">
+    <div class="videos-data-container" id="playlist">
         <h2>Cargando...</h2>
     </div>
 </body>
@@ -197,13 +201,13 @@ include("database.php");
             type: 'post',
             url: 'ajax.php',
             data: {
-                anteriores: 'paquete',
+                playlist: '',
             },
             success: function(response) {
-                if (response != document.getElementById("anteriores").innerHTML) {
+                if (response != document.getElementById("playlist").innerHTML) {
                     console.log(response);
-                    console.log(document.getElementById("anteriores").innerHTML);
-                    document.getElementById("anteriores").innerHTML = response;
+                    console.log(document.getElementById("playlist").innerHTML);
+                    document.getElementById("playlist").innerHTML = response;
 
                 };
             },
