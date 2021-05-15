@@ -344,7 +344,7 @@ if ($ig_minita == "") {
         </div>
     </div>
 
-    
+
     <div style="display: flex; width:100%;">
         <?php
         if ($ig_minita != "") {
@@ -372,12 +372,12 @@ if ($ig_minita == "") {
 </div>
 <div id="myModal" class="modal">
 
-        <!-- Modal content -->
-        <div class="modal-content">
-            <p id="noticia">Some text in the Modal..</p>
-        </div>
-
+    <!-- Modal content -->
+    <div class="modal-content">
+        <p id="noticia">Some text in the Modal..</p>
     </div>
+
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
 
@@ -409,15 +409,18 @@ if ($ig_minita == "") {
     var updatetime = window.setInterval(function() {
         var siguiente = document.getElementById("siguiente_texto");
         var video = document.getElementById("videoclip");
-        var tiempototal = document.getElementById("video_total").value;
-        var tiempo = video.currentTime;
-        var restante = tiempototal - tiempo;
-        if (restante < 31 && restante != 0 && restante != -0) {
-            siguiente.innerHTML = "En " + restante.toFixed(0) + "...";
+        if (video && siguiente) {
+            var tiempototal = document.getElementById("video_total").value;
+            var tiempo = video.currentTime;
+            var restante = tiempototal - tiempo;
+            if (restante < 31 && restante != 0 && restante != -0) {
+                siguiente.innerHTML = "En " + restante.toFixed(0) + "...";
+            }
+            if (restante <= 0) {
+                siguiente.innerHTML = "Cargando...";
+            }
         }
-        if (restante <= 0) {
-            siguiente.innerHTML = "Cargando...";
-        }
+
     }, 500);
 </script>
 <script>
@@ -452,12 +455,12 @@ if ($ig_minita == "") {
                 anuncio: 'active',
             },
             success: function(response) {
-                    if(response != "" && response != document.getElementById("noticia").innerHTML){
-                        console.log(response);
-                        console.log(document.getElementById("noticia").innerHTML);
-                        document.getElementById("noticia").innerHTML = response;
-                        document.getElementById("myModal").style.display = "block";
-                } else if(response == "") {
+                if (response != "" && response != document.getElementById("noticia").innerHTML) {
+                    console.log(response);
+                    console.log(document.getElementById("noticia").innerHTML);
+                    document.getElementById("noticia").innerHTML = response;
+                    document.getElementById("myModal").style.display = "block";
+                } else if (response == "") {
                     document.getElementById("myModal").style.display = "none";
                 };
             },
