@@ -89,7 +89,7 @@ if ($ig_minita == "") {
         /* Hidden by default */
         position: fixed;
         /* Stay in place */
-        z-index: 1;
+        z-index: 101;
         /* Sit on top */
         padding-top: 100px;
         /* Location of the box */
@@ -344,14 +344,7 @@ if ($ig_minita == "") {
         </div>
     </div>
 
-    <div id="myModal" class="modal">
-
-        <!-- Modal content -->
-        <div class="modal-content">
-            <p id="noticia">Some text in the Modal..</p>
-        </div>
-
-    </div>
+    
     <div style="display: flex; width:100%;">
         <?php
         if ($ig_minita != "") {
@@ -377,6 +370,14 @@ if ($ig_minita == "") {
 <div id="siguiente_holder" style="display: none;">
 
 </div>
+<div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <p id="noticia">Some text in the Modal..</p>
+        </div>
+
+    </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
 
