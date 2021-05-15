@@ -22,7 +22,18 @@ if (isset($_POST["api"])) {
                     $result = mysqli_fetch_assoc($do);
                     echo $result["urlspoti"];
                 } else {
-                    echo "";
+                    $sql = "SELECT * FROM favoritas ORDER BY RAND() LIMIT 1";
+                    if($do = mysqli_query($link, $sql)){
+                        if($do->num_rows ==1){
+                            $randvideo = mysqli_fetch_assoc($do);
+                            $randvideo = $randvideo["yid"];
+                            $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`) VALUES (NULL, '$randvideo', '', '', '0', '', '', 0);";
+                            if (mysqli_query($link, $sql)) {
+                                echo $randvideo;
+                            }
+                        }
+                    }
+                    
                 }
             }
             if (isset($_POST["tiempo"])) {
@@ -72,7 +83,7 @@ if (isset($_POST["api"])) {
                 $result = mysqli_fetch_assoc($do);
                 $video_id = $result["id"];
                 $sql = "UPDATE `musica` SET `reproducida` = '1' WHERE `musica`.`id` = '$video_id';";
-                if($do = mysqli_query($link, $sql)){
+                if ($do = mysqli_query($link, $sql)) {
                     echo 'WEB: Terminado recibido correctamente.';
                 }
             }
