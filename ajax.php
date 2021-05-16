@@ -200,8 +200,14 @@ if(isset($_POST["webshell_python"])){
     }
     if(count($lastLine) > 1){
         $datos = explode("Estado: ", $lastLine[count($lastLine)-2]);
-        echo utf8_encode($datos[0] . "<br>" . $datos[1]);
-
+        echo utf8_encode($datos[0] . "<br>");
+        if($datos[1] == "State.Playing"){
+            echo "Reproduciendo...";
+        }else if($datos[1] == "State.Endedng"){
+            echo "Terminada...";
+        }else{
+            echo $datos[1];
+        }
     }
     
     fclose($myfile);
