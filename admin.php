@@ -52,7 +52,7 @@
         <h1>~ WebShell by CP ~</h1>
     </form>
     <div id="body" class="consola">
-
+            Cargando...
     </div>
     <?php
     if (isset($_POST["kill_python"])) {
