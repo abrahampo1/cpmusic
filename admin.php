@@ -1,18 +1,12 @@
 <?php
-function executeAsyncShellCommand($comando = null)
-{
-    if (!$comando) {
-        throw new Exception("No command given");
-    }
-    // If windows, else
-    if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-        system($comando . " > NUL");
-    } else {
-        shell_exec("/usr/bin/nohup " . $comando . " >/dev/null 2>&1 &");
-    }
-}
 if (isset($_POST["start_python"])) {
-    executeAsyncShellCommand('python3 /opt/lampp/htdocs/cpmusic/bot.py');
+    $handle = popen("python3 ./bot.py ", 'r');
+    while (!feof($handle)) {
+        $buffer = fgets($handle);
+        echo "$buffer<br/>\n";
+        ob_flush();
+    }
+    pclose($handle);
 }
 ?>
 
