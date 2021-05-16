@@ -46,7 +46,10 @@ def run_forever():
                 player.play()
                 print("Reproduciendo ('"+video.title+"')")
                 currenttime = round(player.get_time()/1000)
-                while currenttime  < video.length:
+                while video.length < 1:
+                    time.sleep(1)
+                
+                while currenttime < video.length:
                     currenttime = round(player.get_time()/1000)
                     myobj = {
                         'api': '123',
