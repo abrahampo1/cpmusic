@@ -4,13 +4,28 @@
     <meta charset="UTF-8" />
 </head>
 <style>
-    .consola{
+    .consola {
         background-color: black;
         color: green;
         padding: 15px;
         border-radius: 15px;
     }
+
+    h1 {
+        text-align: center;
+        color: black;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 15px !important;
+    }
 </style>
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
 <body>
     <form action="" method="POST">
         <?php
@@ -34,25 +49,23 @@
             <button type="submit">Parar BOT</button>
         <?php
         } ?>
+        <h1>~ WebShell by CP ~</h1>
     </form>
-    <pre>
-        <div id="body" class="consola">
-        
-        </div>
-        <?php
-        if (isset($_POST["kill_python"])) {
-            exec("kill -9 " . $out[1], $killout);
-            echo "Terminado fino";
-            header("location: admin");
-        }
-        if (isset($_POST["start_python"])) {
-            unlink("./output.log");
-            echo "Empezado fino";
-            header("location: admin");
-        }
-        ?>
+    <div id="body" class="consola">
 
-</pre>
+    </div>
+    <?php
+    if (isset($_POST["kill_python"])) {
+        exec("kill -9 " . $out[1], $killout);
+        echo "Terminado fino";
+        header("location: admin");
+    }
+    if (isset($_POST["start_python"])) {
+        unlink("./output.log");
+        echo "Empezado fino";
+        header("location: admin");
+    }
+    ?>
 </body>
 <script>
     document.getElementById("cmd").focus();
