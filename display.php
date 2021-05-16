@@ -428,7 +428,7 @@ if ($ig_minita == "") {
         var siguiente = document.getElementById("siguiente_texto");
         var video = document.getElementById("videoclip");
         if (video && siguiente) {
-            video.addEventListener("canplaythrough", function() {
+            video.onloadstart = function() {
                 var tiempototal = document.getElementById("video_total").value;
                 var video = document.getElementById("videoclip");
                 var tiempo = video.currentTime;
