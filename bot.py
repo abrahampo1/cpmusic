@@ -41,7 +41,7 @@ def run_forever():
                 
                 Instance = vlc.Instance()
                 player = Instance.media_player_new()
-                Media = Instance.media_new(playurl)
+                Media = Instance.media_new(videourl)
                 player.set_media(Media)
                 player.play()
                 currenttime = round(player.get_time()/1000)
