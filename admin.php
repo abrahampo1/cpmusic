@@ -2,7 +2,7 @@
     if(isset($_POST["start_python"])){
         $command = escapeshellcmd('python3 bot.py');
     $output = shell_exec($command);
-    echo $output;
+    `echo $output|at now`;
     }
 ?>
 
