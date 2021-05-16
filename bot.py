@@ -44,15 +44,23 @@ def run_forever():
                 player.set_media(Media)
                 player.play()
                 currenttime = round(player.get_time()/1000)
+                intentos = 0
                 while round(player.get_length()/1000) < 1 :
                     print("He detectado que la longitud del video es incorrecta, voy a esperar 1 segundo")
                     time.sleep(1)
-                    Media = Instance.media_new(videourl)
+                    Media = Instance.media_new(playurl)
                     player.set_media(Media)
                     player.play()
                     time.sleep(5)
+                    intentos += 1
+                    if intentos == 5:
+                        break
                     print(player.get_length())
                 print("Reproduciendo ('"+video.title+"')")
+                if round(player.get_length()/1000) < 1:
+                    Media = Instance.media_new(videourl)
+                    player.set_media(Media)
+                    player.play()
                 while currenttime < video.length:
                     currenttime = round(player.get_time()/1000)
                     myobj = {
@@ -68,7 +76,6 @@ def run_forever():
                         print("He detectado que no hay más canción, forzando la siguiente...")
                         break
                     print(str(currenttime) +"/"+ str(round(player.get_length()/1000)) + " Estado: "+str(player.get_state()),end=';')
-
                 print("Terminado rey.")
                 video = False
                 myobj = {
