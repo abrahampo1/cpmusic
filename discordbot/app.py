@@ -4,7 +4,7 @@ import discord
 import os
 import pafy
 import ssl
-import time
+import asyncio
 import requests
 from discord.ext import commands
 from dotenv import load_dotenv
@@ -35,37 +35,41 @@ async def play(ctx):
     url_api = "https://musica.asorey.net/api.php"
     voice_client = await channel.connect()
     url_true = ""
-    while True:
-        
-        myobj = {
+    myobj = {
             'api': '123',
             'necesito_discord': 'url',
             }
+    while True:
         x = requests.post(url_api, data=myobj)
         url = x.text
         while url=="":
+            x = requests.post(url_api, data=myobj)
+            url = x.text
             await ctx.send("Estoy esperando por una canción...")
-            time.sleep(5)
+            await asyncio.sleep(5)
         url = url.split(";")
         tiempo = url[1]
         url = url[0]
         guild = ctx.message.guild
-        video = pafy.new(url)
-        best = video.getbestaudio()
-        playurl = best.url
+        
         #print(playurl)
         #with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         #    file = ydl.extract_info(url, download=True)
         #    path = str(file['title']) + "-" + str(file['id'] + ".mp3")
         if url != url_true:
             try:
+                video = pafy.new(url)
+                best = video.getbestaudio()
+                playurl = best.url
                 voice_client.play(discord.FFmpegPCMAudio(playurl, options='-ss '+tiempo))
                 voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
                 await ctx.send(f'**Canción en la radio: **{url}')
             except:
                 print("he dao un error xD")
         url_true = url
-        time.sleep(2)
+        voice_client.resume()
+        voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
+        await asyncio.sleep(2)
 
 silenciado = False
 @bot.command(name='pause', help='This command pauses the song')
