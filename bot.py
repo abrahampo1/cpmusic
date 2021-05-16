@@ -48,6 +48,7 @@ def run_forever():
                 while round(player.get_length()/1000) < 1 :
                     print("He detectado que la longitud del video es incorrecta, voy a esperar 1 segundo")
                     time.sleep(1)
+                    Media = Instance.media_new(videourl)
                     player.set_media(Media)
                     player.play()
                     time.sleep(5)
