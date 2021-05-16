@@ -58,8 +58,6 @@ def run_forever():
                     player.play()
                     time.sleep(5)
                     print(player.get_length())
-                print(video.length)
-                print(round(player.get_length()/1000))
                 if(video.length == 0):
                     print("Mis intentos han sido fallidos, una pena, voy a poner la siguiente canción, pero antes voy a cerciorarme de que no puedo hacer nada más")
                     time.sleep(1)
