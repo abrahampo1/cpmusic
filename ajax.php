@@ -194,6 +194,7 @@ if(isset($_POST["webshell_python"])){
     $fewLines = explode("\n", fread($myfile,filesize("./output.log")));
     $lastLine = explode(";", $fewLines[count($fewLines) -1]);
     echo utf8_encode($fewLines[count($fewLines)-3]);
+    echo "<br>";
     echo utf8_encode($lastLine[count($lastLine)-2]);
     fclose($myfile);
     }
