@@ -177,10 +177,15 @@ if (isset($_POST["playlist"])) {
 <?php
 
 if(isset($_POST["webshell_python"])){
+    if(!file_exists("output.log")){
+        system('./dist/bot > ./output.log');
+        exit;
+    }
     if(fopen("./output.log", "r") !== null){
         $myfile = fopen("./output.log", "r"); 
         
     }
+    
     if(filesize("./output.log") > 1){
     echo "<script></script>";
     $fewLines = explode("\n", fread($myfile,filesize("./output.log")));
