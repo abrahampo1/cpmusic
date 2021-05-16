@@ -19,7 +19,7 @@ ydl_opts = {
         'key': 'FFmpegExtractAudio',
         'preferredcodec': 'mp3',
         'preferredquality': '192',
-        "before_options": "-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5",
+        "before_options": "-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 50",
     }],
 }   
 intents = discord.Intents().all()
@@ -47,7 +47,7 @@ async def play(ctx):
             x = requests.post(url_api, data=myobj)
             url = x.text
             await ctx.send("Estoy esperando por una canción...")
-            await asyncio.sleep(5)
+            await asyncio.sleep(10)
         url = url.split(";")
         tiempo = url[1]
         url = url[0]
