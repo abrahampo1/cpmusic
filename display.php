@@ -434,9 +434,9 @@ if ($ig_minita == "") {
                     siguiente.innerHTML = "Cargando...";
                 }
             }
-            siguiente_en();
+            
         }
-
+        siguiente_en();
     }, 500);
 </script>
 <script>
