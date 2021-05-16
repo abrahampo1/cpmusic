@@ -11,16 +11,6 @@
 <pre>
         <div id="body">
         <?php
-        header('Content-Type: text/html; charset=ISO-8859-1');
-if (isset($_GET['cmd'])) {
-        if(!file_exists("output.log")){
-            system('python -u ./bot.py > output.log');
-        }else{
-            echo file_exists("output.log");
-        }
-        
-    
-}
 ?>
         </div>
 
