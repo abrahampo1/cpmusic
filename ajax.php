@@ -180,7 +180,7 @@ if(isset($_POST["webshell_python"])){
     if(!file_exists("output.log")){
         echo "EJECUTANDO";
         exec("python3 -u ./bot.py > ./output.log", $out, $error);
-        echo $out;
+        var_dump($out);
         echo $error;
         exit;
     }
