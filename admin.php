@@ -6,9 +6,12 @@
 
 <pre>
         <div id="body">
-        <?php
-?>
+        
         </div>
+        <?php
+        exec("pgrep -f /sbin/init",$out);
+        var_dump($out);
+?>
 
 </pre>
 </body>
