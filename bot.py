@@ -48,6 +48,8 @@ def run_forever():
                 while round(player.get_length()/1000) < 1 :
                     print("He detectado que la longitud del video es incorrecta, voy a esperar 1 segundo")
                     time.sleep(1)
+                    print(videourl)
+                    time.sleep(1)
                     Instance = vlc.Instance()
                     player = Instance.media_player_new()
                     Media = Instance.media_new(playurl)
