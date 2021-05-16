@@ -3,14 +3,24 @@
 <meta charset="UTF-8"/>
 </head>
 <body >
-
+<form action="" method="POST">
+    <input type="hidden" name="kill_python" value="paquete">
+    <button type="submit">Parar BOT</button>
+</form>
 <pre>
         <div id="body">
         
         </div>
         <?php
-        exec("pgrep -f /sbin/init",$out);
-        var_dump($out);
+        if($_POST["kill_python"]){
+            exec("pgrep -f /sbin/init",$out);
+            if($out[0] > 0){
+                exec("kill ".$out[1], $killout);
+                echo "Terminado fino";
+                var_dump($killout);
+            }
+        }
+        
 ?>
 
 </pre>
