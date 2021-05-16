@@ -56,7 +56,7 @@ def run_forever():
                     if intentos == 5:
                         break
                     print(player.get_length())
-                print("Reproduciendo ('"+video.title+"')")
+                print("Reproduciendo ('"+video.title+"')".encode("utf-8"))
                 if round(player.get_length()/1000) < 1:
                     Media = Instance.media_new(videourl)
                     player.set_media(Media)
