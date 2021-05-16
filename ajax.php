@@ -199,7 +199,7 @@ if(isset($_POST["webshell_python"])){
         
     }
     if(count($lastLine) > 1){
-        $datos = explode("Estado:", $lastLine[count($lastLine)-2]);
+        $datos = explode("Estado: ", $lastLine[count($lastLine)-2]);
         echo utf8_encode($datos[0] . "<br>" . $datos[1]);
 
     }
