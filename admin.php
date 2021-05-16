@@ -15,14 +15,19 @@
             <input type="hidden" name="kill_python" value="paquete">
             <button type="submit">Parar BOT</button>
         <?php
-        }else{
+        } else if (file_exists("output.log")) {
         ?>
             <input type="hidden" name="start_python" value="paquete">
             <button type="submit">Empezar BOT</button>
         <?php
-        }
-        ?>
+        } else {
 
+
+        ?>
+            <input type="hidden" name="kill_python" value="paquete">
+            <button type="submit">Parar BOT</button>
+        <?php
+        } ?>
     </form>
     <pre>
         <div id="body">
