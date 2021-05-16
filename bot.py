@@ -48,6 +48,7 @@ def run_forever():
                 while video.length == 0:
                     print("He detectado que la longitud del video es incorrecta, voy a esperar 1 segundo")
                     time.sleep(1)
+                print(video.length)
                 if(video.length == 0):
                     print("Mis intentos han sido fallidos, una pena, voy a poner la siguiente canción, pero antes voy a cerciorarme de que no puedo hacer nada más")
                     time.sleep(1)
