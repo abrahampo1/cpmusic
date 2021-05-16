@@ -186,6 +186,8 @@ if(isset($_POST["webshell_python"])){
         }
         var_dump($out);
         var_dump($error);
+        flush();
+        ob_flush();
         sleep(10);
         exit;
     }
