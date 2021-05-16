@@ -68,7 +68,7 @@ async def play(ctx):
                 print("he dao un error xD")
         url_true = url
         voice_client.resume()
-        voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
+        
         await asyncio.sleep(2)
 
 silenciado = False

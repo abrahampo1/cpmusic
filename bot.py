@@ -38,7 +38,6 @@ def run_forever():
                 else:
                     print("Menos de 10? buen track bro")
                 print(x.text)
-                
                 Instance = vlc.Instance()
                 player = Instance.media_player_new()
                 Media = Instance.media_new(playurl)
