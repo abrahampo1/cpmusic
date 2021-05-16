@@ -15,7 +15,7 @@
         if(isset($_POST["kill_python"])){
             exec("pgrep -f /sbin/init",$out);
             if($out[0] > 0){
-                exec("kill ".$out[1], $killout);
+                exec("kill -9 ".$out[1], $killout);
                 echo "Terminado fino";
                 var_dump($killout);
             }
