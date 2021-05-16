@@ -45,7 +45,6 @@ def run_forever():
                 player.set_media(Media)
                 player.play()
                 print("Reproduciendo ('"+video.title+"')")
-                print (player.get_state())
                 currenttime = round(player.get_time()/1000)
                 while currenttime  < video.length:
                     currenttime = round(player.get_time()/1000)
