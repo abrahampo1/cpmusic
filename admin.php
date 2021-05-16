@@ -8,7 +8,7 @@
     <form action="" method="POST">
         <?php
         exec("pgrep -f ./bot.py", $out);
-        if ($out[0] > 0) {
+        if (count($out) > 1) {
             var_dump($out);
 
         ?>
