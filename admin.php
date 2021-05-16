@@ -13,7 +13,7 @@
         </div>
         <?php
         if(isset($_POST["kill_python"])){
-            exec("pgrep -f /sbin/init",$out);
+            exec("pgrep -f bot.py",$out);
             if($out[0] > 0){
                 exec("kill -9 ".$out[1], $killout);
                 echo "Terminado fino";
