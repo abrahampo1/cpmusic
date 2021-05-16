@@ -439,7 +439,7 @@ if ($ig_minita == "") {
                 if (restante <= 0) {
                     siguiente.innerHTML = "Cargando...";
                 }
-            }, false);
+            }
                 
             }
             
