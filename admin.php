@@ -12,7 +12,7 @@ function executeAsyncShellCommand($comando = null)
     }
 }
 if (isset($_POST["start_python"])) {
-    executeAsyncShellCommand('python3 /opt/lampp/htdocs/cpmusic/bot.py')
+    executeAsyncShellCommand('python3 /opt/lampp/htdocs/cpmusic/bot.py');
 }
 ?>
 
