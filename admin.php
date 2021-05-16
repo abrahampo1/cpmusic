@@ -7,6 +7,8 @@
     .consola{
         background-color: black;
         color: green;
+        padding: 15px;
+        border-radius: 15px;
     }
 </style>
 <body>
