@@ -43,7 +43,7 @@ if (isset($_POST["nuevo"])) {
         $video_id = $video_id[1];
         $thumbnail = "https://img.youtube.com/vi/" . $video_id . "/mqdefault.jpg";
         if ($video == 1) {
-            $ultima_html = '<div class="centered"><h1 id="siguiente_texto"></h1></div>';
+            $ultima_html = '<div class="centered"><h1 id="siguiente_texto" onload="siguiente_en()"></h1></div>';
         } else {
             $ultima_html = "";
         }
