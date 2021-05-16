@@ -56,7 +56,7 @@ def run_forever():
                     Media = Instance.media_new(playurl)
                     player.set_media(Media)
                     player.play()
-                    print(round(player.get_length()/1000))
+                    print(player.get_length())
                     time.sleep(1)
                 print(video.length)
                 print(round(player.get_length()/1000))
