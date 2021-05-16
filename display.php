@@ -420,10 +420,10 @@ if ($ig_minita == "") {
 </script>
 <script>
     var updatetime = window.setInterval(function() {
+        function siguiente_en(){
         var siguiente = document.getElementById("siguiente_texto");
         var video = document.getElementById("videoclip");
         if (video && siguiente) {
-            video.addEventListener('loadeddata', function() {
                 var tiempototal = document.getElementById("video_total").value;
                 var tiempo = video.currentTime;
                 var restante = tiempototal - tiempo;
@@ -433,8 +433,8 @@ if ($ig_minita == "") {
                 if (restante <= 0) {
                     siguiente.innerHTML = "Cargando...";
                 }
-            }, false);
-
+            }
+            siguiente_en();
         }
 
     }, 500);
