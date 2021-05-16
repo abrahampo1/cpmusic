@@ -1,12 +1,9 @@
 <?php
 if (isset($_POST["start_python"])) {
-    $handle = popen("python3 ./bot.py ", 'r');
-    while (!feof($handle)) {
-        $buffer = fgets($handle);
-        echo "$buffer<br/>\n";
-        ob_flush();
-    }
-    pclose($handle);
+    ob_start();
+    passthru('python3 /opt/lampp/htdocs/cpmusic/bot.py');
+    $output = ob_get_clean();
+    echo $output;
 }
 ?>
 
