@@ -50,7 +50,7 @@ def run_forever():
                     time.sleep(1)
                     print(playurl)
                     time.sleep(1)
-                    player.vlm_del_media(playurl)
+                    Instance.vlm_del_media(playurl)
                     Instance = vlc.Instance()
                     player = Instance.media_player_new()
                     Media = Instance.media_new(playurl)
