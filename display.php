@@ -428,7 +428,6 @@ if ($ig_minita == "") {
         var siguiente = document.getElementById("siguiente_texto");
         var video = document.getElementById("videoclip");
         if (video && siguiente) {
-            video.onload = function() {
                 var tiempototal = document.getElementById("video_total").value;
                 var video = document.getElementById("videoclip");
                 var tiempo = video.currentTime;
@@ -439,7 +438,6 @@ if ($ig_minita == "") {
                 if (restante <= 0) {
                     siguiente.innerHTML = "Cargando...";
                 }
-            }
                 
             }
             
