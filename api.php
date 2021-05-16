@@ -58,6 +58,14 @@ if (isset($_POST["api"])) {
                     
                 }
             }
+            if (isset($_POST["necesito_discord"])) {
+                $sql = "SELECT * FROM musica WHERE reproducida = 0 and datos = 1 LIMIT 1";
+                $do = mysqli_query($link, $sql);
+                if (!$do->num_rows == 0) {
+                    $result = mysqli_fetch_assoc($do);
+                    echo $result["urlspoti"].";".$result["tiempo"];
+                }
+            }
             if (isset($_POST["tiempo"])) {
                 $tiempo = $_POST["tiempo"];
                 $url = $_POST["url"];
