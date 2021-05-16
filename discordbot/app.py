@@ -6,6 +6,11 @@ import ssl
 import time
 import requests
 from discord.ext import commands
+from dotenv import load_dotenv
+load_dotenv()
+
+# Get the API token from the .env file.
+DISCORD_TOKEN = os.getenv("discord_token")
 ssl._create_default_https_context = ssl._create_unverified_context
 ydl_opts = {
     'format': 'bestaudio/best',
@@ -70,4 +75,4 @@ async def resume(ctx):
         print("Subiendo volumen")
         voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 300)
 
-bot.run("ODQzNTc2MDQ5NDI0OTI0Njky.YKF3aw.kthP9Iu_TFNDkW0G0VJv7CbrUzw")
+bot.run(DISCORD_TOKEN)
