@@ -1,7 +1,8 @@
 <?php
     if(isset($_POST["start_python"])){
-        $results = shell_exec("python3 ./bot.py");
-        echo $results;
+        $command = escapeshellcmd('python3 bot.py');
+    $output = shell_exec($command);
+    echo $output;
     }
 ?>
 
