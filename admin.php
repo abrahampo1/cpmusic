@@ -1,27 +1,44 @@
 <html>
+
 <head>
-<meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
 </head>
-<body >
-<form action="" method="POST">
-    <input type="hidden" name="kill_python" value="paquete">
-    <button type="submit">Parar BOT</button>
-</form>
-<pre>
+
+<body>
+    <form action="" method="POST">
+        <?php
+        exec("pgrep -f bot.py", $out);
+        if ($out[0] > 0) {
+
+        ?>
+            <input type="hidden" name="kill_python" value="paquete">
+            <button type="submit">Parar BOT</button>
+        <?php
+        }else{
+        ?>
+        <input type="hidden" name="start_python" value="paquete">
+            <button type="submit">Empezar BOT</button>
+        <?php
+        }
+        ?>
+
+    </form>
+    <pre>
         <div id="body">
         
         </div>
         <?php
-        if(isset($_POST["kill_python"])){
-            exec("pgrep -f bot.py",$out);
-            if($out[0] > 0){
-                exec("kill -9 ".$out[1], $killout);
-                echo "Terminado fino";
-                var_dump($killout);
-            }
+        if (isset($_POST["kill_python"])) {
+            exec("kill -9 " . $out[1], $killout);
+            echo "Terminado fino";
+            header("location: admin");
         }
-        
-?>
+        if (isset($_POST["start_python"])) {
+            unlink("./output.log");
+            echo "Empezado fino";
+            header("location: admin");
+        }
+        ?>
 
 </pre>
 </body>
