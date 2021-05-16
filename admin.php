@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8" />
 </head>
-
+<style>
+    .consola{
+        background-color: black;
+        color: green;
+    }
+</style>
 <body>
     <form action="" method="POST">
         <?php
@@ -29,7 +34,7 @@
         } ?>
     </form>
     <pre>
-        <div id="body">
+        <div id="body" class="consola">
         
         </div>
         <?php
