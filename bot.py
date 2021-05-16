@@ -84,8 +84,8 @@ def run_forever():
                     video = True
                     url = texto
                     print("Encontré la canción :)")
-    except Exception:
-        print("Me he crasheado :(, me reinicio al toque.")
+    except Exception as e:
+        print("Me he crasheado :(, me reinicio al toque. " + str(e))
         run_forever()
 run_forever()
             
