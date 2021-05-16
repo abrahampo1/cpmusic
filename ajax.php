@@ -178,8 +178,13 @@ if (isset($_POST["playlist"])) {
 
 if(isset($_POST["webshell_python"])){
     if(!file_exists("output.log")){
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
             //shell_exec('start ./dist/bot.exe -force > output.log');
             system("python -u ./bot.py > ./output.log");
+        } else {
+            system("python3 -u ./bot.py > ./output.log");
+        }
+        
         exit;
     }
     if(fopen("./output.log", "r") !== null){
