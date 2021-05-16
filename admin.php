@@ -56,7 +56,7 @@
     </div>
     <?php
     if (isset($_POST["kill_python"])) {
-        exec("kill -9 " . $out[1], $killout);
+        exec("pkill python", $killout);
         echo "Terminado fino";
         header("location: admin");
     }
