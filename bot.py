@@ -44,11 +44,11 @@ def run_forever():
                 Media = Instance.media_new(playurl)
                 player.set_media(Media)
                 player.play()
-                print("Reproduciendo ('"+video.title+"')")
                 currenttime = round(player.get_time()/1000)
                 while video.length < 1:
+                    print("He detectado que la longitud del video es incorrecta, voy a esperar 1 segundo")
                     time.sleep(1)
-                
+                print("Reproduciendo ('"+video.title+"')")
                 while currenttime < video.length:
                     currenttime = round(player.get_time()/1000)
                     myobj = {
