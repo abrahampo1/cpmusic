@@ -178,7 +178,7 @@ if (isset($_POST["playlist"])) {
 
 if(isset($_POST["webshell_python"])){
     if(!file_exists("output.log")){
-        system("python3 -u ./bot.py > ./output.log");
+        shell_exec("python3 -u ./bot.py > ./output.log");
         
         exit;
     }
