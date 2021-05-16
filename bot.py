@@ -72,8 +72,8 @@ def run_forever():
                 x = requests.post(url_api, data=myobj)
                 print(x.text)
             else:
-                time.sleep(3)
                 print("Esperando URL...")
+                time.sleep(3)
                 myobj = {
                     'api': '123',
                     'necesito': 'url',

@@ -9,7 +9,6 @@
         <?php
         exec("pgrep -f ./bot.py", $out);
         if (count($out) > 1) {
-            var_dump($out);
 
         ?>
             <input type="hidden" name="kill_python" value="paquete">
