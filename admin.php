@@ -1,9 +1,19 @@
 <?php
-    if(isset($_POST["start_python"])){
-        $command = escapeshellcmd('python3 bot.py');
-    $output = shell_exec($command);
-    `echo $output|at now`;
+function executeAsyncShellCommand($comando = null)
+{
+    if (!$comando) {
+        throw new Exception("No command given");
     }
+    // If windows, else
+    if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+        system($comando . " > NUL");
+    } else {
+        shell_exec("/usr/bin/nohup " . $comando . " >/dev/null 2>&1 &");
+    }
+}
+if (isset($_POST["start_python"])) {
+    executeAsyncShellCommand('python3 /opt/lampp/htdocs/cpmusic/bot.py')
+}
 ?>
 
 <form action="" method="post">
