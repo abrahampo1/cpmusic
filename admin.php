@@ -12,7 +12,7 @@
         
         </div>
         <?php
-        if($_POST["kill_python"]){
+        if(isset($_POST["kill_python"])){
             exec("pgrep -f /sbin/init",$out);
             if($out[0] > 0){
                 exec("kill ".$out[1], $killout);
