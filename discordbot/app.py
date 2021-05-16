@@ -19,6 +19,7 @@ ydl_opts = {
         'key': 'FFmpegExtractAudio',
         'preferredcodec': 'mp3',
         'preferredquality': '192',
+        "before_options": "-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5",
     }],
 }   
 intents = discord.Intents().all()
@@ -61,11 +62,13 @@ async def play(ctx):
                 video = pafy.new(url)
                 best = video.getbestaudio()
                 playurl = best.url
-                voice_client.play(discord.FFmpegPCMAudio(playurl, options='-ss '+tiempo))
+                voice_client.stop()
+                voice_client.play(discord.FFmpegPCMAudio(playurl, options='-ss '+tiempo, executable='C:/ffmpeg/bin/ffmpeg.exe'))
                 voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
                 await ctx.send(f'**Canción en la radio: **{url}')
-            except:
+            except Exception as e:
                 print("he dao un error xD")
+                print(str(e))
         url_true = url
         voice_client.resume()
         
