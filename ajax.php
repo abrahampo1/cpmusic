@@ -182,7 +182,7 @@ if(isset($_POST["webshell_python"])){
             //shell_exec('start ./dist/bot.exe -force > output.log');
             system("python -u ./bot.py > ./output.log");
         } else {
-            system("python3 -u ./bot.py > ./output.log");
+            exec("python3 -u ./bot.py > ./output.log");
         }
         
         exit;
