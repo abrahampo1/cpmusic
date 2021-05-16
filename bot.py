@@ -38,12 +38,13 @@ def run_forever():
                 else:
                     print("Menos de 10? buen track bro")
                 print(x.text)
+                
                 Instance = vlc.Instance()
                 player = Instance.media_player_new()
                 Media = Instance.media_new(playurl)
                 player.set_media(Media)
                 player.play()
-                print("Reproduciendo...")
+                print("Reproduciendo ('"+video.title+"')")
                 print (player.get_state())
                 currenttime = round(player.get_time()/1000)
                 while currenttime  < video.length:
@@ -60,7 +61,7 @@ def run_forever():
                     if player.get_state() == Ended:
                         print("He detectado que no hay más canción, forzando la siguiente...")
                         break
-                    print(str(currenttime) +"/"+ str(round(player.get_length()/1000)) + " Estado: "+str(player.get_state()),end='\r')
+                    print(str(currenttime) +"/"+ str(round(player.get_length()/1000)) + " Estado: "+str(player.get_state()),end=';')
 
                 print("Terminado rey.")
                 video = False
@@ -83,7 +84,6 @@ def run_forever():
                     video = True
                     url = texto
                     print("Encontré la canción :)")
-                    exit()
     except Exception:
         print("Me he crasheado :(, me reinicio al toque.")
         run_forever()

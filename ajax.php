@@ -174,3 +174,19 @@ if (isset($_POST["playlist"])) {
     }
 }
 ?>
+<?php
+
+if(isset($_POST["webshell_python"])){
+    if(fopen("./output.log", "r") !== null){
+        $myfile = fopen("./output.log", "r"); 
+        
+    }
+    if(filesize("./output.log") > 1){
+    echo "<script></script>";
+    $fewLines = explode("\n", fread($myfile,filesize("./output.log")));
+    $lastLine = explode(";", $fewLines[count($fewLines) -1]);
+    echo utf8_encode($fewLines[count($fewLines) -3]);
+    echo utf8_encode($lastLine[count($lastLine)-2]);
+    fclose($myfile);
+    }
+}
