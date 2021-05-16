@@ -179,7 +179,9 @@ if (isset($_POST["playlist"])) {
 if(isset($_POST["webshell_python"])){
     if(!file_exists("output.log")){
         echo "EJECUTANDO";
-        shell_exec("python3 -u ./bot.py > ./output.log");
+        exec("python3 -u ./bot.py > ./output.log", $out, $error);
+        echo $out;
+        echo $error;
         exit;
     }
     if(fopen("./output.log", "r") !== null){
