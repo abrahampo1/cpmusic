@@ -409,14 +409,12 @@ if ($ig_minita == "") {
             var elem = document.getElementById("myBar");
             var video = document.getElementById("videoclip");
             if (video && elem) {
-                video.addEventListener("canplaythrough", function() {
                 var tiempototal = document.getElementById("video_total").value;
                 var video = document.getElementById("videoclip");
                 var tiempo = video.currentTime;
                 var width = (tiempo / tiempototal) * 100;
                 elem.style.width = width + "%";
-            }, false);
-                
+
             }
         }
         barra();
@@ -424,20 +422,19 @@ if ($ig_minita == "") {
 </script>
 <script>
     var updatetime = window.setInterval(function() {
-        function siguiente_en(){
-        var siguiente = document.getElementById("siguiente_texto");
-        var video = document.getElementById("videoclip");
-                var tiempototal = document.getElementById("video_total").value;
-                var video = document.getElementById("videoclip");
-                var tiempo = video.currentTime;
-                var restante = tiempototal - tiempo;
-                if (restante < 31 && restante != 0 && restante != -0) {
-                    siguiente.innerHTML = "En " + restante.toFixed(0) + "...";
-                }
-                if (restante <= 0) {
-                    siguiente.innerHTML = "Cargando...";
-                }
-            
+        function siguiente_en() {
+            var siguiente = document.getElementById("siguiente_texto");
+            var video = document.getElementById("videoclip");
+            var tiempototal = document.getElementById("video_total").value;
+            var tiempo = video.currentTime;
+            var restante = tiempototal - tiempo;
+            if (restante < 31 && restante != 0 && restante != -0) {
+                siguiente.innerHTML = "En " + restante.toFixed(0) + "...";
+            }
+            if (restante <= 0) {
+                siguiente.innerHTML = "Cargando...";
+            }
+
         }
         siguiente_en();
     }, 500);
