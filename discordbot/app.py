@@ -100,5 +100,5 @@ async def resume(ctx):
     if voice_client.is_playing():
         print("Subiendo volumen")
         voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 300)
-
+print("Bot arrancado")
 bot.run(DISCORD_TOKEN)
