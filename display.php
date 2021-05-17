@@ -491,8 +491,6 @@ if ($ig_minita == "") {
             },
             success: function(response) {
                 if (response != ""){
-                    console.log(response);
-                    console.log(document.getElementById("noticia").innerHTML);
                     if(document.getElementById("noticia").innerHTML == ""){
                         document.getElementById("noticia").innerHTML = response;
                     document.getElementById("myModal").style.display = "block";
