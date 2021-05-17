@@ -123,7 +123,7 @@ if (isset($_POST["playlist"])) {
     $do = mysqli_query($link, $sql);
     $playlist_name = mysqli_fetch_assoc($do);
     $playlist_name = $playlist_name["nombre"];
-    echo "<h1>".$playlist_name."</h1>";
+    echo "<h1>" . $playlist_name . "</h1>";
     $sql = "SELECT * FROM favoritas WHERE playlist = '$playlist' ORDER BY id DESC";
     $do = mysqli_query($link, $sql);
     while ($video = mysqli_fetch_assoc($do)) {
@@ -145,7 +145,7 @@ if (isset($_POST["playlist"])) {
         if ($description == "") {
             $description = "franciscoasorey";
         }
-        if($title == ""){
+        if ($title == "") {
             $title = "<p>Aún no se ha reproducido.</p>";
         }
         $url = "https://www.youtube.com/watch?v=" . $videoId;
@@ -176,8 +176,8 @@ if (isset($_POST["playlist"])) {
 ?>
 <?php
 
-if(isset($_POST["webshell_python"])){
-    if(!file_exists("output.log")){
+if (isset($_POST["webshell_python"])) {
+    if (!file_exists("output.log")) {
         echo "EJECUTANDO";
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
             exec("python -u ./bot.py > ./output.log", $out, $error);
@@ -190,66 +190,59 @@ if(isset($_POST["webshell_python"])){
         ob_flush();
         sleep(10);
     }
-    if(fopen("./output.log", "r") !== null){
-        $myfile = fopen("./output.log", "r"); 
-        
+    if (fopen("./output.log", "r") !== null) {
+        $myfile = fopen("./output.log", "r");
     }
-    
-    if(filesize("./output.log") > 1){
-    echo "<script></script>";
-    $fewLines = explode("\n", fread($myfile,filesize("./output.log")));
-    $lastLine = explode(";", $fewLines[count($fewLines) -1]);
-    if(count($fewLines) > 0){
-        echo utf8_encode($fewLines[count($fewLines)-2]);
-        echo "<br>";
-        
-    }
-    if(count($lastLine) > 1){
-        $datos = explode("Estado: ", $lastLine[count($lastLine)-2]);
-        echo utf8_encode($datos[0] . "<br>");
-        if($datos[1] == "State.Playing"){
-            echo "Reproduciendo...";
-        }else if($datos[1] == "State.Endedng"){
-            echo "Terminada...";
-        }else{
-            echo $datos[1];
+
+    if (filesize("./output.log") > 1) {
+        echo "<script></script>";
+        $fewLines = explode("\n", fread($myfile, filesize("./output.log")));
+        $lastLine = explode(";", $fewLines[count($fewLines) - 1]);
+        if (count($fewLines) > 0) {
+            echo utf8_encode($fewLines[count($fewLines) - 2]);
+            echo "<br>";
         }
-    }
-    echo("<br><br>");
-    echo fread($myfile,filesize("./output.log"));
-    
-    fclose($myfile);
-    }
-}
-if(isset($_POST["webshell_discord"])){
-    if(!file_exists("./output_discord.log")){
-        exec("pgrep -f app.py", $outdisc);
-        if (count($outdisc) < 2) {
-            if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-                exec("python -u ./discordbot/app.py > ./output_discord.log", $out, $error);
+        if (count($lastLine) > 1) {
+            $datos = explode("Estado: ", $lastLine[count($lastLine) - 2]);
+            echo utf8_encode($datos[0] . "<br>");
+            if ($datos[1] == "State.Playing") {
+                echo "Reproduciendo...";
+            } else if ($datos[1] == "State.Endedng") {
+                echo "Terminada...";
             } else {
-                $comando = "python3 -u ./discordbot/app.py > ./output_discord.log";
-                exec($comando);
+                echo $datos[1];
             }
         }
-        
+        echo ("<br><br>");
+        echo fread($myfile, filesize("./output.log"));
+
+        fclose($myfile);
+    }
+}
+if (isset($_POST["webshell_discord"])) {
+    if (!file_exists("./output_discord.log")) {
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            exec("python -u ./discordbot/app.py > ./output_discord.log", $out, $error);
+        } else {
+            $comando = "python3 -u ./discordbot/app.py > ./output_discord.log";
+            exec($comando);
+        }
+
         flush();
         ob_flush();
         sleep(10);
-    }else{
-        if(fopen("./output_discord.log", "r") !== null){
-            $myfile = fopen("./output_discord.log", "r"); 
-            
+    } else {
+        if (fopen("./output_discord.log", "r") !== null) {
+            $myfile = fopen("./output_discord.log", "r");
         }
-        
-        if(filesize("./output_discord.log") > 1){
-        echo "<script></script>";
-        echo fread($myfile,filesize("./output_discord.log"));
-        $fewLines = explode("\n", fread($myfile,filesize("./output_discord.log")));
-        echo $fewLines[count($fewLines)-1];
-        
-        fclose($myfile);
-    }
-    
+
+        if (filesize("./output_discord.log") > 1) {
+            echo "<script></script>";
+            echo fread($myfile, filesize("./output_discord.log"));
+            $fewLines = explode("\n", fread($myfile, filesize("./output_discord.log")));
+            echo $fewLines[count($fewLines) - 1];
+
+            fclose($myfile);
+        }
     }
 }
