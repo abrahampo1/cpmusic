@@ -227,7 +227,7 @@ if(isset($_POST["webshell_discord"])){
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
             exec("python -u ./discordbot/app.py > ./output_discord.log", $out, $error);
         } else {
-            $comando = escapeshellcmd("python3 -u ./discordbot/app.py > output_discord.log");
+            $comando = escapeshellcmd("python3 -u ./discordbot/app.py > ./output_discord.log");
             shell_exec($comando);
         }
         flush();
