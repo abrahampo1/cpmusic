@@ -27,7 +27,7 @@
 </head>
 
 <body>
-    <form action="" method="POST">
+<form action="" method="POST">
         <?php
         exec("pgrep -f bot.py", $out);
         if (count($out) > 1) {
@@ -49,6 +49,8 @@
             <button type="submit">Parar BOT</button>
         <?php
         } ?>
+        </form>
+        <form action="" method="POST">
         <?php
         exec("pgrep -f app.py", $out);
         if (count($out) > 1) {
