@@ -52,14 +52,14 @@
         </form>
         <form action="" method="POST">
         <?php
-        exec("pgrep -f app.py", $out);
+        exec("pgrep -f ./discordbot/app.py", $out);
         if (count($out) > 1) {
 
         ?>
             <input type="hidden" name="kill_discord" value="paquete">
             <button type="submit">Parar BOT DISCORD</button>
         <?php
-        } else if (file_exists("output_discord.log")) {
+        } else if (!file_exists("output_discord.log")) {
         ?>
             <input type="hidden" name="start_discord" value="paquete">
             <button type="submit">Empezar BOT DISCORD</button>
