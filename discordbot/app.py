@@ -54,7 +54,6 @@ async def play(ctx):
         await asyncio.sleep(1)
         voice_client = await channel.connect()
         print('Me he conectado a: '+nombre)
-    print(bot.guilds)
     id_true = ""
     myobj = {
         'api': '123',
@@ -69,9 +68,9 @@ async def play(ctx):
             await asyncio.sleep(1)
             x = requests.post(url_api, data=myobj)
             url = x.text
-        url = url.split(";")
+        url = url.split(";;")
         tiempo = url[1]
-        url = url[3]
+        url = url[2]
         id = url[0]
         guild = ctx.message.guild
 
