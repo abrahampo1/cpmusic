@@ -68,7 +68,7 @@ async def play(ctx):
             await asyncio.sleep(1)
             x = requests.post(url_api, data=myobj)
             url = x.text
-        url = url.split(";;")
+        url = url.split(';,;')
         tiempo = url[1]
         url = url[2]
         id = url[0]
