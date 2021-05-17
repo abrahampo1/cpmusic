@@ -19,9 +19,10 @@ ydl_opts = {
         'key': 'FFmpegExtractAudio',
         'preferredcodec': 'mp3',
         'preferredquality': '192',
-        "before_options": "-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 50",
+        
     }],
 }   
+
 intents = discord.Intents().all()
 client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix='asorey ',intents=intents)                                 
@@ -47,7 +48,7 @@ async def play(ctx):
             x = requests.post(url_api, data=myobj)
             url = x.text
             await ctx.send("Estoy esperando por una canción...")
-            await asyncio.sleep(10)
+            await asyncio.sleep(15)
         url = url.split(";")
         tiempo = url[1]
         url = url[0]
@@ -63,7 +64,8 @@ async def play(ctx):
                 best = video.getbestaudio()
                 playurl = best.url
                 voice_client.stop()
-                voice_client.play(discord.FFmpegPCMAudio(playurl, options='-ss '+tiempo, executable='C:/ffmpeg/bin/ffmpeg.exe'))
+                FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn -ss '+tiempo,}
+                voice_client.play(discord.FFmpegPCMAudio(playurl, **FFMPEG_OPTIONS, executable='C:/ffmpeg/bin/ffmpeg.exe'))
                 voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
                 await ctx.send(f'**Canción en la radio: **{url}')
             except Exception as e:
