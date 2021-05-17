@@ -88,7 +88,7 @@ async def play(ctx):
                 try:
                     print("Voy a stremear: " + playurl)
                     voice_client.play(discord.FFmpegPCMAudio(playurl, **FFMPEG_OPTIONS, executable='/usr/bin/ffmpeg'))
-                    voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 100)
+                    voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
                     await ctx.send(f'**Canción en la radio: **{url}')
                 except Exception as e:
                     print(e)
