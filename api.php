@@ -60,7 +60,7 @@ if (isset($_POST["api"])) {
                 $do = mysqli_query($link, $sql);
                 if ($do->num_rows == 1) {
                     $result = mysqli_fetch_assoc($do);
-                    echo $result["urlspoti"] . ";" . $result["tiempo"] . ";" . $result["id"];
+                    echo $result["id"]. ";" . $result["tiempo"] . ";" .$result["urlspoti"] ;
                 }
             }
             if (isset($_POST["tiempo"])) {

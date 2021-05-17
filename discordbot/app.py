@@ -71,14 +71,16 @@ async def play(ctx):
             url = x.text
         url = url.split(";")
         tiempo = url[1]
-        url = url[0]
-        id = url[2]
+        url = url[3]
+        id = url[0]
         guild = ctx.message.guild
 
         # print(playurl)
         # with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         #    file = ydl.extract_info(url, download=True)
         #    path = str(file['title']) + "-" + str(file['id'] + ".mp3")
+        print(id)
+        print(id_true)
         if id != id_true:
             try:
                 video = pafy.new(url)
