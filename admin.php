@@ -52,7 +52,7 @@
         </form>
         <form action="" method="POST">
         <?php
-        exec("pgrep -f ./discordbot/app.py", $outdisc);
+        exec("pgrep -f app.py", $outdisc);
         if (count($outdisc) > 2) {
             echo var_dump($outdisc);
         ?>
