@@ -6,10 +6,14 @@ import os
 import pafy
 import ssl
 import asyncio
+import aiohttp
+import certifi
 import requests
 from discord.ext import commands
 from dotenv import load_dotenv
 load_dotenv()
+ssl_context = ssl.create_default_context(cafile=certifi.where())
+
 # Get the API token from the .env file.
 DISCORD_TOKEN = os.getenv("discord_token")
 ydl_opts = {
@@ -18,13 +22,15 @@ ydl_opts = {
         'key': 'FFmpegExtractAudio',
         'preferredcodec': 'mp3',
         'preferredquality': '192',
-        
+
     }],
-}   
+}
 
 intents = discord.Intents().all()
 client = discord.Client(intents=intents)
-bot = commands.Bot(command_prefix='asorey ',intents=intents)                                 
+bot = commands.Bot(command_prefix='asorey ', intents=intents,
+                   connector=aiohttp.TCPConnector(verify_ssl=False))
+
 
 @bot.command(name='join', help='To make the bot leave the voice channel')
 async def play(ctx):
@@ -48,16 +54,16 @@ async def play(ctx):
         await asyncio.sleep(1)
         voice_client = await channel.connect()
         print('Me he conectado a: '+nombre)
-    
+
     url_true = ""
     myobj = {
-            'api': '123',
-            'necesito_discord': 'url',
-            }
+        'api': '123',
+        'necesito_discord': 'url',
+    }
     while True:
         x = requests.post(url_api, data=myobj)
         url = x.text
-        while url=="":
+        while url == "":
             await ctx.send("Estoy esperando por una canción...")
             await asyncio.sleep(15)
             x = requests.post(url_api, data=myobj)
@@ -66,9 +72,9 @@ async def play(ctx):
         tiempo = url[1]
         url = url[0]
         guild = ctx.message.guild
-        
-        #print(playurl)
-        #with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+
+        # print(playurl)
+        # with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         #    file = ydl.extract_info(url, download=True)
         #    path = str(file['title']) + "-" + str(file['id'] + ".mp3")
         if url != url_true:
@@ -77,34 +83,43 @@ async def play(ctx):
                 best = video.getbestaudio()
                 playurl = best.url
                 voice_client.stop()
-                FFMPEG_OPTIONS = {'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn -ss '+tiempo,}
-                voice_client.play(discord.FFmpegPCMAudio(playurl, **FFMPEG_OPTIONS, executable='ffmpeg'))
-                voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
+                FFMPEG_OPTIONS = {
+                    'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn -ss '+tiempo, }
+                voice_client.play(discord.FFmpegPCMAudio(
+                    playurl, **FFMPEG_OPTIONS, executable='ffmpeg'))
+                voice_client.source = discord.PCMVolumeTransformer(
+                    voice_client.source, 1)
                 await ctx.send(f'**Canción en la radio: **{url}')
             except Exception as e:
                 print("he dao un error xD")
                 print(str(e))
         url_true = url
         voice_client.resume()
-        
+
         await asyncio.sleep(2)
-    
+
 
 silenciado = False
+
+
 @bot.command(name='pause', help='This command pauses the song')
 async def pause(ctx):
     voice_client = ctx.message.guild.voice_client
     if voice_client.is_playing():
-        voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 0.01)
+        voice_client.source = discord.PCMVolumeTransformer(
+            voice_client.source, 0.01)
         silenciado = True
     else:
         await ctx.send("The bot is not playing anything at the moment.")
+
+
 @bot.command(name='resume', help='Resumes the song')
 async def resume(ctx):
     voice_client = ctx.message.guild.voice_client
     if voice_client.is_playing():
         print("Subiendo volumen")
-        voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 300)
+        voice_client.source = discord.PCMVolumeTransformer(
+            voice_client.source, 300)
 print("Bot arrancado")
 try:
     bot.run(DISCORD_TOKEN)
