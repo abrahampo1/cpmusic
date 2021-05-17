@@ -31,7 +31,7 @@ client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix='asorey ', intents=intents,
                    connector=aiohttp.TCPConnector(ssl=False))
 async def getbotdata():
-    print(";;")
+    print("//;;")
     for guild in client.guilds:
         print('"'+guild.name)
     print(";;")
@@ -39,6 +39,7 @@ async def getbotdata():
 
 @bot.command(name='join', help='To make the bot leave the voice channel')
 async def play(ctx):
+    getbotdata()
     if not ctx.message.author.voice:
         await ctx.send('Tienes que estar en un canal de voz para hacer esto')
         return
