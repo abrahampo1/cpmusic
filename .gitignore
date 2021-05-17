@@ -2,3 +2,4 @@
 /discordbot/ffmpeg.exe
 /discordbot/.env
 output.log
+output_discord.log
