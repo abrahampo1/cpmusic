@@ -53,7 +53,7 @@ if (isset($_POST["nuevo"])) {
     }
 }
 if (isset($_POST["anuncio"])) {
-    echo '<h1>Worlds 2021</h1><iframe src="https://player.twitch.tv/?channel=ibai&parent=musica.asorey.net" height="1280" width="100%"></iframe>';
+    echo '<h1>Worlds 2021</h1><iframe src="https://player.twitch.tv/?channel=ibai&parent=musica.asorey.net" height="700" width="100%"></iframe>';
     exit;
 }
 
