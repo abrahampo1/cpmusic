@@ -222,7 +222,7 @@ if(isset($_POST["webshell_python"])){
     }
 }
 if(isset($_POST["webshell_discord"])){
-    if(!file_exists("output.log")){
+    if(!file_exists("output_discord.log")){
         echo "EJECUTANDO";
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
             exec("python -u ./discordbot/app.py > ./output_discord.log", $out, $error);
