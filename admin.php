@@ -45,23 +45,58 @@
 
 
         ?>
-            <input type="hidden" name="kill_python" value="paquete">
+            <input type="hidden" name="kill_discord" value="paquete">
             <button type="submit">Parar BOT</button>
         <?php
         } ?>
-        <h1>~ WebShell by CP ~</h1>
+        <?php
+        exec("pgrep -f ./discordbot/app.py", $out);
+        if (count($out) > 1) {
+
+        ?>
+            <input type="hidden" name="kill_discord" value="paquete">
+            <button type="submit">Parar BOT DISCORD</button>
+        <?php
+        } else if (file_exists("output_discord.log")) {
+        ?>
+            <input type="hidden" name="start_discord" value="paquete">
+            <button type="submit">Empezar BOT DISCORD</button>
+        <?php
+        } else {
+
+
+        ?>
+            <input type="hidden" name="kill_discord" value="paquete">
+            <button type="submit">Parar BOT DISCORD</button>
+        <?php
+        } ?>
+        
     </form>
+    <h1>~ WebShell by CP ~</h1>
     <div id="body" class="consola">
+            Cargando...
+    </div>
+    <div id="discord" class="consola">
             Cargando...
     </div>
     <?php
     if (isset($_POST["kill_python"])) {
-        exec("pkill python", $killout);
+        exec("pkill -f ./bot.py", $killout);
         echo "Terminado fino";
         header("location: admin");
     }
     if (isset($_POST["start_python"])) {
         unlink("./output.log");
+        echo "Empezado fino";
+        header("location: admin");
+    }
+    if (isset($_POST["kill_discord"])) {
+        exec("pkill -f ./discordbot/app.py", $killout);
+        echo "Terminado fino";
+        header("location: admin");
+    }
+    if (isset($_POST["start_discord"])) {
+        unlink("./output_discord.log");
         echo "Empezado fino";
         header("location: admin");
     }
@@ -87,6 +122,25 @@
                 if (response != document.getElementById("body").innerHTML) {
                     document.getElementById("body").innerHTML = response;
                     document.getElementById("body").innerHTML = response;
+                };
+            },
+            error: function() {}
+        });
+
+    }, 1000);
+</script>
+<script>
+    var siguientes = window.setInterval(function() {
+        $.ajax({
+            type: 'post',
+            url: 'ajax.php',
+            data: {
+                webshell_discord: 'paquete',
+            },
+            success: function(response) {
+                if (response != document.getElementById("discord").innerHTML) {
+                    document.getElementById("discord").innerHTML = response;
+                    document.getElementById("discord").innerHTML = response;
                 };
             },
             error: function() {}

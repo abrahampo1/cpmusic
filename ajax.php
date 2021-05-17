@@ -221,3 +221,30 @@ if(isset($_POST["webshell_python"])){
     fclose($myfile);
     }
 }
+if(isset($_POST["webshell_discord"])){
+    if(!file_exists("output.log")){
+        echo "EJECUTANDO";
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            exec("python -u ./discordbot/app.py > ./output_discord.log", $out, $error);
+        } else {
+            exec("python3 -u ./discordbot/app.py > ./output_discord.log", $out, $error);
+        }
+        var_dump($out);
+        var_dump($error);
+        flush();
+        ob_flush();
+        sleep(10);
+    }
+    if(fopen("./output_discord.log", "r") !== null){
+        $myfile = fopen("./output_discord.log", "r"); 
+        
+    }
+    
+    if(filesize("./output_discord.log") > 1){
+    echo "<script></script>";
+    $fewLines = explode("\n", fread($myfile,filesize("./output_discord.log")));
+    echo $fewLines[count($fewLines)-1];
+    
+    fclose($myfile);
+    }
+}
