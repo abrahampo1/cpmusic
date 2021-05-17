@@ -10,10 +10,8 @@ import requests
 from discord.ext import commands
 from dotenv import load_dotenv
 load_dotenv()
-
 # Get the API token from the .env file.
 DISCORD_TOKEN = os.getenv("discord_token")
-ssl._create_default_https_context = ssl._create_unverified_context
 ydl_opts = {
     'format': 'bestaudio/best',
     'postprocessors': [{
