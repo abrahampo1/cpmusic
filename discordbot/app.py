@@ -103,15 +103,17 @@ async def play(ctx):
 silenciado = False
 
 
-@bot.command(name='pause', help='This command pauses the song')
-async def pause(ctx):
+@bot.command(name='play', help='This command pauses the song')
+async def pause(ctx, url, insta):
     voice_client = ctx.message.guild.voice_client
-    if voice_client.is_playing():
-        voice_client.source = discord.PCMVolumeTransformer(
-            voice_client.source, 0.01)
-        silenciado = True
-    else:
-        await ctx.send("The bot is not playing anything at the moment.")
+    videoid = url.split("https://www.youtube.com/watch?v=")
+    if videoid[1] != "":
+        await ctx.send(videoid[1])
+        insta = insta.replace("<", "")
+        insta = insta.replace(">", "")
+        insta = insta.replace('"', "")
+        await ctx.send('Gracias '+insta+' por el aporte')
+
 
 
 @bot.command(name='resume', help='Resumes the song')

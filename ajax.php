@@ -209,7 +209,7 @@ if (isset($_POST["webshell_discord"])) {
         if (fopen("./output_discord.log", "r") !== null) {
             $myfile = fopen("./output_discord.log", "r");
         }
-
+        $fewLines = explode("\n", fread($myfile, filesize("./output.log")));
         if (filesize("./output_discord.log") > 1) {
             echo "<script></script>";
             echo fread($myfile, filesize("./output_discord.log"));
