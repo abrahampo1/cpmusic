@@ -33,10 +33,6 @@ bot = commands.Bot(command_prefix='asorey ', intents=intents,
 
 @bot.command(name='join', help='To make the bot leave the voice channel')
 async def play(ctx):
-    print("//;;")
-    for guild in client.guilds:
-        print('"'+guild.name)
-    print(";;")
     if not ctx.message.author.voice:
         await ctx.send('Tienes que estar en un canal de voz para hacer esto')
         return
