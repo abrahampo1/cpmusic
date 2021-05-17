@@ -404,6 +404,20 @@ if ($ig_minita == "") {
     }
 </script>
 <script>
+function barra() {
+            var elem = document.getElementById("myBar");
+            var video = document.getElementById("videoclip");
+            if (video && elem) {
+                var tiempototal = document.getElementById("video_total").value;
+                var video = document.getElementById("videoclip");
+                console.log(tiempototal);
+                console.log(tiempo);
+                var tiempo = video.currentTime;
+                var width = (tiempo / tiempototal) * 100;
+                elem.style.width = width + "%";
+
+            }
+        }
     var updatetime = window.setInterval(function() {
         function barra() {
             var elem = document.getElementById("myBar");
