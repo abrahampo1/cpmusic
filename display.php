@@ -382,7 +382,7 @@ if ($ig_minita == "") {
 
     <!-- Modal content -->
     <div class="modal-content">
-        <p id="noticia">Some text in the Modal..</p>
+        <p id="noticia"></p>
     </div>
 
 </div>
