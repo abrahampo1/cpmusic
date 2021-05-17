@@ -490,7 +490,7 @@ if ($ig_minita == "") {
                 anuncio: 'active',
             },
             success: function(response) {
-                if (response != "" && response != document.getElementById("noticia").innerHTML) {
+                if (response != "" &&  document.getElementById("noticia").innerHTML == "") {
                     console.log(response);
                     console.log(document.getElementById("noticia").innerHTML);
                     document.getElementById("noticia").innerHTML = response;
