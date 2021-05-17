@@ -55,7 +55,7 @@ async def play(ctx):
         voice_client = await channel.connect()
         print('Me he conectado a: '+nombre)
     print(bot.guilds)
-    url_true = ""
+    id_true = ""
     myobj = {
         'api': '123',
         'necesito_discord': 'url',
@@ -72,13 +72,14 @@ async def play(ctx):
         url = url.split(";")
         tiempo = url[1]
         url = url[0]
+        id = url[2]
         guild = ctx.message.guild
 
         # print(playurl)
         # with youtube_dl.YoutubeDL(ydl_opts) as ydl:
         #    file = ydl.extract_info(url, download=True)
         #    path = str(file['title']) + "-" + str(file['id'] + ".mp3")
-        if url != url_true:
+        if id != id_true:
             try:
                 video = pafy.new(url)
                 best = video.getbestaudio()
@@ -95,7 +96,7 @@ async def play(ctx):
             except Exception as e:
                 print("he dao un error xD")
                 print(str(e))
-        url_true = url
+        id_true = url
         voice_client.resume()
 
         await asyncio.sleep(2)
