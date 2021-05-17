@@ -42,7 +42,7 @@ async def play(ctx):
     url_api = "https://musica.asorey.net/api.php"
     server = ctx.message.guild
     try:
-        print(server.name)
+        print("Server de discord: "+server.name+"\n")
         nombre = server.name
     except:
         nombre = "Error en el nombre del servidor, contiene caracteres no permitidos en UNIX"
@@ -54,7 +54,7 @@ async def play(ctx):
         await asyncio.sleep(1)
         voice_client = await channel.connect()
         print('Me he conectado a: '+nombre)
-
+    print("\n")
     url_true = ""
     myobj = {
         'api': '123',
@@ -87,7 +87,6 @@ async def play(ctx):
                 FFMPEG_OPTIONS = {
                     'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn -ss '+tiempo, }
                 try:
-                    print("Voy a stremear: " + playurl)
                     voice_client.play(discord.FFmpegPCMAudio(playurl, **FFMPEG_OPTIONS, executable='/usr/bin/ffmpeg'))
                     voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
                     await ctx.send(f'**Canción en la radio: **{url}')
