@@ -490,11 +490,14 @@ if ($ig_minita == "") {
                 anuncio: 'active',
             },
             success: function(response) {
-                if (response != "" && strlen(document.getElementById("noticia").innerHTML)<10){
+                if (response != ""){
                     console.log(response);
                     console.log(document.getElementById("noticia").innerHTML);
-                    document.getElementById("noticia").innerHTML = response;
+                    if(document.getElementById("noticia").innerHTML == ""){
+                        document.getElementById("noticia").innerHTML = response;
                     document.getElementById("myModal").style.display = "block";
+                    }
+                   
                 } else if (response == "") {
                     document.getElementById("myModal").style.display = "none";
                 };
