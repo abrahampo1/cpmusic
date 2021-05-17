@@ -29,7 +29,7 @@ ydl_opts = {
 intents = discord.Intents().all()
 client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix='asorey ', intents=intents,
-                   connector=aiohttp.TCPConnector(verify_ssl=False))
+                   connector=aiohttp.TCPConnector(ssl=False))
 
 
 @bot.command(name='join', help='To make the bot leave the voice channel')
