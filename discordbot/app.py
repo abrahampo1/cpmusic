@@ -35,7 +35,16 @@ async def play(ctx):
     else:
         channel = ctx.message.author.voice.channel
     url_api = "https://musica.asorey.net/api.php"
-    voice_client = await channel.connect()
+    server = ctx.message.guild
+    try:
+        voice_client = await channel.connect()
+        print('Me he conectado a: '+server.name)
+    except:
+        voice_client = await server.disconnect()
+        await asyncio.sleep(1)
+        voice_client = await channel.connect()
+        print('Me he conectado a: '+server.name)
+    
     url_true = ""
     myobj = {
             'api': '123',
