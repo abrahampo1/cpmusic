@@ -41,7 +41,7 @@ async def play(ctx):
     url_api = "https://musica.asorey.net/api.php"
     server = ctx.message.guild
     try:
-        print("Server de discord: "+server.name+"\n")
+        print("Server de discord: "+server.name)
         nombre = server.name
     except:
         nombre = "Error en el nombre del servidor, contiene caracteres no permitidos en UNIX"
@@ -53,7 +53,7 @@ async def play(ctx):
         await asyncio.sleep(1)
         voice_client = await channel.connect()
         print('Me he conectado a: '+nombre)
-    print("\n")
+    print(bot.guilds)
     url_true = ""
     myobj = {
         'api': '123',
