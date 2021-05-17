@@ -63,9 +63,10 @@ async def play(ctx):
     while True:
         x = requests.post(url_api, data=myobj)
         url = x.text
-        while url == "":
+        if url == "":
             await ctx.send("Estoy esperando por una canción...")
-            await asyncio.sleep(15)
+        while url == "":
+            await asyncio.sleep(1)
             x = requests.post(url_api, data=myobj)
             url = x.text
         url = url.split(";")
