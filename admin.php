@@ -9,6 +9,7 @@
         color: green;
         padding: 15px;
         border-radius: 15px;
+        margin: 15px;
     }
 
     h1 {
