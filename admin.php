@@ -65,8 +65,6 @@
             <button type="submit">Empezar BOT DISCORD</button>
         <?php
         } else {
-
-
         ?>
             <input type="hidden" name="kill_discord" value="paquete">
             <button type="submit">Parar BOT DISCORD RAW</button>
