@@ -91,7 +91,7 @@
         header("location: admin");
     }
     if (isset($_POST["kill_discord"])) {
-        exec("pkill -f app.py", $killout);
+        exec("sudo pkill -f app.py", $killout);
         echo "Terminado fino";
         header("location: admin");
     }
