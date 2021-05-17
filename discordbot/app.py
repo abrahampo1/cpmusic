@@ -86,6 +86,7 @@ async def play(ctx):
                 FFMPEG_OPTIONS = {
                     'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn -ss '+tiempo, }
                 try:
+                    print("Voy a stremear: " + playurl)
                     voice_client.play(discord.FFmpegPCMAudio(playurl, **FFMPEG_OPTIONS, executable='/usr/bin/ffmpeg'))
                     voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 100)
                     await ctx.send(f'**Canción en la radio: **{url}')
