@@ -87,7 +87,7 @@ async def play(ctx):
                     'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn -ss '+tiempo, }
                 try:
                     voice_client.play(discord.FFmpegPCMAudio(playurl, **FFMPEG_OPTIONS))
-                    voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
+                    voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 100)
                     await ctx.send(f'**Canción en la radio: **{url}')
                 except Exception as e:
                     print(e)
