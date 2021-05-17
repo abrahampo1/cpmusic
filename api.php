@@ -23,39 +23,36 @@ if (isset($_POST["api"])) {
                     echo $result["urlspoti"];
                 } else {
                     $sql = "SELECT * FROM favoritas ORDER BY RAND() LIMIT 1";
-                    if($do = mysqli_query($link, $sql)){
-                        if($do->num_rows >= 1){
-                            while($randvideo = mysqli_fetch_assoc($do)){
+                    if ($do = mysqli_query($link, $sql)) {
+                        if ($do->num_rows >= 1) {
+                            while ($randvideo = mysqli_fetch_assoc($do)) {
                                 $match = false;
-                                while($match == false){
+                                while ($match == false) {
                                     $randvideo = $randvideo["yid"];
                                     $sql = "SELECT * FROM musica ORDER BY id DESC LIMIT 10";
                                     $busqueda =  mysqli_query($link, $sql);
-                                    while($videomatch = mysqli_fetch_assoc($busqueda)){
-                                        if($videomatch["urlspoti"] == $randvideo){
+                                    while ($videomatch = mysqli_fetch_assoc($busqueda)) {
+                                        if ($videomatch["urlspoti"] == $randvideo) {
                                             $match = true;
                                         }
                                     }
-                                    if($match == false){
+                                    if ($match == false) {
                                         break;
                                     }
-                                    if($match == true){
+                                    if ($match == true) {
                                         $sql = "SELECT * FROM favoritas ORDER BY RAND() LIMIT 1";
                                         $nuevo = mysqli_query($link, $sql);
                                         $randvideo = mysqli_fetch_assoc($nuevo);
                                         $match = false;
                                     }
                                 }
-                                
+
                                 $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`, `auto`) VALUES (NULL, '$randvideo', '', '', '0', '', '', 0, 1);";
                                 if (mysqli_query($link, $sql)) {
-                                    
                                 }
                             }
-                            
                         }
                     }
-                    
                 }
             }
             if (isset($_POST["necesito_discord"])) {
@@ -63,7 +60,7 @@ if (isset($_POST["api"])) {
                 $do = mysqli_query($link, $sql);
                 if ($do->num_rows == 1) {
                     $result = mysqli_fetch_assoc($do);
-                    echo $result["urlspoti"].";".$result["tiempo"];
+                    echo $result["urlspoti"] . ";" . $result["tiempo"];
                 }
             }
             if (isset($_POST["tiempo"])) {
@@ -120,5 +117,13 @@ if (isset($_POST["api"])) {
         }
     } else {
         echo "";
+    }
+}
+if (isset($_POST["proponer"])) {
+    $url = $_POST["proponer"];
+    $insta = $_POST["insta"];
+    $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`, `auto`) VALUES (NULL, '$url', '', '', '0', '', '$insta', 0, 1);";
+    if (mysqli_query($link, $sql)) {
+        echo "Se ha añadido "+$url+" correctamente a la cola!";
     }
 }

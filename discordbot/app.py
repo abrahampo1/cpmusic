@@ -16,6 +16,7 @@ ssl_context = ssl.create_default_context(cafile=certifi.where())
 
 # Get the API token from the .env file.
 DISCORD_TOKEN = os.getenv("discord_token")
+APITOKEN = os.getenv("apitoken")
 ydl_opts = {
     'format': 'bestaudio/best',
     'postprocessors': [{
@@ -105,16 +106,28 @@ silenciado = False
 
 @bot.command(name='play', help='This command pauses the song')
 async def pause(ctx, url, insta):
+    url_api = "https://musica.asorey.net/api.php"
     voice_client = ctx.message.guild.voice_client
     videoid = url.split("https://www.youtube.com/watch?v=")
     if videoid[1] != "":
         await ctx.send(videoid[1])
-        insta = insta.replace("<", "")
-        insta = insta.replace(">", "")
-        insta = insta.replace('"', "")
-        await ctx.send('Gracias '+insta+' por el aporte')
-
-
+        if insta != "":
+            insta = insta.replace("<", "")
+            insta = insta.replace(">", "")
+            insta = insta.replace('"', "")
+            await ctx.send('Gracias '+insta+' por el aporte')
+        else:
+            insta = ""
+        video = "https://www.youtube.com/watch?v=" + videoid[1]
+        myobj = {
+                    'api': '123',
+                    'proponer': video,
+                    'insta': insta,
+                }
+        x = requests.post(url_api, data=myobj)
+        texto = x.text
+        await ctx.send(texto)
+        
 
 @bot.command(name='resume', help='Resumes the song')
 async def resume(ctx):
