@@ -96,7 +96,7 @@ async def play(ctx):
             except Exception as e:
                 print("he dao un error xD")
                 print(str(e))
-        id_true = url
+        id_true = id
         voice_client.resume()
 
         await asyncio.sleep(2)
