@@ -32,7 +32,7 @@ client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix='asorey ', intents=intents,
                    connector=aiohttp.TCPConnector(ssl=False))
 
-@bot.command(name='join', help='To make the bot leave the voice channel')
+@bot.command(name='join', help='Haz que el bot se una a tu canal')
 async def play(ctx):
     if not ctx.message.author.voice:
         await ctx.send('Tienes que estar en un canal de voz para hacer esto')
@@ -104,7 +104,7 @@ async def play(ctx):
 silenciado = False
 
 
-@bot.command(name='play', help='This command pauses the song')
+@bot.command(name='play', help='Uso play [url] [instagram(opcional)]')
 async def pause(ctx, url, insta):
     url_api = "https://musica.asorey.net/api.php"
     voice_client = ctx.message.guild.voice_client
@@ -128,15 +128,7 @@ async def pause(ctx, url, insta):
         await ctx.send(texto)
     else:
         await ctx.send("Pibe, tienes que mandar un url de youtube :)")
-        
-
-@bot.command(name='resume', help='Resumes the song')
-async def resume(ctx):
-    voice_client = ctx.message.guild.voice_client
-    if voice_client.is_playing():
-        print("Subiendo volumen")
-        voice_client.source = discord.PCMVolumeTransformer(
-            voice_client.source, 300)
+    
 print("Bot arrancado")
 try:
     bot.run(DISCORD_TOKEN)
