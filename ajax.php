@@ -177,19 +177,6 @@ if (isset($_POST["playlist"])) {
 <?php
 
 if (isset($_POST["webshell_python"])) {
-    if (!file_exists("output.log")) {
-        echo "EJECUTANDO";
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-            exec("python -u ./bot.py > ./output.log", $out, $error);
-        } else {
-            exec("python3 -u ./bot.py > ./output.log", $out, $error);
-        }
-        var_dump($out);
-        var_dump($error);
-        flush();
-        ob_flush();
-        sleep(10);
-    }
     if (fopen("./output.log", "r") !== null) {
         $myfile = fopen("./output.log", "r");
     }
@@ -220,18 +207,6 @@ if (isset($_POST["webshell_python"])) {
     }
 }
 if (isset($_POST["webshell_discord"])) {
-    if (!file_exists("./output_discord.log")) {
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-            exec("python -u ./discordbot/app.py > ./output_discord.log", $out, $error);
-        } else {
-            $comando = "systemctl start bot-discord";
-            exec($comando);
-        }
-
-        flush();
-        ob_flush();
-        sleep(10);
-    } else {
         if (fopen("./output_discord.log", "r") !== null) {
             $myfile = fopen("./output_discord.log", "r");
         }
@@ -244,5 +219,4 @@ if (isset($_POST["webshell_discord"])) {
 
             fclose($myfile);
         }
-    }
 }
