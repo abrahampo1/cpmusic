@@ -45,12 +45,12 @@
 
 
         ?>
-            <input type="hidden" name="kill_discord" value="paquete">
+            <input type="hidden" name="kill_python" value="paquete">
             <button type="submit">Parar BOT</button>
         <?php
         } ?>
         <?php
-        exec("pgrep -f ./discordbot/app.py", $out);
+        exec("pgrep -f app.py", $out);
         if (count($out) > 1) {
 
         ?>
