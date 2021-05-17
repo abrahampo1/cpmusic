@@ -54,7 +54,7 @@
         <?php
         exec("pgrep -f ./discordbot/app.py", $out);
         if (count($out) > 2) {
-
+            echo count($out);
         ?>
             <input type="hidden" name="kill_discord" value="paquete">
             <button type="submit">Parar BOT DISCORD</button>
@@ -69,7 +69,7 @@
 
         ?>
             <input type="hidden" name="kill_discord" value="paquete">
-            <button type="submit">Parar BOT DISCORD</button>
+            <button type="submit">Parar BOT DISCORD RAW</button>
         <?php
         } ?>
         
