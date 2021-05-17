@@ -58,6 +58,7 @@ def run_forever():
                     print(player.get_length())
                 print(str("Reproduciendo ('"+video.title+"')").encode("utf-8"))
                 if round(player.get_length()/1000) < 1:
+                    print("Como el audio parece que no funciona, voy a poner el video...")
                     Media = Instance.media_new(videourl)
                     player.set_media(Media)
                     player.play()
@@ -70,7 +71,7 @@ def run_forever():
                         'total': round(player.get_length()/1000)
                     }
                     x = requests.post(url_api, data=myobj)
-                    time.sleep(0.1)
+                    time.sleep(0.5)
                     Ended = 6
                     if player.get_state() == Ended:
                         print("He detectado que no hay más canción, forzando la siguiente...")
