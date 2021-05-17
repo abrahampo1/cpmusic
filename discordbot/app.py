@@ -110,7 +110,6 @@ async def pause(ctx, url, insta):
     voice_client = ctx.message.guild.voice_client
     videoid = url.split("https://www.youtube.com/watch?v=")
     if videoid[1] != "":
-        await ctx.send(videoid[1])
         if insta != "":
             insta = insta.replace("<", "")
             insta = insta.replace(">", "")
@@ -127,6 +126,8 @@ async def pause(ctx, url, insta):
         x = requests.post(url_api, data=myobj)
         texto = x.text
         await ctx.send(texto)
+    else:
+        await ctx.send("Pibe, tienes que mandar un url de youtube :)")
         
 
 @bot.command(name='resume', help='Resumes the song')
