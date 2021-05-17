@@ -52,9 +52,10 @@
         </form>
         <form action="" method="POST">
         <?php
-        exec("pgrep -f app.py", $outdisc);
+        exec("systemctl status bot-discord", $outdisc);
+        echo var_dump($outdisc);
         if (count($outdisc) > 2) {
-            echo var_dump($outdisc);
+            
         ?>
             <input type="hidden" name="kill_discord" value="paquete">
             <button type="submit">Parar BOT DISCORD</button>
