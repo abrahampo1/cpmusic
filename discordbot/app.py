@@ -90,7 +90,8 @@ async def play(ctx):
             voice_client.resume()
             
             await asyncio.sleep(2)
-    except Exception as e: print(e)
+    except Exception as e:
+        print(e)
 
 silenciado = False
 @bot.command(name='pause', help='This command pauses the song')
