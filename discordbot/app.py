@@ -104,7 +104,7 @@ async def play(ctx):
 silenciado = False
 
 
-@bot.command(name='play', help='Uso play [url] [instagram(opcional)]')
+@bot.command(name='play', help='Uso "play [url] [instagram(opcional)]"')
 async def pause(ctx, url, insta):
     url_api = "https://musica.asorey.net/api.php"
     voice_client = ctx.message.guild.voice_client
