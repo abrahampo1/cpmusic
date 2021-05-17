@@ -201,7 +201,6 @@ if (isset($_POST["webshell_python"])) {
             }
         }
         echo ("<br><br>");
-        echo fread($myfile, filesize("./output.log"));
 
         fclose($myfile);
     }

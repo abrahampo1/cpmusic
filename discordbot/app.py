@@ -30,7 +30,12 @@ intents = discord.Intents().all()
 client = discord.Client(intents=intents)
 bot = commands.Bot(command_prefix='asorey ', intents=intents,
                    connector=aiohttp.TCPConnector(ssl=False))
-
+async def getbotdata():
+    print(";;")
+    for guild in client.guilds:
+        print('"'+guild.name)
+    print(";;")
+    await asyncio.sleep(3)
 
 @bot.command(name='join', help='To make the bot leave the voice channel')
 async def play(ctx):
