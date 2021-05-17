@@ -53,7 +53,7 @@
         <form action="" method="POST">
         <?php
         exec("pgrep -f ./discordbot/app.py", $out);
-        if (count($out) > 1) {
+        if (count($out) > 2) {
 
         ?>
             <input type="hidden" name="kill_discord" value="paquete">
