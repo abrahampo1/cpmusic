@@ -124,6 +124,6 @@ if (isset($_POST["proponer"])) {
     $insta = $_POST["insta"];
     $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`, `auto`) VALUES (NULL, '$url', '', '', '0', '', '$insta', 0, 1);";
     if (mysqli_query($link, $sql)) {
-        echo "Se ha añadido "+$url+" correctamente a la cola!";
+        echo "Se ha añadido ".$url." correctamente a la cola!";
     }
 }
