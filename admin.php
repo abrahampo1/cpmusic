@@ -27,7 +27,13 @@
 </head>
 
 <body>
-
+    <h1>~ WebShell by CP ~</h1>
+    <div id="body" class="consola">
+            Cargando...
+    </div>
+    <div id="discord" class="consola">
+            Cargando...
+    </div>
 </body>
 <script>
     document.getElementById("cmd").focus();
