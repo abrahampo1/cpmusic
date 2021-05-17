@@ -227,25 +227,25 @@ if(isset($_POST["webshell_discord"])){
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
             exec("python -u ./discordbot/app.py > ./output_discord.log", $out, $error);
         } else {
-            shell_exec("sudo python3 -u ./discordbot/app.py > output_discord.log &", $out, $error);
+            shell_exec("sudo python3 -u ./discordbot/app.py > output_discord.log &");
         }
-        var_dump($out);
-        var_dump($error);
         flush();
         ob_flush();
         sleep(10);
-    }
-    if(fopen("./output_discord.log", "r") !== null){
-        $myfile = fopen("./output_discord.log", "r"); 
+    }else{
+        if(fopen("./output_discord.log", "r") !== null){
+            $myfile = fopen("./output_discord.log", "r"); 
+            
+        }
         
+        if(filesize("./output_discord.log") > 1){
+        echo "<script></script>";
+        echo fread($myfile,filesize("./output_discord.log"));
+        $fewLines = explode("\n", fread($myfile,filesize("./output_discord.log")));
+        echo $fewLines[count($fewLines)-1];
+        
+        fclose($myfile);
     }
     
-    if(filesize("./output_discord.log") > 1){
-    echo "<script></script>";
-    echo fread($myfile,filesize("./output_discord.log"));
-    $fewLines = explode("\n", fread($myfile,filesize("./output_discord.log")));
-    echo $fewLines[count($fewLines)-1];
-    
-    fclose($myfile);
     }
 }
