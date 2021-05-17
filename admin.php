@@ -29,7 +29,7 @@
 <body>
     <form action="" method="POST">
         <?php
-        exec("pgrep -f ./bot.py", $out);
+        exec("pgrep -f bot.py", $out);
         if (count($out) > 1) {
 
         ?>
