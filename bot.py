@@ -71,6 +71,15 @@ def run_forever():
                         'total': round(player.get_length()/1000)
                     }
                     x = requests.post(url_api, data=myobj)
+                    if x.text == "pause":
+                        player.pause()
+                        print("Estoy pausado, no roto")
+                    if x.text == "play":
+                        player.play()
+                    if x.text == "next":
+                        player.stop()
+                        print("He recibido un next, cambio.")
+                        break
                     time.sleep(0.5)
                     Ended = 6
                     if player.get_state() == Ended:
