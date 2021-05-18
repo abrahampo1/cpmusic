@@ -1,9 +1,24 @@
 <html>
 <?php
+include("database.php");
 session_start();
 if (!isset($_SESSION["admin"])) {
     header("location: login");
     exit;
+}
+if(isset($_POST["play"])){
+    $sql = "SELECT * FROM ajustes WHERE nombre = 'status'";
+    $do = mysqli_query($link, $sql);
+    $result = mysqli_fetch_assoc($do);
+    if($result["value"]=="play"){
+        $sql = "UPDATE `ajustes` SET `value` = 'pause' WHERE `ajustes`.`nombre` = 'status';";
+    }else{
+        $sql = "UPDATE `ajustes` SET `value` = 'play' WHERE `ajustes`.`nombre` = 'status';";
+    }
+    if(mysqli_query($link, $do)){
+        header("location: admin");
+        exit;
+    }
 }
 ?>
 
@@ -108,7 +123,6 @@ if (!isset($_SESSION["admin"])) {
     }
 </style>
 <?php
-include("database.php");
 $sql = "SELECT * FROM ajustes WHERE nombre = 'anuncio_active'";
 $do = mysqli_query($link, $sql);
 $ajuste = mysqli_fetch_assoc($do);
@@ -135,6 +149,12 @@ if (isset($_POST["stream"])) {
 </head>
 
 <body>
+    <form action="" method="POST">
+        <button name="play" value="paquete">Play/Pause</button>
+    </form>
+    <form action="" method="POST">
+        <button name="next" value="paquete">Siguiente</button>
+    </form>
     <form action="" method="POST" style="margin: 20px">
         <input type="hidden" name="stream" value="paquete">
         <div class="slidercontainer">
