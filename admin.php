@@ -11,6 +11,9 @@
         border-radius: 15px;
         margin: 15px;
     }
+    form{
+        text-align: center;
+    }
     button{
         background: none;
         border: none;
