@@ -534,7 +534,7 @@ if ($ig_minita == "") {
             error: function() {}
         });
 
-    }, 100);
+    }, 500);
 </script>
 <script>
     var anuncios = window.setInterval(function() {

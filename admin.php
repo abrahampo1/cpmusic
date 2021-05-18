@@ -156,7 +156,7 @@ if (isset($_POST["stream"])) {
 </head>
 
 <body>
-    <div style="text-align: center;">
+    <div style="text-align: center; margin-left: auto; margin-right: auto;">
     <div style="display: flex; text-align:center">
     <form action="" method="POST">
         <button name="play" value="paquete">Play/Pause</button>
