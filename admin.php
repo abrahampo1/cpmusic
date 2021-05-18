@@ -139,7 +139,8 @@ if(isset($_POST["next"])){
         /* Cursor on hover */
     }
     .media{
-        margin: 15px;
+        margin-left: 15px;
+        margin-right: 15px;
     }
 </style>
 <?php
