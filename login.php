@@ -12,6 +12,7 @@
         min-width: 200px;
     }
 </style>
+<img style="text-align: center;" src="404.png" alt="">
 <form action="" method="POST">
     <input type="password" name="clave" placeholder="Clave...">
 </form>
