@@ -54,6 +54,8 @@ if (!isset($_SESSION["admin"])) {
         -webkit-appearance: none;
         /* Override default CSS styles */
         appearance: none;
+        border-radius: 20px;
+        margin: 10px;
         width: 40% !important;
         margin-left: auto;
         margin-right: auto;
