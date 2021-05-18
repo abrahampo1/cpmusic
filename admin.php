@@ -9,11 +9,12 @@ if (!isset($_SESSION["admin"])) {
 $sql = "SELECT * FROM ajustes WHERE nombre = 'status'";
 $do = mysqli_query($link, $sql);
 $result = mysqli_fetch_assoc($do);
-if($result["value"] == "play"){
+if($result["value"] == "pause"){
     $icon = "fas fa-play";
-}
-if($result["value"]=="pause"){
+}else if($result["value"]=="play"){
     $icon = "fas fa-pause";
+}else{
+    $icon = "fas fa-play";
 }
 if(isset($_POST["play"])){
     $sql = "SELECT * FROM ajustes WHERE nombre = 'status'";
@@ -170,7 +171,7 @@ if (isset($_POST["stream"])) {
         <button name="play" value="paquete"><i class="<?php echo $icon ?>"></i></button>
     </form>
     <form action="" method="POST">
-        <button name="next" value="paquete">Siguiente</button>
+        <button name="next" value="paquete"><i class="fas fa-next"></i></button>
     </form>
     </div>
     </div>
