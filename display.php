@@ -88,6 +88,7 @@ if ($ig_minita == "") {
         display: none;
         /* Hidden by default */
         position: fixed;
+        border-radius: 25px;
         /* Stay in place */
         z-index: 101;
         /* Sit on top */
