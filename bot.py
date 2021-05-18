@@ -78,6 +78,7 @@ def run_forever():
                     if x.text == "play":
                         if player.get_state() == 4:
                             player.play()
+                            print(str("Reproduciendo ('"+video.title+"')").encode("utf-8"))
                     if x.text == "next":
                         player.stop()
                         print("He recibido un next, cambio.")
