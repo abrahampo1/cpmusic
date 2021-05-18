@@ -14,7 +14,7 @@ if($result["value"] == "pause"){
 }else if($result["value"]=="play"){
     $icon = "fas fa-pause";
 }else{
-    $icon = "fas fa-play";
+    $icon = "fas fa-pause";
 }
 if(isset($_POST["play"])){
     $sql = "SELECT * FROM ajustes WHERE nombre = 'status'";
