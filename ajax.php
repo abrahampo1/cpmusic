@@ -53,7 +53,16 @@ if (isset($_POST["nuevo"])) {
     }
 }
 if (isset($_POST["anuncio"])) {
-    echo '<h1>Letras Galegas 2021 ASOREY TV</h1><iframe src="10.65.20.140/live/" height="700" width="100%"></iframe>';
+    $sql = "SELECT * FROM ajustes WHERE nombre = 'anuncio_active'";
+    $do = mysqli_query($link, $sql);
+    $value = mysqli_fetch_assoc($do);
+    if($value["value"] == 1){
+        $sql = "SELECT * FROM ajustes WHERE nombre = 'anuncio'";
+        $do = mysqli_query($link, $sql);
+        $value = mysqli_fetch_assoc($do);
+        echo $value["value"];
+    }
+    
     exit;
 }
 
