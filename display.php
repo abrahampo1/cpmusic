@@ -312,6 +312,7 @@ if ($ig_minita == "") {
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@700&display=swap" rel="stylesheet">
     <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
     <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
+    <script src="https://unpkg.com/@videojs/http-streaming@2.8.0/dist/videojs-http-streaming.js"></script>
 </head>
 
 <body id="back" onload="color()" style="text-align: center;">
@@ -392,7 +393,8 @@ if ($ig_minita == "") {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
 
 <script>
-    var player = videojs('#player');
+    var player = videojs('player');
+    player.play();
 </script>
 <script>
     // Make sure image is finished loading
