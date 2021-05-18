@@ -51,7 +51,7 @@ if (!isset($_SESSION["admin"])) {
         -webkit-appearance: none;
         /* Override default CSS styles */
         appearance: none;
-        width: 100%;
+        width: 40% !important;
         /* Full-width */
         height: 25px;
         /* Specified height */
