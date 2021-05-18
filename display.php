@@ -521,6 +521,27 @@ if ($ig_minita == "") {
             type: 'post',
             url: 'ajax.php',
             data: {
+                getplayerstate: 'active',
+            },
+            success: function(response) {
+                if (response == "play" && document.getElementById("videoclip").paused == true) {
+                    document.getElementById("videoclip").play();
+                }
+                if(response == "pause" && document.getElementById("videoclip").paused == false){
+                    document.getElementById("videoclip").pause();
+                };
+            },
+            error: function() {}
+        });
+
+    }, 100);
+</script>
+<script>
+    var anuncios = window.setInterval(function() {
+        $.ajax({
+            type: 'post',
+            url: 'ajax.php',
+            data: {
                 anuncio: 'active',
             },
             success: function(response) {

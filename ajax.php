@@ -239,3 +239,9 @@ if(isset($_POST["get_volume"])){
     $volumen = mysqli_fetch_assoc($do);
     echo $volumen["value"];
 }
+if(isset($_POST["getplayerstate"])){
+    $sql = "SELECT * FROM ajustes WHERE nombre = 'status'";
+    $do = mysqli_query($link, $sql);
+    $result = mysqli_fetch_assoc($do);
+    echo $result["value"];
+}
