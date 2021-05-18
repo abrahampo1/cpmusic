@@ -141,6 +141,7 @@ if(isset($_POST["next"])){
     .media{
         margin-left: 15px;
         margin-right: 15px;
+        font-size: 50px;
     }
 </style>
 <?php
