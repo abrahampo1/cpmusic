@@ -156,6 +156,7 @@ if (isset($_POST["stream"])) {
 </head>
 
 <body>
+    <div style="text-align: center;">
     <div style="display: flex; text-align:center">
     <form action="" method="POST">
         <button name="play" value="paquete">Play/Pause</button>
@@ -164,6 +165,8 @@ if (isset($_POST["stream"])) {
         <button name="next" value="paquete">Siguiente</button>
     </form>
     </div>
+    </div>
+    
     
     <form action="" method="POST" style="margin: 20px">
         <input type="hidden" name="stream" value="paquete">
