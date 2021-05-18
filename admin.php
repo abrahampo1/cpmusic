@@ -138,6 +138,9 @@ if(isset($_POST["next"])){
         cursor: pointer;
         /* Cursor on hover */
     }
+    .media{
+        margin: 15px;
+    }
 </style>
 <?php
 $sql = "SELECT * FROM ajustes WHERE nombre = 'anuncio_active'";
@@ -167,11 +170,11 @@ if (isset($_POST["stream"])) {
 <body>
     <div style="text-align: center; margin-left: auto; margin-right: auto;">
     <div style="display: flex; text-align:center;align-items: center;justify-content: center; margin-top: 20px">
-    <form action="" method="POST">
+    <form action="" method="POST" class="media">
         <button name="play" value="paquete"><i class="<?php echo $icon ?>"></i></button>
     </form>
-    <form action="" method="POST">
-        <button name="next" value="paquete"><i class="fas fa-next"></i></button>
+    <form action="" method="POST" class="media">
+        <button name="next" value="paquete"><i class="fas fa-forward"></i></button>
     </form>
     </div>
     </div>
