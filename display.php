@@ -311,6 +311,7 @@ if ($ig_minita == "") {
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@700&display=swap" rel="stylesheet">
     <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
 </head>
 
 <body id="back" onload="color()" style="text-align: center;">
@@ -389,7 +390,7 @@ if ($ig_minita == "") {
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
-<script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
+
 <script>
     var player = videojs('#player');
 </script>
