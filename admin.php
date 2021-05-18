@@ -127,6 +127,7 @@ if(isset($_POST["stream"])){
 <script>
     function volume(){
         var volumen = document.getElementById("volume").value;
+        console.log(volumen);
         $.ajax({
             type: 'post',
             url: 'ajax.php',
