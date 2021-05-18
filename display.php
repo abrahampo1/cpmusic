@@ -85,7 +85,7 @@ if ($ig_minita == "") {
 
     /* The Modal (background) */
     .modal {
-        display: block;
+        display: none;
         /* Hidden by default */
         position: fixed;
         /* Stay in place */
@@ -244,7 +244,11 @@ if ($ig_minita == "") {
         -webkit-animation: scroll-slow 25s linear infinite;
         animation: scroll-slow 25s linear infinite;
     }
+    .vjs-default-skin{
+        width: 100%;
+        height: auto;
 
+    }
     /* Move it (define the animation) */
     @-moz-keyframes scroll-slow {
         0% {
@@ -509,7 +513,7 @@ if ($ig_minita == "") {
                     }
 
                 } else if (response == "") {
-                    //document.getElementById("myModal").style.display = "none";
+                    document.getElementById("myModal").style.display = "none";
                 };
             },
             error: function() {}
