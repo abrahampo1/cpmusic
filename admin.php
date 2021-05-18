@@ -21,7 +21,7 @@ if(isset($_POST["play"])){
     }
 }
 if(isset($_POST["next"])){
-    $sql = "UPDATE `ajustes` SET `value` = 'stop' WHERE `ajustes`.`nombre` = 'status';";
+    $sql = "UPDATE `ajustes` SET `value` = 'next' WHERE `ajustes`.`nombre` = 'status';";
     if(mysqli_query($link, $sql)){
         header("location: admin");
         exit;
