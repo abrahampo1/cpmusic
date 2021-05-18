@@ -4,6 +4,7 @@
 <style>
     form{
         width: 100%;
+        text-align: center;
     }
     input{
         font-size: 30px;
