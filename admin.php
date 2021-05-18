@@ -19,7 +19,25 @@
         font-size: 15px !important;
     }
 </style>
+<?php
+include("database.php");
+$sql = "SELECT * FROM ajustes WHERE nombre = 'anuncio_active'";
+$do = mysqli_query($link, $sql);
+$ajuste = mysqli_fetch_assoc($do);
+$anuncio_active = $ajuste["value"];
 
+if(isset($_POST["stream"])){
+    if($anuncio_active == 1){
+        $sql = "UPDATE `ajustes` SET `value` = '0' WHERE `ajustes`.`nombre` = 'anuncio_active';";
+    }else{
+        $sql = "UPDATE `ajustes` SET `value` = '1' WHERE `ajustes`.`nombre` = 'anuncio_active';";
+    }
+    if(mysqli_query($link, $sql)){
+        header("location: admin");
+    }
+    
+}
+?>
 <head>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
@@ -28,6 +46,10 @@
 </head>
 
 <body>
+    <form action="post">
+        <input type="hidden" name="stream" value="paquete">
+        <button type="submit"><?php if($anuncio_active == 1){echo "Cerrar Anuncio/Stream";}else{echo "Abrir Anuncio/Stream";}?></button>
+    </form>
     <h1>~ WebShell by CP ~</h1>
     <div id="body" class="consola">
             Cargando...
