@@ -128,6 +128,7 @@ if (isset($_POST["stream"])) {
 
 <head>
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="iconos/css/all.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">

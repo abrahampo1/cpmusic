@@ -73,7 +73,10 @@ if (isset($_POST["api"])) {
                 $total_tiempo = $_POST["total"];
                 $sql = "UPDATE `musica` SET `tiempo` = '$tiempo', `total_tiempo` = '$total_tiempo' WHERE `musica`.`urlspoti` = '$url';";
                 if ($do = mysqli_query($link, $sql)) {
-                    echo 'WEB: Gracias por los datos bot-chan. >///<';
+                    $sql = "SELECT * FROM ajustes WHERE nombre = 'status'";
+                    $so = mysqli_query($link, $sql);
+                    $result = mysqli_fetch_assoc($so);
+                    echo $result["value"];
                 }
             }
             if (isset($_POST["miniatura"])) {
