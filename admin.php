@@ -41,12 +41,17 @@ if (!isset($_SESSION["admin"])) {
         font-size: 15px !important;
     }
 
+    .slidecontainer {
+        width: 100%;
+        /* Width of the outside container */
+    }
+
     /* The slider itself */
     .slider {
         -webkit-appearance: none;
         /* Override default CSS styles */
         appearance: none;
-        width: 50%;
+        width: 100%;
         /* Full-width */
         height: 25px;
         /* Specified height */
@@ -122,7 +127,10 @@ if (isset($_POST["stream"])) {
 <body>
     <form action="" method="POST" style="margin: 20px">
         <input type="hidden" name="stream" value="paquete">
-        <input type="range" min="1" max="100" value="100" onchange="volume()" class="slider" id="volume">
+        <div class="slidercontainer">
+            <input type="range" min="1" max="100" value="100" onchange="volume()" class="slider" id="volume">
+        </div>
+
         <button type="submit"><?php if ($anuncio_active == 1) {
                                     echo "Cerrar Anuncio/Stream";
                                 } else {
