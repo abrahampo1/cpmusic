@@ -88,7 +88,8 @@ def run_forever():
                     if player.get_state() == Ended:
                         print("He detectado que no hay más canción, forzando la siguiente...")
                         break
-                    print(str(currenttime) +"/"+ str(round(player.get_length()/1000)) + " Estado: "+str(player.get_state()),end=';')
+                    if player.get_state() == 3:
+                        print(str(currenttime) +"/"+ str(round(player.get_length()/1000)) + " Estado: "+str(player.get_state()),end=';')
                 print("Terminado rey.")
                 video = False
                 myobj = {
