@@ -44,7 +44,8 @@ if (!isset($_SESSION["admin"])) {
     .slidecontainer {
         width: 50% !important;
         text-align: center !important;
-        
+        margin-left: auto;
+        margin-right: auto;
         /* Width of the outside container */
     }
 
@@ -54,7 +55,8 @@ if (!isset($_SESSION["admin"])) {
         /* Override default CSS styles */
         appearance: none;
         width: 40% !important;
-        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
         /* Full-width */
         height: 25px;
         /* Specified height */
