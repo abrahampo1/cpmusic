@@ -6,7 +6,9 @@
         width: 100%;
     }
     input{
-        width: 100%;
+        font-size: 30px;
+        width: 30%;
+        min-width: 200px;
     }
 </style>
 <form action="" method="POST">
