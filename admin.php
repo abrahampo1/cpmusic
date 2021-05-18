@@ -17,7 +17,7 @@
         background-color: black;
         border-radius: 15px;
         margin: 20px;
-        color: white;
+        color: white !important;
     }
     h1 {
         text-align: center;
