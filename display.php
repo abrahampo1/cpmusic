@@ -247,6 +247,7 @@ if ($ig_minita == "") {
     .vjs-default-skin{
         width: 100% !important;
         height: auto !important;
+        min-height: 700px;
 
     }
     /* Move it (define the animation) */
