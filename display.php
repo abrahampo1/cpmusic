@@ -88,7 +88,7 @@ if ($ig_minita == "") {
         display: none;
         /* Hidden by default */
         position: fixed;
-        border-radius: 25px;
+        border-radius: 25px !important;
         /* Stay in place */
         z-index: 101;
         /* Sit on top */
@@ -115,6 +115,7 @@ if ($ig_minita == "") {
     /* Modal Content */
     .modal-content {
         background-color: #fefefe;
+        border-radius: 25px;
         margin: auto;
         padding: 20px;
         border: 1px solid #888;
