@@ -16,6 +16,10 @@ if($result["value"] == "pause"){
 }else{
     $icon = "fas fa-pause";
 }
+$sql = "SELECT * FROM ajustes WHERE nombre = 'volume'";
+$do = mysqli_query($link, $sql);
+$result = mysqli_fetch_assoc($do);
+$volumen = intval($result["value"])*100;
 if(isset($_POST["play"])){
     $sql = "SELECT * FROM ajustes WHERE nombre = 'status'";
     $do = mysqli_query($link, $sql);
@@ -185,7 +189,7 @@ if (isset($_POST["stream"])) {
     <form action="" method="POST" style="margin: 20px">
         <input type="hidden" name="stream" value="paquete">
         <div class="slidercontainer">
-            <input type="range" min="1" max="100" value="100" onchange="volume()" class="slider" id="volume">
+            <input type="range" min="1" max="100" value="<?php echo $volumen ?>" onchange="volume()" class="slider" id="volume">
         </div>
 
         <button type="submit"><?php if ($anuncio_active == 1) {
