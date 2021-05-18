@@ -310,9 +310,7 @@ if ($ig_minita == "") {
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@700&display=swap" rel="stylesheet">
-    <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
-    <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
-    <script src="https://unpkg.com/@videojs/http-streaming@2.8.0/dist/videojs-http-streaming.js"></script>
+    <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
 </head>
 
 <body id="back" onload="color()" style="text-align: center;">
@@ -385,16 +383,21 @@ if ($ig_minita == "") {
 
     <!-- Modal content -->
     <div class="modal-content">
-        <p id="noticia"></p>
+        <p id="noticia">
+            <video-js id="my_video_1" class="vjs-default-skin" controls preload="auto" width="640" height="268">
+                <source src="https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8" type="application/x-mpegURL">
+            </video-js>
+        </p>
     </div>
 
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+<script src="https://unpkg.com/video.js/dist/video.js"></script>
+<script src="https://unpkg.com/@videojs/http-streaming/dist/videojs-http-streaming.js"></script>
 
 <script>
-    var player = videojs('player');
-    player.play();
+    var player = videojs('my_video_1');
 </script>
 <script>
     // Make sure image is finished loading
