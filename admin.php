@@ -1,11 +1,12 @@
 <html>
 <?php
 session_start();
-if(!isset($_SESSION["admin"])){
+if (!isset($_SESSION["admin"])) {
     header("location: login");
     exit;
 }
 ?>
+
 <head>
     <meta charset="UTF-8" />
 </head>
@@ -17,11 +18,13 @@ if(!isset($_SESSION["admin"])){
         border-radius: 15px;
         margin: 15px;
     }
-    form{
+
+    form {
         text-align: center;
         font-size: 25px;
     }
-    button{
+
+    button {
         padding: 10px;
         background: none;
         border: none;
@@ -30,11 +33,64 @@ if(!isset($_SESSION["admin"])){
         margin: 20px;
         color: white !important;
     }
+
     h1 {
         text-align: center;
         color: black;
         font-family: 'Montserrat', sans-serif;
         font-size: 15px !important;
+    }
+
+    /* The slider itself */
+    .slider {
+        -webkit-appearance: none;
+        /* Override default CSS styles */
+        appearance: none;
+        width: 50%;
+        /* Full-width */
+        height: 25px;
+        /* Specified height */
+        background: #d3d3d3;
+        /* Grey background */
+        outline: none;
+        /* Remove outline */
+        opacity: 0.7;
+        /* Set transparency (for mouse-over effects on hover) */
+        -webkit-transition: .2s;
+        /* 0.2 seconds transition on hover */
+        transition: opacity .2s;
+    }
+
+    /* Mouse-over effects */
+    .slider:hover {
+        opacity: 1;
+        /* Fully shown on mouse-over */
+    }
+
+    /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        /* Override default look */
+        appearance: none;
+        width: 25px;
+        /* Set a specific slider handle width */
+        height: 25px;
+        /* Slider handle height */
+        background: #04AA6D;
+        /* Green background */
+        cursor: pointer;
+        /* Cursor on hover */
+    }
+
+    .slider::-moz-range-thumb {
+        width: 25px;
+        /* Set a specific slider handle width */
+        height: 25px;
+        /* Slider handle height */
+        background: #04AA6D;
+        /* Green background */
+        cursor: pointer;
+        /* Cursor on hover */
     }
 </style>
 <?php
@@ -44,18 +100,18 @@ $do = mysqli_query($link, $sql);
 $ajuste = mysqli_fetch_assoc($do);
 $anuncio_active = $ajuste["value"];
 
-if(isset($_POST["stream"])){
-    if($anuncio_active == 1){
+if (isset($_POST["stream"])) {
+    if ($anuncio_active == 1) {
         $sql = "UPDATE `ajustes` SET `value` = '0' WHERE `ajustes`.`nombre` = 'anuncio_active';";
-    }else{
+    } else {
         $sql = "UPDATE `ajustes` SET `value` = '1' WHERE `ajustes`.`nombre` = 'anuncio_active';";
     }
-    if(mysqli_query($link, $sql)){
+    if (mysqli_query($link, $sql)) {
         header("location: admin");
     }
-    
 }
 ?>
+
 <head>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
@@ -67,14 +123,18 @@ if(isset($_POST["stream"])){
     <form action="" method="POST" style="margin: 20px">
         <input type="hidden" name="stream" value="paquete">
         <input type="range" min="1" max="100" value="100" onchange="volume()" class="slider" id="volume">
-        <button type="submit"><?php if($anuncio_active == 1){echo "Cerrar Anuncio/Stream";}else{echo "Abrir Anuncio/Stream";}?></button>
+        <button type="submit"><?php if ($anuncio_active == 1) {
+                                    echo "Cerrar Anuncio/Stream";
+                                } else {
+                                    echo "Abrir Anuncio/Stream";
+                                } ?></button>
     </form>
     <h1>~ WebShell by CP ~</h1>
     <div id="body" class="consola">
-            Cargando...
+        Cargando...
     </div>
     <div id="discord" class="consola">
-            Cargando...
+        Cargando...
     </div>
 </body>
 <script>
@@ -125,7 +185,7 @@ if(isset($_POST["stream"])){
 </script>
 
 <script>
-    document.getElementById("volume").onchange = function(){
+    document.getElementById("volume").onchange = function() {
         var volumen = document.getElementById("volume").value;
         console.log(volumen);
         $.ajax({
@@ -135,7 +195,7 @@ if(isset($_POST["stream"])){
                 volume: volumen,
             },
             success: function(response) {
-                
+
             },
             error: function() {}
         });
