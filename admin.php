@@ -20,6 +20,13 @@ if(isset($_POST["play"])){
         exit;
     }
 }
+if(isset($_POST["next"])){
+    $sql = "UPDATE `ajustes` SET `value` = 'stop' WHERE `ajustes`.`nombre` = 'status';";
+    if(mysqli_query($link, $sql)){
+        header("location: admin");
+        exit;
+    }
+}
 ?>
 
 <head>

@@ -16,6 +16,8 @@ if (isset($_POST["api"])) {
     if ($do = mysqli_query($link, $sql)) {
         if ($do->num_rows > 0) {
             if (isset($_POST["necesito"])) {
+                $sql = "UPDATE `ajustes` SET `value` = 'play' WHERE `ajustes`.`nombre` = 'status';";
+                mysqli_query($link, $sql);
                 $sql = "SELECT * FROM musica WHERE reproducida = 0 LIMIT 1";
                 $do = mysqli_query($link, $sql);
                 if (!$do->num_rows == 0) {
