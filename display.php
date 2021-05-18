@@ -85,7 +85,7 @@ if ($ig_minita == "") {
 
     /* The Modal (background) */
     .modal {
-        display: none;
+        display: block;
         /* Hidden by default */
         position: fixed;
         /* Stay in place */
