@@ -42,7 +42,7 @@ if (!isset($_SESSION["admin"])) {
     }
 
     .slidecontainer {
-        width: 100%;
+        width: 50%;
         /* Width of the outside container */
     }
 
