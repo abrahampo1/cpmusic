@@ -17,6 +17,7 @@
         background-color: black;
         border-radius: 15px;
         margin: 20px;
+        color: white;
     }
     h1 {
         text-align: center;
@@ -52,7 +53,7 @@ if(isset($_POST["stream"])){
 </head>
 
 <body>
-    <form action="" method="POST">
+    <form action="" method="POST" style="margin: 20px">
         <input type="hidden" name="stream" value="paquete">
         <button type="submit"><?php if($anuncio_active == 1){echo "Cerrar Anuncio/Stream";}else{echo "Abrir Anuncio/Stream";}?></button>
     </form>
