@@ -46,8 +46,12 @@ if (isset($_POST["api"])) {
                                         $match = false;
                                     }
                                 }
+                                $sql = "SELECT * FROM musica WHERE urlspoti = '$randvideo'";
+                                $busq = mysqli_query($link, $sql);
+                                $result_video = mysqli_fetch_assoc($busq);
+                                $insta = $result_video["insta"];
 
-                                $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`, `auto`) VALUES (NULL, '$randvideo', '', '', '0', '', '', 0, 1);";
+                                $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`, `auto`) VALUES (NULL, '$randvideo', '', '', '0', '', '$insta', 0, 1);";
                                 if (mysqli_query($link, $sql)) {
                                 }
                             }
