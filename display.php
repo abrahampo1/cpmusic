@@ -393,7 +393,9 @@ if ($ig_minita == "") {
 <script src="https://unpkg.com/@videojs/http-streaming/dist/videojs-http-streaming.js"></script>
 
 <script>
+    function loadvideo(){
     var player = videojs('my_video_1');
+    }
 </script>
 <script>
     // Make sure image is finished loading
@@ -502,6 +504,7 @@ if ($ig_minita == "") {
                     if (document.getElementById("noticia").innerHTML == "") {
                         document.getElementById("noticia").innerHTML = response;
                         document.getElementById("myModal").style.display = "block";
+                        loadvideo();
                         document.getElementById("videoclip").pause();
                     }
 
