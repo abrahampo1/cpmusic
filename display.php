@@ -514,6 +514,9 @@ if ($ig_minita == "") {
                     }
 
                 } else if (response == "") {
+                    if(document.getElementById("noticia").innerHTML != ""){
+                        location.reload();
+                    }
                     document.getElementById("myModal").style.display = "none";
                 };
             },
