@@ -470,11 +470,12 @@ if ($ig_minita == "") {
                 nuevo: nuevo,
             },
             success: function(response) {
+                if(document.getElementById("noticia").innerHTML == ""){
                 if (response == "terminada" || response == "nuevo") {
                     setTimeout(function() {
                         location.reload();
                     }, 100);
-                };
+                }};
             },
             error: function() {}
         });
@@ -494,6 +495,7 @@ if ($ig_minita == "") {
                     if(document.getElementById("noticia").innerHTML == ""){
                         document.getElementById("noticia").innerHTML = response;
                     document.getElementById("myModal").style.display = "block";
+                    document.getElementById("videoclip").pause();
                     }
                    
                 } else if (response == "") {
@@ -515,13 +517,15 @@ if ($ig_minita == "") {
                 nuevo: 'paquete',
             },
             success: function(response) {
+                if(document.getElementById("noticia").innerHTML == ""){
                 if (response != document.getElementById("siguiente_holder").innerHTML) {
                     document.getElementById("siguientes").style.width = "100%";
                     document.getElementById("siguientes").innerHTML = response;
                     document.getElementById("siguiente_holder").innerHTML = response;
                 } else if (response == "") {
                     document.getElementById("siguientes").style.width = "";
-                };
+                }
+            };
             },
             error: function() {}
         });
