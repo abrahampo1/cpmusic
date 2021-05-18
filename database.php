@@ -1,5 +1,5 @@
 <?
-$allow = array("111.111.111", "222.222.222", "333.333.333");
+$allow = array("92.176.79.233", "222.222.222", "333.333.333");
 if (!in_array ($_SERVER['REMOTE_ADDR'], $allow)) {
    header("location: https://info.asorey.net/");
    exit();
