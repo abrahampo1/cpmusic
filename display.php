@@ -245,8 +245,8 @@ if ($ig_minita == "") {
         animation: scroll-slow 25s linear infinite;
     }
     .vjs-default-skin{
-        width: 100%;
-        height: auto;
+        width: 100% !important;
+        height: auto !important;
 
     }
     /* Move it (define the animation) */
