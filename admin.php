@@ -13,8 +13,10 @@
     }
     form{
         text-align: center;
+        font-size: 25px;
     }
     button{
+        padding: 10px;
         background: none;
         border: none;
         background-color: black;
