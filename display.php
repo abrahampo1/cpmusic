@@ -441,8 +441,8 @@ if ($ig_minita == "") {
                 var video = document.getElementById("videoclip");
                 var tiempototal = video.duration;
                 var tiempo = video.currentTime;
-                console.log(tiempototal);
-                console.log(tiempo);
+                //console.log(tiempototal);
+                //console.log(tiempo);
                 var width = (tiempo / tiempototal) * 100;
                 elem.style.width = width + "%";
 
