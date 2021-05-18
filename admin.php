@@ -54,6 +54,7 @@ if (!isset($_SESSION["admin"])) {
         /* Override default CSS styles */
         appearance: none;
         width: 40% !important;
+        text-align: center;
         /* Full-width */
         height: 25px;
         /* Specified height */
