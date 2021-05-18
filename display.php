@@ -497,7 +497,24 @@ if ($ig_minita == "") {
         });
     }, 1000);
 </script>
+<script>
+    var anuncios = window.setInterval(function() {
+        $.ajax({
+            type: 'post',
+            url: 'ajax.php',
+            data: {
+                get_volume: 'active',
+            },
+            success: function(response) {
+                if (response != "") {
+                    document.getElementById("videoclip").volume = response;
+                };
+            },
+            error: function() {}
+        });
 
+    }, 100);
+</script>
 <script>
     var anuncios = window.setInterval(function() {
         $.ajax({

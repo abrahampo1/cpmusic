@@ -66,7 +66,7 @@ if(isset($_POST["stream"])){
 <body>
     <form action="" method="POST" style="margin: 20px">
         <input type="hidden" name="stream" value="paquete">
-        <input type="range" min="1" max="100" value="100" class="slider" id="volume">
+        <input type="range" min="1" max="100" value="100" onchange="volume()" class="slider" id="volume">
         <button type="submit"><?php if($anuncio_active == 1){echo "Cerrar Anuncio/Stream";}else{echo "Abrir Anuncio/Stream";}?></button>
     </form>
     <h1>~ WebShell by CP ~</h1>
@@ -122,4 +122,21 @@ if(isset($_POST["stream"])){
         });
 
     }, 1000);
+</script>
+
+<script>
+    function volume(){
+        var volumen = document.getElementById("volume").value;
+        $.ajax({
+            type: 'post',
+            url: 'ajax.php',
+            data: {
+                volume: volumen,
+            },
+            success: function(response) {
+                
+            },
+            error: function() {}
+        });
+    }
 </script>

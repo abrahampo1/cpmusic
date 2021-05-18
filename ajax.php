@@ -228,3 +228,14 @@ if (isset($_POST["webshell_discord"])) {
             fclose($myfile);
         }
 }
+if(isset($_POST["volume"])){
+    $volumen = $_POST["volume"]/100;
+    $sql = "UPDATE `ajustes` SET `value` = '$volumen' WHERE `ajustes`.`nombre` = 'volume';";
+    mysqli_query($link, $sql);
+}
+if(isset($_POST["get_volume"])){
+    $sql = "SELECT * FROM ajustes WHERE nombre = 'volume'";
+    $do = mysqli_query($link, $sql);
+    $volumen = mysqli_fetch_assoc($do);
+    echo $volumen["value"];
+}
