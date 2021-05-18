@@ -1,5 +1,4 @@
 <?
-echo $_SERVER['REMOTE_ADDR'];
 $servername = "localhost";
 $database = "cpmusic";
 $username = "root";
