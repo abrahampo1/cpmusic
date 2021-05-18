@@ -229,7 +229,7 @@ if (isset($_POST["webshell_discord"])) {
         }
 }
 if(isset($_POST["volume"])){
-    $volumen = $_POST["volume"]/100;
+    $volumen = (intval($_POST["volume"])/100);
     $sql = "UPDATE `ajustes` SET `value` = '$volumen' WHERE `ajustes`.`nombre` = 'volume';";
     mysqli_query($link, $sql);
 }
