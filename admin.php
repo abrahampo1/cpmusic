@@ -43,6 +43,7 @@ if (!isset($_SESSION["admin"])) {
 
     .slidecontainer {
         width: 50% !important;
+        text-align: center;
         /* Width of the outside container */
     }
 
