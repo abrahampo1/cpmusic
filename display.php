@@ -310,8 +310,8 @@ if ($ig_minita == "") {
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@700&display=swap" rel="stylesheet">
-    <link href="//vjs.zencdn.net/5.8/video-js.min.css" rel="stylesheet">
-    <script src="//vjs.zencdn.net/5.8/video.min.js"></script>
+    <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
 </head>
 
 <body id="back" onload="color()" style="text-align: center;">
