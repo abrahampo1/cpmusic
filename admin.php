@@ -11,7 +11,13 @@
         border-radius: 15px;
         margin: 15px;
     }
-
+    button{
+        background: none;
+        border: none;
+        background-color: black;
+        border-radius: 15px;
+        margin: 20px;
+    }
     h1 {
         text-align: center;
         color: black;
