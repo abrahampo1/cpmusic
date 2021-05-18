@@ -383,11 +383,7 @@ if ($ig_minita == "") {
 
     <!-- Modal content -->
     <div class="modal-content">
-        <p id="noticia">
-            <video-js id="my_video_1" class="vjs-default-skin" controls preload="auto" width="640" height="268">
-                <source src="https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8" type="application/x-mpegURL">
-            </video-js>
-        </p>
+        <p id="noticia"></p>
     </div>
 
 </div>
