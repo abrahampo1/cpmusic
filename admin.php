@@ -1,5 +1,11 @@
 <html>
-
+<?php
+session_start();
+if(!isset($_SESSION["admin"])){
+    header("location: login");
+    exit;
+}
+?>
 <head>
     <meta charset="UTF-8" />
 </head>
