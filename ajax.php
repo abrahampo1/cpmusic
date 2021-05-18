@@ -53,7 +53,7 @@ if (isset($_POST["nuevo"])) {
     }
 }
 if (isset($_POST["anuncio"])) {
-    //echo '<h1>Letras Galegas 2021 ASOREY TV</h1><iframe src="10.65.20.140/live/" height="700" width="100%"></iframe>';
+    echo '<h1>Letras Galegas 2021 ASOREY TV</h1><iframe src="10.65.20.140/live/" height="700" width="100%"></iframe>';
     exit;
 }
 
