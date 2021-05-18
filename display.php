@@ -311,7 +311,6 @@ if ($ig_minita == "") {
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@700&display=swap" rel="stylesheet">
     <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
-    <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
 </head>
 
 <body id="back" onload="color()" style="text-align: center;">
@@ -390,7 +389,10 @@ if ($ig_minita == "") {
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
-
+<script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
+<script>
+    var player = videojs('#player');
+</script>
 <script>
     // Make sure image is finished loading
     function color() {
@@ -472,12 +474,13 @@ if ($ig_minita == "") {
                 nuevo: nuevo,
             },
             success: function(response) {
-                if(document.getElementById("noticia").innerHTML == ""){
-                if (response == "terminada" || response == "nuevo") {
-                    setTimeout(function() {
-                        location.reload();
-                    }, 100);
-                }};
+                if (document.getElementById("noticia").innerHTML == "") {
+                    if (response == "terminada" || response == "nuevo") {
+                        setTimeout(function() {
+                            location.reload();
+                        }, 100);
+                    }
+                };
             },
             error: function() {}
         });
@@ -493,13 +496,13 @@ if ($ig_minita == "") {
                 anuncio: 'active',
             },
             success: function(response) {
-                if (response != ""){
-                    if(document.getElementById("noticia").innerHTML == ""){
+                if (response != "") {
+                    if (document.getElementById("noticia").innerHTML == "") {
                         document.getElementById("noticia").innerHTML = response;
-                    document.getElementById("myModal").style.display = "block";
-                    document.getElementById("videoclip").pause();
+                        document.getElementById("myModal").style.display = "block";
+                        document.getElementById("videoclip").pause();
                     }
-                   
+
                 } else if (response == "") {
                     document.getElementById("myModal").style.display = "none";
                 };
@@ -519,15 +522,15 @@ if ($ig_minita == "") {
                 nuevo: 'paquete',
             },
             success: function(response) {
-                if(document.getElementById("noticia").innerHTML == ""){
-                if (response != document.getElementById("siguiente_holder").innerHTML) {
-                    document.getElementById("siguientes").style.width = "100%";
-                    document.getElementById("siguientes").innerHTML = response;
-                    document.getElementById("siguiente_holder").innerHTML = response;
-                } else if (response == "") {
-                    document.getElementById("siguientes").style.width = "";
-                }
-            };
+                if (document.getElementById("noticia").innerHTML == "") {
+                    if (response != document.getElementById("siguiente_holder").innerHTML) {
+                        document.getElementById("siguientes").style.width = "100%";
+                        document.getElementById("siguientes").innerHTML = response;
+                        document.getElementById("siguiente_holder").innerHTML = response;
+                    } else if (response == "") {
+                        document.getElementById("siguientes").style.width = "";
+                    }
+                };
             },
             error: function() {}
         });
