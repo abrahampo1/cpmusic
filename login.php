@@ -15,6 +15,6 @@
 </style>
 
 <form action="" method="POST">
-    <img style="text-align: center;" src="404.png" alt="">
+    <img style="text-align: center;" src="404.png" alt=""><br><br>
     <input type="password" name="clave" placeholder="Clave...">
 </form>
