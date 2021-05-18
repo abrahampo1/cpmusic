@@ -510,7 +510,7 @@ if ($ig_minita == "") {
                     }
 
                 } else if (response == "") {
-                    document.getElementById("myModal").style.display = "none";
+                    //document.getElementById("myModal").style.display = "none";
                 };
             },
             error: function() {}
