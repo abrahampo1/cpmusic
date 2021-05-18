@@ -11,6 +11,8 @@
         font-size: 30px;
         width: 30%;
         min-width: 200px;
+        padding: 10px;
+        border-radius: 25px;
     }
 </style>
 
