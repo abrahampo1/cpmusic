@@ -6,6 +6,15 @@ if (!isset($_SESSION["admin"])) {
     header("location: login");
     exit;
 }
+$sql = "SELECT * FROM ajustes WHERE nombre = 'status'";
+$do = mysqli_query($link, $sql);
+$result = mysqli_fetch_assoc($do);
+if($result["value"] == "play"){
+    $icon = "fas fa-play";
+}
+if($result["value"]=="pause"){
+    $icon = "fas fa-pause";
+}
 if(isset($_POST["play"])){
     $sql = "SELECT * FROM ajustes WHERE nombre = 'status'";
     $do = mysqli_query($link, $sql);
@@ -134,7 +143,6 @@ $sql = "SELECT * FROM ajustes WHERE nombre = 'anuncio_active'";
 $do = mysqli_query($link, $sql);
 $ajuste = mysqli_fetch_assoc($do);
 $anuncio_active = $ajuste["value"];
-
 if (isset($_POST["stream"])) {
     if ($anuncio_active == 1) {
         $sql = "UPDATE `ajustes` SET `value` = '0' WHERE `ajustes`.`nombre` = 'anuncio_active';";
@@ -157,9 +165,9 @@ if (isset($_POST["stream"])) {
 
 <body>
     <div style="text-align: center; margin-left: auto; margin-right: auto;">
-    <div style="display: flex; text-align:center;align-items: center;justify-content: center;">
+    <div style="display: flex; text-align:center;align-items: center;justify-content: center; margin-top: 20px">
     <form action="" method="POST">
-        <button name="play" value="paquete">Play/Pause</button>
+        <button name="play" value="paquete"><i class="<?php echo $icon ?>"></i></button>
     </form>
     <form action="" method="POST">
         <button name="next" value="paquete">Siguiente</button>
