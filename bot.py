@@ -72,10 +72,12 @@ def run_forever():
                     }
                     x = requests.post(url_api, data=myobj)
                     if x.text == "pause":
-                        player.pause()
+                        if player.get_state() == 3:
+                            player.pause()
                         print("Estoy pausado, no roto")
                     if x.text == "play":
-                        player.play()
+                        if player.get_state() == 4:
+                            player.play()
                     if x.text == "next":
                         player.stop()
                         print("He recibido un next, cambio.")
