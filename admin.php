@@ -91,6 +91,7 @@ if (!isset($_SESSION["admin"])) {
         background: #04AA6D;
         /* Green background */
         cursor: pointer;
+        border-radius: 100%;
         /* Cursor on hover */
     }
 
@@ -100,6 +101,7 @@ if (!isset($_SESSION["admin"])) {
         height: 25px;
         /* Slider handle height */
         background: #04AA6D;
+        border-radius: 100%;
         /* Green background */
         cursor: pointer;
         /* Cursor on hover */
