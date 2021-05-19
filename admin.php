@@ -295,6 +295,11 @@ if (isset($_POST["stream"])) {
                 datos = response.split(";");
                 miniatura = datos[0];
                 tiempo = datos[1];
+                document.getElementById("timeline").value = tiempo;
+                var miniatura_completa = "./temp/"+miniatura+".png";
+                if(document.getElementById("imagenahora").src != miniatura_completa){
+                    document.getElementById("imagenahora").src = miniatura_completa;
+                }
             },
             error: function() {}
         });
