@@ -203,9 +203,9 @@ if (isset($_POST["stream"])) {
             <input type="range" min="1" max="<?php echo $musicaahora["total_tiempo"] ?>" value="<?php echo $musicaahora["tiempo"] ?>" onchange="time()" class="slider" id="timeline">
         </div>
         <button type="submit"><?php if ($anuncio_active == 1) {
-                                    echo "Cerrar Anuncio/Stream";
+                                    echo "Cerrar Transmisión en Directo";
                                 } else {
-                                    echo "Abrir Anuncio/Stream";
+                                    echo "Abrir Transmisión en Directo";
                                 } ?></button>
     </form>
     <h1>~ WebShell by CP ~</h1>
