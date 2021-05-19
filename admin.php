@@ -293,7 +293,7 @@ if (isset($_POST["stream"])) {
                 datos = response.split(";");
                 miniatura = datos[1];
                 tiempo = datos[0];
-                console.log(response);
+                console.log(tiempo);
                 document.getElementById("timeline").value = tiempo;
                 var miniatura_completa = "./temp/"+miniatura+".png";
                 if(document.getElementById("imagenahora").src != miniatura_completa){
