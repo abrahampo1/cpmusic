@@ -550,7 +550,6 @@ if ($ig_minita == "") {
                         document.getElementById("noticia").innerHTML = response;
                         document.getElementById("myModal").style.display = "block";
                         loadvideo();
-                        document.getElementById("videoclip").pause();
                     }
 
                 } else if (response == "") {
