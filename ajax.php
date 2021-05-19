@@ -247,3 +247,15 @@ if(isset($_POST["getplayerstate"])){
         echo $result["value"];
     }
 }
+if(isset($_POST["getplaydata"])){
+    $sql = "SELECT * FROM musica WHERE reproducida = 0 and datos = 1";
+    $do = mysqli_query($link, $sql);
+    $result = mysqli_fetch_assoc($do);
+    echo $result["tiempo"];
+    echo ";";
+    if($result["miniatura"] != $_POST["getplaydata"]){
+        echo $result["miniatura"];
+    }else{
+        echo " ";
+    }
+}

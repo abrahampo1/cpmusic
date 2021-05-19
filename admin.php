@@ -6,6 +6,9 @@ if (!isset($_SESSION["admin"])) {
     header("location: login");
     exit;
 }
+$sql = "SELECT * FROM musica WHERE reproducida = 0 and datos = 1";
+$do = mysqli_query($link, $sql);
+$musicaahora = mysqli_fetch_assoc($do);
 $sql = "SELECT * FROM ajustes WHERE nombre = 'status'";
 $do = mysqli_query($link, $sql);
 $result = mysqli_fetch_assoc($do);
@@ -191,10 +194,14 @@ if (isset($_POST["stream"])) {
     
     <form action="" method="POST" style="margin: 20px">
         <input type="hidden" name="stream" value="paquete">
+        <h2>Volumen:</h2>
         <div class="slidercontainer">
             <input type="range" min="1" max="100" value="<?php echo $volumen ?>" onchange="volume()" class="slider" id="volume">
         </div>
-
+        <img id="imagenahora" src="./temp/<?php echo $musicaahora["miniatura"] ?>.png" width="400" height="300" alt="">
+        <div class="slidercontainer">
+            <input type="range" min="1" max="<?php echo $musicaahora["total_tiempo"] ?>" value="<?php echo $musicaahora["tiempo"] ?>" onchange="time()" class="timeline" id="volume">
+        </div>
         <button type="submit"><?php if ($anuncio_active == 1) {
                                     echo "Cerrar Anuncio/Stream";
                                 } else {
@@ -268,6 +275,26 @@ if (isset($_POST["stream"])) {
             },
             success: function(response) {
 
+            },
+            error: function() {}
+        });
+    }
+</script>
+<script>
+    var miniatura = "";
+    document.getElementById("volume").onchange = function() {
+        var volumen = document.getElementById("volume").value;
+        console.log(volumen);
+        $.ajax({
+            type: 'post',
+            url: 'ajax.php',
+            data: {
+                getplaydata: miniatura,
+            },
+            success: function(response) {
+                datos = response.split(";");
+                miniatura = datos[0];
+                tiempo = datos[1];
             },
             error: function() {}
         });
