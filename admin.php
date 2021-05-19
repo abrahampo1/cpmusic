@@ -78,7 +78,7 @@ if(isset($_POST["next"])){
     }
 
     .slidecontainer {
-        width: 50% !important;
+        width:100% !important;
         text-align: center !important;
         margin-left: auto;
         margin-right: auto;
@@ -92,7 +92,7 @@ if(isset($_POST["next"])){
         appearance: none;
         border-radius: 20px;
         margin: 10px;
-        width: 40% !important;
+        width: 60% !important;
         margin-left: auto;
         margin-right: auto;
         /* Full-width */
