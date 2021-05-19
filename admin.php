@@ -200,7 +200,7 @@ if (isset($_POST["stream"])) {
         </div>
         <img id="imagenahora" src="./temp/<?php echo $musicaahora["miniatura"] ?>.png" width="400" height="300" alt="">
         <div class="slidercontainer">
-            <input type="range" min="1" max="<?php echo $musicaahora["total_tiempo"] ?>" value="<?php echo $musicaahora["tiempo"] ?>" onchange="time()" class="timeline" id="volume">
+            <input type="range" min="1" max="<?php echo $musicaahora["total_tiempo"] ?>" value="<?php echo $musicaahora["tiempo"] ?>" onchange="time()" class="slider" id="timeline">
         </div>
         <button type="submit"><?php if ($anuncio_active == 1) {
                                     echo "Cerrar Anuncio/Stream";
@@ -293,8 +293,7 @@ if (isset($_POST["stream"])) {
                 datos = response.split(";");
                 miniatura = datos[1];
                 tiempo = datos[0];
-                console.log(tiempo);
-                document.getElementById("timeline").value = '"'+tiempo+'"';
+                document.getElementById("timeline").value = tiempo;
                 var miniatura_completa = "./temp/"+miniatura+".png";
                 if(document.getElementById("imagenahora").src != miniatura_completa){
                     document.getElementById("imagenahora").src = miniatura_completa;

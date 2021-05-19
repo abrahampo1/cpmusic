@@ -253,9 +253,6 @@ if(isset($_POST["getplaydata"])){
     $result = mysqli_fetch_assoc($do);
     echo $result["tiempo"];
     echo ";";
-    if($result["miniatura"] != $_POST["getplaydata"]){
-        echo $result["miniatura"];
-    }else{
-        echo " ";
-    }
+    echo $result["miniatura"];
+    
 }
