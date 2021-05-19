@@ -282,9 +282,7 @@ if (isset($_POST["stream"])) {
 </script>
 <script>
     var miniatura = "";
-    document.getElementById("volume").onchange = function() {
-        var volumen = document.getElementById("volume").value;
-        console.log(volumen);
+    var timeline = window.setInterval(function() {
         $.ajax({
             type: 'post',
             url: 'ajax.php',
@@ -303,5 +301,5 @@ if (isset($_POST["stream"])) {
             },
             error: function() {}
         });
-    }
+    }, 1000);
 </script>
