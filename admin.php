@@ -177,7 +177,7 @@ if (isset($_POST["stream"])) {
     <div style="text-align: center; margin-left: auto; margin-right: auto;">
     <div style="display: flex; text-align:center;align-items: center;justify-content: center; margin-top: 20px">
     <form action="" method="POST" >
-        <button name="play" class="media" value="paquete"><i class="<?php echo $icon ?>"></i></button>
+        <button name="play" class="media" style="font-size: 80px;" value="paquete"><i class="<?php echo $icon ?>"></i></button>
     </form>
     <form action="" method="POST" >
         <button name="next" class="media" value="paquete"><i class="fas fa-forward"></i></button>
