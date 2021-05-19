@@ -294,7 +294,7 @@ if (isset($_POST["stream"])) {
                 miniatura = datos[1];
                 tiempo = datos[0];
                 console.log(tiempo);
-                document.getElementById("timeline").value = tiempo;
+                document.getElementById("timeline").value = '"'+tiempo+'"';
                 var miniatura_completa = "./temp/"+miniatura+".png";
                 if(document.getElementById("imagenahora").src != miniatura_completa){
                     document.getElementById("imagenahora").src = miniatura_completa;
