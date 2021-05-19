@@ -19,7 +19,7 @@ if($result["value"] == "pause"){
 $sql = "SELECT * FROM ajustes WHERE nombre = 'volume'";
 $do = mysqli_query($link, $sql);
 $result = mysqli_fetch_assoc($do);
-$volumen = floor(intval($result["value"])*100);
+$volumen = floatval($result["value"])*100;
 if(isset($_POST["play"])){
     $sql = "SELECT * FROM ajustes WHERE nombre = 'status'";
     $do = mysqli_query($link, $sql);
