@@ -516,19 +516,22 @@ if ($ig_minita == "") {
     }, 100);
 </script>
 <script>
+    var playerstate = "";
     var anuncios = window.setInterval(function() {
         $.ajax({
             type: 'post',
             url: 'ajax.php',
             data: {
-                getplayerstate: 'active',
+                getplayerstate: playerstate,
             },
             success: function(response) {
                 if (response == "play" && document.getElementById("videoclip").paused == true) {
                     document.getElementById("videoclip").play();
+                    playerstate = response;
                 }
                 if(response == "pause" && document.getElementById("videoclip").paused == false){
                     document.getElementById("videoclip").pause();
+                    playerstate = response;
                 };
             },
             error: function() {}

@@ -243,5 +243,7 @@ if(isset($_POST["getplayerstate"])){
     $sql = "SELECT * FROM ajustes WHERE nombre = 'status'";
     $do = mysqli_query($link, $sql);
     $result = mysqli_fetch_assoc($do);
-    echo $result["value"];
+    if($result["value"] != $_POST["getplayerstate"]){
+        echo $result["value"];
+    }
 }
