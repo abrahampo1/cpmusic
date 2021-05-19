@@ -291,8 +291,8 @@ if (isset($_POST["stream"])) {
             },
             success: function(response) {
                 datos = response.split(";");
-                miniatura = datos[0];
-                tiempo = datos[1];
+                miniatura = datos[1];
+                tiempo = datos[0];
                 document.getElementById("timeline").value = tiempo;
                 var miniatura_completa = "./temp/"+miniatura+".png";
                 if(document.getElementById("imagenahora").src != miniatura_completa){
