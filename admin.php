@@ -180,7 +180,7 @@ if (isset($_POST["stream"])) {
         <button name="play" class="media" style="font-size: 80px; margin-right: -15px " value="paquete"><i class="<?php echo $icon ?>"></i></button>
     </form>
     <form action="" method="POST" >
-        <button name="next" class="media" value="paquete" style="margin-left: -15px"><i class="fas fa-forward"></i></button>
+        <button name="next" class="media" value="paquete" style="margin-left: 0px"><i class="fas fa-forward"></i></button>
     </form>
     </div>
     </div>
