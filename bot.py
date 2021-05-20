@@ -83,13 +83,13 @@ def run_forever():
                         player.stop()
                         print("He recibido un next, cambio.")
                         break
-                    time.sleep(0.5)
                     Ended = 6
                     if player.get_state() == Ended:
                         print("He detectado que no hay más canción, forzando la siguiente...")
                         break
                     if player.get_state() == 3:
                         print(str(currenttime) +"/"+ str(round(player.get_length()/1000)) + " Estado: "+str(player.get_state()),end=';')
+                    time.sleep(0.1)
                 print("Terminado rey.")
                 video = False
                 myobj = {
