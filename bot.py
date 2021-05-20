@@ -63,7 +63,7 @@ def run_forever():
                     player.set_media(Media)
                     player.play()
                 while currenttime < video.length:
-                    currenttime = round(player.get_time()/1000)
+                    currenttime = round(player.get_time()/1000, 3)
                     myobj = {
                         'api': '123',
                         'url': url,
