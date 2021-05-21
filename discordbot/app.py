@@ -32,7 +32,7 @@ client = discord.Client(intents=intents)
 
 bot = commands.Bot(command_prefix='asorey ', intents=intents,
                    connector=aiohttp.TCPConnector(ssl=False))
-bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="un rolita guapa by CPS"))
+
 @bot.command(name='join', help='Haz que el bot se una a tu canal')
 async def play(ctx):
     if not ctx.message.author.voice:
@@ -65,6 +65,7 @@ async def play(ctx):
         url = x.text
         if url == "":
             await ctx.send("Estoy esperando por una canción...")
+            await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="un rolita guapa by CPS"))
         while url == "":
             await asyncio.sleep(1)
             x = requests.post(url_api, data=myobj)
