@@ -29,9 +29,10 @@ ydl_opts = {
 
 intents = discord.Intents().all()
 client = discord.Client(intents=intents)
+
 bot = commands.Bot(command_prefix='asorey ', intents=intents,
                    connector=aiohttp.TCPConnector(ssl=False))
-
+bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="un rolita guapa by CPS"))
 @bot.command(name='join', help='Haz que el bot se una a tu canal')
 async def play(ctx):
     if not ctx.message.author.voice:
