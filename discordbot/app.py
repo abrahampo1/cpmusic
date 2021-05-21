@@ -89,6 +89,7 @@ async def play(ctx):
                     voice_client.play(discord.FFmpegPCMAudio(playurl, **FFMPEG_OPTIONS, executable='/usr/bin/ffmpeg'))
                     voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
                     await ctx.send(f'**Canción en la radio: **{url}')
+                    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=video.title))
                 except Exception as e:
                     print(e)
             except Exception as e:
