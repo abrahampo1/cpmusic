@@ -367,7 +367,7 @@ if (isset($_POST["stream"])) {
                         if (document.getElementById("imagenahora").src != miniatura_completa) {
                             document.getElementById("imagenahora").src = miniatura_completa;
                             document.getElementById("imagenahora").style.display = "inline";
-                            document.getElementById("volume").style.display = "inline";
+                            document.getElementById("timeline").style.display = "inline";
                         }
                     }
                 });
