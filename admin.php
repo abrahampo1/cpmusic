@@ -326,7 +326,6 @@ if (isset($_POST["stream"])) {
 <script>
     document.getElementById("volume").onchange = function() {
         var volumen = document.getElementById("volume").value;
-        console.log(volumen);
         $.ajax({
             type: 'post',
             url: 'ajax.php',
