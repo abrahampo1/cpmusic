@@ -225,7 +225,7 @@ if (isset($_POST["stream"])) {
             <input type="range" min="1" max="100" value="<?php echo $volumen ?>" onchange="volume()" class="slider" id="volume">
         </div>
         <div style="text-align: center;">
-        <img id="imagenahora" src="./temp/<?php echo $musicaahora["miniatura"] ?>.png" width="90%" height="auto" style="border-radius: 25px; text-align: center" alt="">
+        <img id="imagenahora" src="./temp/<?php echo $musicaahora["miniatura"] ?>.png" height="auto" style="border-radius: 25px; text-align: center" alt="">
         </div>
         
         <div class="slidercontainer">
