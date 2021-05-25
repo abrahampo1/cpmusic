@@ -276,7 +276,7 @@ if (isset($_POST["stream"])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <nav>
-    <img style="display: inline;" src="logo.png" height="100%" alt="">
+    <a href="./"><img style="display: inline;" src="logo.png" height="100%" alt=""></a>
 </nav>
 
 <body>
@@ -320,7 +320,9 @@ if (isset($_POST["stream"])) {
     <div class="playlist">
         <h2>Ajustes Playlist</h2>
         <div class="playlist-options">
-            <p>Reproducción automatica </p><input class="checkbox" id="playlist_active" type="checkbox" <?php if($playlist_active == 1){ echo "checked";} ?>>
+            <p>Reproducción automatica </p><input class="checkbox" id="playlist_active" type="checkbox" <?php if ($playlist_active == 1) {
+                                                                                                            echo "checked";
+                                                                                                        } ?>>
         </div>
         <h3>Playlist Seleccionada</h3>
         <select name="playlist" id="">
@@ -472,15 +474,19 @@ if (isset($_POST["stream"])) {
 <script>
     document.getElementById("playlist_active").onchange = function() {
         var check = document.getElementById("playlist_active").checked;
-        alert(check);
         $.ajax({
             type: 'post',
             url: 'ajax.php',
             data: {
-                volume: volumen,
+                playlist_active: check,
             },
             success: function(response) {
-
+                if(response == "false"){
+                    document.getElementById("playlist_active").checked = false;
+                }else{
+                    document.getElementById("playlist_active").checked = true;
+                }
+                
             },
             error: function() {}
         });

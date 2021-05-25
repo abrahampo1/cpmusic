@@ -1,5 +1,6 @@
 <?php
 include("database.php");
+session_start();
 if(isset($_GET["p"])){
     $playlist = $_GET["p"];
 }else{
@@ -257,16 +258,16 @@ if(isset($_GET["p"])){
     }, 1000);
 </script>
 <script>
-    function addfav(url) {
+    function removefav(url) {
         $.ajax({
 
             type: 'post',
             url: 'ajax.php',
             data: {
-                favorita: url,
+                remfavorita: url,
             },
             success: function(response) {
-
+                location.reload();
             },
             error: function() {}
         });

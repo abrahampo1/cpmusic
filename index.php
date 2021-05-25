@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("database.php");
 define("MAX_RESULTS", 5);
 
@@ -20,14 +21,29 @@ if (isset($_POST['submit'])) {
         );
     }
 }
-if(isset($_POST["logout"])){
-    session_start();
+if(isset($_SESSION["admin"])){
     unset($_SESSION["admin"]);
 }
 
-
+if (isset($_POST["video_id"])) {
+    $video_id = $_POST["video_id"];
+    $insta = "";
+    if (isset($_POST["insta"])) {
+        $insta = $_POST["insta"];
+    }
+    $insta = str_replace("<", "", $insta);
+    $insta = str_replace(">", "", $insta);
+    $insta = str_replace('"', "", $insta);
+    if (strlen($insta) > 20) {
+        $insta = "";
+    }
+    $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`) VALUES (NULL, 'https://www.youtube.com/watch?v=$video_id', '', '', '0', '', '$insta', 0);";
+    if (mysqli_query($link, $sql)) {
+        header("location: ./?e=1");
+    }
+}
 ?>
-<!doctype html>
+
 <html>
 
 <head>
@@ -223,28 +239,12 @@ if(isset($_POST["logout"])){
 </head>
 
 <body>
-    <?php
+<?php
     if (isset($_GET["e"])) {
-        echo '<h2>El video se ha puesto a la cola.</h2><br><br><a class="btn-submit inicio" style="text-decoration:none" type="submit" name="submit" href="/" value="Inicio">Inicio</a>';
+        echo '<h2>El video se ha puesto a la cola.</h2><br><br><a class="btn-submit inicio" style="text-decoration:none" type="submit" name="submit" href="./" value="Inicio">Inicio</a>';
         exit;
     }
-    if (isset($_POST["video_id"])) {
-        $video_id = $_POST["video_id"];
-        $insta = "";
-        if (isset($_POST["insta"])) {
-            $insta = $_POST["insta"];
-        }
-        $insta = str_replace("<", "", $insta);
-        $insta = str_replace(">", "", $insta);
-        $insta = str_replace('"', "", $insta);
-        if (strlen($insta) > 20) {
-            $insta = "";
-        }
-        $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`) VALUES (NULL, 'https://www.youtube.com/watch?v=$video_id', '', '', '0', '', '$insta', 0);";
-        if (mysqli_query($link, $sql)) {
-            header("location: /?e=1");
-        }
-    }
+    
     if (isset($_POST["videoid"])) {
         $videoid = $_POST["videoid"];
         $title = $_POST["title"];
@@ -257,7 +257,7 @@ if(isset($_POST["logout"])){
     }
     ?>
     <nav>
-        <img style="display: inline;" src="logo.png" height="100%" alt="">
+        <a href="./"><img style="display: inline;" src="logo.png" height="100%" alt=""></a>
         <form class="admin" method="POST" action="./admin">
             <button class="media off" value="paquete"><i class="fas fa-user"></i></button>
         </form>

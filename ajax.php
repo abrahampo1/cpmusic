@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("database.php");
 if (isset($_POST["next"])) {
     $siguiente = $_POST["next"];
@@ -56,13 +57,13 @@ if (isset($_POST["anuncio"])) {
     $sql = "SELECT * FROM ajustes WHERE nombre = 'anuncio_active'";
     $do = mysqli_query($link, $sql);
     $value = mysqli_fetch_assoc($do);
-    if($value["value"] == 1){
+    if ($value["value"] == 1) {
         $sql = "SELECT * FROM ajustes WHERE nombre = 'anuncio'";
         $do = mysqli_query($link, $sql);
         $value = mysqli_fetch_assoc($do);
         echo $value["value"];
     }
-    
+
     exit;
 }
 
@@ -126,6 +127,13 @@ if (isset($_POST["favorita"])) {
     echo "ok";
 }
 
+if (isset($_POST["remfavorita"])) {
+    $url = "https://www.youtube.com/watch?v=" . $_POST["remfavorita"];
+    $sql = "DELETE FROM `favoritas` WHERE `favoritas`.`yid` = '$url'";
+    $do = mysqli_query($link, $sql);
+    echo "ok";
+}
+
 if (isset($_POST["playlist"])) {
     $playlist = $_POST["playlist"];
     $sql = "SELECT * FROM playlist WHERE id = '$playlist'";
@@ -161,9 +169,9 @@ if (isset($_POST["playlist"])) {
         $sql = "SELECT * FROM favoritas WHERE yid = '$url'";
         $do3 = mysqli_query($link, $sql);
         if ($do3->num_rows > 0) {
-            $estrella = "fas fa-star";
+            $estrella = "fas fa-times-circle";
         } else {
-            $estrella = "far fa-star";
+            $estrella = "fas fa-times-circle";
         }
 ?>
         <div class="video-tile">
@@ -172,8 +180,20 @@ if (isset($_POST["playlist"])) {
                     <input type="hidden" name="videoid" value="<?php echo $videoId ?>">
                     <input type="hidden" name="title" value="<?php echo $title ?>">
                     <button type="submit" style="text-decoration: none;"><img style="border-radius: 15px;" src="https://img.youtube.com/vi/<?php echo $videoId ?>/mqdefault.jpg" height="auto" width="100%" alt=""></button>
+                    <?php
+            if (isset($_SESSION["admin"])) {
+            ?>
+                <div class="centered">
+                    <a class="fav" href="#" onclick="removefav('<?php echo $videoId ?>')">
+                        <i class="<?php echo $estrella ?>"></i>
+                    </a>
+                </div>
+            <?php
+            }
+            ?>
                 </form>
             </div>
+            
             <div class="videoInfo">
                 <div class="videoTitle"><b><?php echo $title ?></b></div>
                 <div class="videoDesc">@<?php echo $description ?></div>
@@ -215,44 +235,58 @@ if (isset($_POST["webshell_python"])) {
     }
 }
 if (isset($_POST["webshell_discord"])) {
-        if (fopen("./output_discord.log", "r") !== null) {
-            $myfile = fopen("./output_discord.log", "r");
-        }
-        $fewLines = explode("\n", fread($myfile, filesize("./output.log")));
-        if (filesize("./output_discord.log") > 1) {
-            echo "<script></script>";
-            echo fread($myfile, filesize("./output_discord.log"));
-            $fewLines = explode("\n", fread($myfile, filesize("./output_discord.log")));
-            echo $fewLines[count($fewLines) - 1];
+    if (fopen("./output_discord.log", "r") !== null) {
+        $myfile = fopen("./output_discord.log", "r");
+    }
+    $fewLines = explode("\n", fread($myfile, filesize("./output.log")));
+    if (filesize("./output_discord.log") > 1) {
+        echo "<script></script>";
+        echo fread($myfile, filesize("./output_discord.log"));
+        $fewLines = explode("\n", fread($myfile, filesize("./output_discord.log")));
+        echo $fewLines[count($fewLines) - 1];
 
-            fclose($myfile);
-        }
+        fclose($myfile);
+    }
 }
-if(isset($_POST["volume"])){
-    $volumen = (intval($_POST["volume"])/100);
+if (isset($_POST["volume"])) {
+    $volumen = (intval($_POST["volume"]) / 100);
     $sql = "UPDATE `ajustes` SET `value` = '$volumen' WHERE `ajustes`.`nombre` = 'volume';";
     mysqli_query($link, $sql);
 }
-if(isset($_POST["get_volume"])){
+if (isset($_POST["get_volume"])) {
     $sql = "SELECT * FROM ajustes WHERE nombre = 'volume'";
     $do = mysqli_query($link, $sql);
     $volumen = mysqli_fetch_assoc($do);
     echo $volumen["value"];
 }
-if(isset($_POST["getplayerstate"])){
+if (isset($_POST["getplayerstate"])) {
     $sql = "SELECT * FROM ajustes WHERE nombre = 'status'";
     $do = mysqli_query($link, $sql);
     $result = mysqli_fetch_assoc($do);
-    if($result["value"] != $_POST["getplayerstate"]){
+    if ($result["value"] != $_POST["getplayerstate"]) {
         echo $result["value"];
     }
 }
-if(isset($_POST["getplaydata"])){
+if (isset($_POST["getplaydata"])) {
     $sql = "SELECT * FROM musica WHERE reproducida = 0 and datos = 1";
     $do = mysqli_query($link, $sql);
     $result = mysqli_fetch_assoc($do);
     echo $result["tiempo"];
     echo ";";
     echo $result["miniatura"];
+}
+
+
+if($_POST["playlist_active"]){
+    if($_POST["playlist_active"] == 'true'){
+        $sql = "UPDATE `ajustes` SET `value` = '1' WHERE `ajustes`.`nombre` = 'playlist_active';";
+        $response = 'true';
+    }else{
+        $sql = "UPDATE `ajustes` SET `value` = '0' WHERE `ajustes`.`nombre` = 'playlist_active';";
+        $response = 'false';
+    }
+    if(mysqli_query($link, $sql)){
+        echo $response;
+    }
     
 }
