@@ -277,7 +277,7 @@ if (isset($_POST["getplaydata"])) {
 }
 
 
-if($_POST["playlist_active"]){
+if($_POST["playlist_active_question"]){
     if($_POST["playlist_active"] == 'true'){
         $sql = "UPDATE `ajustes` SET `value` = '1' WHERE `ajustes`.`nombre` = 'playlist_active';";
         $response = 'true';

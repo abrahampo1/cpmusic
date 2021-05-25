@@ -478,7 +478,7 @@ if (isset($_POST["stream"])) {
             type: 'post',
             url: 'ajax.php',
             data: {
-                playlist_active: check,
+                playlist_active_question: check,
             },
             success: function(response) {
                 if(response == "false"){
