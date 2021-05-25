@@ -33,7 +33,7 @@ if (isset($_POST["api"])) {
                     $result = mysqli_fetch_assoc($do);
                     $playlist_active = $result["value"];
                     if ($playlist_active == 1) {
-                        $sql = "SELECT * FROM favoritas WHERE id = '$playlist_sel' ORDER BY RAND() LIMIT 1";
+                        $sql = "SELECT * FROM favoritas WHERE playlist = '$playlist_sel' ORDER BY RAND() LIMIT 1";
                         if ($do = mysqli_query($link, $sql)) {
                             if ($do->num_rows >= 1) {
                                 while ($randvideo = mysqli_fetch_assoc($do)) {
@@ -51,7 +51,7 @@ if (isset($_POST["api"])) {
                                             break;
                                         }
                                         if ($match == true) {
-                                            $sql = "SELECT * FROM favoritas ORDER BY RAND() LIMIT 1";
+                                            $sql = "SELECT * FROM favoritas WHERE playlist = '$playlist_sel' ORDER BY RAND() LIMIT 1";
                                             $nuevo = mysqli_query($link, $sql);
                                             $randvideo = mysqli_fetch_assoc($nuevo);
                                             $match = false;
