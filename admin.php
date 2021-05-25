@@ -227,7 +227,7 @@ if (isset($_POST["stream"])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <nav>
-<img src="logo.png" height="100%" alt="">
+<img style="display: inline;" src="logo.png" height="100%" alt="">
 </nav>
 <body>
     <div style="text-align: center; margin-left: auto; margin-right: auto;">
