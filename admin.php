@@ -366,8 +366,8 @@ if (isset($_POST["stream"])) {
                     success: function() {
                         if (document.getElementById("imagenahora").src != miniatura_completa) {
                             document.getElementById("imagenahora").src = miniatura_completa;
-                            document.getElementById("imagenahora").style.display = "";
-                            document.getElementById("volume").style.display = "block";
+                            document.getElementById("imagenahora").style.display = "inline";
+                            document.getElementById("volume").style.display = "inline";
                         }
                     }
                 });
