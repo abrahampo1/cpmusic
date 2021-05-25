@@ -60,6 +60,7 @@ if (isset($_POST["next"])) {
     img{
         max-height: 400px;
         max-width: 720px;
+        display: none;
     }
 
     form {
@@ -115,6 +116,7 @@ if (isset($_POST["next"])) {
         /* 0.2 seconds transition on hover */
         transition: opacity .2s;
     }
+    
 
     /* Mouse-over effects */
     .slider:hover {
@@ -137,19 +139,44 @@ if (isset($_POST["next"])) {
         border-radius: 100%;
         /* Cursor on hover */
     }
-
+    
     .slider::-moz-range-thumb {
         width: 25px;
         /* Set a specific slider handle width */
         height: 25px;
         /* Slider handle height */
-        background: #04AA6D;
+        background: #000;
         border-radius: 100%;
         /* Green background */
         cursor: pointer;
         /* Cursor on hover */
     }
-
+    .slider.tiempo::-moz-range-thumb {
+        
+        width: 25px;
+        /* Set a specific slider handle width */
+        height: 25px;
+        /* Slider handle height */
+        background: green;
+        border-radius: 100%;
+    }
+    .slider.tiempo::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        /* Override default look */
+        appearance: none;
+        width: 25px;
+        /* Set a specific slider handle width */
+        height: 25px;
+        /* Slider handle height */
+        background: green;
+        /* Green background */
+        cursor: pointer;
+        border-radius: 100%;
+        /* Cursor on hover */
+    }
+    #timeline{
+        display: none;
+    }
     .media {
         margin-left: -5px;
         margin-right: -5px;
@@ -228,8 +255,8 @@ if (isset($_POST["stream"])) {
         <img id="imagenahora" src="./temp/<?php echo $musicaahora["miniatura"] ?>.png" height="auto" style="border-radius: 25px; text-align: center" alt="">
         </div>
         
-        <div class="slidercontainer">
-            <input type="range" min="1" max="<?php echo $musicaahora["total_tiempo"] ?>" value="<?php echo $musicaahora["tiempo"] ?>" onchange="time()" class="slider" id="timeline">
+        <div class="slidercontainer tiempocontainer">
+            <input type="range" min="1" max="<?php echo $musicaahora["total_tiempo"] ?>" value="<?php echo $musicaahora["tiempo"] ?>" onchange="time()" class="slider tiempo" id="timeline">
         </div>
         <button type="submit"><?php if ($anuncio_active == 1) {
                                     echo "Cerrar Transmisión en Directo";
@@ -334,7 +361,7 @@ if (isset($_POST["stream"])) {
                     type: 'HEAD',
                     error: function() {
                         document.getElementById("imagenahora").style.display = "none";
-                        document.getElementById("volume").style.display = "none";
+                        document.getElementById("timeline").style.display = "none";
                     },
                     success: function() {
                         if (document.getElementById("imagenahora").src != miniatura_completa) {
