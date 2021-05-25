@@ -12,34 +12,34 @@ $musicaahora = mysqli_fetch_assoc($do);
 $sql = "SELECT * FROM ajustes WHERE nombre = 'status'";
 $do = mysqli_query($link, $sql);
 $result = mysqli_fetch_assoc($do);
-if($result["value"] == "pause"){
+if ($result["value"] == "pause") {
     $icon = "fas fa-play";
-}else if($result["value"]=="play"){
+} else if ($result["value"] == "play") {
     $icon = "fas fa-pause";
-}else{
+} else {
     $icon = "fas fa-pause";
 }
 $sql = "SELECT * FROM ajustes WHERE nombre = 'volume'";
 $do = mysqli_query($link, $sql);
 $result = mysqli_fetch_assoc($do);
-$volumen = floatval($result["value"])*100;
-if(isset($_POST["play"])){
+$volumen = floatval($result["value"]) * 100;
+if (isset($_POST["play"])) {
     $sql = "SELECT * FROM ajustes WHERE nombre = 'status'";
     $do = mysqli_query($link, $sql);
     $result = mysqli_fetch_assoc($do);
-    if($result["value"]=="play"){
+    if ($result["value"] == "play") {
         $sql = "UPDATE `ajustes` SET `value` = 'pause' WHERE `ajustes`.`nombre` = 'status';";
-    }else{
+    } else {
         $sql = "UPDATE `ajustes` SET `value` = 'play' WHERE `ajustes`.`nombre` = 'status';";
     }
-    if(mysqli_query($link, $sql)){
+    if (mysqli_query($link, $sql)) {
         header("location: admin");
         exit;
     }
 }
-if(isset($_POST["next"])){
+if (isset($_POST["next"])) {
     $sql = "UPDATE `ajustes` SET `value` = 'next' WHERE `ajustes`.`nombre` = 'status';";
-    if(mysqli_query($link, $sql)){
+    if (mysqli_query($link, $sql)) {
         header("location: admin");
         exit;
     }
@@ -57,6 +57,9 @@ if(isset($_POST["next"])){
         border-radius: 15px;
         margin: 15px;
     }
+    img{
+        max-height: 800px;
+    }
 
     form {
         text-align: center;
@@ -68,7 +71,7 @@ if(isset($_POST["next"])){
         background: none;
         border: none;
         background-color: black;
-        border-radius: 15px;
+        border-radius: 25px;
         margin: 20px;
         color: white !important;
     }
@@ -81,7 +84,7 @@ if(isset($_POST["next"])){
     }
 
     .slidecontainer {
-        width:100% !important;
+        width: 100% !important;
         text-align: center !important;
         margin-left: auto;
         margin-right: auto;
@@ -127,7 +130,7 @@ if(isset($_POST["next"])){
         /* Set a specific slider handle width */
         height: 25px;
         /* Slider handle height */
-        background: #04AA6D;
+        background: #000;
         /* Green background */
         cursor: pointer;
         border-radius: 100%;
@@ -145,10 +148,27 @@ if(isset($_POST["next"])){
         cursor: pointer;
         /* Cursor on hover */
     }
-    .media{
-        margin-left: 15px;
-        margin-right: 15px;
+
+    .media {
+        margin-left: -5px;
+        margin-right: -5px;
         font-size: 50px;
+        padding: 20px;
+    }
+
+    .media.next {
+        border-radius: 0px 25px 25px 0px;
+
+    }
+
+    .media.off {
+        border-radius: 25px 0px 0px 25px;
+        margin-right: 0px !important;
+
+    }
+    nav{
+        height: 60px;
+        text-align: center;
     }
 </style>
 <?php
@@ -178,23 +198,28 @@ if (isset($_POST["stream"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
-
+<nav>
+<img src="logo.png" height="100%" alt="">
+</nav>
 <body>
     <div style="text-align: center; margin-left: auto; margin-right: auto;">
-    <div style="display: flex; text-align:center;align-items: center;justify-content: center; margin-top: 20px">
-    <form action="" method="POST" >
-        <button name="play" class="media" style="font-size: 80px; margin-right: 0px " value="paquete"><i class="<?php echo $icon ?>"></i></button>
-    </form>
-    <form action="" method="POST" >
-        <button name="next" class="media" value="paquete" style="margin-left: 0px"><i class="fas fa-forward"></i></button>
-    </form>
+        <div style="display: flex; text-align:center;align-items: center;justify-content: center; margin-top: 20px">
+            <form action="" class="next" method="POST">
+                <button name="next" class="media off" value="paquete"><i class="fas fa-power-off"></i></button>
+            </form>
+            <form action="" method="POST">
+                <button name="play" class="media" style="font-size: 80px;" value="paquete"><i class="<?php echo $icon ?>"></i></button>
+            </form>
+            <form action="" class="next" method="POST">
+                <button name="next" class="media next" value="paquete"><i class="fas fa-forward"></i></button>
+            </form>
+        </div>
     </div>
-    </div>
-    
-    
+
+
     <form action="" method="POST" style="margin: 20px">
         <input type="hidden" name="stream" value="paquete">
-        <h2>Volumen:</h2>
+        <h2><i class="fas fa-volume-up"></i></h2>
         <div class="slidercontainer">
             <input type="range" min="1" max="100" value="<?php echo $volumen ?>" onchange="volume()" class="slider" id="volume">
         </div>
@@ -207,14 +232,18 @@ if (isset($_POST["stream"])) {
                                 } else {
                                     echo "Abrir Transmisión en Directo";
                                 } ?></button>
+       <button id="console_btn" onclick="console()" type="button">Abrir consola</button>
     </form>
-    <h1>~ WebShell by CP ~</h1>
-    <div id="body" class="consola">
-        Cargando...
+    <div id="console" style="display: none;">
+        <h1>~ WebShell by CP ~</h1>
+        <div id="body" class="consola">
+            Cargando...
+        </div>
+        <div id="discord" class="consola">
+            Cargando...
+        </div>
     </div>
-    <div id="discord" class="consola">
-        Cargando...
-    </div>
+
 </body>
 <script>
     document.getElementById("cmd").focus();
@@ -280,6 +309,7 @@ if (isset($_POST["stream"])) {
         });
     }
 </script>
+
 <script>
     var miniatura = "";
     var timeline = window.setInterval(function() {
@@ -294,12 +324,45 @@ if (isset($_POST["stream"])) {
                 miniatura = datos[1];
                 tiempo = datos[0];
                 document.getElementById("timeline").value = tiempo;
-                var miniatura_completa = "./temp/"+miniatura+".png";
-                if(document.getElementById("imagenahora").src != miniatura_completa){
-                    document.getElementById("imagenahora").src = miniatura_completa;
-                }
+                var miniatura_completa = "/temp/" + miniatura + ".png";
+                $.ajax({
+                    url: window.location.origin + miniatura_completa,
+                    type: 'HEAD',
+                    error: function() {
+                        document.getElementById("imagenahora").style.display = "none";
+                        document.getElementById("volume").style.display = "none";
+                    },
+                    success: function() {
+                        if (document.getElementById("imagenahora").src != miniatura_completa) {
+                            document.getElementById("imagenahora").src = miniatura_completa;
+                            document.getElementById("imagenahora").style.display = "block";
+                            document.getElementById("volume").style.display = "block";
+                        }
+                    }
+                });
+
+
+
+
             },
             error: function() {}
         });
     }, 1000);
+</script>
+
+<script>
+var btn = document.getElementById("console_btn");
+var open = 1;
+function console() {
+    if(open == 0){
+        document.getElementById("console").style.display = "none";
+        btn.innerHTML = "Abrir consola";
+        open = 1;
+    }else{
+        document.getElementById("console").style.display = "block";
+        btn.innerHTML = "Cerrar consola";
+        open = 0;
+    }
+    
+};
 </script>
