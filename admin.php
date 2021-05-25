@@ -59,6 +59,7 @@ if (isset($_POST["next"])) {
     }
     img{
         max-height: 400px;
+        max-width: 720px;
     }
 
     form {
