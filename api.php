@@ -40,7 +40,7 @@ if (isset($_POST["api"])) {
                                     $match = false;
                                     while ($match == false) {
                                         $randvideo = $randvideo["yid"];
-                                        $sql = "SELECT * FROM musica ORDER BY id DESC LIMIT 10";
+                                        $sql = "SELECT * FROM musica ORDER BY id DESC LIMIT 15";
                                         $busqueda =  mysqli_query($link, $sql);
                                         while ($videomatch = mysqli_fetch_assoc($busqueda)) {
                                             if ($videomatch["urlspoti"] == $randvideo) {
