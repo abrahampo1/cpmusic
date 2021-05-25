@@ -19,6 +19,14 @@ if ($result["value"] == "pause") {
 } else {
     $icon = "fas fa-pause";
 }
+$sql = "SELECT * FROM ajustes WHERE nombre = 'playlist'";
+$do = mysqli_query($link, $sql);
+$result = mysqli_fetch_assoc($do);
+$playlist_sel = $result["value"];
+$sql = "SELECT * FROM ajustes WHERE nombre = 'playlist_active'";
+$do = mysqli_query($link, $sql);
+$result = mysqli_fetch_assoc($do);
+$playlist_active = $result["value"];
 $sql = "SELECT * FROM ajustes WHERE nombre = 'volume'";
 $do = mysqli_query($link, $sql);
 $result = mysqli_fetch_assoc($do);
@@ -57,7 +65,8 @@ if (isset($_POST["next"])) {
         border-radius: 15px;
         margin: 15px;
     }
-    img{
+
+    img {
         max-height: 400px;
         max-width: 720px;
         display: none;
@@ -116,7 +125,7 @@ if (isset($_POST["next"])) {
         /* 0.2 seconds transition on hover */
         transition: opacity .2s;
     }
-    
+
 
     /* Mouse-over effects */
     .slider:hover {
@@ -139,7 +148,7 @@ if (isset($_POST["next"])) {
         border-radius: 100%;
         /* Cursor on hover */
     }
-    
+
     .slider::-moz-range-thumb {
         width: 25px;
         /* Set a specific slider handle width */
@@ -151,8 +160,9 @@ if (isset($_POST["next"])) {
         cursor: pointer;
         /* Cursor on hover */
     }
+
     .slider.tiempo::-moz-range-thumb {
-        
+
         width: 25px;
         /* Set a specific slider handle width */
         height: 25px;
@@ -160,6 +170,7 @@ if (isset($_POST["next"])) {
         background: green;
         border-radius: 100%;
     }
+
     .slider.tiempo::-webkit-slider-thumb {
         -webkit-appearance: none;
         /* Override default look */
@@ -174,12 +185,13 @@ if (isset($_POST["next"])) {
         border-radius: 100%;
         /* Cursor on hover */
     }
-    #timeline{
+
+    #timeline {
         display: none;
     }
+
     .media {
         margin-left: -5px;
-        margin-right: -5px;
         font-size: 50px;
         padding: 20px;
     }
@@ -191,12 +203,49 @@ if (isset($_POST["next"])) {
 
     .media.off {
         border-radius: 25px 0px 0px 25px;
-        margin-right: 0px !important;
-
     }
-    nav{
+
+    nav {
         height: 60px;
         text-align: center;
+    }
+
+    select {
+        border: none;
+        border: 1px solid black;
+        border-radius: 20px;
+        padding: 5px;
+        margin: 10px;
+        font-size: 25px !important;
+        width: 50%;
+        min-width: 200px;
+        text-align-last: center;
+    }
+
+    select option {
+        text-align: center;
+    }
+
+    .playlist {
+        text-align: center;
+    }
+
+    .checkbox {
+        width: 40px;
+        height: 40px;
+    }
+
+    .playlist-options {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px;
+    }
+
+    .playlist-options p {
+        padding: 5px;
+        padding-top: 15px;
+        font-size: 20px;
     }
 </style>
 <?php
@@ -227,8 +276,9 @@ if (isset($_POST["stream"])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <nav>
-<img style="display: inline;" src="logo.png" height="100%" alt="">
+    <img style="display: inline;" src="logo.png" height="100%" alt="">
 </nav>
+
 <body>
     <div style="text-align: center; margin-left: auto; margin-right: auto;">
         <div style="display: flex; text-align:center;align-items: center;justify-content: center; margin-top: 20px">
@@ -252,19 +302,40 @@ if (isset($_POST["stream"])) {
             <input type="range" min="1" max="100" value="<?php echo $volumen ?>" onchange="volume()" class="slider" id="volume">
         </div>
         <div style="text-align: center;">
-        <img id="imagenahora" src="./temp/<?php echo $musicaahora["miniatura"] ?>.png" height="auto" style="border-radius: 25px; text-align: center" alt="">
+            <img id="imagenahora" src="./temp/<?php echo $musicaahora["miniatura"] ?>.png" height="auto" style="border-radius: 25px; text-align: center" alt="">
         </div>
-        
+
         <div class="slidercontainer tiempocontainer">
             <input type="range" min="1" max="<?php echo $musicaahora["total_tiempo"] ?>" value="<?php echo $musicaahora["tiempo"] ?>" onchange="time()" class="slider tiempo" id="timeline">
         </div>
+
+        <br>
         <button type="submit"><?php if ($anuncio_active == 1) {
                                     echo "Cerrar Transmisión en Directo";
                                 } else {
                                     echo "Abrir Transmisión en Directo";
                                 } ?></button>
-       <button id="console_btn" onclick="console()" type="button">Abrir consola</button>
+        <button id="console_btn" onclick="console()" type="button">Abrir consola</button>
     </form>
+    <div class="playlist">
+        <h2>Ajustes Playlist</h2>
+        <div class="playlist-options">
+            <p>Reproducción automatica </p><input class="checkbox" id="playlist_active" type="checkbox" <?php if($playlist_active == 1){ echo "checked";} ?>>
+        </div>
+        <h3>Playlist Seleccionada</h3>
+        <select name="playlist" id="">
+            <?php
+            $sql = "SELECT * FROM playlist";
+            $do = mysqli_query($link, $sql);
+            while ($row = mysqli_fetch_assoc($do)) {
+            ?>
+                <option value="<?php echo $row["id"] ?>"><?php echo $row["nombre"] ?></option>
+            <?php
+            }
+            ?>
+        </select>
+    </div>
+
     <div id="console" style="display: none;">
         <h1>~ WebShell by CP ~</h1>
         <div id="body" class="consola">
@@ -381,18 +452,37 @@ if (isset($_POST["stream"])) {
 </script>
 
 <script>
-var btn = document.getElementById("console_btn");
-var open = 1;
-function console() {
-    if(open == 0){
-        document.getElementById("console").style.display = "none";
-        btn.innerHTML = "Abrir consola";
-        open = 1;
-    }else{
-        document.getElementById("console").style.display = "block";
-        btn.innerHTML = "Cerrar consola";
-        open = 0;
+    var btn = document.getElementById("console_btn");
+    var open = 1;
+
+    function console() {
+        if (open == 0) {
+            document.getElementById("console").style.display = "none";
+            btn.innerHTML = "Abrir consola";
+            open = 1;
+        } else {
+            document.getElementById("console").style.display = "block";
+            btn.innerHTML = "Cerrar consola";
+            open = 0;
+        }
+
+    };
+</script>
+
+<script>
+    document.getElementById("playlist_active").onchange = function() {
+        var check = document.getElementById("playlist_active").checked;
+        alert(check);
+        $.ajax({
+            type: 'post',
+            url: 'ajax.php',
+            data: {
+                volume: volumen,
+            },
+            success: function(response) {
+
+            },
+            error: function() {}
+        });
     }
-    
-};
 </script>
