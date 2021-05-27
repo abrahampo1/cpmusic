@@ -1,9 +1,10 @@
 <?php
+session_start();
 include("database.php");
 define("MAX_RESULTS", 5);
 
 if (isset($_POST['submit'])) {
-    if(!isset($_COOKIE["delay"])){
+    if (!isset($_COOKIE["delay"])) {
         setcookie("delay", "si", time() + 15);
     }
     $keyword = $_POST['keyword'];
@@ -20,11 +21,29 @@ if (isset($_POST['submit'])) {
         );
     }
 }
+if(isset($_SESSION["admin"])){
+    unset($_SESSION["admin"]);
+}
 
-
-
+if (isset($_POST["video_id"])) {
+    $video_id = $_POST["video_id"];
+    $insta = "";
+    if (isset($_POST["insta"])) {
+        $insta = $_POST["insta"];
+    }
+    $insta = str_replace("<", "", $insta);
+    $insta = str_replace(">", "", $insta);
+    $insta = str_replace('"', "", $insta);
+    if (strlen($insta) > 20) {
+        $insta = "";
+    }
+    $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`) VALUES (NULL, 'https://www.youtube.com/watch?v=$video_id', '', '', '0', '', '$insta', 0);";
+    if (mysqli_query($link, $sql)) {
+        header("location: ./?e=1");
+    }
+}
 ?>
-<!doctype html>
+
 <html>
 
 <head>
@@ -185,33 +204,47 @@ if (isset($_POST['submit'])) {
             padding: 5px;
             color: #222222;
         }
+
+        .media {
+            margin-left: -5px;
+            margin-right: -5px;
+            font-size: 25px;
+            margin: 10px;
+            padding: 5px;
+        }
+
+        .media.off {
+            border-radius: 25px 0px 0px 25px;
+            margin-right: 0px !important;
+
+        }
+
+        nav {
+            height: 60px;
+            text-align: center;
+            background-color: white;
+        }
+        nav img{
+            height: 50px;
+        }
+
+        .admin {
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+        
     </style>
 
 </head>
 
 <body>
-    <?php
+<?php
     if (isset($_GET["e"])) {
-        echo '<h2>El video se ha puesto a la cola.</h2><br><br><a class="btn-submit inicio" style="text-decoration:none" type="submit" name="submit" href="/" value="Inicio">Inicio</a>';
+        echo '<h2>El video se ha puesto a la cola.</h2><br><br><a class="btn-submit inicio" style="text-decoration:none" type="submit" name="submit" href="./" value="Inicio">Inicio</a>';
         exit;
     }
-    if (isset($_POST["video_id"])) {
-        $video_id = $_POST["video_id"];
-        $insta = "";
-        if (isset($_POST["insta"])) {
-            $insta = $_POST["insta"];
-        }
-        $insta = str_replace("<", "", $insta);
-        $insta = str_replace(">", "", $insta);
-        $insta = str_replace('"', "", $insta);
-        if (strlen($insta) > 20) {
-            $insta = "";
-        }
-        $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`) VALUES (NULL, 'https://www.youtube.com/watch?v=$video_id', '', '', '0', '', '$insta', 0);";
-        if (mysqli_query($link, $sql)) {
-            header("location: /?e=1");
-        }
-    }
+    
     if (isset($_POST["videoid"])) {
         $videoid = $_POST["videoid"];
         $title = $_POST["title"];
@@ -223,8 +256,15 @@ if (isset($_POST['submit'])) {
         exit;
     }
     ?>
+    <nav>
+        <a href="./"><img style="display: inline;" src="logo.png" height="100%" alt=""></a>
+        <form class="admin" method="POST" action="./admin">
+            <button class="media off" value="paquete"><i class="fas fa-user"></i></button>
+        </form>
+    </nav>
+
     <h2>Pon tu canción favorita en el hilo</h2>
-    
+
     <div class="">
         <form id="keywordForm" method="post" action="">
             <div class="input-row">
@@ -234,6 +274,7 @@ if (isset($_POST['submit'])) {
             <input class="btn-submit" type="submit" name="submit" value="→"><br><br>
             <a href="playlist?p=1" class="btn-submit inicio" style="text-decoration: none; margin-top:15px">Playlist de Favoritas →</a>
         </form>
+
     </div>
 
     <?php if (!empty($response)) { ?>
@@ -394,6 +435,7 @@ if (isset($_POST['submit'])) {
             error: function() {}
         });
     }
+
     function addytfav(url, star) {
         $.ajax({
 
@@ -403,9 +445,9 @@ if (isset($_POST['submit'])) {
                 favorita: url,
             },
             success: function(response) {
-                if(star.innerHTML == '<i class="fas fa-star"></i>'){
+                if (star.innerHTML == '<i class="fas fa-star"></i>') {
                     star.innerHTML = '<i class="far fa-star"></i>';
-                }else{
+                } else {
                     star.innerHTML = '<i class="fas fa-star"></i>';
                 }
             },
@@ -415,6 +457,6 @@ if (isset($_POST['submit'])) {
 </script>
 <script>
     if (window.history.replaceState) { // verificamos disponibilidad
-    window.history.replaceState(null, null, window.location.href);
-}
+        window.history.replaceState(null, null, window.location.href);
+    }
 </script>

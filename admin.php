@@ -12,34 +12,42 @@ $musicaahora = mysqli_fetch_assoc($do);
 $sql = "SELECT * FROM ajustes WHERE nombre = 'status'";
 $do = mysqli_query($link, $sql);
 $result = mysqli_fetch_assoc($do);
-if($result["value"] == "pause"){
+if ($result["value"] == "pause") {
     $icon = "fas fa-play";
-}else if($result["value"]=="play"){
+} else if ($result["value"] == "play") {
     $icon = "fas fa-pause";
-}else{
+} else {
     $icon = "fas fa-pause";
 }
+$sql = "SELECT * FROM ajustes WHERE nombre = 'playlist'";
+$do = mysqli_query($link, $sql);
+$result = mysqli_fetch_assoc($do);
+$playlist_sel = $result["value"];
+$sql = "SELECT * FROM ajustes WHERE nombre = 'playlist_active'";
+$do = mysqli_query($link, $sql);
+$result = mysqli_fetch_assoc($do);
+$playlist_active = $result["value"];
 $sql = "SELECT * FROM ajustes WHERE nombre = 'volume'";
 $do = mysqli_query($link, $sql);
 $result = mysqli_fetch_assoc($do);
-$volumen = floatval($result["value"])*100;
-if(isset($_POST["play"])){
+$volumen = floatval($result["value"]) * 100;
+if (isset($_POST["play"])) {
     $sql = "SELECT * FROM ajustes WHERE nombre = 'status'";
     $do = mysqli_query($link, $sql);
     $result = mysqli_fetch_assoc($do);
-    if($result["value"]=="play"){
+    if ($result["value"] == "play") {
         $sql = "UPDATE `ajustes` SET `value` = 'pause' WHERE `ajustes`.`nombre` = 'status';";
-    }else{
+    } else {
         $sql = "UPDATE `ajustes` SET `value` = 'play' WHERE `ajustes`.`nombre` = 'status';";
     }
-    if(mysqli_query($link, $sql)){
+    if (mysqli_query($link, $sql)) {
         header("location: admin");
         exit;
     }
 }
-if(isset($_POST["next"])){
+if (isset($_POST["next"])) {
     $sql = "UPDATE `ajustes` SET `value` = 'next' WHERE `ajustes`.`nombre` = 'status';";
-    if(mysqli_query($link, $sql)){
+    if (mysqli_query($link, $sql)) {
         header("location: admin");
         exit;
     }
@@ -58,6 +66,12 @@ if(isset($_POST["next"])){
         margin: 15px;
     }
 
+    img {
+        max-height: 400px;
+        max-width: 720px;
+        display: none;
+    }
+
     form {
         text-align: center;
         font-size: 25px;
@@ -68,7 +82,7 @@ if(isset($_POST["next"])){
         background: none;
         border: none;
         background-color: black;
-        border-radius: 15px;
+        border-radius: 25px;
         margin: 20px;
         color: white !important;
     }
@@ -81,7 +95,7 @@ if(isset($_POST["next"])){
     }
 
     .slidecontainer {
-        width:100% !important;
+        width: 100% !important;
         text-align: center !important;
         margin-left: auto;
         margin-right: auto;
@@ -112,6 +126,7 @@ if(isset($_POST["next"])){
         transition: opacity .2s;
     }
 
+
     /* Mouse-over effects */
     .slider:hover {
         opacity: 1;
@@ -127,7 +142,7 @@ if(isset($_POST["next"])){
         /* Set a specific slider handle width */
         height: 25px;
         /* Slider handle height */
-        background: #04AA6D;
+        background: #000;
         /* Green background */
         cursor: pointer;
         border-radius: 100%;
@@ -139,16 +154,98 @@ if(isset($_POST["next"])){
         /* Set a specific slider handle width */
         height: 25px;
         /* Slider handle height */
-        background: #04AA6D;
+        background: #000;
         border-radius: 100%;
         /* Green background */
         cursor: pointer;
         /* Cursor on hover */
     }
-    .media{
-        margin-left: 15px;
-        margin-right: 15px;
+
+    .slider.tiempo::-moz-range-thumb {
+
+        width: 25px;
+        /* Set a specific slider handle width */
+        height: 25px;
+        /* Slider handle height */
+        background: green;
+        border-radius: 100%;
+    }
+
+    .slider.tiempo::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        /* Override default look */
+        appearance: none;
+        width: 25px;
+        /* Set a specific slider handle width */
+        height: 25px;
+        /* Slider handle height */
+        background: green;
+        /* Green background */
+        cursor: pointer;
+        border-radius: 100%;
+        /* Cursor on hover */
+    }
+
+    #timeline {
+        display: none;
+    }
+
+    .media {
+        margin-left: -5px;
         font-size: 50px;
+        padding: 20px;
+    }
+
+    .media.next {
+        border-radius: 0px 25px 25px 0px;
+
+    }
+
+    .media.off {
+        border-radius: 25px 0px 0px 25px;
+    }
+
+    nav {
+        height: 60px;
+        text-align: center;
+    }
+
+    select {
+        border: none;
+        border: 1px solid black;
+        border-radius: 20px;
+        padding: 5px;
+        margin: 10px;
+        font-size: 25px !important;
+        width: 50%;
+        min-width: 200px;
+        text-align-last: center;
+    }
+
+    select option {
+        text-align: center;
+    }
+
+    .playlist {
+        text-align: center;
+    }
+
+    .checkbox {
+        width: 40px;
+        height: 40px;
+    }
+
+    .playlist-options {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px;
+    }
+
+    .playlist-options p {
+        padding: 5px;
+        padding-top: 15px;
+        font-size: 20px;
     }
 </style>
 <?php
@@ -178,43 +275,79 @@ if (isset($_POST["stream"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
+<nav>
+    <a href="./"><img style="display: inline;" src="logo.png" height="100%" alt=""></a>
+</nav>
 
 <body>
     <div style="text-align: center; margin-left: auto; margin-right: auto;">
-    <div style="display: flex; text-align:center;align-items: center;justify-content: center; margin-top: 20px">
-    <form action="" method="POST" >
-        <button name="play" class="media" style="font-size: 80px; margin-right: 0px " value="paquete"><i class="<?php echo $icon ?>"></i></button>
-    </form>
-    <form action="" method="POST" >
-        <button name="next" class="media" value="paquete" style="margin-left: 0px"><i class="fas fa-forward"></i></button>
-    </form>
+        <div style="display: flex; text-align:center;align-items: center;justify-content: center; margin-top: 20px">
+            <form class="next" method="POST" action="./">
+                <button name="logout" class="media off" value="paquete"><i class="fas fa-home"></i></button>
+            </form>
+            <form action="" method="POST">
+                <button name="play" class="media" style="font-size: 80px;" value="paquete"><i class="<?php echo $icon ?>"></i></button>
+            </form>
+            <form action="" class="next" method="POST">
+                <button name="next" class="media next" value="paquete"><i class="fas fa-forward"></i></button>
+            </form>
+        </div>
     </div>
-    </div>
-    
-    
+
+
     <form action="" method="POST" style="margin: 20px">
         <input type="hidden" name="stream" value="paquete">
-        <h2>Volumen:</h2>
+        <h2><i class="fas fa-volume-up"></i></h2>
         <div class="slidercontainer">
             <input type="range" min="1" max="100" value="<?php echo $volumen ?>" onchange="volume()" class="slider" id="volume">
         </div>
-        <img id="imagenahora" src="./temp/<?php echo $musicaahora["miniatura"] ?>.png" width="90%" height="auto" style="border-radius: 25px;" alt="">
-        <div class="slidercontainer">
-            <input type="range" min="1" max="<?php echo $musicaahora["total_tiempo"] ?>" value="<?php echo $musicaahora["tiempo"] ?>" onchange="time()" class="slider" id="timeline">
+        <div style="text-align: center;">
+            <img id="imagenahora" src="./temp/<?php echo $musicaahora["miniatura"] ?>.png" height="auto" style="border-radius: 25px; text-align: center" alt="">
         </div>
+
+        <div class="slidercontainer tiempocontainer">
+            <input type="range" min="1" max="<?php echo $musicaahora["total_tiempo"] ?>" value="<?php echo $musicaahora["tiempo"] ?>" onchange="time()" class="slider tiempo" id="timeline">
+        </div>
+
+        <br>
         <button type="submit"><?php if ($anuncio_active == 1) {
                                     echo "Cerrar Transmisión en Directo";
                                 } else {
                                     echo "Abrir Transmisión en Directo";
                                 } ?></button>
+        <button id="console_btn" onclick="console()" type="button">Abrir consola</button>
     </form>
-    <h1>~ WebShell by CP ~</h1>
-    <div id="body" class="consola">
-        Cargando...
+    <div class="playlist">
+        <h2>Ajustes Playlist</h2>
+        <div class="playlist-options">
+            <p>Reproducción automatica </p><input class="checkbox" id="playlist_active" type="checkbox" <?php if ($playlist_active == 1) {
+                                                                                                            echo "checked";
+                                                                                                        } ?>>
+        </div>
+        <h3>Playlist Seleccionada</h3>
+        <select name="playlist" id="">
+            <?php
+            $sql = "SELECT * FROM playlist";
+            $do = mysqli_query($link, $sql);
+            while ($row = mysqli_fetch_assoc($do)) {
+            ?>
+                <option value="<?php echo $row["id"] ?>"><?php echo $row["nombre"] ?></option>
+            <?php
+            }
+            ?>
+        </select>
     </div>
-    <div id="discord" class="consola">
-        Cargando...
+
+    <div id="console" style="display: none;">
+        <h1>~ WebShell by CP ~</h1>
+        <div id="body" class="consola">
+            Cargando...
+        </div>
+        <div id="discord" class="consola">
+            Cargando...
+        </div>
     </div>
+
 </body>
 <script>
     document.getElementById("cmd").focus();
@@ -266,7 +399,6 @@ if (isset($_POST["stream"])) {
 <script>
     document.getElementById("volume").onchange = function() {
         var volumen = document.getElementById("volume").value;
-        console.log(volumen);
         $.ajax({
             type: 'post',
             url: 'ajax.php',
@@ -280,6 +412,7 @@ if (isset($_POST["stream"])) {
         });
     }
 </script>
+
 <script>
     var miniatura = "";
     var timeline = window.setInterval(function() {
@@ -294,12 +427,68 @@ if (isset($_POST["stream"])) {
                 miniatura = datos[1];
                 tiempo = datos[0];
                 document.getElementById("timeline").value = tiempo;
-                var miniatura_completa = "./temp/"+miniatura+".png";
-                if(document.getElementById("imagenahora").src != miniatura_completa){
-                    document.getElementById("imagenahora").src = miniatura_completa;
-                }
+                var miniatura_completa = "/temp/" + miniatura + ".png";
+                $.ajax({
+                    url: window.location.origin + miniatura_completa,
+                    type: 'HEAD',
+                    error: function() {
+                        document.getElementById("imagenahora").style.display = "none";
+                        document.getElementById("timeline").style.display = "none";
+                    },
+                    success: function() {
+                        if (document.getElementById("imagenahora").src != miniatura_completa) {
+                            document.getElementById("imagenahora").src = miniatura_completa;
+                            document.getElementById("imagenahora").style.display = "inline";
+                            document.getElementById("timeline").style.display = "inline";
+                        }
+                    }
+                });
+
+
+
+
             },
             error: function() {}
         });
     }, 1000);
+</script>
+
+<script>
+    var btn = document.getElementById("console_btn");
+    var open = 1;
+
+    function console() {
+        if (open == 0) {
+            document.getElementById("console").style.display = "none";
+            btn.innerHTML = "Abrir consola";
+            open = 1;
+        } else {
+            document.getElementById("console").style.display = "block";
+            btn.innerHTML = "Cerrar consola";
+            open = 0;
+        }
+
+    };
+</script>
+
+<script>
+    document.getElementById("playlist_active").onchange = function() {
+        var check = document.getElementById("playlist_active").checked;
+        $.ajax({
+            type: 'post',
+            url: 'ajax.php',
+            data: {
+                playlist_active: check,
+            },
+            success: function(response) {
+                if(response == "false"){
+                    document.getElementById("playlist_active").checked = false;
+                }else{
+                    document.getElementById("playlist_active").checked = true;
+                }
+                
+            },
+            error: function() {}
+        });
+    }
 </script>

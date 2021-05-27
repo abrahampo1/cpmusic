@@ -1,5 +1,6 @@
 <?php
 include("database.php");
+session_start();
 if(isset($_GET["p"])){
     $playlist = $_GET["p"];
 }else{
@@ -31,6 +32,15 @@ if(isset($_GET["p"])){
             cursor: pointer;
             outline: inherit;
         }
+        .btn {
+        padding: 10px;
+        background: none;
+        border: none;
+        background-color: black;
+        border-radius: 25px;
+        margin: 20px;
+        color: white !important;
+    }
 
         body {
             width: 99%;
@@ -168,10 +178,42 @@ if(isset($_GET["p"])){
             padding: 5px;
             color: #222222;
         }
+        .media {
+            margin-left: -5px;
+            margin-right: -5px;
+            font-size: 25px;
+            margin: 10px;
+            padding: 5px;
+        }
+
+        .media.off {
+            border-radius: 25px 0px 0px 25px;
+            margin-right: 0px !important;
+
+        }
+        nav {
+            height: 60px;
+            text-align: center;
+            background-color: white;
+        }
+        nav img{
+            height: 50px;
+        }
+
+        .admin {
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
     </style>
 
 </head>
-
+<nav>
+        <img style="display: inline;" src="logo.png" height="100%" alt="">
+        <form class="admin" method="POST" action="./">
+            <button class="media off" value="paquete"><i class="fas fa-arrow-left"></i></button>
+        </form>
+    </nav>
 <body>
 
     </div>
@@ -216,16 +258,16 @@ if(isset($_GET["p"])){
     }, 1000);
 </script>
 <script>
-    function addfav(url) {
+    function removefav(url) {
         $.ajax({
 
             type: 'post',
             url: 'ajax.php',
             data: {
-                favorita: url,
+                remfavorita: url,
             },
             success: function(response) {
-
+                location.reload();
             },
             error: function() {}
         });

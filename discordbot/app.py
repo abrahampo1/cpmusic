@@ -29,6 +29,7 @@ ydl_opts = {
 
 intents = discord.Intents().all()
 client = discord.Client(intents=intents)
+
 bot = commands.Bot(command_prefix='asorey ', intents=intents,
                    connector=aiohttp.TCPConnector(ssl=False))
 
@@ -64,6 +65,7 @@ async def play(ctx):
         url = x.text
         if url == "":
             await ctx.send("Estoy esperando por una canción...")
+            await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="un rolita guapa by CPS"))
         while url == "":
             await asyncio.sleep(1)
             x = requests.post(url_api, data=myobj)
@@ -89,6 +91,7 @@ async def play(ctx):
                     voice_client.play(discord.FFmpegPCMAudio(playurl, **FFMPEG_OPTIONS, executable='/usr/bin/ffmpeg'))
                     voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
                     await ctx.send(f'**Canción en la radio: **{url}')
+                    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=video.title))
                 except Exception as e:
                     print(e)
             except Exception as e:
@@ -103,7 +106,7 @@ async def play(ctx):
 silenciado = False
 
 
-@bot.command(name='play', help='Uso "play [url] [instagram(opcional)]"')
+#@bot.command(name='play', help='Uso "play [url] [instagram(opcional)]"')
 async def pause(ctx, url, insta):
     url_api = "https://musica.asorey.net/api.php"
     voice_client = ctx.message.guild.voice_client
