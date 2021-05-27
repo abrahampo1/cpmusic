@@ -93,11 +93,11 @@ if (isset($_POST["anteriores"])) {
         <div class="video-tile">
             <div class="videoDiv container">
                 <form action="" method="post">
-                    <input type="hidden" name="videoid" value="<?php echo $videoId ?>">
-                    <input type="hidden" name="title" value="<?php echo $title ?>">
-                    <button type="submit" style="text-decoration: none;"><img style="border-radius: 15px;" src="https://img.youtube.com/vi/<?php echo $videoId ?>/mqdefault.jpg" height="auto" width="100%" alt=""></button>
+                    <input name="videoid" type="hidden" value="<?php echo $videoId ?>">
+                    <input name="title" type="hidden" value="<?php echo $title ?>">
+                    <button style="text-decoration: none;" type="submit"><img height="auto" width="100%" style="border-radius: 15px;" src="https://img.youtube.com/vi/<?php echo $videoId ?>/mqdefault.jpg"></button>
                     <div class="centered">
-                        <a class="fav" href="#" onclick="addfav('<?php echo $videoId ?>')">
+                        <a class="fav" onclick="addfav('<?php echo $videoId ?>')" href="#">
                             <i class="<?php echo $estrella ?>"></i>
                         </a>
                     </div>
