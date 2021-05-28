@@ -247,12 +247,14 @@ if ($ig_minita == "") {
         -webkit-animation: scroll-slow 25s linear infinite;
         animation: scroll-slow 25s linear infinite;
     }
-    .vjs-default-skin{
+
+    .vjs-default-skin {
         width: 100% !important;
         height: auto !important;
         min-height: 700px;
 
     }
+
     /* Move it (define the animation) */
     @-moz-keyframes scroll-slow {
         0% {
@@ -291,8 +293,40 @@ if ($ig_minita == "") {
             transform: translateX(-100%);
         }
     }
-    .slide-in-right{-webkit-animation:slide-in-right .5s cubic-bezier(.25,.46,.45,.94) both;animation:slide-in-right .5s cubic-bezier(.25,.46,.45,.94) both}
-    @-webkit-keyframes slide-in-right{0%{-webkit-transform:translateX(1000px);transform:translateX(1000px);opacity:0}100%{-webkit-transform:translateX(0);transform:translateX(0);opacity:1}}@keyframes slide-in-right{0%{-webkit-transform:translateX(1000px);transform:translateX(1000px);opacity:0}100%{-webkit-transform:translateX(0);transform:translateX(0);opacity:1}}
+
+    .slide-in-right {
+        -webkit-animation: slide-in-right .5s cubic-bezier(.25, .46, .45, .94) both;
+        animation: slide-in-right .5s cubic-bezier(.25, .46, .45, .94) both
+    }
+
+    @-webkit-keyframes slide-in-right {
+        0% {
+            -webkit-transform: translateX(1000px);
+            transform: translateX(1000px);
+            opacity: 0
+        }
+
+        100% {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+            opacity: 1
+        }
+    }
+
+    @keyframes slide-in-right {
+        0% {
+            -webkit-transform: translateX(1000px);
+            transform: translateX(1000px);
+            opacity: 0
+        }
+
+        100% {
+            -webkit-transform: translateX(0);
+            transform: translateX(0);
+            opacity: 1
+        }
+    }
+
     .anterior-img {
         border-radius: 10px 0px 0px 10px;
     }
@@ -402,8 +436,8 @@ if ($ig_minita == "") {
 <script src="https://unpkg.com/@videojs/http-streaming/dist/videojs-http-streaming.js"></script>
 
 <script>
-    function loadvideo(){
-    var player = videojs('my_video_1');
+    function loadvideo() {
+        var player = videojs('my_video_1');
     }
 </script>
 <script>
@@ -531,7 +565,7 @@ if ($ig_minita == "") {
                     document.getElementById("videoclip").play();
                     playerstate = response;
                 }
-                if(response == "pause" && document.getElementById("videoclip").paused == false){
+                if (response == "pause" && document.getElementById("videoclip").paused == false) {
                     document.getElementById("videoclip").pause();
                     playerstate = response;
                 };
@@ -558,7 +592,7 @@ if ($ig_minita == "") {
                     }
 
                 } else if (response == "") {
-                    if(document.getElementById("noticia").innerHTML != ""){
+                    if (document.getElementById("noticia").innerHTML != "") {
                         location.reload();
                     }
                     document.getElementById("myModal").style.display = "none";
@@ -626,4 +660,27 @@ if ($ig_minita == "") {
             }
         });
     });
+</script>
+
+<script>
+    var i = 1;
+    var el = document.getElementById("img-" + i);
+    if (el) {
+        el.classList.add("slide-in-right");
+        i++;
+        el.addEventListener("animationend", function() {
+            var el = document.getElementById("img-" + i);
+            if (el) {
+                i++;
+                el.classList.add("slide-in-right");
+                i++;
+                el.addEventListener("animationend", function() {
+                    var el = document.getElementById("img-" + i);
+                    if (el) {
+                        el.classList.add("slide-in-right");
+                    }
+                }, false);
+            }
+        }, false);
+    }
 </script>
