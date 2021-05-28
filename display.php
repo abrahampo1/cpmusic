@@ -39,6 +39,7 @@ if ($ig_minita == "") {
     * {
         font-family: 'Montserrat', sans-serif;
         z-index: 100;
+        overflow: hidden;
     }
 
     h1 {
