@@ -39,7 +39,6 @@ if ($ig_minita == "") {
     * {
         font-family: 'Montserrat', sans-serif;
         z-index: 100;
-        overflow: hidden;
     }
 
     h1 {
@@ -210,6 +209,7 @@ if ($ig_minita == "") {
         animation: fadeInAnimation ease 1s;
         animation-iteration-count: 1;
         animation-fill-mode: forwards;
+        overflow: hidden;
     }
 
     @keyframes fadeInAnimation {
@@ -297,7 +297,8 @@ if ($ig_minita == "") {
 
     .slide-in-right {
         -webkit-animation: slide-in-right .2s cubic-bezier(.25, .46, .45, .94) both;
-        animation: slide-in-right .2s cubic-bezier(.25, .46, .45, .94) both
+        animation: slide-in-right .2s cubic-bezier(.25, .46, .45, .94) both;
+        overflow: hidden;
     }
 
     @-webkit-keyframes slide-in-right {
