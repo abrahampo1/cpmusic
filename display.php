@@ -203,6 +203,7 @@ if ($ig_minita == "") {
         display: flex;
         justify-content: center;
         align-items: center;
+        overflow: hidden;
     }
 
     .siguiente_text {
