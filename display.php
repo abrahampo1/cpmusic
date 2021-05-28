@@ -684,5 +684,5 @@ if ($ig_minita == "") {
                         }
                     }, false);
                 }
-            }
+            });
 </script>
