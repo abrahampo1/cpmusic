@@ -675,7 +675,6 @@ if ($ig_minita == "") {
                         if (el) {
                             i++;
                             el.classList.add("slide-in-right");
-                            i++;
                             el.addEventListener("animationend", function() {
                                 var el = document.getElementById("img-" + i);
                                 if (el) {
