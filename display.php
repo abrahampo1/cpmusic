@@ -128,6 +128,7 @@ if ($ig_minita == "") {
         -moz-box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
         box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
         max-height: 70vh;
+        z-index: 200;
 
     }
 
