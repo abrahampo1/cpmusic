@@ -72,7 +72,7 @@ if ($ig_minita == "") {
         background: none;
         width: 70%;
         max-width: 140vh !important;
-        z-index: 101;
+        overflow: visible;
     }
 
     #img-principal {
