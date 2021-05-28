@@ -245,7 +245,30 @@ if (isset($_SESSION["admin"])) {
     </style>
 
 </head>
+<script>
+    function addqueue() {
+        var url = document.getElementById("url").value;
+        var insta = document.getElementById("insta").value;
+        $.ajax({
 
+            type: 'post',
+            url: 'ajax.php',
+            data: {
+                add_video_id: url,
+                insta: insta,
+            },
+            success: function(response) {
+                if (response == "ok") {
+                    document.getElementById("image-preview").classList.add("slide-top");
+                    setTimeout(function() {
+                            location.replace("./");
+                        }, 2000);
+                }
+            },
+            error: function() {}
+        });
+    }
+</script>
 <body>
     <?php
     if (isset($_GET["e"])) {
@@ -469,27 +492,3 @@ if (isset($_SESSION["admin"])) {
     }
 </script>
 
-<script>
-    function addqueue() {
-        var url = document.getElementById("url").value;
-        var insta = document.getElementById("insta").value;
-        $.ajax({
-
-            type: 'post',
-            url: 'ajax.php',
-            data: {
-                add_video_id: url,
-                insta: insta,
-            },
-            success: function(response) {
-                if (response == "ok") {
-                    document.getElementById("image-preview").classList.add("slide-top");
-                    setTimeout(function() {
-                            location.replace("./");
-                        }, 2000);
-                }
-            },
-            error: function() {}
-        });
-    }
-</script>
