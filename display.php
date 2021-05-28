@@ -505,6 +505,7 @@ if ($ig_minita == "") {
                     siguiente.innerHTML = "En " + restante.toFixed(0) + "...";
                 }
                 if (restante <= 0) {
+                    video.pause();
                     siguiente.innerHTML = "Cargando...";
                 }
             }
