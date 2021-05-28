@@ -391,7 +391,7 @@ if ($ig_minita == "") {
 
         <img style="display: none;" onerror="location.reload()" id="img-principal" onloadeddata="color()" src="<?php echo $miniatura ?>" height="auto" width="100%" alt="" />
 
-        <div class="siguiente" style="width: 15%;">
+        <div class="siguiente" onload="loadnext()" style="width: 15%;">
             <div id="siguientes" style="width: 100%"></div>
         </div>
     </div>
@@ -663,7 +663,7 @@ if ($ig_minita == "") {
 </script>
 
 <script>
-    $(document).ready(function() {
+    function loadnext(){
                 var i = 1;
                 var el = document.getElementById("img-" + i);
                 if (el) {
@@ -684,5 +684,5 @@ if ($ig_minita == "") {
                         }
                     }, false);
                 }
-            });
+            };
 </script>
