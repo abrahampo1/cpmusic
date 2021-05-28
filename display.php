@@ -506,6 +506,7 @@ if ($ig_minita == "") {
                 }
                 if (restante <= 0) {
                     video.pause();
+                    video.src = "";
                     siguiente.innerHTML = "Cargando...";
                 }
             }
