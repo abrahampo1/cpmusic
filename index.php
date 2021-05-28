@@ -245,6 +245,9 @@ if (isset($_SESSION["admin"])) {
     </style>
 
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+
 <script>
     function addqueue() {
         var url = document.getElementById("url").value;
@@ -418,8 +421,6 @@ if (isset($_SESSION["admin"])) {
 <p id="debug"></p>
 
 </html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
 
 
 <script>
