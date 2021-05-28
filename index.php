@@ -21,27 +21,10 @@ if (isset($_POST['submit'])) {
         );
     }
 }
-if(isset($_SESSION["admin"])){
+if (isset($_SESSION["admin"])) {
     unset($_SESSION["admin"]);
 }
 
-if (isset($_POST["video_id"])) {
-    $video_id = $_POST["video_id"];
-    $insta = "";
-    if (isset($_POST["insta"])) {
-        $insta = $_POST["insta"];
-    }
-    $insta = str_replace("<", "", $insta);
-    $insta = str_replace(">", "", $insta);
-    $insta = str_replace('"', "", $insta);
-    if (strlen($insta) > 20) {
-        $insta = "";
-    }
-    $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`) VALUES (NULL, 'https://www.youtube.com/watch?v=$video_id', '', '', '0', '', '$insta', 0);";
-    if (mysqli_query($link, $sql)) {
-        header("location: ./?e=1");
-    }
-}
 ?>
 
 <html>
@@ -224,7 +207,8 @@ if (isset($_POST["video_id"])) {
             text-align: center;
             background-color: white;
         }
-        nav img{
+
+        nav img {
             height: 50px;
         }
 
@@ -233,26 +217,50 @@ if (isset($_POST["video_id"])) {
             left: 0;
             top: 0;
         }
-        
+        .slide-top {
+	-webkit-animation: slide-top 0.5s cubic-bezier(0.600, -0.280, 0.735, 0.045) 2 both;
+	        animation: slide-top 0.5s cubic-bezier(0.600, -0.280, 0.735, 0.045) 2 both;
+}
+@-webkit-keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-100px);
+            transform: translateY(-100px);
+  }
+}
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-100px);
+            transform: translateY(-100px);
+  }
+}
+
     </style>
 
 </head>
 
 <body>
-<?php
+    <?php
     if (isset($_GET["e"])) {
         echo '<h2>El video se ha puesto a la cola.</h2><br><br><a class="btn-submit inicio" style="text-decoration:none" type="submit" name="submit" href="./" value="Inicio">Inicio</a>';
         exit;
     }
-    
+
     if (isset($_POST["videoid"])) {
         $videoid = $_POST["videoid"];
         $title = $_POST["title"];
         echo '<h2>Has seleccionado ' . $title . '</h2><br><br>';
-        echo '<img style="border-radius:20px" src="http://img.youtube.com/vi/' . $videoid . '/mqdefault.jpg" height="auto" width="40%">';
+        echo '<img style="border-radius:20px" id="image-preview" src="http://img.youtube.com/vi/' . $videoid . '/mqdefault.jpg" height="auto" width="40%">';
         echo '<br><br><p style="font-size:25px">Opcional<p><hr>';
-        echo '<form method="post"><div class="input-row"><input id="ig-minita" name="insta" class="input-field" type="text" placeholder="Escribe tu @ de insta"></div><input type="hidden" name="video_id" value="' . $videoid . '">';
-        echo '<input class="btn-submit" type="submit" value="→"></form>';
+        echo '<div class="input-row"><input id="ig-minita" name="insta" class="input-field" type="text" placeholder="Escribe tu @ de insta"></div><input type="hidden" name="video_id" value="' . $videoid . '">';
+        echo '<button class="btn-submit" type="button" onclick="addqueue()" value="→">';
         exit;
     }
     ?>
@@ -458,5 +466,30 @@ if (isset($_POST["video_id"])) {
 <script>
     if (window.history.replaceState) { // verificamos disponibilidad
         window.history.replaceState(null, null, window.location.href);
+    }
+</script>
+
+<script>
+    function addqueue() {
+        var url = document.getElementById("url").value;
+        var insta = document.getElementById("insta").value;
+        $.ajax({
+
+            type: 'post',
+            url: 'ajax.php',
+            data: {
+                add_video_id: url,
+                insta: insta,
+            },
+            success: function(response) {
+                if (response == "ok") {
+                    document.getElementById("image-preview").classList.add("slide-top");
+                    setTimeout(function() {
+                            location.replace("./");
+                        }, 2000);
+                }
+            },
+            error: function() {}
+        });
     }
 </script>

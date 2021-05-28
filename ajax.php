@@ -290,3 +290,22 @@ if(isset($_POST["playlist_active"])){
     }
     
 }
+
+
+if (isset($_POST["add_video_id"])) {
+    $video_id = $_POST["add_video_id"];
+    $insta = "";
+    if (isset($_POST["insta"])) {
+        $insta = $_POST["insta"];
+    }
+    $insta = str_replace("<", "", $insta);
+    $insta = str_replace(">", "", $insta);
+    $insta = str_replace('"', "", $insta);
+    if (strlen($insta) > 20) {
+        $insta = "";
+    }
+    $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`) VALUES (NULL, 'https://www.youtube.com/watch?v=$video_id', '', '', '0', '', '$insta', 0);";
+    if (mysqli_query($link, $sql)) {
+        echo("ok");
+    }
+}
