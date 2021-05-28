@@ -1,6 +1,7 @@
 <?php
+
+$incorrecta = 0;
 if(isset($_POST["clave"])){
-    $incorrecta = 0;
     $clave = $_POST["clave"];
     include("database.php");
     $sql = "SELECT * FROM ajustes WHERE nombre = 'admin'";
@@ -48,6 +49,13 @@ if(isset($_POST["clave"])){
         
     }
     .media {
+        background: none;
+            color: inherit;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;
             margin-left: -5px;
             margin-right: -5px;
             font-size: 25px;
