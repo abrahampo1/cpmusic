@@ -265,7 +265,7 @@ if (isset($_SESSION["admin"])) {
                     document.getElementById("image-preview").classList.add("slide-top");
                     setTimeout(function() {
                             location.replace("./");
-                        }, 2000);
+                        }, 1200);
                 }
             },
             error: function() {}
