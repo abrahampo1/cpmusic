@@ -35,7 +35,7 @@ if ($ig_minita == "") {
 $sql = "SELECT * FROM ajustes WHERE nombre = 'volume'";
 $do = mysqli_query($link, $sql);
 $volumen = mysqli_fetch_assoc($do);
-$volumen = $motd["value"];
+$volumen = $volumen["value"];
 ?>
 
 <style>
