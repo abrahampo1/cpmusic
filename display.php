@@ -385,7 +385,7 @@ if ($ig_minita == "") {
     </div>
 
 </body>
-<div id="siguiente_holder" style="display: none;">
+<div id="siguiente_holder" style="display: none; z-index: 1;">
 
 </div>
 <div id="myModal" class="modal">
