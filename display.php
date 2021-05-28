@@ -295,8 +295,8 @@ if ($ig_minita == "") {
     }
 
     .slide-in-right {
-        -webkit-animation: slide-in-right .5s cubic-bezier(.25, .46, .45, .94) both;
-        animation: slide-in-right .5s cubic-bezier(.25, .46, .45, .94) both
+        -webkit-animation: slide-in-right .2s cubic-bezier(.25, .46, .45, .94) both;
+        animation: slide-in-right .2s cubic-bezier(.25, .46, .45, .94) both
     }
 
     @-webkit-keyframes slide-in-right {
