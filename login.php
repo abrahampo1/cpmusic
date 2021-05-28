@@ -92,7 +92,7 @@ if(isset($_POST["clave"])){
     <img style="text-align: center;" src="404.png" alt=""><br><br>
     <?php
     if($incorrecta == 1){
-        echo "Clave incorrecta.";
+        echo "Clave incorrecta. <br>";
         flush();
         ob_flush();
         sleep(1);
