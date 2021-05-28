@@ -72,6 +72,7 @@ if ($ig_minita == "") {
         background: none;
         width: 70%;
         max-width: 140vh !important;
+        z-index: 101;
     }
 
     #img-principal {
@@ -419,7 +420,7 @@ if ($ig_minita == "") {
     </div>
 
 </body>
-<div id="siguiente_holder" style="display: none; z-index: 1;">
+<div id="siguiente_holder" style="display: none;">
 
 </div>
 <div id="myModal" class="modal">
