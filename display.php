@@ -618,6 +618,7 @@ if ($ig_minita == "") {
                         document.getElementById("siguientes").style.width = "100%";
                         document.getElementById("siguientes").innerHTML = response;
                         document.getElementById("siguiente_holder").innerHTML = response;
+                        loadnext();
                     } else if (response == "") {
                         document.getElementById("siguientes").style.width = "";
                     }
