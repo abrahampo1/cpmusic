@@ -1,5 +1,6 @@
 <?php
 if(isset($_POST["clave"])){
+    $incorrecta = 0;
     $clave = $_POST["clave"];
     include("database.php");
     $sql = "SELECT * FROM ajustes WHERE nombre = 'admin'";
@@ -10,14 +11,18 @@ if(isset($_POST["clave"])){
         $_SESSION["admin"] = "log";
         header("location: admin");
     }else{
-        echo "Clave incorrecta.";
-        flush();
-        ob_flush();
-        sleep(3);
-        exit;
+        $incorrecta = 1;
     }
 }
 ?>
+<head>
+    <title>Musica</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="iconos/css/all.css" rel="stylesheet">
+</head>
 <style>
     form {
         width: 100%;
@@ -45,6 +50,14 @@ if(isset($_POST["clave"])){
 
 <form action="" method="POST">
     <img style="text-align: center;" src="404.png" alt=""><br><br>
+    <?php
+    if($incorrecta == 1){
+        echo "Clave incorrecta.";
+        flush();
+        ob_flush();
+        sleep(1);
+    }
+    ?>
     <input type="password" name="clave" placeholder="Clave..."><br><br>
     <button type="submit">Entrar</button>
 </form>
