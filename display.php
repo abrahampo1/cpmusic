@@ -663,24 +663,26 @@ if ($ig_minita == "") {
 </script>
 
 <script>
-    var i = 1;
-    var el = document.getElementById("img-" + i);
-    if (el) {
-        el.classList.add("slide-in-right");
-        i++;
-        el.addEventListener("animationend", function() {
-            var el = document.getElementById("img-" + i);
-            if (el) {
-                i++;
-                el.classList.add("slide-in-right");
-                i++;
-                el.addEventListener("animationend", function() {
-                    var el = document.getElementById("img-" + i);
-                    if (el) {
-                        el.classList.add("slide-in-right");
-                    }
-                }, false);
+    $(document).ready(function() {
+                var i = 1;
+                var el = document.getElementById("img-" + i);
+                if (el) {
+                    el.classList.add("slide-in-right");
+                    i++;
+                    el.addEventListener("animationend", function() {
+                        var el = document.getElementById("img-" + i);
+                        if (el) {
+                            i++;
+                            el.classList.add("slide-in-right");
+                            i++;
+                            el.addEventListener("animationend", function() {
+                                var el = document.getElementById("img-" + i);
+                                if (el) {
+                                    el.classList.add("slide-in-right");
+                                }
+                            }, false);
+                        }
+                    }, false);
+                }
             }
-        }, false);
-    }
 </script>
