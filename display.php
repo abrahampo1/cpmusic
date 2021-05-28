@@ -32,7 +32,10 @@ $motd = $motd["value"];
 if ($ig_minita == "") {
     $ig_minita = "franciscoasorey";
 }
-
+$sql = "SELECT * FROM ajustes WHERE nombre = 'volume'";
+$do = mysqli_query($link, $sql);
+$volumen = mysqli_fetch_assoc($do);
+$volumen = $motd["value"];
 ?>
 
 <style>
@@ -387,7 +390,7 @@ if ($ig_minita == "") {
         if ($contenido == false) {
             echo '<div class="ies-div"><img class="ies" onerror="location.reload()" onloadeddata="color()" src="' . $miniatura . '" height="auto" width="100%" alt=""></div>';
         } else {
-            echo '<div class="video-div"><input type="hidden" id="video_tiempo" value="' . $tiempo . '"><input type="hidden" id="video_total" value="' . $tiempo_total . '"><video src="' . $videourl . '#t=' . $tiempo . '" id="videoclip" onload="barra()" onloadstart="barra()" controls autoplay width="100%" height="auto"></video><div id="myProgress">
+            echo '<div class="video-div"><input type="hidden" id="video_tiempo" value="' . $tiempo . '"><input type="hidden" id="video_total" value="' . $tiempo_total . '"><video src="' . $videourl . '#t=' . $tiempo . '" id="videoclip" volume="'.$volumen.'" onload="barra()" onloadstart="barra()" controls autoplay width="100%" height="auto"></video><div id="myProgress">
             <div id="myBar"></div>
           </div></div>';
         }
