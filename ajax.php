@@ -49,7 +49,7 @@ if (isset($_POST["nuevo"])) {
             $ultima_html = "";
         }
 
-        echo '<div class="container"><img class="slide-in-left siguiente siguiente-img" id="img" src="' . $thumbnail . '" height="auto" width="100%" alt="">' . $ultima_html . '</div><br>';
+        echo '<div class="container"><img style="z-index: 1;" class="slide-in-left siguiente siguiente-img" id="img" src="' . $thumbnail . '" height="auto" width="100%" alt="">' . $ultima_html . '</div><br>';
         $video++;
     }
 }
