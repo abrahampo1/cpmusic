@@ -668,19 +668,19 @@ if ($ig_minita == "") {
                 var i = 1;
                 var el = document.getElementById("img-" + i);
                 if (el) {
-                    el.display = "inline";
+                    el.style.display = "inline";
                     el.classList.add("slide-in-right");
                     i++;
                     el.addEventListener("animationend", function() {
                         var el = document.getElementById("img-" + i);
                         if (el) {
                             i++;
-                            el.display = "inline";
+                            el.style.display = "inline";
                             el.classList.add("slide-in-right");
                             el.addEventListener("animationend", function() {
                                 var el = document.getElementById("img-" + i);
                                 if (el) {
-                                    el.display = "inline";
+                                    el.style.display = "inline";
                                     el.classList.add("slide-in-right");
                                 }
                             }, false);
