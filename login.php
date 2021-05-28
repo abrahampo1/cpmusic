@@ -45,7 +45,7 @@ if(isset($_POST["clave"])){
         border-radius: 15px;
         margin: 20px;
         font-size: 30px;
-        color: white !important;
+        color: white;
         
     }
     .media {
@@ -63,6 +63,9 @@ if(isset($_POST["clave"])){
             position: fixed;
             left: 0;
             top: 0;
+            color: black;
+            background: none;
+
         }
         nav {
             height: 60px;
