@@ -227,8 +227,8 @@ if (isset($_SESSION["admin"])) {
             transform: translateY(0);
   }
   100% {
-    -webkit-transform: translateY(-500px);
-            transform: translateY(-500px);
+    -webkit-transform: translateY(-800px);
+            transform: translateY(-800px);
   }
 }
 @keyframes slide-top {
@@ -237,8 +237,8 @@ if (isset($_SESSION["admin"])) {
             transform: translateY(0);
   }
   100% {
-    -webkit-transform: translateY(-500px);
-            transform: translateY(-500px);
+    -webkit-transform: translateY(-800px);
+            transform: translateY(-800px);
   }
 }
 
