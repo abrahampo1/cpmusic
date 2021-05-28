@@ -218,8 +218,8 @@ if (isset($_SESSION["admin"])) {
             top: 0;
         }
         .slide-top {
-	-webkit-animation: slide-top 0.5s cubic-bezier(0.600, -0.280, 0.735, 0.045) 1 both;
-	        animation: slide-top 0.5s cubic-bezier(0.600, -0.280, 0.735, 0.045) 1 both;
+	-webkit-animation: slide-top 1s cubic-bezier(0.600, -0.280, 0.735, 0.045) 1 both;
+	        animation: slide-top 1s cubic-bezier(0.600, -0.280, 0.735, 0.045) 1 both;
 }
 @-webkit-keyframes slide-top {
   0% {
