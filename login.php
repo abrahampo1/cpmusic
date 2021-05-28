@@ -45,9 +45,42 @@ if(isset($_POST["clave"])){
         margin: 20px;
         font-size: 30px;
         color: white !important;
+        
     }
-</style>
+    .media {
+            margin-left: -5px;
+            margin-right: -5px;
+            font-size: 25px;
+            margin: 10px;
+            padding: 5px;
+        }
 
+        .media.off {
+            border-radius: 25px 0px 0px 25px;
+            margin-right: 0px !important;
+
+        }
+        nav {
+            height: 60px;
+            text-align: center;
+            background-color: white;
+        }
+        nav img{
+            height: 50px;
+        }
+
+        .admin {
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+</style>
+<nav>
+        <img style="display: inline;" src="logo.png" height="100%" alt="">
+        <form class="admin" method="POST" action="./">
+            <button class="media off" value="paquete"><i class="fas fa-arrow-left"></i></button>
+        </form>
+    </nav>
 <form action="" method="POST">
     <img style="text-align: center;" src="404.png" alt=""><br><br>
     <?php
