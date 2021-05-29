@@ -268,7 +268,7 @@ if (isset($_SESSION["admin"])) {
                             location.replace("./");
                         }, 1200);
                 }
-                if (response == "ok") {
+                if (response == "notok") {
                     document.getElementById("image-preview").classList.add("rotate-out-2-cw");
                     setTimeout(function() {
                             location.replace("./");
