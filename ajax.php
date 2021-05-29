@@ -304,8 +304,14 @@ if (isset($_POST["add_video_id"])) {
     if (strlen($insta) > 20) {
         $insta = "";
     }
+    $sql = "SELECT * FROM musica WHERE reproducida = 0 and urlspoti = 'https://www.youtube.com/watch?v=$video_id'";
+    $do = mysqli_query($link, $sql);
+    if($do->num_rows == 0){
     $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`) VALUES (NULL, 'https://www.youtube.com/watch?v=$video_id', '', '', '0', '', '$insta', 0);";
     if (mysqli_query($link, $sql)) {
         echo("ok");
     }
+}else{
+    echo("notok");
+}
 }
