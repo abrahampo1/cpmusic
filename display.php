@@ -618,7 +618,7 @@ $volumen = $volumen["value"];
 <script>
     function loadnext() {
         var el = document.getElementById("img-1")
-        for (i = 1; i != 4;) {
+        for (i = 1; i != 3;) {
             if (el) {
                 alert(el.style.display);
                 if (el.style.display == "none") {
