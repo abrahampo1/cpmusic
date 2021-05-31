@@ -235,6 +235,14 @@ if (isset($_POST["next"])) {
         padding-top: 15px;
         font-size: 20px;
     }
+    .input-field {
+            width: 80%;
+            border-radius: 30px;
+            padding: 10px;
+            text-align: center;
+            font-size: 40px;
+            border: #e0dfdf 2px solid;
+        }
 </style>
 <?php
 $sql = "SELECT * FROM ajustes WHERE nombre = 'anuncio_active'";
@@ -321,9 +329,9 @@ if (isset($_POST["stream"])) {
                                                                                                             echo "checked";
                                                                                                         } ?>>
                                                                                                         <br>
-            <input type="number" step="1" max="23" min="1" name="" id="start_hour" value="<?php echo $start_hour ?>">
+            <input class="input-field" type="number" step="1" max="23" min="1" name="" id="start_hour" value="<?php echo $start_hour ?>">
             <br>
-            <input type="number" step="1" max="23" min="1" name="" id="stop_hour" value="<?php echo $stop_hour ?>">
+            <input class="input-field" type="number" step="1" max="23" min="1" name="" id="stop_hour" value="<?php echo $stop_hour ?>">
         </div>
         <h3>Playlist Seleccionada</h3>
         <select name="playlist" id="">
