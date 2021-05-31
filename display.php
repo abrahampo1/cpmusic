@@ -684,8 +684,8 @@ $volumen = $volumen["value"];
         if (el.style.display == "none") {
             setTimeout(function() {
                 el.style.display = "inline";
-                el.style.transform = "translateX(-960px);";
-                el.classList.add("slide-in-bottom")
+                el.style.transform = "translateX(-960px)";
+                el.classList.add("slide-in-bottom");
                 setTimeout(function() {
                     el.classList.add("slide-in-left");
                 }, 5000);
