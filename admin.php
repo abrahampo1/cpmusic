@@ -3,8 +3,7 @@
 include("database.php");
 session_start();
 if (!isset($_SESSION["admin"])) {
-    header("location: login");
-    exit;
+    header("location: ./login");
 }
 $sql = "SELECT * FROM musica WHERE reproducida = 0 and datos = 1";
 $do = mysqli_query($link, $sql);
