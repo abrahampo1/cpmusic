@@ -657,8 +657,8 @@ $volumen = $volumen["value"];
     function loadnext(el, segundos) {
         var el = document.getElementById("img-" + el);
         if (el.style.display == "none") {
-            el.style.display = "inline";
             setTimeout(function() {
+                el.style.display = "inline";
                 el.classList.add("slide-in-bottom")
                 setTimeout(function() {
                     el.classList.add("slide-in-right");
