@@ -682,6 +682,8 @@ $volumen = $volumen["value"];
         var el = document.getElementById("img-" + i)
         if (el) {
             el.addEventListener("animationend", function() {
+                alert("dandole");
+                alert(el.style.display);
                 if (el.style.display == "none") {
                     el.style.display = "inline";
                     el.classList.add("slide-in-right");
