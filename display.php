@@ -624,7 +624,9 @@ $volumen = $volumen["value"];
                 el.classList.add("slide-in-right");
             }, 0);
 
-        } else {}
+        } else {
+            el.classList.remove("slide-in-right");
+        }
     };
 </script>
 <script>
