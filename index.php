@@ -40,7 +40,8 @@ if (isset($_SESSION["admin"])) {
         * {
             font-family: 'Montserrat', sans-serif;
         }
-
+        .rotate-out-2-cw{-webkit-animation:rotate-out-2-cw .6s cubic-bezier(.25,.46,.45,.94) both;animation:rotate-out-2-cw .6s cubic-bezier(.25,.46,.45,.94) both}
+        @-webkit-keyframes rotate-out-2-cw{0%{-webkit-transform:rotate(0);transform:rotate(0);opacity:1}100%{-webkit-transform:rotate(45deg);transform:rotate(45deg);opacity:0}}@keyframes rotate-out-2-cw{0%{-webkit-transform:rotate(0);transform:rotate(0);opacity:1}100%{-webkit-transform:rotate(45deg);transform:rotate(45deg);opacity:0}}
         button {
             background: none;
             color: inherit;
@@ -263,6 +264,12 @@ if (isset($_SESSION["admin"])) {
             success: function(response) {
                 if (response == "ok") {
                     document.getElementById("image-preview").classList.add("slide-top");
+                    setTimeout(function() {
+                            location.replace("./");
+                        }, 1200);
+                }
+                if (response == "notok") {
+                    document.getElementById("image-preview").classList.add("rotate-out-2-cw");
                     setTimeout(function() {
                             location.replace("./");
                         }, 1200);
