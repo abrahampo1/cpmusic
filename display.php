@@ -657,11 +657,12 @@ $volumen = $volumen["value"];
     function loadnext(el, segundos) {
         var el = document.getElementById("img-" + el);
         if (el.style.display == "none") {
+
+            el.style.display = "inline";
+            el.classList.add("slide-in-right");
             setTimeout(function() {
-                el.style.display = "inline";
                 el.classList.add("slide-in-bottom")
             }, 500);
-            el.classList.add("slide-in-right");
 
         } else {
             el.classList.remove("slide-in-bottom")
