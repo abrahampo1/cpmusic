@@ -235,14 +235,15 @@ if (isset($_POST["next"])) {
         padding-top: 15px;
         font-size: 20px;
     }
+
     .input-field {
-            width: 80%;
-            border-radius: 30px;
-            padding: 10px;
-            text-align: center;
-            font-size: 40px;
-            border: #e0dfdf 2px solid;
-        }
+        width: 100px;
+        border-radius: 30px;
+        padding: 10px;
+        text-align: center;
+        font-size: 20px;
+        border: #e0dfdf 2px solid;
+    }
 </style>
 <?php
 $sql = "SELECT * FROM ajustes WHERE nombre = 'anuncio_active'";
@@ -328,11 +329,13 @@ if (isset($_POST["stream"])) {
             <p>Reproducción automatica </p><input class="checkbox" id="playlist_active" type="checkbox" <?php if ($playlist_active == 1) {
                                                                                                             echo "checked";
                                                                                                         } ?>>
-                                                                                                        <br>
-            
+            <br>
+
         </div>
+        <p>Hora de encendido</p>
         <input class="input-field" type="number" step="1" max="23" min="1" name="" id="start_hour" value="<?php echo $start_hour ?>">
-            <input class="input-field" type="number" step="1" max="23" min="1" name="" id="stop_hour" value="<?php echo $stop_hour ?>">
+        <p>Hora de apagado</p>
+        <input class="input-field" type="number" step="1" max="23" min="1" name="" id="stop_hour" value="<?php echo $stop_hour ?>">
         <h3>Playlist Seleccionada</h3>
         <select name="playlist" id="">
             <?php
