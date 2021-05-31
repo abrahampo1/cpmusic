@@ -679,22 +679,19 @@ $volumen = $volumen["value"];
 <script>
     function loadnext() {
         var i = 1;
-        var el = document.getElementById("img-" + i);
-        if (el.style.display == "none") {
-                    el.style.display = "inline";
-                    el.classList.add("slide-in-right");
-                    console.log("Animado "+i);
-                    var el = document.getElementById("img-" + i);
-                }
-        while (el != null) {
+        var el = document.getElementById("img-" + i)
+        while (el) {
             el.addEventListener("animationend", function() {
                 if (el.style.display == "none") {
                     el.style.display = "inline";
                     el.classList.add("slide-in-right");
                     console.log("Animado "+i);
-                    var el = document.getElementById("img-" + i);
+
+            i++;
+                    el = document.getElementById("img-" + i);
                 }
             }, false);
+
             i++;
         }
     };
