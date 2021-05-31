@@ -26,6 +26,10 @@ $sql = "SELECT * FROM ajustes WHERE nombre = 'playlist_active'";
 $do = mysqli_query($link, $sql);
 $result = mysqli_fetch_assoc($do);
 $playlist_active = $result["value"];
+$sql = "SELECT * FROM ajustes WHERE nombre = 'timer'";
+$do = mysqli_query($link, $sql);
+$result = mysqli_fetch_assoc($do);
+$timer = $result["value"];
 $sql = "SELECT * FROM ajustes WHERE nombre = 'volume'";
 $do = mysqli_query($link, $sql);
 $result = mysqli_fetch_assoc($do);
@@ -316,6 +320,12 @@ if (isset($_POST["stream"])) {
                                 } ?></button>
         <button id="console_btn" onclick="console()" type="button">Abrir consola</button>
     </form>
+    <div>
+        <h2>Ajustes Apagado automatico</h2>
+        <p>Apagado/Encendido automatico</p><input type="checkbox" id="timer" class="checkbox" <?php if ($playlist_active == 1) {
+                                                                echo "checked";
+                                                            } ?>>>
+    </div>
     <div class="playlist">
         <h2>Ajustes Playlist</h2>
         <div class="playlist-options">
@@ -480,12 +490,33 @@ if (isset($_POST["stream"])) {
                 playlist_active: check,
             },
             success: function(response) {
-                if(response == "false"){
+                if (response == "false") {
                     document.getElementById("playlist_active").checked = false;
-                }else{
+                } else {
                     document.getElementById("playlist_active").checked = true;
                 }
-                
+
+            },
+            error: function() {}
+        });
+    }
+</script>
+<script>
+    document.getElementById("timer").onchange = function() {
+        var check = document.getElementById("timer").checked;
+        $.ajax({
+            type: 'post',
+            url: 'ajax.php',
+            data: {
+                timer: check,
+            },
+            success: function(response) {
+                if (response == "false") {
+                    document.getElementById("timer").checked = false;
+                } else {
+                    document.getElementById("timer").checked = true;
+                }
+
             },
             error: function() {}
         });

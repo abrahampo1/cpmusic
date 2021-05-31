@@ -289,7 +289,18 @@ if (isset($_POST["playlist_active"])) {
         echo $response;
     }
 }
-
+if (isset($_POST["timer"])) {
+    if ($_POST["timer"] == 'true') {
+        $sql = "UPDATE `ajustes` SET `value` = '1' WHERE `ajustes`.`nombre` = 'timer';";
+        $response = 'true';
+    } else {
+        $sql = "UPDATE `ajustes` SET `value` = '0' WHERE `ajustes`.`nombre` = 'timer';";
+        $response = 'false';
+    }
+    if (mysqli_query($link, $sql)) {
+        echo $response;
+    }
+}
 
 if (isset($_POST["add_video_id"])) {
     $video_id = $_POST["add_video_id"];
