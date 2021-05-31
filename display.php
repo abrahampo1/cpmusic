@@ -628,6 +628,8 @@ $volumen = $volumen["value"];
                         i++;
                         el = document.getElementById("img-" + i)
                     }, false);
+                }else{
+                    i++;
                 }
             } else {}
         }
