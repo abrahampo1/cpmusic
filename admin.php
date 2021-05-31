@@ -194,7 +194,7 @@ if (isset($_POST["next"])) {
     }
 
     nav {
-        height: 60px;
+        height: 100px;
         text-align: center;
     }
 
@@ -273,7 +273,7 @@ if (isset($_POST["stream"])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <nav>
-    <a href="./"><img style="display: inline;" src="logo.png" height="100%" alt=""></a>
+    <a href="./"><img style="display: inline;" src="logo.png" height="80px" alt=""></a>
 </nav>
 
 <body>
