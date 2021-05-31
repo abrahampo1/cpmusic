@@ -660,12 +660,12 @@ $volumen = $volumen["value"];
             setTimeout(function() {
                 el.style.display = "inline";
                 el.classList.add("slide-in-bottom")
-                el.classList.add("slide-in-right");
-            }, 0);
+            }, 500);
+            el.classList.add("slide-in-right");
 
         } else {
+            el.classList.remove("slide-in-bottom")
             el.classList.remove("slide-in-right");
-            el.classList.remove("s");
         }
     };
 </script>
