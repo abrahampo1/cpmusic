@@ -626,9 +626,9 @@ $volumen = $volumen["value"];
                 if (document.getElementById("noticia").innerHTML == "") {
                     if (response != document.getElementById("siguiente_holder").innerHTML) {
                         document.getElementById("siguientes").style.width = "100%";
+                        responsenew = response.replace(document.getElementById("siguiente_holder").innerHTML, "");
+                        document.getElementById("siguientes").innerHTML += responsenew;
                         document.getElementById("siguiente_holder").innerHTML = response;
-                        response = response.replace(document.getElementById("siguiente_holder").innerHTML, "");
-                        document.getElementById("siguientes").innerHTML += response;
                         loadnext();
                     } else if (response == "") {
                         document.getElementById("siguientes").style.width = "";
