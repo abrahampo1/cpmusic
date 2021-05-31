@@ -312,7 +312,7 @@ if (isset($_SESSION["admin"])) {
                 <input class="input-field" type="search" id="keyword" name="keyword" placeholder="Buscar">
             </div>
 
-            <input class="btn-submit" type="submit" name="submit" value="→"><br><br>
+            <input class="btn-submit" type="submit" name="submit" value="Buscar en YouTube →"><br><br>
             <a href="playlist?p=1" class="btn-submit inicio" style="text-decoration: none; margin-top:15px">Playlist de Favoritas →</a>
         </form>
 
