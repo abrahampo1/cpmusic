@@ -679,6 +679,7 @@ $volumen = $volumen["value"];
 <script>
     function loadnext() {
         for(i = 1; i == 3; i++){
+            alert("empezando")
         var el = document.getElementById("img-" + i)
         if (el) {
             
