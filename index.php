@@ -74,7 +74,7 @@ if (isset($_SESSION["admin"])) {
             border-radius: 30px;
             padding: 10px;
             text-align: center;
-            font-size: 20px;
+            font-size: 40px;
             border: #e0dfdf 1px solid;
         }
 
