@@ -51,7 +51,9 @@ if (isset($_SESSION["admin"])) {
             cursor: pointer;
             outline: inherit;
         }
-
+        h2{
+            font-size: 50px;
+        }
         body {
             width: 99%;
             padding: 10px;
