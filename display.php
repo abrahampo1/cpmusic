@@ -623,14 +623,16 @@ $volumen = $volumen["value"];
                 if (el.style.display == "none") {
                     el.style.display = "inline";
                     el.classList.add("slide-in-right");
-                    el.addEventListener("animationend", function() {
+                    var delayInMilliseconds = 1000;
+                    setTimeout(function() {
                         i++;
                         el = document.getElementById("img-" + i)
-                    }, false);
-                }else{
+                    }, delayInMilliseconds);
+
+                } else {
                     i++;
                 }
-            }else{
+            } else {
                 break;
             }
         }
