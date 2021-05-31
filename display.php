@@ -681,6 +681,7 @@ $volumen = $volumen["value"];
         var i = 1;
         var el = document.getElementById("img-" + i)
         while (el) {
+            if(el){
             el.addEventListener("animationend", function() {
                 if (el.style.display == "none") {
                     el.style.display = "inline";
@@ -691,8 +692,9 @@ $volumen = $volumen["value"];
                     el = document.getElementById("img-" + i);
                 }
             }, false);
-
-            i++;
+        }else{
+            break;
+        }
         }
     };
 </script>
