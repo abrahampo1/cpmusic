@@ -86,7 +86,7 @@ if (isset($_SESSION["admin"])) {
             width: auto;
             height: 50px;
             border-radius: 20px;
-            font-size: 20px;
+            font-size: 40px;
             cursor: pointer;
         }
 
