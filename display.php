@@ -618,13 +618,14 @@ $volumen = $volumen["value"];
 <script>
     function loadnext() {
         var el = document.getElementById("img-1")
-        for (i = 2; i != 4; i++) {
+        for (i = 2; i != 4;) {
             if (el) {
                 alert(el.style.display);
                 if (el.style.display == "none") {
                     el.style.display = "inline";
                     el.classList.add("slide-in-right");
                     el.addEventListener("animationend", function() {
+                        i++;
                         var el = document.getElementById("img-" + i)
                     }, false);
                 }
