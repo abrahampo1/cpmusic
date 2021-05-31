@@ -688,8 +688,8 @@ $volumen = $volumen["value"];
                     console.log("Animado "+i);
                     var el = document.getElementById("img-" + i);
                 }
-                i++;
             }, false);
+            i++;
         }
     };
 </script>
