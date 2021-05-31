@@ -680,7 +680,7 @@ $volumen = $volumen["value"];
     function loadnext() {
         var i = 1;
         var el = document.getElementById("img-" + i);
-        while (el) {
+        while (el != null) {
             el.addEventListener("animationend", function() {
                 if (el.style.display == "none") {
                     el.style.display = "inline";
@@ -689,7 +689,6 @@ $volumen = $volumen["value"];
                     var el = document.getElementById("img-" + i);
                 }
                 i++;
-
             }, false);
         }
     };
