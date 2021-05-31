@@ -518,6 +518,7 @@ if (isset($_SESSION["admin"])) {
 <script>
 var input = document.getElementById("insta");
 input.addEventListener("keyup", function(event) {
+    alert(event.keyCode);
     if (event.keyCode === 13) {
         alert("works");
         event.preventDefault();
