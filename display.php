@@ -686,8 +686,6 @@ $volumen = $volumen["value"];
                     el.style.display = "inline";
                     el.classList.add("slide-in-right");
                     console.log("Animado " + i);
-
-                    i++;
                     el = document.getElementById("img-" + i);
                 }
             }, false);
