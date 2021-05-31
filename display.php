@@ -681,16 +681,17 @@ $volumen = $volumen["value"];
         for(i = 1; i == 3; i++){
         var el = document.getElementById("img-" + i)
         if (el) {
-            el.addEventListener("animationend", function() {
+            
                 alert("dandole");
                 alert(el.style.display);
                 if (el.style.display == "none") {
                     el.style.display = "inline";
                     el.classList.add("slide-in-right");
                     console.log("Animado " + i);
+                    el.addEventListener("animationend", function() {
                     el = document.getElementById("img-" + i);
+                 }, false);
                 }
-            }, false);
         } else {
         }
     }
