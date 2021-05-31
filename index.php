@@ -83,7 +83,7 @@ if (isset($_SESSION["admin"])) {
             border: #1d1d1d 1px solid;
             color: #f0f0f0;
             font-size: 0.9em;
-            width: 100px;
+            width: auto;
             height: 50px;
             border-radius: 20px;
             font-size: 20px;
