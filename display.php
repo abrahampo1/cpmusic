@@ -283,8 +283,8 @@ $volumen = $volumen["value"];
 
     @keyframes slide-in-bottom {
         0% {
-            -webkit-transform: translateY(1000px);
-            transform: translateY(1000px);
+            -webkit-transform: translateY(-1000px);
+            transform: translateY(-1000px);
             -webkit-transform: translateX(-960px);
             transform: translateX(-960px);
             opacity: 0
