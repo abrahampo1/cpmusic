@@ -615,7 +615,28 @@ $volumen = $volumen["value"];
 
     }, 1000);
 </script>
-
+<script>
+    function loadnext() {
+        for(i = 1; i == 3; i++){
+            alert("empezando")
+        var el = document.getElementById("img-" + i)
+        if (el) {
+            
+                alert("dandole");
+                alert(el.style.display);
+                if (el.style.display == "none") {
+                    el.style.display = "inline";
+                    el.classList.add("slide-in-right");
+                    console.log("Animado " + i);
+                    el.addEventListener("animationend", function() {
+                    el = document.getElementById("img-" + i);
+                 }, false);
+                }
+        } else {
+        }
+    }
+    };
+</script>
 <script>
     var siguientes = window.setInterval(function() {
         $.ajax({
@@ -677,25 +698,3 @@ $volumen = $volumen["value"];
     });
 </script>
 
-<script>
-    function loadnext() {
-        for(i = 1; i == 3; i++){
-            alert("empezando")
-        var el = document.getElementById("img-" + i)
-        if (el) {
-            
-                alert("dandole");
-                alert(el.style.display);
-                if (el.style.display == "none") {
-                    el.style.display = "inline";
-                    el.classList.add("slide-in-right");
-                    console.log("Animado " + i);
-                    el.addEventListener("animationend", function() {
-                    el = document.getElementById("img-" + i);
-                 }, false);
-                }
-        } else {
-        }
-    }
-    };
-</script>
