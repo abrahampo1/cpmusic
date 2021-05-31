@@ -213,6 +213,7 @@ if (isset($_SESSION["admin"])) {
         .media.off {
             border-radius: 25px 0px 0px 25px;
             margin-right: 0px !important;
+            font-size: 50px;
 
         }
 
