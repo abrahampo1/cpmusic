@@ -229,7 +229,7 @@ if (isset($_SESSION["admin"])) {
         .admin {
             position: fixed;
             left: 0;
-            top: 0;
+            top: 10;
         }
         .slide-top {
 	-webkit-animation: slide-top 1s cubic-bezier(0.600, -0.280, 0.735, 0.045) 1 both;
