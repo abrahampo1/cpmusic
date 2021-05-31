@@ -322,9 +322,12 @@ if (isset($_POST["stream"])) {
     </form>
     <div class="playlist">
         <h2>Ajustes Apagado automatico</h2>
-        <p>Apagado/Encendido automatico</p><input type="checkbox" id="timer" class="checkbox" <?php if ($playlist_active == 1) {
-                                                                echo "checked";
-                                                            } ?>>>
+        <div class="playlist-options">
+            <p>Apagado/Encendido automatico</p><input type="checkbox" id="timer" class="checkbox" <?php if ($playlist_active == 1) {
+                                                                                                        echo "checked";
+                                                                                                    } ?>>
+        </div>
+
     </div>
     <div class="playlist">
         <h2>Ajustes Playlist</h2>
