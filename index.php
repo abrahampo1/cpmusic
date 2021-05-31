@@ -308,7 +308,7 @@ if (isset($_SESSION["admin"])) {
         echo '<img style="border-radius:20px" id="image-preview" src="http://img.youtube.com/vi/' . $videoid . '/mqdefault.jpg" height="auto" width="40%">';
         echo '<br><br><p style="font-size:25px">Opcional<p><hr>';
         echo '<div class="input-row"><input id="insta" name="insta" class="input-field" type="text" placeholder="Escribe tu @ de insta"></div><input type="hidden" name="video_id" id="url" value="' . $videoid . '">';
-        echo '<button id="sub-insta" class="btn-submit" type="button" onclick="addqueue()" >→</button>';
+        echo '<button id="sub-insta" class="btn-submit" type="button" onclick="addqueue()" >Enviar Canción →</button>';
         exit;
     }
     ?>
@@ -520,7 +520,7 @@ var input = document.getElementById("insta");
 input.addEventListener("keyup", function(event) {
     if (event.keyCode === 13) {
         event.preventDefault();
-        document.getElementById("sub-insta").click();
+        addqueue();
     }
 });
 </script>
