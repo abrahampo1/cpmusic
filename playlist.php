@@ -193,12 +193,12 @@ if(isset($_GET["p"])){
 
         }
         nav {
-            height: 100px;
+            height: 60px;
             text-align: center;
             background-color: white;
         }
         nav img{
-            height: 80px;
+            height: 50px;
         }
 
         .admin {
