@@ -285,6 +285,8 @@ $volumen = $volumen["value"];
         0% {
             -webkit-transform: translateY(1000px);
             transform: translateY(1000px);
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
             opacity: 0
         }
 
