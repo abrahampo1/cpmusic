@@ -616,24 +616,14 @@ $volumen = $volumen["value"];
     }, 1000);
 </script>
 <script>
-    function loadnext() {
-        
-        for (i = 1; i != 4; i++) {
-            var el = document.getElementById("img-"+i)
-            if (el) {
-                if (el.style.display == "none") {
-                    el.style.display = "inline";
-                    el.classList.add("slide-in-right");
-                    setTimeout(function() {
-                        
-                    }, 1000);
+    function loadnext(el, segundos) {
+        if (el.style.display == "none") {
+            setTimeout(function() {
+                el.style.display = "inline";
+                el.classList.add("slide-in-right");
+            }, segundos);
 
-                } else {
-                }
-            } else {
-                break;
-            }
-        }
+        } else {}
     };
 </script>
 <script>
@@ -651,7 +641,6 @@ $volumen = $volumen["value"];
                         responsenew = response.replace(document.getElementById("siguiente_holder").innerHTML, "");
                         document.getElementById("siguientes").innerHTML = document.getElementById("siguientes").innerHTML + responsenew;
                         document.getElementById("siguiente_holder").innerHTML = response;
-                        loadnext();
                     } else if (response == "") {
                         document.getElementById("siguientes").style.width = "";
                     }
