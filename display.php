@@ -631,6 +631,7 @@ $volumen = $volumen["value"];
                         responsenew = response.replace(document.getElementById("siguiente_holder").innerHTML, "");
                         document.getElementById("siguientes").innerHTML = document.getElementById("siguientes").innerHTML + responsenew;
                         document.getElementById("siguiente_holder").innerHTML = response;
+                        alert("cargando");
                         loadnext();
                     } else if (response == "") {
                         document.getElementById("siguientes").style.width = "";
