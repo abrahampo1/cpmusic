@@ -1,6 +1,7 @@
 <html>
 <?php
 include("database.php");
+include("ajustes.php");
 session_start();
 if (!isset($_SESSION["admin"])) {
     header("location: ./login");
@@ -8,37 +9,21 @@ if (!isset($_SESSION["admin"])) {
 $sql = "SELECT * FROM musica WHERE reproducida = 0 and datos = 1";
 $do = mysqli_query($link, $sql);
 $musicaahora = mysqli_fetch_assoc($do);
-$sql = "SELECT * FROM ajustes WHERE nombre = 'status'";
-$do = mysqli_query($link, $sql);
-$result = mysqli_fetch_assoc($do);
-if ($result["value"] == "pause") {
+if (ajuste("status") == "pause") {
     $icon = "fas fa-play";
 } else if ($result["value"] == "play") {
     $icon = "fas fa-pause";
 } else {
     $icon = "fas fa-pause";
 }
-$sql = "SELECT * FROM ajustes WHERE nombre = 'playlist'";
-$do = mysqli_query($link, $sql);
-$result = mysqli_fetch_assoc($do);
-$playlist_sel = $result["value"];
-$sql = "SELECT * FROM ajustes WHERE nombre = 'playlist_active'";
-$do = mysqli_query($link, $sql);
-$result = mysqli_fetch_assoc($do);
-$playlist_active = $result["value"];
-$sql = "SELECT * FROM ajustes WHERE nombre = 'timer'";
-$do = mysqli_query($link, $sql);
-$result = mysqli_fetch_assoc($do);
-$timer = $result["value"];
-$sql = "SELECT * FROM ajustes WHERE nombre = 'volume'";
-$do = mysqli_query($link, $sql);
-$result = mysqli_fetch_assoc($do);
-$volumen = floatval($result["value"]) * 100;
+$playlist_sel = ajuste("playlist");
+$playlist_active = ajuste("playlist_active");
+$timer = ajuste("timer");
+$start_hour = ajuste("start_hour");
+$stop_hour = ajuste("stop_hour");
+$volumen = floatval(ajuste("volume")) * 100;
 if (isset($_POST["play"])) {
-    $sql = "SELECT * FROM ajustes WHERE nombre = 'status'";
-    $do = mysqli_query($link, $sql);
-    $result = mysqli_fetch_assoc($do);
-    if ($result["value"] == "play") {
+    if (ajuste("status") == "play") {
         $sql = "UPDATE `ajustes` SET `value` = 'pause' WHERE `ajustes`.`nombre` = 'status';";
     } else {
         $sql = "UPDATE `ajustes` SET `value` = 'play' WHERE `ajustes`.`nombre` = 'status';";
@@ -335,6 +320,8 @@ if (isset($_POST["stream"])) {
             <p>Reproducción automatica </p><input class="checkbox" id="playlist_active" type="checkbox" <?php if ($playlist_active == 1) {
                                                                                                             echo "checked";
                                                                                                         } ?>>
+            <input type="number" step="1" max="23" min="1" name="" id="start_hour">
+            <input type="number" step="1" max="23" min="1" name="" id="stop_hour">
         </div>
         <h3>Playlist Seleccionada</h3>
         <select name="playlist" id="">
