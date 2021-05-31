@@ -624,10 +624,9 @@ $volumen = $volumen["value"];
                 if (el.style.display == "none") {
                     el.style.display = "inline";
                     el.classList.add("slide-in-right");
-                    var delayInMilliseconds = 1000;
                     setTimeout(function() {
                         var el = document.getElementById("img-"+i)
-                    }, delayInMilliseconds);
+                    }, 1000);
 
                 } else {
                 }
