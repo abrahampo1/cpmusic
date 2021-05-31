@@ -43,9 +43,11 @@ $volumen = $volumen["value"];
         font-family: 'Montserrat', sans-serif;
         z-index: 100;
     }
-    body{
+
+    body {
         overflow: hidden;
     }
+
     h1 {
         text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white !important;
         font-family: 'Hind Siliguri', sans-serif !important;
@@ -390,7 +392,7 @@ $volumen = $volumen["value"];
         if ($contenido == false) {
             echo '<div class="ies-div"><img class="ies" onerror="location.reload()" onloadeddata="color()" src="' . $miniatura . '" height="auto" width="100%" alt=""></div>';
         } else {
-            echo '<div class="video-div"><input type="hidden" id="video_tiempo" value="' . $tiempo . '"><input type="hidden" id="video_total" value="' . $tiempo_total . '"><video src="' . $videourl . '#t=' . $tiempo . '" id="videoclip" volume="'.$volumen.'" onload="barra()" onloadstart="barra()" controls autoplay width="100%" height="auto"></video><div id="myProgress">
+            echo '<div class="video-div"><input type="hidden" id="video_tiempo" value="' . $tiempo . '"><input type="hidden" id="video_total" value="' . $tiempo_total . '"><video src="' . $videourl . '#t=' . $tiempo . '" id="videoclip" volume="' . $volumen . '" onload="barra()" onloadstart="barra()" controls autoplay width="100%" height="auto"></video><div id="myProgress">
             <div id="myBar"></div>
           </div></div>';
         }
@@ -675,32 +677,20 @@ $volumen = $volumen["value"];
 </script>
 
 <script>
-    function loadnext(){
-                var i = 1;
-                var el = document.getElementById("img-" + i);
-                if (el) {
-                    if(el.style.display != "none"){
-                        i++;
-                        el = document.getElementById("img-" + i);
-                    }
+    function loadnext() {
+        var i = 1;
+        var el = document.getElementById("img-" + i);
+        while (el) {
+            el.addEventListener("animationend", function() {
+                if (el.style.display == "none") {
                     el.style.display = "inline";
                     el.classList.add("slide-in-right");
-                    i++;
-                    el.addEventListener("animationend", function() {
-                        var el = document.getElementById("img-" + i);
-                        if (el) {
-                            i++;
-                            el.style.display = "inline";
-                            el.classList.add("slide-in-right");
-                            el.addEventListener("animationend", function() {
-                                var el = document.getElementById("img-" + i);
-                                if (el) {
-                                    el.style.display = "inline";
-                                    el.classList.add("slide-in-right");
-                                }
-                            }, false);
-                        }
-                    }, false);
+
+                    var el = document.getElementById("img-" + i);
                 }
-            };
+                i++;
+
+            }, false);
+        }
+    };
 </script>
