@@ -60,6 +60,11 @@ if(isset($_POST["clave"])){
         .media.off {
             border-radius: 25px 0px 0px 25px;
             margin-right: 0px !important;
+            position: fixed;
+            left: 0;
+            top: 0;
+            color: black;
+            background: none;
             font-size: 50px;
 
         }
