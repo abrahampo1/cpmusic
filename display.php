@@ -678,7 +678,7 @@ $volumen = $volumen["value"];
 
 <script>
     function loadnext() {
-        var i = 1;
+        for(i = 1; i == 3; i++){
         var el = document.getElementById("img-" + i)
         if (el) {
             el.addEventListener("animationend", function() {
@@ -692,7 +692,7 @@ $volumen = $volumen["value"];
                 }
             }, false);
         } else {
-            break;
         }
+    }
     };
 </script>
