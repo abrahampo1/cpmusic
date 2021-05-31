@@ -320,7 +320,7 @@ if (isset($_POST["stream"])) {
                                 } ?></button>
         <button id="console_btn" onclick="console()" type="button">Abrir consola</button>
     </form>
-    <div>
+    <div class="playlist">
         <h2>Ajustes Apagado automatico</h2>
         <p>Apagado/Encendido automatico</p><input type="checkbox" id="timer" class="checkbox" <?php if ($playlist_active == 1) {
                                                                 echo "checked";
