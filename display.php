@@ -281,7 +281,6 @@ $volumen = $volumen["value"];
 
             -webkit-transform: translateX(-960px);
             -webkit-transform: translateY(0);
-            transform: translateX(-960px);
             transform: translateY(0);
             opacity: 1
         }
@@ -289,18 +288,14 @@ $volumen = $volumen["value"];
 
     @keyframes slide-in-bottom {
         0% {
-            -webkit-transform: translateX(-960px);
             -webkit-transform: translateY(1000px);
-            transform: translateX(-960px);
             transform: translateY(1000px);
             
             opacity: 0
         }
 
         100% {
-            -webkit-transform: translateX(-960px);
             -webkit-transform: translateY(0);
-            transform: translateX(-960px);
             transform: translateY(0);
             
             opacity: 1
@@ -689,6 +684,7 @@ $volumen = $volumen["value"];
         if (el.style.display == "none") {
             setTimeout(function() {
                 el.style.display = "inline";
+                el.style.transform = "translateX(-960px);";
                 el.classList.add("slide-in-bottom")
                 setTimeout(function() {
                     el.classList.add("slide-in-left");
