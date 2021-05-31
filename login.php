@@ -60,26 +60,25 @@ if(isset($_POST["clave"])){
         .media.off {
             border-radius: 25px 0px 0px 25px;
             margin-right: 0px !important;
-            position: fixed;
-            left: 0;
-            top: 0;
-            color: black;
-            background: none;
+            font-size: 50px;
 
         }
+
         nav {
-            height: 60px;
+            height: 100px;
+            font-size: 50px;
             text-align: center;
             background-color: white;
         }
-        nav img{
-            height: 50px;
+
+        nav img {
+            height: 80px;
         }
 
         .admin {
             position: fixed;
             left: 0;
-            top: 0;
+            top: 10;
         }
 </style>
 <nav>
