@@ -329,10 +329,10 @@ if (isset($_POST["stream"])) {
                                                                                                             echo "checked";
                                                                                                         } ?>>
                                                                                                         <br>
-            <input class="input-field" type="number" step="1" max="23" min="1" name="" id="start_hour" value="<?php echo $start_hour ?>">
-            <br>
-            <input class="input-field" type="number" step="1" max="23" min="1" name="" id="stop_hour" value="<?php echo $stop_hour ?>">
+            
         </div>
+        <input class="input-field" type="number" step="1" max="23" min="1" name="" id="start_hour" value="<?php echo $start_hour ?>">
+            <input class="input-field" type="number" step="1" max="23" min="1" name="" id="stop_hour" value="<?php echo $stop_hour ?>">
         <h3>Playlist Seleccionada</h3>
         <select name="playlist" id="">
             <?php
