@@ -202,11 +202,8 @@ $volumen = $volumen["value"];
         justify-content: center;
         align-items: center;
     }
-
     .siguiente {
-        animation: fadeInAnimation ease 2s;
-        animation-iteration-count: 1;
-        animation-fill-mode: forwards;
+        
         display: flex;
         justify-content: center;
         align-items: center;
@@ -626,6 +623,7 @@ $volumen = $volumen["value"];
 
         } else {
             el.classList.remove("slide-in-right");
+            el.classList.remove("s");
         }
     };
 </script>
