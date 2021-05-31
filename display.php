@@ -684,7 +684,7 @@ $volumen = $volumen["value"];
                 el.classList.add("slide-in-bottom")
                 setTimeout(function() {
                     el.classList.add("slide-in-left");
-                }, 500);
+                }, 5000);
             }, 500);
 
         } else {
