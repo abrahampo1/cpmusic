@@ -197,7 +197,7 @@ if(isset($_GET["p"])){
             background-color: white;
         }
         nav img{
-            height: 50px;
+            height: 80px;
         }
 
         .admin {
