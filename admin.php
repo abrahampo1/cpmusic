@@ -321,7 +321,11 @@ if (isset($_POST["stream"])) {
                                                                                                         echo "checked";
                                                                                                     } ?>>
         </div>
-
+        <p>Hora de encendido</p>
+        <input class="input-field" type="number" step="1" max="23" min="1" name="" id="start_hour" value="<?php echo $start_hour ?>">
+        <p>Hora de apagado</p>
+        <input class="input-field" type="number" step="1" max="23" min="1" name="" id="stop_hour" value="<?php echo $stop_hour ?>">
+        <h3>Playlist Seleccionada</h3>
     </div>
     <div class="playlist">
         <h2>Ajustes Playlist</h2>
@@ -332,11 +336,7 @@ if (isset($_POST["stream"])) {
             <br>
 
         </div>
-        <p>Hora de encendido</p>
-        <input class="input-field" type="number" step="1" max="23" min="1" name="" id="start_hour" value="<?php echo $start_hour ?>">
-        <p>Hora de apagado</p>
-        <input class="input-field" type="number" step="1" max="23" min="1" name="" id="stop_hour" value="<?php echo $stop_hour ?>">
-        <h3>Playlist Seleccionada</h3>
+        
         <select name="playlist" id="">
             <?php
             $sql = "SELECT * FROM playlist";
