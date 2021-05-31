@@ -189,7 +189,6 @@ if(isset($_GET["p"])){
         .media.off {
             border-radius: 25px 0px 0px 25px;
             margin-right: 0px !important;
-            font-size: 50px;
 
         }
         nav {
@@ -204,7 +203,7 @@ if(isset($_GET["p"])){
         .admin {
             position: fixed;
             left: 0;
-            top: 10;
+            top: 0;
         }
     </style>
 
