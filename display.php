@@ -625,7 +625,7 @@ $volumen = $volumen["value"];
                     el.style.display = "inline";
                     el.classList.add("slide-in-right");
                     setTimeout(function() {
-                        i++
+                        i++;
                     }, 1000);
 
                 } else {
