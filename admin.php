@@ -11,7 +11,7 @@ $do = mysqli_query($link, $sql);
 $musicaahora = mysqli_fetch_assoc($do);
 if (ajuste("status") == "pause") {
     $icon = "fas fa-play";
-} else if ($result["value"] == "play") {
+} else if (ajuste("status") == "play") {
     $icon = "fas fa-pause";
 } else {
     $icon = "fas fa-pause";
