@@ -218,14 +218,14 @@ if (isset($_SESSION["admin"])) {
         }
 
         nav {
-            height: 60px;
+            height: 100px;
             font-size: 50px;
             text-align: center;
             background-color: white;
         }
 
         nav img {
-            height: 50px;
+            height: 80px;
         }
 
         .admin {
