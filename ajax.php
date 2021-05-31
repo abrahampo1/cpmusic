@@ -49,7 +49,7 @@ if (isset($_POST["nuevo"])) {
             $ultima_html = "";
         }
 
-        echo '<div class="container"><img style="z-index: 1; display:none" class="siguiente siguiente-img" id="img-'.$video.'" src="' . $thumbnail . '" height="auto" width="100%" alt="">' . $ultima_html . '</div><br>';
+        echo '<div class="container"><img style="z-index: 1; display:none" class="siguiente siguiente-img" id="img-' . $video . '" src="' . $thumbnail . '" height="auto" width="100%" alt="">' . $ultima_html . '</div><br>';
         $video++;
     }
 }
@@ -177,23 +177,23 @@ if (isset($_POST["playlist"])) {
         <div class="video-tile">
             <div class="videoDiv container">
                 <form action="/" method="post">
-                    <input type="hidden" name="videoid" value="<?php echo $videoId ?>">
-                    <input type="hidden" name="title" value="<?php echo $title ?>">
-                    <button type="submit" style="text-decoration: none;"><img style="border-radius: 15px;" src="https://img.youtube.com/vi/<?php echo $videoId ?>/mqdefault.jpg" height="auto" width="100%" alt=""></button>
+                    <input name="videoid" type="hidden" value="<?php echo $videoId ?>">
+                    <input name="title" type="hidden" value="<?php echo $title ?>">
+                    <button style="text-decoration: none;" type="submit"><img width="100%" height="auto" style="border-radius: 15px;" src="https://img.youtube.com/vi/<?php echo $videoId ?>/mqdefault.jpg"></button>
                     <?php
-            if (isset($_SESSION["admin"])) {
-            ?>
-                <div class="centered">
-                    <a class="fav" href="#" onclick="removefav('<?php echo $videoId ?>')">
-                        <i class="<?php echo $estrella ?>"></i>
-                    </a>
-                </div>
-            <?php
-            }
-            ?>
+                    if (isset($_SESSION["admin"])) {
+                    ?>
+                        <div class="centered">
+                            <a class="fav" onclick="removefav('<?php echo $videoId ?>')" href="#">
+                                <i class="<?php echo $estrella ?>"></i>
+                            </a>
+                        </div>
+                    <?php
+                    }
+                    ?>
                 </form>
             </div>
-            
+
             <div class="videoInfo">
                 <div class="videoTitle"><b><?php echo $title ?></b></div>
                 <div class="videoDesc">@<?php echo $description ?></div>
@@ -275,20 +275,19 @@ if (isset($_POST["getplaydata"])) {
     echo ";";
     echo $result["miniatura"];
 }
- 
 
-if(isset($_POST["playlist_active"])){
-    if($_POST["playlist_active"] == 'true'){
+
+if (isset($_POST["playlist_active"])) {
+    if ($_POST["playlist_active"] == 'true') {
         $sql = "UPDATE `ajustes` SET `value` = '1' WHERE `ajustes`.`nombre` = 'playlist_active';";
         $response = 'true';
-    }else{
+    } else {
         $sql = "UPDATE `ajustes` SET `value` = '0' WHERE `ajustes`.`nombre` = 'playlist_active';";
         $response = 'false';
     }
-    if(mysqli_query($link, $sql)){
+    if (mysqli_query($link, $sql)) {
         echo $response;
     }
-    
 }
 
 
@@ -306,12 +305,12 @@ if (isset($_POST["add_video_id"])) {
     }
     $sql = "SELECT * FROM musica WHERE reproducida = 0 and urlspoti = 'https://www.youtube.com/watch?v=$video_id'";
     $do = mysqli_query($link, $sql);
-    if($do->num_rows == 0){
-    $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`) VALUES (NULL, 'https://www.youtube.com/watch?v=$video_id', '', '', '0', '', '$insta', 0);";
-    if (mysqli_query($link, $sql)) {
-        echo("ok");
+    if ($do->num_rows == 0) {
+        $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`) VALUES (NULL, 'https://www.youtube.com/watch?v=$video_id', '', '', '0', '', '$insta', 0);";
+        if (mysqli_query($link, $sql)) {
+            echo ("ok");
+        }
+    } else {
+        echo ("notok");
     }
-}else{
-    echo("notok");
-}
 }

@@ -293,7 +293,7 @@ if (isset($_SESSION["admin"])) {
         echo '<img style="border-radius:20px" id="image-preview" src="http://img.youtube.com/vi/' . $videoid . '/mqdefault.jpg" height="auto" width="40%">';
         echo '<br><br><p style="font-size:25px">Opcional<p><hr>';
         echo '<div class="input-row"><input id="insta" name="insta" class="input-field" type="text" placeholder="Escribe tu @ de insta"></div><input type="hidden" name="video_id" id="url" value="' . $videoid . '">';
-        echo '<button class="btn-submit" type="button" onclick="addqueue()" >→</button>';
+        echo '<button id="sub-insta" class="btn-submit" type="button" onclick="addqueue()" >→</button>';
         exit;
     }
     ?>
@@ -313,9 +313,9 @@ if (isset($_SESSION["admin"])) {
             </div>
 
             <input class="btn-submit" type="submit" name="submit" value="Buscar en YouTube →"><br><br>
-            <a href="playlist?p=1" class="btn-submit inicio" style="text-decoration: none; margin-top:15px">Playlist de Favoritas →</a>
+            
         </form>
-
+        <a href="playlist?p=1" class="btn-submit inicio" style="text-decoration: none; margin-top:15px">Playlist de Favoritas</a>
     </div>
 
     <?php if (!empty($response)) { ?>
@@ -500,3 +500,12 @@ if (isset($_SESSION["admin"])) {
     }
 </script>
 
+<script>
+var input = document.getElementById("insta");
+input.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("sub-insta").click();
+    }
+});
+</script>
