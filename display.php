@@ -640,7 +640,7 @@ $volumen = $volumen["value"];
                     if (response != document.getElementById("siguiente_holder").innerHTML) {
                         document.getElementById("siguientes").style.width = "100%";
                         responsenew = response.replace(document.getElementById("siguiente_holder").innerHTML, "");
-                        document.getElementById("siguientes").innerHTML = document.getElementById("siguientes").innerHTML + responsenew;
+                        document.getElementById("siguientes").innerHTML += responsenew;
                         document.getElementById("siguiente_holder").innerHTML = response;
                     } else if (response == "") {
                         document.getElementById("siguientes").style.width = "";
