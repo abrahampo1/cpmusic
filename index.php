@@ -445,17 +445,6 @@ if (isset($_SESSION["admin"])) {
 </html>
 
 <script>
-var input = document.getElementById("insta-input");
-input.addEventListener("keyup", function(event) {
-    alert(event.keyCode);
-    if (event.keyCode === 13) {
-        alert("works");
-        event.preventDefault();
-        addqueue();
-    }
-});
-</script>
-<script>
     function igminita() {
         var iglargo = document.getElementById("ig-minita").value;
         if (iglargo.length >= 20) {
