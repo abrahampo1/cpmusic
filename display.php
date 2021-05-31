@@ -617,8 +617,9 @@ $volumen = $volumen["value"];
 </script>
 <script>
     function loadnext() {
-        var el = document.getElementById("img-1")
+        
         for (i = 1; i != 3;) {
+            var el = document.getElementById("img-"+i)
             if (el) {
                 if (el.style.display == "none") {
                     el.style.display = "inline";
@@ -626,7 +627,6 @@ $volumen = $volumen["value"];
                     var delayInMilliseconds = 1000;
                     setTimeout(function() {
                         i++;
-                        el = document.getElementById("img-" + i)
                     }, delayInMilliseconds);
 
                 } else {
