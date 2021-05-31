@@ -620,7 +620,6 @@ $volumen = $volumen["value"];
         var el = document.getElementById("img-1")
         for (i = 1; i != 3;) {
             if (el) {
-                alert(el.style.display);
                 if (el.style.display == "none") {
                     el.style.display = "inline";
                     el.classList.add("slide-in-right");
@@ -631,7 +630,9 @@ $volumen = $volumen["value"];
                 }else{
                     i++;
                 }
-            } else {}
+            }else{
+                break;
+            }
         }
     };
 </script>
