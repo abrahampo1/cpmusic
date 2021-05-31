@@ -218,6 +218,7 @@ if (isset($_SESSION["admin"])) {
 
         nav {
             height: 60px;
+            font-size: 50px;
             text-align: center;
             background-color: white;
         }
