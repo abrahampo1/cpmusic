@@ -70,12 +70,12 @@ if (isset($_SESSION["admin"])) {
         }
 
         .input-field {
-            width: 100%;
+            width: 80%;
             border-radius: 30px;
             padding: 10px;
             text-align: center;
             font-size: 40px;
-            border: #e0dfdf 1px solid;
+            border: #e0dfdf 2px solid;
         }
 
         .btn-submit {
