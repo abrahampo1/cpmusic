@@ -82,11 +82,22 @@ if (isset($_SESSION["admin"])) {
             background: #333;
             border: #1d1d1d 1px solid;
             color: #f0f0f0;
-            font-size: 0.9em;
+            padding: 5px;
             width: auto;
             height: auto;
             border-radius: 20px;
             font-size: 40px;
+            cursor: pointer;
+        }
+        .btn-playlist {
+            background: #333;
+            border: #1d1d1d 1px solid;
+            color: #f0f0f0;
+            font-size: 0.9em;
+            width: auto;
+            height: auto;
+            border-radius: 20px;
+            font-size: 20px;
             cursor: pointer;
         }
 
@@ -315,7 +326,7 @@ if (isset($_SESSION["admin"])) {
             <input class="btn-submit" type="submit" name="submit" value="Buscar en YouTube →"><br><br>
             
         </form>
-        <a href="playlist?p=1" class="btn-submit inicio" style="text-decoration: none; margin-top:15px">Playlist de Favoritas</a>
+        <a href="playlist?p=1" class="btn-playlist inicio" style="text-decoration: none; margin-top:15px">Playlist de Favoritas</a>
     </div>
 
     <?php if (!empty($response)) { ?>
