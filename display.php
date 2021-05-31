@@ -626,6 +626,7 @@ $volumen = $volumen["value"];
                     el.classList.add("slide-in-right");
                     var delayInMilliseconds = 1000;
                     setTimeout(function() {
+                        var el = document.getElementById("img-"+i)
                     }, delayInMilliseconds);
 
                 } else {
