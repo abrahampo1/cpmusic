@@ -429,7 +429,7 @@ $volumen = $volumen["value"];
 <body id="back" onload="color()" style="text-align: center;">
 
     <h1><?php echo $titulo ?></h1>
-    <div style="display: flex; width:100%; background-color: none">
+    <div style="display: flex; width:100%; background-color: none; overflow:visible">
         <div class="anterior" style="width: 15%;">
 
             <?php
@@ -461,7 +461,7 @@ $volumen = $volumen["value"];
 
         <img style="display: none;" onerror="location.reload()" id="img-principal" onloadeddata="color()" src="<?php echo $miniatura ?>" height="auto" width="100%" alt="" />
 
-        <div class="siguiente" onload="loadnext()" style="width: 15%; z-index: 201; overflow: show">
+        <div class="siguiente" onload="loadnext()" style="width: 15%; z-index: 201; overflow:visible">
             <div id="siguientes" style="width: 100%"></div>
         </div>
     </div>
