@@ -622,7 +622,7 @@ $volumen = $volumen["value"];
             setTimeout(function() {
                 el.style.display = "inline";
                 el.classList.add("slide-in-right");
-            }, 1000);
+            }, 0);
 
         } else {}
     };
