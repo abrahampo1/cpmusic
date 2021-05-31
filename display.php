@@ -617,6 +617,7 @@ $volumen = $volumen["value"];
 </script>
 <script>
     function loadnext(el, segundos) {
+        var el = document.getElementById("img-"+el);
         if (el.style.display == "none") {
             setTimeout(function() {
                 el.style.display = "inline";

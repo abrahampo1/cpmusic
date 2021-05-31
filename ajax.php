@@ -49,7 +49,7 @@ if (isset($_POST["nuevo"])) {
             $ultima_html = "";
         }
         $tiempo = ($video-1)*1000;
-        echo '<div class="container"><img style="z-index: 1; display:none" class="siguiente siguiente-img" onload="loadnext(this, '.$tiempo.')" id="img-' . $video . '" src="' . $thumbnail . '" height="auto" width="100%" alt="">' . $ultima_html . '</div><br>';
+        echo '<div class="container"><img style="z-index: 1; display:none" class="siguiente siguiente-img" onload="loadnext('.$video.', '.$tiempo.')" id="img-' . $video . '" src="' . $thumbnail . '" height="auto" width="100%" alt="">' . $ultima_html . '</div><br>';
         $video++;
     }
 }
