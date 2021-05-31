@@ -320,7 +320,9 @@ if (isset($_POST["stream"])) {
             <p>Reproducción automatica </p><input class="checkbox" id="playlist_active" type="checkbox" <?php if ($playlist_active == 1) {
                                                                                                             echo "checked";
                                                                                                         } ?>>
+                                                                                                        <br>
             <input type="number" step="1" max="23" min="1" name="" id="start_hour" value="<?php echo $start_hour ?>">
+            <br>
             <input type="number" step="1" max="23" min="1" name="" id="stop_hour" value="<?php echo $stop_hour ?>">
         </div>
         <h3>Playlist Seleccionada</h3>
