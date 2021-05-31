@@ -622,14 +622,11 @@ $volumen = $volumen["value"];
         var el = document.getElementById("img-" + i)
         if (el) {
             
-                alert("dandole");
                 alert(el.style.display);
                 if (el.style.display == "none") {
                     el.style.display = "inline";
                     el.classList.add("slide-in-right");
-                    console.log("Animado " + i);
                     el.addEventListener("animationend", function() {
-                    el = document.getElementById("img-" + i);
                  }, false);
                 }
         } else {
