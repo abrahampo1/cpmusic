@@ -345,8 +345,8 @@ $volumen = $volumen["value"];
 
     @-webkit-keyframes slide-in-left {
         0% {
-            -webkit-transform: translateX(-1000px);
-            transform: translateX(-1000px);
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
         }
 
         100% {
@@ -357,8 +357,8 @@ $volumen = $volumen["value"];
 
     @keyframes slide-in-left {
         0% {
-            -webkit-transform: translateX(-1000px);
-            transform: translateX(-1000px);
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
         }
 
         100% {
