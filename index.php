@@ -40,8 +40,40 @@ if (isset($_SESSION["admin"])) {
         * {
             font-family: 'Montserrat', sans-serif;
         }
-        .rotate-out-2-cw{-webkit-animation:rotate-out-2-cw .6s cubic-bezier(.25,.46,.45,.94) both;animation:rotate-out-2-cw .6s cubic-bezier(.25,.46,.45,.94) both}
-        @-webkit-keyframes rotate-out-2-cw{0%{-webkit-transform:rotate(0);transform:rotate(0);opacity:1}100%{-webkit-transform:rotate(45deg);transform:rotate(45deg);opacity:0}}@keyframes rotate-out-2-cw{0%{-webkit-transform:rotate(0);transform:rotate(0);opacity:1}100%{-webkit-transform:rotate(45deg);transform:rotate(45deg);opacity:0}}
+
+        .rotate-out-2-cw {
+            -webkit-animation: rotate-out-2-cw .6s cubic-bezier(.25, .46, .45, .94) both;
+            animation: rotate-out-2-cw .6s cubic-bezier(.25, .46, .45, .94) both
+        }
+
+        @-webkit-keyframes rotate-out-2-cw {
+            0% {
+                -webkit-transform: rotate(0);
+                transform: rotate(0);
+                opacity: 1
+            }
+
+            100% {
+                -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);
+                opacity: 0
+            }
+        }
+
+        @keyframes rotate-out-2-cw {
+            0% {
+                -webkit-transform: rotate(0);
+                transform: rotate(0);
+                opacity: 1
+            }
+
+            100% {
+                -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);
+                opacity: 0
+            }
+        }
+
         button {
             background: none;
             color: inherit;
@@ -51,9 +83,11 @@ if (isset($_SESSION["admin"])) {
             cursor: pointer;
             outline: inherit;
         }
-        h2{
+
+        h2 {
             font-size: 50px;
         }
+
         body {
             width: 99%;
             padding: 10px;
@@ -91,6 +125,7 @@ if (isset($_SESSION["admin"])) {
             font-size: 40px;
             cursor: pointer;
         }
+
         .btn-playlist {
             background: #333;
             border: #1d1d1d 1px solid;
@@ -233,31 +268,35 @@ if (isset($_SESSION["admin"])) {
             left: 0;
             top: 10;
         }
-        .slide-top {
-	-webkit-animation: slide-top 1s cubic-bezier(0.600, -0.280, 0.735, 0.045) 1 both;
-	        animation: slide-top 1s cubic-bezier(0.600, -0.280, 0.735, 0.045) 1 both;
-}
-@-webkit-keyframes slide-top {
-  0% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-  100% {
-    -webkit-transform: translateY(-800px);
-            transform: translateY(-800px);
-  }
-}
-@keyframes slide-top {
-  0% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-  100% {
-    -webkit-transform: translateY(-800px);
-            transform: translateY(-800px);
-  }
-}
 
+        .slide-top {
+            -webkit-animation: slide-top 1s cubic-bezier(0.600, -0.280, 0.735, 0.045) 1 both;
+            animation: slide-top 1s cubic-bezier(0.600, -0.280, 0.735, 0.045) 1 both;
+        }
+
+        @-webkit-keyframes slide-top {
+            0% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+
+            100% {
+                -webkit-transform: translateY(-800px);
+                transform: translateY(-800px);
+            }
+        }
+
+        @keyframes slide-top {
+            0% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+
+            100% {
+                -webkit-transform: translateY(-800px);
+                transform: translateY(-800px);
+            }
+        }
     </style>
 
 </head>
@@ -280,21 +319,33 @@ if (isset($_SESSION["admin"])) {
                 if (response == "ok") {
                     document.getElementById("image-preview").classList.add("slide-top");
                     setTimeout(function() {
-                            location.replace("./");
-                        }, 1200);
+                        location.replace("./");
+                    }, 1200);
                 }
                 if (response == "notok") {
                     document.getElementById("image-preview").classList.add("rotate-out-2-cw");
                     setTimeout(function() {
-                            location.replace("./");
-                        }, 1200);
+                        location.replace("./");
+                    }, 1200);
                 }
             },
             error: function() {}
         });
     }
 </script>
+
 <body>
+    <nav>
+        <a href="./"><img style="display: inline;" src="logo.png" height="100%" alt=""></a>
+        <form class="admin" method="POST" action="./admin">
+            <button class="media off" value="paquete"><i class="fas fa-user"></i></button>
+            
+        </form>
+        <form class="admin" method="POST" action="https://biblio.asorey.net">
+            <button class="media off" value="paquete"><i class="fas fa-book"></i></button>
+            
+        </form>
+    </nav>
     <?php
     if (isset($_GET["e"])) {
         echo '<h2>El video se ha puesto a la cola.</h2><br><br><a class="btn-submit inicio" style="text-decoration:none" type="submit" name="submit" href="./" value="Inicio">Inicio</a>';
@@ -312,12 +363,7 @@ if (isset($_SESSION["admin"])) {
         exit;
     }
     ?>
-    <nav>
-        <a href="./"><img style="display: inline;" src="logo.png" height="100%" alt=""></a>
-        <form class="admin" method="POST" action="./admin">
-            <button class="media off" value="paquete"><i class="fas fa-user"></i></button>
-        </form>
-    </nav>
+
 
     <h2>Pon tu canción favorita en el hilo</h2>
 
@@ -328,7 +374,7 @@ if (isset($_SESSION["admin"])) {
             </div>
 
             <input class="btn-submit" type="submit" name="submit" value="Buscar en YouTube →"><br><br>
-            
+
         </form>
         <a href="playlist?p=1" class="btn-playlist inicio" style="text-decoration: none; margin-top:15px">Playlist de Favoritas</a>
     </div>
@@ -513,4 +559,3 @@ if (isset($_SESSION["admin"])) {
         window.history.replaceState(null, null, window.location.href);
     }
 </script>
-
