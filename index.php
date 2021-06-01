@@ -36,6 +36,7 @@ if (isset($_SESSION["admin"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="iconos/css/all.css" rel="stylesheet">
+    <meta http-equiv = "refresh" content = "60; url = https://asorey.net" />
     <style>
         * {
             font-family: 'Montserrat', sans-serif;
