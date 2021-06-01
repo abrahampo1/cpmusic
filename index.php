@@ -270,7 +270,7 @@ if (isset($_SESSION["admin"])) {
         }
         .biblio {
             position: fixed;
-            left: 40;
+            left: 60;
             top: 10;
         }
 
