@@ -167,3 +167,12 @@ if (isset($_POST["proponer"])) {
         echo "Se ha añadido " . $url . " correctamente a la cola!";
     }
 }
+if(isset($_GET["getplaydata"])){
+        $sql = "SELECT * FROM musica WHERE reproducida = 0 and datos = 1";
+        $do = mysqli_query($link, $sql);
+        $result = mysqli_fetch_assoc($do);
+        $player->title = $result["titutlo"];
+        $player->miniatura = $result["miniatura"];
+        $player->instagram = $result["insta"];
+        echo json_encode($player);
+}
