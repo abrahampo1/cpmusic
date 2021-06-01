@@ -9,8 +9,9 @@ function generateRandomString($length = 20)
     }
     return $randomString;
 }
+
+include("database.php");
 if (isset($_POST["api"])) {
-    include("database.php");
     $sql = "SELECT * FROM ajustes WHERE nombre = 'timer'";
     $do = mysqli_query($link, $sql);
     $result = mysqli_fetch_assoc($do);
