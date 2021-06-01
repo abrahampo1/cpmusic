@@ -268,6 +268,11 @@ if (isset($_SESSION["admin"])) {
             left: 0;
             top: 10;
         }
+        .biblio {
+            position: fixed;
+            left: 40;
+            top: 10;
+        }
 
         .slide-top {
             -webkit-animation: slide-top 1s cubic-bezier(0.600, -0.280, 0.735, 0.045) 1 both;
@@ -341,7 +346,7 @@ if (isset($_SESSION["admin"])) {
             <button class="media off" value="paquete"><i class="fas fa-user"></i></button>
             
         </form>
-        <form class="admin" method="POST" action="https://biblio.asorey.net">
+        <form class="biblio" method="POST" action="https://biblio.asorey.net">
             <button class="media off" value="paquete"><i class="fas fa-book"></i></button>
             
         </form>
