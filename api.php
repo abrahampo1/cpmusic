@@ -177,6 +177,7 @@ if(isset($_GET["getplaydata"])){
         }else{
             $insta = $result["insta"];
         }
+        $player = (object)array();
         $player->title = $result["titulo"];
         $player->miniatura = $result["miniatura"];
         $player->instagram = $insta;
