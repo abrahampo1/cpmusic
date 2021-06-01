@@ -1,5 +1,5 @@
 <?php
-header("Access-Control-Allow-Origin: https://localhost");
+header("Access-Control-Allow-Origin: http://localhost");
 function generateRandomString($length = 20)
 {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
