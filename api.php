@@ -172,8 +172,13 @@ if(isset($_GET["getplaydata"])){
         $sql = "SELECT * FROM musica WHERE reproducida = 0 and datos = 1";
         $do = mysqli_query($link, $sql);
         $result = mysqli_fetch_assoc($do);
+        if($result["insta"] == ""){
+            $insta = "franciscoasorey";
+        }else{
+            $insta = $result["insta"];
+        }
         $player->title = $result["titulo"];
         $player->miniatura = $result["miniatura"];
-        $player->instagram = $result["insta"];
+        $player->instagram = $insta;
         echo json_encode($player);
 }
