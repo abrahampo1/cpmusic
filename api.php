@@ -169,42 +169,44 @@ if (isset($_POST["proponer"])) {
         echo "Se ha añadido " . $url . " correctamente a la cola!";
     }
 }
-if(isset($_GET["getplaydata"])){
-        $sql = "SELECT * FROM musica WHERE reproducida = 0 and datos = 1";
-        $do = mysqli_query($link, $sql);
-        $result = mysqli_fetch_assoc($do);
-        if($result["insta"] == ""){
-            $insta = "franciscoasorey";
-        }else{
-            $insta = $result["insta"];
-        }
-        $player = (object)array();
-        $player->title = $result["titulo"];
-        $player->miniatura = $result["miniatura"];
-        $player->instagram = $insta;
-        echo json_encode($player);
+if (isset($_GET["getplaydata"])) {
+    $sql = "SELECT * FROM musica WHERE reproducida = 0 and datos = 1";
+    $do = mysqli_query($link, $sql);
+    $result = mysqli_fetch_assoc($do);
+    if ($result["insta"] == "") {
+        $insta = "franciscoasorey";
+    } else {
+        $insta = $result["insta"];
+    }
+    $player = (object)array();
+    $player->title = $result["titulo"];
+    $player->miniatura = $result["miniatura"];
+    $player->instagram = $insta;
+    echo json_encode($player);
 }
 
-if(isset($_GET["next"])){
+if (isset($_GET["next"])) {
     $api = $_GET["next"];
     $sql = "SELECT * FROM ajustes WHERE BINARY api = '$api'";
-    $do = mysqli_query($link, $sql);
-    $player = (object)array();
-    if($do->num_rows != 0){
-        $sql = "UPDATE `ajustes` SET `value` = 'next' WHERE `ajustes`.`nombre` = 'status';";
-        if (mysqli_query($link, $sql)) {
-            $player->error = "OK";
-            $player->message = "Se ha cambiado la canción.";
-        }else{
-            $player->error = "NOT OK";
-            $player->message = "Error en la base de datos.";
-        }
-        
-    }else{
-        $player->error = "NOT OK";
-        $player->message = "La clave API es incorrecta.";
-    }
+    if ($do = mysqli_query($link, $sql)) {
 
-    echo json_encode($player);
-    
+        $player = (object)array();
+        if ($do->num_rows != 0) {
+            $sql = "UPDATE `ajustes` SET `value` = 'next' WHERE `ajustes`.`nombre` = 'status';";
+            if (mysqli_query($link, $sql)) {
+                $player->error = "OK";
+                $player->message = "Se ha cambiado la canción.";
+            } else {
+                $player->error = "NOT OK";
+                $player->message = "Error en la base de datos.";
+            }
+        } else {
+            $player->error = "NOT OK";
+            $player->message = "La clave API es incorrecta.";
+        }
+
+        echo json_encode($player);
+    } else {
+        echo mysqli_error($link);
+    }
 }
