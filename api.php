@@ -187,7 +187,7 @@ if (isset($_GET["getplaydata"])) {
 
 if (isset($_GET["next"])) {
     $api = $_GET["next"];
-    $sql = "SELECT * FROM ajustes WHERE BINARY api = '$api'";
+    $sql = "SELECT * FROM ajustes WHERE BINARY value = '$api'";
     if ($do = mysqli_query($link, $sql)) {
 
         $player = (object)array();
