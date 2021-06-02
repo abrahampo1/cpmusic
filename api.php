@@ -184,3 +184,27 @@ if(isset($_GET["getplaydata"])){
         $player->instagram = $insta;
         echo json_encode($player);
 }
+
+if(isset($_GET["next"])){
+    $api = $_GET["next"];
+    $sql = "SELECT * FROM ajustes WHERE api BINARY = '$api'";
+    $do = mysqli_query($link, $sql);
+    $player = (object)array();
+    if($do->num_rows != 0){
+        $sql = "UPDATE `ajustes` SET `value` = 'next' WHERE `ajustes`.`nombre` = 'status';";
+        if (mysqli_query($link, $sql)) {
+            $player->error = "OK";
+            $player->message = "Se ha cambiado la canción.";
+        }else{
+            $player->error = "NOT OK";
+            $player->message = "Error en la base de datos.";
+        }
+        
+    }else{
+        $player->error = "NOT OK";
+        $player->message = "La clave API es incorrecta.";
+    }
+
+    echo json_encode($player);
+    
+}
