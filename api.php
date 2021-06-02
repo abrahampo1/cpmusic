@@ -210,3 +210,30 @@ if (isset($_GET["next"])) {
         echo mysqli_error($link);
     }
 }
+
+if (isset($_GET["volume"])) {
+    $api = $_GET["volume"];
+    $volume = $_GET["value"];
+    $sql = "SELECT * FROM ajustes WHERE BINARY value = '$api'";
+    if ($do = mysqli_query($link, $sql)) {
+
+        $player = (object)array();
+        if ($do->num_rows != 0) {
+            $sql = "UPDATE `ajustes` SET `value` = '$volume' WHERE `ajustes`.`nombre` = 'volume';";
+            if (mysqli_query($link, $sql)) {
+                $player->error = "OK";
+                $player->message = "Se ha ajustado el volumen la canción.";
+            } else {
+                $player->error = "NOT OK";
+                $player->message = "Error en la base de datos.";
+            }
+        } else {
+            $player->error = "NOT OK";
+            $player->message = "La clave API es incorrecta.";
+        }
+
+        echo json_encode($player);
+    } else {
+        echo mysqli_error($link);
+    }
+}
