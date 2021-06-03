@@ -78,6 +78,7 @@ if(isset($_POST["clave"])){
 
         nav img {
             height: 80px;
+            border-radius: 15px;
         }
 
         .admin {

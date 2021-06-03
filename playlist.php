@@ -199,6 +199,7 @@ if(isset($_GET["p"])){
         }
         nav img{
             height: 80px;
+            border-radius: 15px;
         }
 
         .admin {

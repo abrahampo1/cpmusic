@@ -262,6 +262,7 @@ if (isset($_SESSION["admin"])) {
 
         nav img {
             height: 80px;
+            border-radius: 15px;
         }
 
         .admin {
@@ -342,7 +343,7 @@ if (isset($_SESSION["admin"])) {
 
 <body>
     <nav>
-        <a href="./"><img style="display: inline;" src="logo.png" height="100%" alt=""></a>
+        <a href="https://asorey.net"><img style="display: inline;" src="logo.png" height="100%" alt=""></a>
         <form class="admin" method="POST" action="./admin">
             <button class="media off" value="paquete"><i class="fas fa-user"></i></button>
             
