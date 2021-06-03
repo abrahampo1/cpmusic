@@ -427,6 +427,7 @@ $volumen = $volumen["value"];
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+    <title><?php echo $titulo; ?></title>
 </head>
 
 <body id="back" onload="color()" style="text-align: center;">
