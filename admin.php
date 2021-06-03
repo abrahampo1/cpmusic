@@ -276,7 +276,7 @@ if (isset($_POST["stream"])) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <nav>
-    <a href="./"><img style="display: inline;" src="logo.png" height="80px" alt=""></a>
+    <a href="https://asorey.net"><img style="display: inline;" src="logo.png" height="80px" alt=""></a>
 </nav>
 
 <body>
