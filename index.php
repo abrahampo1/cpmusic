@@ -262,6 +262,7 @@ if (isset($_SESSION["admin"])) {
 
         nav img {
             height: 80px;
+            border-radius: 15px;
         }
 
         .admin {

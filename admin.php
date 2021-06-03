@@ -197,6 +197,9 @@ if (isset($_POST["next"])) {
         height: 100px;
         text-align: center;
     }
+    nav img{
+        border-radius: 15px;
+    }
 
     select {
         border: none;
