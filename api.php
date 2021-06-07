@@ -194,8 +194,47 @@ if (isset($_GET["next"])) {
         if ($do->num_rows != 0) {
             $sql = "UPDATE `ajustes` SET `value` = 'next' WHERE `ajustes`.`nombre` = 'status';";
             if (mysqli_query($link, $sql)) {
+                if (isset($_GET["url"])) {
+                    $rickroll = $_GET["url"];
+                    $sql = "INSERT INTO `musica` (`id`, `urlspoti`, `miniatura`, `titulo`, `reproducida`, `video`, `insta`, `tiempo`, `auto`) VALUES (NULL, '$rickroll', '', '', '0', '', '$insta', 0, 1);";
+                    if (mysqli_query($link, $sql)) {
+                        $player->error = "OK";
+                        $player->message = "Acabo de chipear todas las pantallas. je. je. je.";
+                    } else {
+                        $player->error = "NOT OK";
+                        $player->message = "Error en la base de datos.";
+                    }
+                } else {
+                    $player->error = "OK";
+                    $player->message = "Se ha cambiado la canción.";
+                }
+            } else {
+                $player->error = "NOT OK";
+                $player->message = "Error en la base de datos.";
+            }
+        } else {
+            $player->error = "NOT OK";
+            $player->message = "La clave API es incorrecta.";
+        }
+
+        echo json_encode($player);
+    } else {
+        echo mysqli_error($link);
+    }
+}
+
+if (isset($_GET["volume"])) {
+    $api = $_GET["volume"];
+    $volume = $_GET["value"];
+    $sql = "SELECT * FROM ajustes WHERE BINARY value = '$api'";
+    if ($do = mysqli_query($link, $sql)) {
+
+        $player = (object)array();
+        if ($do->num_rows != 0) {
+            $sql = "UPDATE `ajustes` SET `value` = '$volume' WHERE `ajustes`.`nombre` = 'volume';";
+            if (mysqli_query($link, $sql)) {
                 $player->error = "OK";
-                $player->message = "Se ha cambiado la canción.";
+                $player->message = "Se ha ajustado el volumen la canción.";
             } else {
                 $player->error = "NOT OK";
                 $player->message = "Error en la base de datos.";
