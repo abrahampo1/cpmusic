@@ -130,7 +130,7 @@ $volumen = $volumen["value"];
         width: 80%;
     }
 
-    video {
+    #videoclip {
         border-radius: 25px;
         -webkit-box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
         -moz-box-shadow: 0px 0px 92px -21px rgba(0, 0, 0, 0.75);
