@@ -420,22 +420,7 @@ $volumen = $volumen["value"];
         left: 50%;
         transform: translate(-50%, -50%);
     }
-    .video-js .vjs-tech {
-  /* make the video larger so it can hide*/
-  width: 102%;
-  height: 102%;
-  /* displace video to hide*/
-  left: -5px;
-  /* allow space for hiding*/
-  margin: -10px;
-  position: absolute;
-  top: 0;
-}
 
-.video-js {
-  /* make sure overflow is hidden*/
-  overflow: hidden; 
-}
 </style>
 
 <head>
@@ -512,6 +497,24 @@ $volumen = $volumen["value"];
 <div id="siguiente_holder" style="display: none;">
 
 </div>
+<style>
+    .video-js .vjs-tech {
+  /* make the video larger so it can hide*/
+  width: 102%;
+  height: 102%;
+  /* displace video to hide*/
+  left: -5px;
+  /* allow space for hiding*/
+  margin: -10px;
+  position: absolute;
+  top: 0;
+}
+
+.video-js {
+  /* make sure overflow is hidden*/
+  overflow: hidden; 
+}
+</style>
 <div id="myModal" class="modal">
 
     <!-- Modal content -->
