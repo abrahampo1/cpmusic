@@ -296,7 +296,7 @@ if (isset($_POST["stream"])) {
 
 
     <form action="" method="POST" style="margin: 20px">
-        <input type="hidden" name="stream" value="paquete">
+        
         <h2><i class="fas fa-volume-up"></i></h2>
         <div class="slidercontainer">
             <input type="range" min="1" max="100" value="<?php echo $volumen ?>" onchange="volume()" class="slider" id="volume">
@@ -310,12 +310,16 @@ if (isset($_POST["stream"])) {
         </div>
 
         <br>
-        <button type="submit"><?php if ($anuncio_active == 1) {
+        
+        <button id="console_btn" onclick="console()" type="button">Abrir consola</button>
+    </form>
+    <form action="" method="POST" style="margin: 20px">
+        <input type="hidden" name="stream" value="paquete">
+    <button type="submit"><?php if ($anuncio_active == 1) {
                                     echo "Cerrar Transmisión en Directo";
                                 } else {
                                     echo "Abrir Transmisión en Directo";
                                 } ?></button>
-        <button id="console_btn" onclick="console()" type="button">Abrir consola</button>
     </form>
     <div class="playlist">
         <h2>Ajustes Apagado automatico</h2>
