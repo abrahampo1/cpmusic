@@ -257,13 +257,14 @@ if (isset($_POST["stream"])) {
     if ($anuncio_active == 1) {
         $sql = "UPDATE `ajustes` SET `value` = '0' WHERE `ajustes`.`nombre` = 'anuncio_active';";
         $sql2 = "UPDATE `ajustes` SET `value` = 'play' WHERE `ajustes`.`nombre` = 'status';";
+        $anuncio_active = 0;
     } else {
         $sql = "UPDATE `ajustes` SET `value` = '1' WHERE `ajustes`.`nombre` = 'anuncio_active';";
         $sql2 = "UPDATE `ajustes` SET `value` = 'pause' WHERE `ajustes`.`nombre` = 'status';";
+        $anuncio_active = 1;
     }
     if (mysqli_query($link, $sql)) {
         mysqli_query($link, $sql2);
-        header("location: admin");
     }
 }
 ?>
