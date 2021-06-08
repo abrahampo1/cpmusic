@@ -515,8 +515,7 @@ $volumen = $volumen["value"];
 <div id="myModal" class="modal">
 
     <!-- Modal content -->
-    <div class="modal-content">
-        <p id="noticia"></p>
+    <div class="modal-content" id="noticia">
     </div>
 
 </div>
