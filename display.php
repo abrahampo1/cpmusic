@@ -498,21 +498,9 @@ $volumen = $volumen["value"];
 
 </div>
 <style>
-    .video-js .vjs-tech {
-  /* make the video larger so it can hide*/
-  width: 102%;
-  height: 102%;
-  /* displace video to hide*/
-  left: -5px;
-  /* allow space for hiding*/
-  margin: -10px;
-  position: absolute;
-  top: 0;
-}
-
-.video-js {
-  /* make sure overflow is hidden*/
-  overflow: hidden; 
+.video-js .vjs-tech {
+  width: 100% !important;
+  height: 100% !important;
 }
 </style>
 <div id="myModal" class="modal">
