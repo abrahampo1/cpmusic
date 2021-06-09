@@ -379,7 +379,7 @@ if (isset($_SESSION["admin"])) {
                 <input class="input-field" type="search" id="keyword" name="keyword" placeholder="Buscar">
             </div>
 
-            <input class="btn-submit" type="submit" name="submit" value="Buscar en YouTube →"><br><br>
+            <input class="btn-submit" id="btnyt" type="submit" name="submit" value="Buscar en YouTube →"><br><br>
 
         </form>
         <a href="playlist?p=1" class="btn-playlist inicio" style="text-decoration: none; margin-top:15px">Playlist de Favoritas</a>
@@ -565,3 +565,10 @@ if (isset($_SESSION["admin"])) {
         window.history.replaceState(null, null, window.location.href);
     }
 </script>
+<script>
+        const ipc = require('electron').ipcRenderer;
+        const button = document.getElementById('btnyt');
+        ipc.on('buscaryt', (event, message) => {
+            button.click();
+        })
+    </script>
