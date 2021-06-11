@@ -471,8 +471,12 @@ $volumen = $volumen["value"];
         </div>
     </div>
 
-
+    <div class="instagram" style="position: fixed; left: 0; bottom: 90px; height: auto; display: block; max-width: 19%">
+        <img style="padding-top:5px;" width="150px" height="150px" src="discordqr.png">
+        <h3>¡Únete al discord!</h3>
+        </div>
     <div style="display: flex; width:100%;">
+    
         <?php
         if ($ig_minita != "") {
             echo '<div class="instagram" style="position: fixed; left: 0; bottom: 0; height: 75px; display: flex; max-width: 19%">
