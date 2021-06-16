@@ -3,7 +3,7 @@ import vlc
 import ssl
 import time
 import requests
-
+ 
 ssl._create_default_https_context = ssl._create_unverified_context
 def run_forever():
     url_api = "https://musica.asorey.net/api.php"
