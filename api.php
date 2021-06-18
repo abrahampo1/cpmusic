@@ -10,6 +10,7 @@ function generateRandomString($length = 20)
     }
     return $randomString;
 }
+include("database.php");
 if(isset($_POST["getapi"])){
     $api = generateRandomString(30);
     $sql = "INSERT INTO `api` (`id`, `token`) VALUES (NULL, '$api');";
@@ -17,7 +18,6 @@ if(isset($_POST["getapi"])){
         echo $api;
     }
 }
-include("database.php");
 if (isset($_POST["api"])) {
     $sql = "SELECT * FROM ajustes WHERE nombre = 'timer'";
     $do = mysqli_query($link, $sql);
