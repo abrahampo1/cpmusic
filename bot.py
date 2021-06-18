@@ -5,8 +5,42 @@ import time
 import requests
 
 ssl._create_default_https_context = ssl._create_unverified_context
+url_api = "https://musica.asorey.net/api.php"
+api = ""
+def generarapi():
+    print("Veo que no tienes una clave API... Vamos a añadirla.")
+    myobj = {
+        'getapi': "",
+    }
+    print("Estoy solicitandole un API a CEPIA...")
+    x = requests.post(url_api, data=myobj)
+    print("Tu nuevo API es :" + x.text)
+    with open('blockchain.txt', 'w') as f:
+        f.write(x.text)
+    print("La he guardado para acordarme de ella.")
+    api = x.text
+    return api
+try:
+    print("Leyendo clave API...")
+    with open('blockchain.txt') as f:
+        lines = f.readlines()
+    print("¡Clave API leida y es: "+lines[0])
+    myobj = {
+        'api': lines[0],
+        'test': "testapi"
+    }
+    print("Voy a confirmar que este API es válido, dame un momento...")
+    x = requests.post(url_api, data=myobj)
+    if(x.text == "OK"):
+        print("API verificada correctamente, adelante amigo")
+        api = lines[0]
+    else:
+        print("Este API no es correcto")
+        api = generarapi()
+
+except Exception as e:
+    api = generarapi()
 def run_forever():
-    url_api = "https://musica.asorey.net/api.php"
     video = False
     try:
         while True:
@@ -17,7 +51,7 @@ def run_forever():
                 bestvideo = video.getbest()
                 videourl = bestvideo.url
                 myobj = {
-                    'api': '123',
+                    'api': api,
                     'miniatura': video.bigthumb,
                     'url': url,
                     'titulo': video.title,

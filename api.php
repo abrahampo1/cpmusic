@@ -10,7 +10,13 @@ function generateRandomString($length = 20)
     }
     return $randomString;
 }
-
+if(isset($_POST["getapi"])){
+    $api = generateRandomString(30);
+    $sql = "INSERT INTO `api` (`id`, `token`) VALUES (NULL, '$api');";
+    if(mysqli_query($link, $sql)){
+        echo $api;
+    }
+}
 include("database.php");
 if (isset($_POST["api"])) {
     $sql = "SELECT * FROM ajustes WHERE nombre = 'timer'";
@@ -35,6 +41,10 @@ if (isset($_POST["api"])) {
     $sql = "SELECT * FROM api WHERE BINARY token = '$token'";
     if ($do = mysqli_query($link, $sql)) {
         if ($do->num_rows > 0) {
+            if(isset($_POST["test"])){
+                echo "OK";
+                exit;
+            }
             if ($hora < $stop && $hora > $start || $timer == 0) {
                 if (isset($_POST["necesito"])) {
                     $sql = "UPDATE `ajustes` SET `value` = 'play' WHERE `ajustes`.`nombre` = 'status';";
@@ -154,6 +164,11 @@ if (isset($_POST["api"])) {
                 if ($do = mysqli_query($link, $sql)) {
                     echo 'WEB: Terminado recibido correctamente.';
                 }
+            }
+        }else{
+            if(isset($_POST["test"])){
+                echo "NO";
+                exit;
             }
         }
     } else {
