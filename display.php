@@ -618,6 +618,9 @@ $volumen = $volumen["value"];
         });
     }, 1000);
 </script>
+<?php
+ if(!isset($_GET["hidestream"])){
+?>
 <script>
     var anuncios = window.setInterval(function() {
         $.ajax({
@@ -660,6 +663,7 @@ $volumen = $volumen["value"];
 
     }, 500);
 </script>
+
 <script>
     var anuncios = window.setInterval(function() {
         $.ajax({
@@ -688,6 +692,9 @@ $volumen = $volumen["value"];
 
     }, 1000);
 </script>
+<?php
+ }
+?>
 <script>
     function loadnext(el, segundos) {
         var el = document.getElementById("img-" + el);
