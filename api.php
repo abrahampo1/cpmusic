@@ -149,7 +149,7 @@ if (isset($_POST["api"])) {
                 $video_id = $result["id"];
                 $sql = "UPDATE `musica` SET `miniatura` = '$random', `titulo` = '$titulo', `video` = '$videourl', `datos` = 1  WHERE `musica`.`id` = '$video_id';";
                 if ($do = mysqli_query($link, $sql)) {
-                    echo 'WEB: Gracias por los datos bot-chan. >///<';
+                    echo 'CEPIA: Gracias por los datos bot-chan. >///<';
                 } else {
                     echo mysqli_error($link);
                 }
@@ -162,7 +162,7 @@ if (isset($_POST["api"])) {
                 $video_id = $result["id"];
                 $sql = "UPDATE `musica` SET `reproducida` = '1' WHERE `musica`.`id` = '$video_id';";
                 if ($do = mysqli_query($link, $sql)) {
-                    echo 'WEB: Terminado recibido correctamente.';
+                    echo 'CEPIA: Terminado recibido correctamente.';
                 }
             }
         }else{
