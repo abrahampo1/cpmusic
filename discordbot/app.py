@@ -73,14 +73,14 @@ async def play(ctx):
             url = x.text
         print(url)
         url = json.loads(url)
-        tiempo = url["tiempo"]
+        tiempo = url["time"]
         id = url["id"]
-        url = url["songurl"]
+        url_audio = url["songurl"]
         title = url["title"]
         guild = ctx.message.guild
         if id != id_true:
             try:
-                playurl = url
+                playurl = url_audio
                 voice_client.stop()
                 FFMPEG_OPTIONS = {
                     'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn -ss '+tiempo, }
