@@ -3,7 +3,6 @@ from logging import exception
 from os.path import split
 import discord
 import os
-import pafy
 import ssl
 import asyncio
 import aiohttp
@@ -65,7 +64,7 @@ async def play(ctx):
         url = x.text
         if url == "":
             await ctx.send("Estoy esperando por una canción...")
-            await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="un rolita guapa by CPS"))
+            await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="Esperando por una cancion en https://musica.asorey.net"))
         while url == "":
             await asyncio.sleep(1)
             x = requests.post(url_api, data=myobj)
@@ -81,9 +80,7 @@ async def play(ctx):
         #    path = str(file['title']) + "-" + str(file['id'] + ".mp3")
         if id != id_true:
             try:
-                video = pafy.new(url)
-                best = video.getbestaudio()
-                playurl = best.url
+                playurl = url
                 voice_client.stop()
                 FFMPEG_OPTIONS = {
                     'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn -ss '+tiempo, }
