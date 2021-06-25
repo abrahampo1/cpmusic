@@ -72,7 +72,7 @@ async def play(ctx):
             x = requests.post(url_api, data=myobj)
             url = x.text
         print(url)
-        url = JSONDecoder(url)
+        url = json.loads(url)
         tiempo = url["tiempo"]
         id = url["id"]
         url = url["songurl"]
