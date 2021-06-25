@@ -1,4 +1,5 @@
 from asyncio.tasks import sleep
+from json.decoder import JSONDecoder
 from logging import exception
 from os.path import split
 import discord
@@ -8,6 +9,7 @@ import asyncio
 import aiohttp
 import certifi
 import requests
+import json
 from discord.ext import commands
 from dotenv import load_dotenv
 load_dotenv()
@@ -69,11 +71,12 @@ async def play(ctx):
             await asyncio.sleep(1)
             x = requests.post(url_api, data=myobj)
             url = x.text
-        url = url.split(';,;')
-        tiempo = url[1]
-        id = url[0]
-        url = url[2]
-        title = url[3]
+        print(url)
+        url = JSONDecoder(url)
+        tiempo = url["tiempo"]
+        id = url["id"]
+        url = url["songurl"]
+        title = url["title"]
         guild = ctx.message.guild
         if id != id_true:
             try:

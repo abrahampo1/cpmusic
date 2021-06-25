@@ -108,7 +108,13 @@ if (isset($_POST["api"])) {
                 $do = mysqli_query($link, $sql);
                 if ($do->num_rows == 1) {
                     $result = mysqli_fetch_assoc($do);
-                    echo $result["id"] . ";,;" . $result["tiempo"] . ";,;" . $result["audio"]. ";,;" . $result["titulo"];
+                    $video = [];
+                    $video["title"] = $result["titulo"];
+                    $video["songurl"] = $result["audio"];
+                    $video["time"] = $result["tiempo"];
+                    $video["id"] = $result["id"];
+
+                    echo json_encode($video);
                 }
             }
             if (isset($_POST["tiempo"])) {
