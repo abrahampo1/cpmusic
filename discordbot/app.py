@@ -73,11 +73,8 @@ async def play(ctx):
         tiempo = url[1]
         id = url[0]
         url = url[2]
+        title = url[3]
         guild = ctx.message.guild
-        # print(playurl)
-        # with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-        #    file = ydl.extract_info(url, download=True)
-        #    path = str(file['title']) + "-" + str(file['id'] + ".mp3")
         if id != id_true:
             try:
                 playurl = url
@@ -87,8 +84,8 @@ async def play(ctx):
                 try:
                     voice_client.play(discord.FFmpegPCMAudio(playurl, **FFMPEG_OPTIONS, executable='/usr/bin/ffmpeg'))
                     voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
-                    await ctx.send(f'**Canción en la radio: **{url}')
-                    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=video.title))
+                    await ctx.send(f'**Canción en la radio: **{title}')
+                    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=title))
                 except Exception as e:
                     print(e)
             except Exception as e:
