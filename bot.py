@@ -1,12 +1,17 @@
+from logging import error
 import pafy
 import vlc
 import ssl
 import time
 import requests
- 
+errores_max = 3
+global errores
+errores = 0
 ssl._create_default_https_context = ssl._create_unverified_context
 url_api = "https://musica.asorey.net/api.php"
 api = ""
+
+
 def generarapi():
     print("Veo que no tienes una clave API... Vamos a añadirla.")
     myobj = {
@@ -20,6 +25,8 @@ def generarapi():
     print("La he guardado para acordarme de ella.")
     api = x.text
     return api
+
+
 try:
     print("Leyendo clave API...")
     with open('blockchain.txt') as f:
@@ -40,10 +47,15 @@ try:
 
 except Exception as e:
     api = generarapi()
+
+
 def run_forever():
     video = False
+    global errores
+    
     try:
         while True:
+            
             if video == True:
                 video = pafy.new(url)
                 best = video.getbestaudio()
@@ -79,8 +91,9 @@ def run_forever():
                 player.play()
                 currenttime = round(player.get_time()/1000)
                 intentos = 0
-                while round(player.get_length()/1000) < 1 :
-                    print("He detectado que la longitud del video es incorrecta, voy a esperar 1 segundo")
+                while round(player.get_length()/1000) < 1:
+                    print(
+                        "He detectado que la longitud del video es incorrecta, voy a esperar 1 segundo")
                     time.sleep(1)
                     Media = Instance.media_new(playurl)
                     player.set_media(Media)
@@ -91,8 +104,11 @@ def run_forever():
                         break
                     print(player.get_length())
                 print(str("Reproduciendo ('"+video.title+"')").encode("utf-8"))
+
+                errores = 0
                 if round(player.get_length()/1000) < 1:
-                    print("Como el audio parece que no funciona, voy a poner el video...")
+                    print(
+                        "Como el audio parece que no funciona, voy a poner el video...")
                     Media = Instance.media_new(videourl)
                     player.set_media(Media)
                     player.play()
@@ -112,17 +128,20 @@ def run_forever():
                     if x.text == "play":
                         if player.get_state() == 4:
                             player.play()
-                            print(str("Reproduciendo ('"+video.title+"')").encode("utf-8"))
+                            print(
+                                str("Reproduciendo ('"+video.title+"')").encode("utf-8"))
                     if x.text == "next":
                         player.stop()
                         print("He recibido un next, cambio.")
                         break
                     Ended = 6
                     if player.get_state() == Ended:
-                        print("He detectado que no hay más canción, forzando la siguiente...")
+                        print(
+                            "He detectado que no hay más canción, forzando la siguiente...")
                         break
                     if player.get_state() == 3:
-                        print(str(currenttime) +"/"+ str(round(player.get_length()/1000)) + " Estado: "+str(player.get_state()),end=';')
+                        print(str(currenttime) + "/" + str(round(player.get_length()/1000)
+                                                           ) + " Estado: "+str(player.get_state()), end=';')
                     time.sleep(0.1)
                 print("Terminado rey.")
                 video = False
@@ -146,7 +165,19 @@ def run_forever():
                     url = texto
                     print("Encontré la canción :)")
     except Exception as e:
+        errores = errores + 1
+        if errores == errores_max:
+                video = False
+                myobj = {
+                    'api': '123',
+                    'terminado': url
+                }
+                x = requests.post(url_api, data=myobj)
+                print(x.text)
+                run_forever()
+        print('INTENTO '+ str(errores) + ' / ' + str(errores_max))
         print("Me he crasheado :(, me reinicio al toque. " + str(e))
         run_forever()
+
+
 run_forever()
-            
