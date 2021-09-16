@@ -1,14 +1,15 @@
 from asyncio.tasks import sleep
+from json.decoder import JSONDecoder
 from logging import exception
 from os.path import split
 import discord
 import os
-import pafy
 import ssl
 import asyncio
 import aiohttp
 import certifi
 import requests
+import json
 from discord.ext import commands
 from dotenv import load_dotenv
 load_dotenv()
@@ -65,33 +66,29 @@ async def play(ctx):
         url = x.text
         if url == "":
             await ctx.send("Estoy esperando por una canción...")
-            await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="un rolita guapa by CPS"))
+            await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="Esperando por una cancion en https://musica.asorey.net"))
         while url == "":
             await asyncio.sleep(1)
             x = requests.post(url_api, data=myobj)
             url = x.text
-        url = url.split(';,;')
-        tiempo = url[1]
-        id = url[0]
-        url = url[2]
+        print(url)
+        url = json.loads(url)
+        tiempo = url["time"]
+        id = url["id"]
+        url_audio = url["songurl"]
+        title = url["title"]
         guild = ctx.message.guild
-        # print(playurl)
-        # with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-        #    file = ydl.extract_info(url, download=True)
-        #    path = str(file['title']) + "-" + str(file['id'] + ".mp3")
         if id != id_true:
             try:
-                video = pafy.new(url)
-                best = video.getbestaudio()
-                playurl = best.url
+                playurl = url_audio
                 voice_client.stop()
                 FFMPEG_OPTIONS = {
                     'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5', 'options': '-vn -ss '+tiempo, }
                 try:
                     voice_client.play(discord.FFmpegPCMAudio(playurl, **FFMPEG_OPTIONS, executable='/usr/bin/ffmpeg'))
                     voice_client.source = discord.PCMVolumeTransformer(voice_client.source, 1)
-                    await ctx.send(f'**Canción en la radio: **{url}')
-                    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=video.title))
+                    await ctx.send(f'**Canción en la radio: **{title}')
+                    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=title))
                 except Exception as e:
                     print(e)
             except Exception as e:

@@ -67,7 +67,8 @@ def run_forever():
                     'miniatura': video.bigthumb,
                     'url': url,
                     'titulo': video.title,
-                    'video': videourl
+                    'video': videourl,
+                    'audio': playurl
                 }
                 x = requests.post(url_api, data=myobj)
                 if video.length > 600:

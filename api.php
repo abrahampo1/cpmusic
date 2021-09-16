@@ -108,7 +108,13 @@ if (isset($_POST["api"])) {
                 $do = mysqli_query($link, $sql);
                 if ($do->num_rows == 1) {
                     $result = mysqli_fetch_assoc($do);
-                    echo $result["id"] . ";,;" . $result["tiempo"] . ";,;" . $result["urlspoti"];
+                    $video = [];
+                    $video["title"] = $result["titulo"];
+                    $video["songurl"] = $result["audio"];
+                    $video["time"] = $result["tiempo"];
+                    $video["id"] = $result["id"];
+
+                    echo json_encode($video);
                 }
             }
             if (isset($_POST["tiempo"])) {
@@ -147,7 +153,8 @@ if (isset($_POST["api"])) {
                 $do = mysqli_query($link, $sql);
                 $result = mysqli_fetch_assoc($do);
                 $video_id = $result["id"];
-                $sql = "UPDATE `musica` SET `miniatura` = '$random', `titulo` = '$titulo', `video` = '$videourl', `datos` = 1  WHERE `musica`.`id` = '$video_id';";
+                $audiourl = $_POST["audio"];
+                $sql = "UPDATE `musica` SET `miniatura` = '$random', `titulo` = '$titulo', `video` = '$videourl', `audio` = '$audiourl', `datos` = 1  WHERE `musica`.`id` = '$video_id';";
                 if ($do = mysqli_query($link, $sql)) {
                     echo 'CEPIA: Gracias por los datos bot-chan. >///<';
                 } else {
